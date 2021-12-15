@@ -1,0 +1,111 @@
+PROGRAM Analogicas
+#info= QLD
+BOF
+
+
+(*REGUA A*)
+
+SOR  [0,1] (**) (**)  FB  [1,0] (*ANY_TO_REAL*) (*31*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*_IO_P1_AI_00*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*rReguaA*) (**) )
+EOR [4,0]
+
+
+(*REGUA A*)
+
+SOR  [0,4] (**) (**)  XIC  [1,0] (*__SYSVA_POWERUP_BIT*) (**)  
+ BST  FB  [2,0] (*1 gain*) (*9*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*0.0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*rMINIMO_AI0*) (**) )
+   NXB  
+ BST  FB  [2,2] (*1 gain*) (*10*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*10500.0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*rMAXIMO_AI0*) (**) )
+   NXB  
+ BST  FB  [2,4] (*1 gain*) (*11*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*0.0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*MIN_ReguaA*) (**) )
+   NXB  FB  [2,6] (*1 gain*) (*12*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*150.0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*MAX_ReguaA*) (**) )
+ BND
+
+ BND
+
+ BND
+
+EOR [5,0]
+
+
+(*Linearização Canal REGUA A*)
+
+SOR  [0,13] (**) (**)  FB  [1,0] (*SCALER*) (*SCALER_1*) ( (*EN:EN*)(**) (**)  , (*Input:*)(*rReguaA*) (**)  , (*InputMin:*)(*rMINIMO_AI0*) (**)  , (*InputMax:*)(*rMAXIMO_AI0*) (**)  , (*OutputMin:*)(*MIN_ReguaA*) (**)  , (*OutputMax:*)(*MAX_ReguaA*) (**) ; (*ENO:ENO*)(**) (**)  , (*Output:*)(*rConv_ReguaA*) (**) )
+EOR [4,0]
+
+
+(*REGUA B*)
+
+SOR  [0,20] (**) (**)  FB  [1,0] (*ANY_TO_REAL*) (*31*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*_IO_P1_AI_01*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*rReguaB*) (**) )
+EOR [4,0]
+
+
+(*REGUA B*)
+
+SOR  [0,23] (**) (**)  XIC  [1,0] (*__SYSVA_POWERUP_BIT*) (**)  
+ BST  FB  [2,0] (*1 gain*) (*13*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*0.0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*rMINIMO_AI1*) (**) )
+   NXB  
+ BST  FB  [2,2] (*1 gain*) (*14*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*9851.0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*rMAXIMO_AI1*) (**) )
+   NXB  
+ BST  FB  [2,4] (*1 gain*) (*15*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*0.0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*MIN_ReguaB*) (**) )
+   NXB  FB  [2,6] (*1 gain*) (*16*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*150.0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*MAX_ReguaB*) (**) )
+ BND
+
+ BND
+
+ BND
+
+EOR [5,0]
+
+
+(*Linearização REGUA B*)
+
+SOR  [0,32] (**) (**)  FB  [1,0] (*SCALER*) (*SCALER_2*) ( (*EN:EN*)(**) (**)  , (*Input:*)(*rReguaB*) (**)  , (*InputMin:*)(*rMINIMO_AI1*) (**)  , (*InputMax:*)(*rMAXIMO_AI1*) (**)  , (*OutputMin:*)(*MIN_ReguaB*) (**)  , (*OutputMax:*)(*MAX_ReguaB*) (**) ; (*ENO:ENO*)(**) (**)  , (*Output:*)(*rConv_ReguaB*) (**) )
+EOR [4,0]
+
+
+(*SENSOR DE CORRENTE*)
+
+SOR  [0,39] (**) (**)  FB  [1,0] (*ANY_TO_REAL*) (*31*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*_IO_P1_AI_02*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*rSensorCorrente*) (**) )
+EOR [4,0]
+
+
+(*SENSOR DE CORRENTE*)
+
+SOR  [0,42] (**) (**)  XIC  [1,0] (*__SYSVA_POWERUP_BIT*) (**)  
+ BST  FB  [2,0] (*1 gain*) (*17*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*16500.0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*rMINIMO_AI2*) (**) )
+   NXB  
+ BST  FB  [2,2] (*1 gain*) (*18*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*18000.0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*rMAXIMO_AI2*) (**) )
+   NXB  
+ BST  FB  [2,4] (*1 gain*) (*19*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*0.0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*MIN_SensorCorrente*) (**) )
+   NXB  FB  [2,6] (*1 gain*) (*20*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*1.5*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*MAX_SensorCorrente*) (**) )
+ BND
+
+ BND
+
+ BND
+
+EOR [5,0]
+
+
+(*Linearização SENSOR DE CORRENTE*)
+
+SOR  [0,51] (**) (**)  FB  [1,0] (*SCALER*) (*SCALER_3*) ( (*EN:EN*)(**) (**)  , (*Input:*)(*rSensorCorrente*) (**)  , (*InputMin:*)(*rMINIMO_AI2*) (**)  , (*InputMax:*)(*rMAXIMO_AI2*) (**)  , (*OutputMin:*)(*MIN_SensorCorrente*) (**)  , (*OutputMax:*)(*MAX_SensorCorrente*) (**) ; (*ENO:ENO*)(**) (**)  , (*Output:*)(*rConv_SensorCorrente*) (**) )
+EOR [4,0]
+
+
+(*CELULA DE CARGA*)
+
+SOR  [0,58] (**) (**)  FB  [1,0] (*ANY_TO_REAL*) (*31*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*_IO_P1_AI_03*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*rCelulaCarga*) (**) )
+EOR [4,0]
+
+
+(*Linearização CELULA DE CARGA*)
+
+SOR  [0,61] (**) (**)  FB  [1,0] (*SCALER*) (*SCALER_6*) ( (*EN:EN*)(**) (**)  , (*Input:*)(*rCelulaCarga*) (**)  , (*InputMin:*)(*rMINIMO_AI3*) (**)  , (*InputMax:*)(*rMAXIMO_AI3*) (**)  , (*OutputMin:*)(*MIN_CelulaCarga*) (**)  , (*OutputMax:*)(*MAX_CelulaCarga*) (**) ; (*ENO:ENO*)(**) (**)  , (*Output:*)(*rConv_CelulaCarga*) (**) )
+EOR [4,0]
+EOF
+#end_info
+#info= ID_MAX
+NextId=33
+#end_info
+END_PROGRAM

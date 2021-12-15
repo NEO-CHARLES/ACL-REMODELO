@@ -1,0 +1,102 @@
+PROGRAM MOTO_MOVIMENTOS
+#info= QLD
+BOF
+
+
+(**)
+
+SOR  [0,1] (**) (**)  
+ BST  XIC  [1,0] (*bCLP_MOV1*) (**)
+   NXB  
+ BST  XIC  [1,1] (*bIHM_MOV1*) (**)
+   NXB  XIC  [1,2] (*bAJ_MOV1*) (**)
+ BND
+
+ BND
+  OTE  [2,0] (*bMOV1*) (**)
+EOR [3,0]
+
+
+(**)
+
+SOR  [0,5] (**) (**)  
+ BST  XIC  [1,0] (*bCLP_MOV2*) (**)
+   NXB  
+ BST  XIC  [1,1] (*bIHM_MOV2*) (**)
+   NXB  XIC  [1,2] (*bAJ_MOV2*) (**)
+ BND
+
+ BND
+  OTE  [2,0] (*bMOV2*) (**)
+EOR [3,0]
+
+
+(**)
+
+SOR  [0,9] (**) (**)  
+ BST  XIC  [1,0] (*bCLP_MOV3*) (**)
+   NXB  
+ BST  XIC  [1,1] (*bIHM_MOV3*) (**)
+   NXB  XIC  [1,2] (*bAJ_MOV3*) (**)
+ BND
+
+ BND
+  OTE  [2,0] (*bMOV3*) (**)
+EOR [3,0]
+
+
+(**)
+
+SOR  [0,13] (**) (**)  
+ BST  XIC  [1,0] (*bCLP_MOV4*) (**)
+   NXB  
+ BST  XIC  [1,1] (*bIHM_MOV4*) (**)
+   NXB  XIC  [1,2] (*bAJ_MOV4*) (**)
+ BND
+
+ BND
+  OTE  [2,0] (*bMOV4*) (**)
+EOR [3,0]
+
+
+(**)
+
+SOR  [0,17] (**) (**)  
+ BST  XIC  [1,0] (*bCLP_MOV0*) (**)
+   NXB  XIC  [1,1] (*bIHM_MOV0*) (**)
+ BND
+  OTE  [2,0] (*bMOV0*) (**)
+EOR [3,0]
+
+
+(**)
+
+SOR  [0,20] (**) (**)  XIO  [1,0] (*bMOV0*) (**)  
+ BST  XIC  [2,0] (*bMOV2*) (**)
+   NXB  XIC  [2,1] (*bMOV3*) (**)
+ BND
+  OTE  [3,0] (*OP60_K1*) (**)
+EOR [4,0]
+
+
+(**)
+
+SOR  [0,23] (**) (**)  XIO  [1,0] (*bMOV0*) (**)  
+ BST  XIC  [2,0] (*bMOV1*) (**)
+   NXB  XIC  [2,1] (*bMOV3*) (**)
+ BND
+  OTE  [3,0] (*OP60_K2*) (**)
+EOR [4,0]
+
+
+(*MOTORES MOVIMENTO 1*)
+
+SOR  [0,26] (**) (**)  XIO  [1,0] (*bMOV0*) (**)  
+ BST  XIC  [2,0] (*bMOV2*) (**)
+   NXB  XIC  [2,1] (*bMOV4*) (**)
+ BND
+  OTE  [3,0] (*OP60_K3*) (**)
+EOR [4,0]
+EOF
+#end_info
+END_PROGRAM

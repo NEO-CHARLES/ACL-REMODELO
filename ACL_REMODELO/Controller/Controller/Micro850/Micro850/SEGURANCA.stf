@@ -1,0 +1,57 @@
+PROGRAM SEGURANCA
+#info= QLD
+BOF
+
+
+(*Monitoramento do Botao de Emergencia*)
+
+SOR  [0,1] (**) (**)  XIO  [1,0] (*_IO_EM_DI_27*) (*PG1_EMERGENCIA*)  OTE  [2,0] (*EMERGENCIA_OK*) (**)
+EOR [3,0]
+
+
+(*Monitoramento do Botao de Emergencia OP20*)
+
+SOR  [0,3] (**) (**)  
+ BST  XIO  [1,0] (*_IO_EM_DI_27*) (*PG1_EMERGENCIA*)
+   NXB  XIO  [1,1] (*_IO_EM_DI_00*) (*OP20_STOP*)
+ BND
+  OTS  [2,0] (*AL00*) (**)
+EOR [3,0]
+
+
+(*Monitoramento do Botao de Emergencia OP40*)
+
+SOR  [0,6] (**) (**)  
+ BST  XIO  [1,0] (*_IO_EM_DI_27*) (*PG1_EMERGENCIA*)
+   NXB  XIO  [1,1] (*_IO_EM_DI_09*) (*OP40_STOP*)
+ BND
+  OTS  [2,0] (*bOP40_ALERTA_00*) (**)
+EOR [3,0]
+
+
+(*Monitoramento do Botao de Emergencia OP40*)
+
+SOR  [0,9] (**) (**)  
+ BST  XIO  [1,0] (*_IO_EM_DI_27*) (*PG1_EMERGENCIA*)
+   NXB  XIO  [1,1] (*_IO_EM_DI_16*) (*OP60_STOP*)
+ BND
+  OTS  [2,0] (*bOP60_ALERTA_00*) (**)
+EOR [3,0]
+
+
+(*Pisca 1s On*)
+
+SOR  [0,12] (**) (**)  XIO  [1,0] (*PISCA_1S*) (**)  FB  [2,0] (*TON*) (*TON_1*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*T#500ms*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTS  [5,0] (*PISCA_1S*) (**)
+EOR [6,0]
+
+
+(*Pisca 1s Off*)
+
+SOR  [0,15] (**) (**)  XIC  [1,0] (*PISCA_1S*) (**)  FB  [2,0] (*TON*) (*TON_2*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*t#500ms*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTR  [5,0] (*PISCA_1S*) (**)
+EOR [6,0]
+EOF
+#end_info
+#info= ID_MAX
+NextId=2
+#end_info
+END_PROGRAM

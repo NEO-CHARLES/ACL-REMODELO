@@ -1,0 +1,159 @@
+PROGRAM OP50
+#info= QLD
+BOF
+
+
+(*CONTROLE BOTÃO STOP/EMERGENCIA*)
+
+SOR  [0,1] (**) (**)  
+ BST  XIC  [1,0] (*OP50_SN_E*) (**)
+   NXB  XIC  [1,1] (*OP50_SN_D*) (**)
+ BND
+  OTE  [2,0] (*OP50_BTL*) (**)
+EOR [3,0]
+
+
+(**)
+
+SOR  [0,4] (**) (**)  XIO  [1,0] (*OP50_SN_E*) (**)  XIO  [2,0] (*OP50_SN_D*) (**)  FB  [3,0] (*TON*) (*TON_1*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*T#10S*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTE  [6,0] (*OP50_PF_RT*) (**)
+EOR [7,0]
+
+
+(**)
+
+SOR  [0,7] (**) (**)  
+ BST  
+ BST  XIO  [1,0] (*MD_LD*) (**)  XIO  [2,0] (*MD_LE*) (**)
+   NXB  XIC  [1,1] (*MD_LE*) (**)  
+ BST  XIC  [2,1] (*MD_LD*) (**)
+   NXB  
+ BST  XIO  [2,2] (*OP50_SN_E*) (**)
+   NXB  XIC  [2,3] (*OP50_SN_D*) (**)
+ BND
+
+ BND
+
+ BND
+
+   NXB  
+ BST  XIC  [1,4] (*MD_LD*) (**)  
+ BST  XIC  [2,4] (*MD_LE*) (**)
+   NXB  
+ BST  XIC  [2,5] (*OP50_SN_E*) (**)
+   NXB  XIO  [2,6] (*OP50_SN_D*) (**)
+ BND
+
+ BND
+
+   NXB  XIC  [1,7] (*MD_NENHUM*) (**)
+ BND
+
+ BND
+  XIC  [3,0] (*OP50_BTL*) (**)  OTS  [4,0] (*BOP50_AL03*) (**)
+EOR [5,0]
+
+
+(*CONTROLE DE SINALIZAÇÃO*)
+
+SOR  [0,16] (**) (**)  
+ BST  
+ BST  XIC  [1,0] (*BOP50_AL00*) (**)
+   NXB  XIC  [1,1] (*BOP50_AL03*) (**)
+ BND
+  XIC  [2,0] (*PISCA_1S*) (**)
+   NXB  XIC  [1,2] (*BOP50_AL01*) (**)
+ BND
+  
+ BST  OTE  [3,0] (*OP50_LD_VM*) (**)
+   NXB  FB  [3,1] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*100*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*OP50_STP*) (**) )
+ BND
+
+EOR [6,0]
+
+
+(*PASSO 0 - VERIFICAÇÃO DE SEGURANÇA*)
+
+SOR  [0,20] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*OP50_STP*) (**)  , (*i2:*)(*0*) (**) ; (*o1:*)(**) (**) )  XIC  [4,0] (*_IO_EM_DI_27*) (*PG1_EMERGENCIA*)  XIO  [5,0] (*BOP50_AL00*) (**)  FB  [6,0] (*TON*) (*TON_3*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*t#1s*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  
+ BST  XIP  [9,0] (*OP50_BTL*) (**)  
+ BST  OTR  [10,0] (*BOP50_AL02*) (**)
+   NXB  FB  [10,1] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*10*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*OP50_STP*) (**) )
+ BND
+
+   NXB  OTE  [9,3] (*OP50_LD_VD*) (**)
+ BND
+
+EOR [13,0]
+
+
+(**)
+
+SOR  [0,25] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*OP50_STP*) (**)  , (*i2:*)(*10*) (**) ; (*o1:*)(**) (**) )  
+ BST  XIC  [4,0] (*MD_LE*) (**)  XIC  [5,0] (*OP50_SN_E*) (**)  XIO  [6,0] (*OP50_SN_D*) (**)  XIC  [7,0] (*OP50_SU_LE*) (**)  XIO  [8,0] (*OP50_SU_LD*) (**)
+   NXB  XIC  [4,1] (*MD_LD*) (**)  XIO  [5,1] (*OP50_SN_E*) (**)  XIC  [6,1] (*OP50_SN_D*) (**)  XIO  [7,1] (*OP50_SU_LE*) (**)  XIC  [8,1] (*OP50_SU_LD*) (**)
+ BND
+  FB  [9,0] (*TON*) (*TON_2*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*t#500MS*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  FB  [12,0] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*20*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*OP50_STP*) (**) )  XIC  [15,0] (**) (**)
+EOR [16,0]
+
+
+(*PASSO 10 - AVANÇA CILINDRO*)
+
+SOR  [0,29] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*OP50_STP*) (**)  , (*i2:*)(*20*) (**) ; (*o1:*)(**) (**) )  
+ BST  XIC  [4,0] (*MD_LE*) (**)  XIC  [5,0] (*OP50_SU_LE*) (**)
+   NXB  XIC  [4,1] (*MD_LD*) (**)  XIC  [5,1] (*OP50_SU_LD*) (**)
+ BND
+  OTE  [6,0] (*OP50_PF_LB*) (**)
+EOR [7,0]
+
+
+(*PASSO 20 - TESTA SE PARAFUSAMENTO OK  (OP20_ALERTA_02)*)
+
+SOR  [0,33] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*OP50_STP*) (**)  , (*i2:*)(*20*) (**) ; (*o1:*)(**) (**) )  XIP  [4,0] (*OP50_PF_RT*) (**)  
+ BST  OTS  [5,0] (*BOP50_AL02*) (**)
+   NXB  XIC  [5,1] (*BOP50_AL02*) (**)  FB  [6,1] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*OP50_STP*) (**) )
+ BND
+
+EOR [9,0]
+
+
+(*PASSO 20 - TESTA SE PARAFUSAMENTO NOK*)
+
+SOR  [0,37] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*OP50_STP*) (**)  , (*i2:*)(*20*) (**) ; (*o1:*)(**) (**) )  FB  [4,0] (*TON*) (*TON_4*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*T#30S*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  
+ BST  OTS  [7,0] (*BOP50_AL01*) (**)
+   NXB  XIC  [7,1] (*BOP50_AL01*) (**)  FB  [8,1] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*100*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*OP50_STP*) (**) )
+ BND
+
+EOR [11,0]
+
+
+(*PASSO 100 - RESET DE FALHAS*)
+
+SOR  [0,41] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*OP50_STP*) (**)  , (*i2:*)(*100*) (**) ; (*o1:*)(**) (**) )  
+ BST  XIP  [4,0] (*OP50_BTL*) (**)
+   NXB  XIP  [4,1] (*_IO_EM_DI_26*) (*PG1_RESET*)
+ BND
+  
+ BST  OTR  [5,0] (*BOP50_AL00*) (**)
+   NXB  
+ BST  
+ BST  OTR  [5,1] (*BOP50_AL01*) (**)
+   NXB  OTR  [5,2] (*BOP50_AL03*) (**)
+ BND
+
+   NXB  FB  [5,3] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*OP50_STP*) (**) )
+ BND
+
+ BND
+
+EOR [8,0]
+
+
+(**)
+
+SOR  [0,47] (**) (**)  FB  [1,0] (*ANY_TO_UINT*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*TON_4.ET*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*NOP50_TIME*) (**) )
+EOR [4,0]
+EOF
+#end_info
+#info= ID_MAX
+NextId=1
+#end_info
+END_PROGRAM

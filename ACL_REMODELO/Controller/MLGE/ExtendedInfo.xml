@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProjectElements>
+  <AcfElementGuid Guid="041059a3-f156-445d-989d-9538a9fbbccf">
+    <File>FB_SV.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="1f33a682-fca2-4228-92de-2a5738e653a4">
+    <File>DATA_HORA.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="200e0672-6dbf-4e3f-b8e7-4d98320bdd8b">
+    <File>Prog1.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="2b6c4d40-f5b0-40c3-94c2-8682c32d80c4">
+    <File>OP50.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="303c6879-d285-49d9-939e-9c274a0bc427">
+    <File>ALERTAS.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="4f41d7a3-7585-4ab6-9c48-a8ec89d57659">
+    <File>OP30OLD.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="53d03a7a-6729-491d-bf59-f6b191aea4cf">
+    <File>IHM.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="722bd5fa-20ec-41dd-b697-23c135c01066">
+    <File>HISTORICO.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="760acd6c-71b9-4575-8270-d1233c156af5">
+    <File>PARTN.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="76ec82ae-93cf-4ad7-b8e9-151b68ccad1b">
+    <File>RA_ASCII_INPUT_TO_STRING.acfmlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="779b9cbb-6be2-4ab9-8201-33273f4ae11a">
+    <File>CC1.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="7842bbf5-9c40-40fc-9763-4765f9e6b182">
+    <File>MOTO_MOVIMENTOS.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="794b6b85-8936-4844-8ecf-85d0f1565fc1">
+    <File>STRINGS.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="8348a51f-3568-445b-942a-7e293c12c81a">
+    <File>Saidas.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="84790b4b-9882-44e7-9b31-22d8f66afb4b">
+    <File>SEGURANCA.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="8ae50ef6-6910-423a-9dc0-ae56afe79219">
+    <File>Entradas.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="8f3ae2b4-6ef3-49e5-b557-57da016c80df">
+    <File>FB_BM.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="93f8abe3-59ed-4a7f-b359-3ba073e6a271">
+    <File>FB_PV.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="94879564-0161-4a48-a058-2a3329c3c245">
+    <File>ASCII_PROG.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="a7930b9b-dcee-4f3f-b399-2dc28db7c088">
+    <File>Entrar.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="a9f6ef95-66f0-4f3d-b643-d83edcc26d37">
+    <File>OP40_ACCELO.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="c54898a8-cabd-41dd-91e9-aeb0d731a519">
+    <File>TORK_MODULE.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="cd70533b-220b-46b2-a76b-51f5ecbd672a">
+    <File>OP60_ACCELO.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="ceb6e226-d309-4403-8a94-8cb2781f9d01">
+    <File>Analogicas.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="d174ee9d-668f-4554-b14c-bb4433d88d9a">
+    <File>OP20.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="d783e38b-af05-4c52-9d4f-f8e540b75a38">
+    <File>Modelo.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="e2e7f7df-e3fd-4ecf-bdbf-23d97fdb18d0">
+    <File>F_DATA.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="f39e8bc9-c1d5-4f10-b40c-943a42522680">
+    <File>SETUP.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="f4f0bb2f-2498-4678-9dac-44932dbdaec0">
+    <File>FB_PK_V2.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="f8168f03-aeaa-40b3-9e2c-578181e5ff2d">
+    <File>F_HORA.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="fc40945b-72b0-447f-82ed-8427d9830d95">
+    <File>FB_SNL.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="febce2d0-e045-4fbf-8347-d235754154d4">
+    <File>OP30.AcfMlge</File>
+  </AcfElementGuid>
+</ProjectElements>

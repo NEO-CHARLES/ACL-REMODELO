@@ -1,0 +1,105 @@
+PROGRAM SETUP
+#info= QLD
+BOF
+
+
+(*SETUP OP40 - CELULA DE CARGA CALIBRAÇÃO*)
+
+SOR  [0,1] (**) (**)  XIC  [1,0] (*__SYSVA_POWERUP_BIT*) (**)  
+ BST  FB  [2,0] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*2100.0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*rMINIMO_AI3*) (**) )
+   NXB  FB  [2,2] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*8500.0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*rMAXIMO_AI3*) (**) )
+ BND
+
+EOR [5,0]
+
+
+(*SETUP OP40 - CELULA DE CARGA PARAMETROS*)
+
+SOR  [0,6] (**) (**)  XIC  [1,0] (*__SYSVA_POWERUP_BIT*) (**)  
+ BST  FB  [2,0] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*85*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*CC1_MN*) (**) )
+   NXB  FB  [2,2] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*120*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*CC1_MX*) (**) )
+ BND
+
+EOR [5,0]
+
+
+(*SETUP OP60 - REGUA A CALIBRAÇÃO*)
+
+SOR  [0,11] (**) (**)  XIC  [1,0] (*__SYSVA_POWERUP_BIT*) (**)  
+ BST  FB  [2,0] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*0.0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*rMINIMO_AI0*) (**) )
+   NXB  FB  [2,2] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*9800.0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*rMAXIMO_AI0*) (**) )
+ BND
+
+EOR [5,0]
+
+
+(*SETUP OP60 - REGUA A PARAMETROS*)
+
+SOR  [0,16] (**) (**)  XIC  [1,0] (*__SYSVA_POWERUP_BIT*) (**)  
+ BST  FB  [2,0] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*250.0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*rMinimo_ReguaA*) (**) )
+   NXB  FB  [2,2] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*700.0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*rMaximo_ReguaA*) (**) )
+ BND
+
+EOR [5,0]
+
+
+(*SETUP OP60 - REGUA B CALIBRAÇÃO*)
+
+SOR  [0,21] (**) (**)  XIC  [1,0] (*__SYSVA_POWERUP_BIT*) (**)  
+ BST  FB  [2,0] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*0.0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*rMINIMO_AI1*) (**) )
+   NXB  FB  [2,2] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*9800.0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*rMAXIMO_AI1*) (**) )
+ BND
+
+EOR [5,0]
+
+
+(*SETUP OP60 - REGUA B PARAMETROS*)
+
+SOR  [0,26] (**) (**)  XIC  [1,0] (*__SYSVA_POWERUP_BIT*) (**)  
+ BST  FB  [2,0] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*280.0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*rMinimo_ReguaB*) (**) )
+   NXB  FB  [2,2] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*900.0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*rMaximo_ReguaB*) (**) )
+ BND
+
+EOR [5,0]
+
+
+(*SETUP OP60 - SENSOR DE CORRENTE CALIBRAÇÃO*)
+
+SOR  [0,31] (**) (**)  XIC  [1,0] (*__SYSVA_POWERUP_BIT*) (**)  
+ BST  FB  [2,0] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*16660.0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*rMINIMO_AI2*) (**) )
+   NXB  FB  [2,2] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*18150.0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*rMAXIMO_AI2*) (**) )
+ BND
+
+EOR [5,0]
+
+
+(*SETUP OP60 - SENSOR DE CORRENTE PARAMETROS*)
+
+SOR  [0,36] (**) (**)  XIC  [1,0] (*__SYSVA_POWERUP_BIT*) (**)  
+ BST  FB  [2,0] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*0.7*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*rMinimo_Aquecimento*) (**) )
+   NXB  FB  [2,2] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*2.0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*rMaximo_Aquecimento*) (**) )
+ BND
+
+EOR [5,0]
+
+
+(*SETUP OP60 - DIFERENCIAL REGUAS*)
+
+SOR  [0,41] (**) (**)  XIC  [1,0] (*T1*) (**)  
+ BST  FB  [2,0] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*100.0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*rDif_ReguaA*) (**) )
+   NXB  FB  [2,2] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*100.0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*rDif_ReguaB*) (**) )
+ BND
+
+EOR [5,0]
+
+
+(**)
+
+SOR  [0,46] (**) (**)
+EOR [1,0]
+EOF
+#end_info
+#info= ID_MAX
+NextId=2
+#end_info
+END_PROGRAM

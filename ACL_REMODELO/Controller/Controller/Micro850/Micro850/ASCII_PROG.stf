@@ -1,0 +1,137 @@
+PROGRAM ASCII_PROG
+#info= QLD
+BOF
+
+
+(*Contabiliza o número de caracteres ASCII no buffer de entrada até e incluindo o caractere de terminação do final da linha.
+Linguagens suportadas: Diagrama do bloco da função, Diagrama da lógica de contatos, Texto estruturado.
+Essa instrução se*)
+
+SOR  [0,1] (**) (**)  XIC  [1,0] (*ABL1_GATILHO*) (**)  FB  [2,0] (*ABL*) (*ABL_1*) ( (*IN:*)(**) (**)  , (*ABLInput:*)(*ABL1_ENTRADA*) (**) ; (*Q:*)(**) (**)  , (*Characters:*)(*nABL1_CARACTERES*) (**)  , (*Error:*)(*bABL1_ERRO*) (**)  , (*ErrorID:*)(*nABL1_ERRO_ID*) (**) )
+EOR [5,0]
+
+
+(*The ACL instruction immediately performs one or both of the following actions:
+Clears the buffer of characters and clears the ASCII queue of read instructions
+Clears the ASCII queue of write instructions*)
+
+SOR  [0,6] (**) (**)  XIC  [1,0] (*ACL1_GATILHO*) (**)  FB  [2,0] (*ACL*) (*ACL_1*) ( (*IN:*)(**) (**)  , (*ACLInput:*)(*ACL1_ENTRADA*) (**) ; (*Q:*)(**) (**)  , (*Error:*)(*bACL_ERROR*) (**)  , (*ErrorID:*)(*nACL_ERROR_ID*) (**) )
+EOR [5,0]
+
+
+(**)
+
+SOR  [0,10] (**) (**)  XIC  [1,0] (*AWT_GAT_00*) (**)  FB  [2,0] (*AWT*) (*AWT_15*) ( (*IN:*)(**) (**)  , (*AWTInput:*)(*AWT_ENTRADA_0*) (**)  , (*Source:*)(*STR_00_INICIO*) (**)  , (*__ADI_Source:*)(*0*) (**) ; (*Q:*)(**) (**)  , (*NumChar:*)(*nAWT_CARACTERES*) (**)  , (*Error:*)(*bAWT_ERROR*) (**)  , (*ErrorID:*)(*nAWT_ERROR_ID*) (**) )
+EOR [5,0]
+
+
+(**)
+
+SOR  [0,15] (**) (**)  XIC  [1,0] (*AWT_GAT_01*) (**)  
+ BST  FB  [2,0] (*=*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*IHM_MD*) (**)  , (*i2:*)(*1*) (**) ; (*o1:*)(**) (**) )  FB  [5,0] (*AWT*) (*AWT_21*) ( (*IN:*)(**) (**)  , (*AWTInput:*)(*AWT_ENTRADA_1*) (**)  , (*Source:*)(*STR_01_B3*) (**)  , (*__ADI_Source:*)(*0*) (**) ; (*Q:*)(**) (**)  , (*NumChar:*)(*nAWT_CARAC_B1*) (**)  , (*Error:*)(*bAWT_ERROR*) (**)  , (*ErrorID:*)(*nAWT_ERROR_ID*) (**) )
+   NXB  
+ BST  
+ BST  FB  [2,4] (*=*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*IHM_MD*) (**)  , (*i2:*)(*2*) (**) ; (*o1:*)(**) (**) )  FB  [5,4] (*AWT*) (*AWT_22*) ( (*IN:*)(**) (**)  , (*AWTInput:*)(*AWT_ENTRADA_1*) (**)  , (*Source:*)(*STR_01_B4*) (**)  , (*__ADI_Source:*)(*0*) (**) ; (*Q:*)(**) (**)  , (*NumChar:*)(*nAWT_CARACTERES*) (**)  , (*Error:*)(*bAWT_ERROR*) (**)  , (*ErrorID:*)(*nAWT_ERROR_ID*) (**) )
+   NXB  FB  [2,8] (*=*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*IHM_MD*) (**)  , (*i2:*)(*7*) (**) ; (*o1:*)(**) (**) )  FB  [5,8] (*AWT*) (*AWT_18*) ( (*IN:*)(**) (**)  , (*AWTInput:*)(*AWT_ENTRADA_1*) (**)  , (*Source:*)(*STR_01_B1*) (**)  , (*__ADI_Source:*)(*0*) (**) ; (*Q:*)(**) (**)  , (*NumChar:*)(*nAWT_CARACTERES*) (**)  , (*Error:*)(*bAWT_ERROR*) (**)  , (*ErrorID:*)(*nAWT_ERROR_ID*) (**) )
+ BND
+
+   NXB  FB  [2,12] (*=*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*IHM_MD*) (**)  , (*i2:*)(*8*) (**) ; (*o1:*)(**) (**) )  FB  [5,12] (*AWT*) (*AWT_20*) ( (*IN:*)(**) (**)  , (*AWTInput:*)(*AWT_ENTRADA_1*) (**)  , (*Source:*)(*STR_01_B2*) (**)  , (*__ADI_Source:*)(*0*) (**) ; (*Q:*)(**) (**)  , (*NumChar:*)(*nAWT_CARACTERES*) (**)  , (*Error:*)(*bAWT_ERROR*) (**)  , (*ErrorID:*)(*nAWT_ERROR_ID*) (**) )
+ BND
+
+ BND
+
+EOR [8,0]
+
+
+(**)
+
+SOR  [0,32] (**) (**)  XIC  [1,0] (*AWT_GAT_02*) (**)  FB  [2,0] (*AWT*) (*AWT_13*) ( (*IN:*)(**) (**)  , (*AWTInput:*)(*AWT_ENTRADA_2*) (**)  , (*Source:*)(*STR_02_DATA*) (**)  , (*__ADI_Source:*)(*0*) (**) ; (*Q:*)(**) (**)  , (*NumChar:*)(*nAWT_CARACTERES*) (**)  , (*Error:*)(*bAWT_ERROR*) (**)  , (*ErrorID:*)(*nAWT_ERROR_ID*) (**) )
+EOR [5,0]
+
+
+(**)
+
+SOR  [0,37] (**) (**)  XIC  [1,0] (*AWT_GAT_03*) (**)  FB  [2,0] (*AWT*) (*AWT_12*) ( (*IN:*)(**) (**)  , (*AWTInput:*)(*AWT_ENTRADA_3*) (**)  , (*Source:*)(*STR_03_HORA*) (**)  , (*__ADI_Source:*)(*0*) (**) ; (*Q:*)(**) (**)  , (*NumChar:*)(*nAWT_CARACTERES*) (**)  , (*Error:*)(*bAWT_ERROR*) (**)  , (*ErrorID:*)(*nAWT_ERROR_ID*) (**) )
+EOR [5,0]
+
+
+(**)
+
+SOR  [0,42] (**) (**)  XIC  [1,0] (*AWT_GAT_04*) (**)  FB  [2,0] (*AWT*) (*AWT_11*) ( (*IN:*)(**) (**)  , (*AWTInput:*)(*AWT_ENTRADA_4*) (**)  , (*Source:*)(*STR_04_OP*) (**)  , (*__ADI_Source:*)(*0*) (**) ; (*Q:*)(**) (**)  , (*NumChar:*)(*nAWT_CARACTERES*) (**)  , (*Error:*)(*bAWT_ERROR*) (**)  , (*ErrorID:*)(*nAWT_ERROR_ID*) (**) )
+EOR [5,0]
+
+
+(**)
+
+SOR  [0,47] (**) (**)  XIC  [1,0] (*AWT_GAT_05*) (**)  FB  [2,0] (*AWT*) (*AWT_10*) ( (*IN:*)(**) (**)  , (*AWTInput:*)(*AWT_ENTRADA_5*) (**)  , (*Source:*)(*STR_05_MANUAL*) (**)  , (*__ADI_Source:*)(*0*) (**) ; (*Q:*)(**) (**)  , (*NumChar:*)(*nAWT_CARACTERES*) (**)  , (*Error:*)(*bAWT_ERROR*) (**)  , (*ErrorID:*)(*nAWT_ERROR_ID*) (**) )
+EOR [5,0]
+
+
+(**)
+
+SOR  [0,52] (**) (**)  XIC  [1,0] (*AWT_GAT_06*) (**)  FB  [2,0] (*AWT*) (*AWT_9*) ( (*IN:*)(**) (**)  , (*AWTInput:*)(*AWT_ENTRADA_6*) (**)  , (*Source:*)(*STR_06_REMOTO*) (**)  , (*__ADI_Source:*)(*0*) (**) ; (*Q:*)(**) (**)  , (*NumChar:*)(*nAWT_CARACTERES*) (**)  , (*Error:*)(*bAWT_ERROR*) (**)  , (*ErrorID:*)(*nAWT_ERROR_ID*) (**) )
+EOR [5,0]
+
+
+(**)
+
+SOR  [0,57] (**) (**)  XIC  [1,0] (*AWT_GAT_07*) (**)  FB  [2,0] (*AWT*) (*AWT_8*) ( (*IN:*)(**) (**)  , (*AWTInput:*)(*AWT_ENTRADA_7*) (**)  , (*Source:*)(*STR_07_PART*) (**)  , (*__ADI_Source:*)(*0*) (**) ; (*Q:*)(**) (**)  , (*NumChar:*)(*nAWT_CARACTERES*) (**)  , (*Error:*)(*bAWT_ERROR*) (**)  , (*ErrorID:*)(*nAWT_ERROR_ID*) (**) )
+EOR [5,0]
+
+
+(**)
+
+SOR  [0,62] (**) (**)  XIC  [1,0] (*AWT_GAT_08*) (**)  FB  [2,0] (*AWT*) (*AWT_7*) ( (*IN:*)(**) (**)  , (*AWTInput:*)(*AWT_ENTRADA_8*) (**)  , (*Source:*)(*STR_08_PART_NUM1*) (**)  , (*__ADI_Source:*)(*0*) (**) ; (*Q:*)(**) (**)  , (*NumChar:*)(*nAWT_CARACTERES*) (**)  , (*Error:*)(*bAWT_ERROR*) (**)  , (*ErrorID:*)(*nAWT_ERROR_ID*) (**) )
+EOR [5,0]
+
+
+(**)
+
+SOR  [0,67] (**) (**)  XIC  [1,0] (*ABILITAR*) (**)  XIC  [2,0] (*AWT_GAT_04*) (**)  FB  [3,0] (*AWT*) (*AWT_6*) ( (*IN:*)(**) (**)  , (*AWTInput:*)(*AWT_ENTRADA_9*) (**)  , (*Source:*)(*STR_09_PART_NUM2*) (**)  , (*__ADI_Source:*)(*0*) (**) ; (*Q:*)(**) (**)  , (*NumChar:*)(*nAWT_CARACTERES*) (**)  , (*Error:*)(*bAWT_ERROR*) (**)  , (*ErrorID:*)(*nAWT_ERROR_ID*) (**) )
+EOR [6,0]
+
+
+(**)
+
+SOR  [0,72] (**) (**)  XIC  [1,0] (*AWT_GAT_10*) (**)  FB  [2,0] (*AWT*) (*AWT_5*) ( (*IN:*)(**) (**)  , (*AWTInput:*)(*AWT_ENTRADA_10*) (**)  , (*Source:*)(*STR_10_PART_NUM3*) (**)  , (*__ADI_Source:*)(*0*) (**) ; (*Q:*)(**) (**)  , (*NumChar:*)(*nAWT_CARACTERES*) (**)  , (*Error:*)(*bAWT_ERROR*) (**)  , (*ErrorID:*)(*nAWT_ERROR_ID*) (**) )
+EOR [5,0]
+
+
+(**)
+
+SOR  [0,77] (**) (**)  XIC  [1,0] (*ABILITAR*) (**)  XIC  [2,0] (*AWT_GAT_11*) (**)  FB  [3,0] (*AWT*) (*AWT_4*) ( (*IN:*)(**) (**)  , (*AWTInput:*)(*AWT_ENTRADA_11*) (**)  , (*Source:*)(*STR_11_PART_NUM4*) (**)  , (*__ADI_Source:*)(*0*) (**) ; (*Q:*)(**) (**)  , (*NumChar:*)(*nAWT_CARACTERES*) (**)  , (*Error:*)(*bAWT_ERROR*) (**)  , (*ErrorID:*)(*nAWT_ERROR_ID*) (**) )
+EOR [6,0]
+
+
+(**)
+
+SOR  [0,82] (**) (**)  XIC  [1,0] (*ABILITAR*) (**)  XIC  [2,0] (*AWT_GAT_12*) (**)  FB  [3,0] (*AWT*) (*AWT_3*) ( (*IN:*)(**) (**)  , (*AWTInput:*)(*AWT_ENTRADA_12*) (**)  , (*Source:*)(*STR_12_PART_NUM5*) (**)  , (*__ADI_Source:*)(*0*) (**) ; (*Q:*)(**) (**)  , (*NumChar:*)(*nAWT_CARACTERES*) (**)  , (*Error:*)(*bAWT_ERROR*) (**)  , (*ErrorID:*)(*nAWT_ERROR_ID*) (**) )
+EOR [6,0]
+
+
+(**)
+
+SOR  [0,87] (**) (**)  XIC  [1,0] (*ABILITAR*) (**)  XIC  [2,0] (*AWT_GAT_13*) (**)  FB  [3,0] (*AWT*) (*AWT_2*) ( (*IN:*)(**) (**)  , (*AWTInput:*)(*AWT_ENTRADA_13*) (**)  , (*Source:*)(*STR_13_PART_NUM6*) (**)  , (*__ADI_Source:*)(*0*) (**) ; (*Q:*)(**) (**)  , (*NumChar:*)(*nAWT_CARACTERES*) (**)  , (*Error:*)(*bAWT_ERROR*) (**)  , (*ErrorID:*)(*nAWT_ERROR_ID*) (**) )
+EOR [6,0]
+
+
+(**)
+
+SOR  [0,92] (**) (**)  XIC  [1,0] (*AWT_GAT_14*) (**)  
+ BST  XIC  [2,0] (*MD_LE*) (**)  FB  [3,0] (*AWT*) (*AWT_16*) ( (*IN:*)(**) (**)  , (*AWTInput:*)(*AWT_ENTRADA_14*) (**)  , (*Source:*)(*STR_14_MOD_E*) (**)  , (*__ADI_Source:*)(*0*) (**) ; (*Q:*)(**) (**)  , (*NumChar:*)(*nAWT_CARACTERES*) (**)  , (*Error:*)(*bAWT_ERROR*) (**)  , (*ErrorID:*)(*nAWT_ERROR_ID*) (**) )
+   NXB  XIC  [2,4] (*MD_LD*) (**)  FB  [3,4] (*AWT*) (*AWT_23*) ( (*IN:*)(**) (**)  , (*AWTInput:*)(*AWT_ENTRADA_14*) (**)  , (*Source:*)(*STR_14_MOD_D*) (**)  , (*__ADI_Source:*)(*0*) (**) ; (*Q:*)(**) (**)  , (*NumChar:*)(*nAWT_CARACTERES*) (**)  , (*Error:*)(*bAWT_ERROR*) (**)  , (*ErrorID:*)(*nAWT_ERROR_ID*) (**) )
+ BND
+
+EOR [6,0]
+
+
+(**)
+
+SOR  [0,101] (**) (**)  XIC  [1,0] (*AWT_GAT_15*) (**)  FB  [2,0] (*AWT*) (*AWT_1*) ( (*IN:*)(**) (**)  , (*AWTInput:*)(*AWT_ENTRADA_15*) (**)  , (*Source:*)(*STR_15_FIM*) (**)  , (*__ADI_Source:*)(*0*) (**) ; (*Q:*)(**) (**)  , (*NumChar:*)(*nAWT_CARACTERES*) (**)  , (*Error:*)(*bAWT_ERROR*) (**)  , (*ErrorID:*)(*nAWT_ERROR_ID*) (**) )
+EOR [5,0]
+EOF
+#end_info
+#info= ID_MAX
+NextId=3
+#end_info
+END_PROGRAM

@@ -1,0 +1,22 @@
+FUNCTION_BLOCK FB_BM
+#info= QLD
+BOF
+
+
+(*20201207 - MELHORIA*)
+
+SOR  [0,1] (**) (**)  
+ BST  XIC  [1,0] (*A*) (**)
+   NXB  XIC  [1,1] (*B*) (**)
+ BND
+  FB  [2,0] (*TON*) (*TON_1*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*T#500MS*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTE  [5,0] (*C*) (**)
+EOR [6,0]
+
+
+(**)
+
+SOR  [0,4] (**) (**)  XIC  [1,0] (*A*) (**)  XIC  [2,0] (*B*) (**)  XIO  [3,0] (*C*) (**)  OTE  [4,0] (*Q*) (**)
+EOR [5,0]
+EOF
+#end_info
+END_FUNCTION_BLOCK

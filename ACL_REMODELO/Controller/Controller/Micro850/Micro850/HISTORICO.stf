@@ -1,0 +1,40 @@
+FUNCTION_BLOCK HISTORICO
+(*|---------------------------------------------|
+  | NAME OF THE UDFB : DATA_HISTORY   			|
+  | CATEGORY : DATA CONVERSION					|
+  | AUTHOR : CAHRLES N E OLIVEIRA				|
+  | EMAIL: neo_charles@outlook.com     			|
+  | VERSION/REVISION : 1.0.0					|
+  | DATE : 16 sept 2019							|
+  | CHANGE : CREATE NEW UDFB					|
+  |---------------------------------------------|*)
+  
+  (*|---------------------------------------------|
+IN
+	VAR
+OUT
+	VET[n]	VAR
+	.		.	
+	.		.
+	.		.
+	VET[3]	VAR
+	VET[2]	VAR
+	VET[1]	VAR
+  |---------------------------------------------|*)
+  
+
+ 
+IF ENA THEN
+	IF INDICE < 7 THEN
+		VET[0,INDICE] :=  DIA + '/' + MES +'/'+ ANO;
+ 		VET[1,INDICE] := HORA + ':' + MINUTO +':'+ SEGUNDO;
+		VET[2,INDICE] := VAR_IN;
+	END_IF;
+	
+
+	
+
+END_IF;
+  
+   ENOU := ENA;
+END_FUNCTION_BLOCK

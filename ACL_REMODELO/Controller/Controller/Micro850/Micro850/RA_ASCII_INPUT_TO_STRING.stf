@@ -1,0 +1,31 @@
+FUNCTION_BLOCK RA_ASCII_INPUT_TO_STRING
+(*|---------------------------------------------|
+  | NAME OF THE UDFB : RA_ASCII_INPUT_TO_STRING	|
+  | CATEGORY : DATA CONVERSION					|
+  | AUTHOR : CAHRLES N E OLIVEIRA				|
+  | EMAIL: neo_charles@outlook.com     			|
+  | VERSION/REVISION : 1.0.0					|
+  | DATE : 16 sept 2019							|
+  | CHANGE : CREATE NEW UDFB					|
+  |---------------------------------------------|*)
+FBENO := FBEN;
+IF FBEN THEN
+	Output := '';
+	FOR Index := 1 TO NbC BY 1 DO
+		Output := REPLACE(Output, CHAR(ANY_TO_DINT(Input[Index])), 1, Index);
+		
+		IF (CHAR(ANY_TO_DINT(Input[Index])) = 'N') AND (CHAR(ANY_TO_DINT(Input[Index+1])) = 'm') THEN
+			POS := Index;
+		END_IF;
+		
+	END_FOR;
+	
+	Tork := '000000';
+	Tork := REPLACE(Tork, CHAR(ANY_TO_DINT(Input[POS-6])), 1, 1);
+	Tork := REPLACE(Tork, CHAR(ANY_TO_DINT(Input[POS-5])), 1, 2);
+	Tork := REPLACE(Tork, CHAR(ANY_TO_DINT(Input[POS-4])), 1, 3);
+	Tork := REPLACE(Tork, CHAR(ANY_TO_DINT(Input[POS-3])), 1, 4);
+	Tork := REPLACE(Tork, CHAR(ANY_TO_DINT(Input[POS-2])), 1, 5);
+	
+END_IF;
+END_FUNCTION_BLOCK
