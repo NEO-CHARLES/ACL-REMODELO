@@ -1,0 +1,263 @@
+(****** QuickLD compiler *******************************)
+(****** Copyright Rockwell Automation Canada, Ltd ******)
+(****** ST *********************************************)
+
+(*************** Rung **********************************)
+(*Saida DO-00 - Sinaleiro Verde Operação 20*)
+__STEPPRAGMA
+0,1
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB1 := OP20_LD_VD ;
+__EDTB2 := OP20_LD_AM ;
+_IO_EM_DO_00 := (__EDTB1 OR __EDTB2) ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Saida DO-01 - Sinaleiro Vermelho Operação 20*)
+__STEPPRAGMA
+0,4
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB3 := OP20_LD_VM ;
+__EDTB4 := OP20_LD_AM ;
+_IO_EM_DO_01 := (__EDTB3 OR __EDTB4) ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Saida DO-02 - Valvula Solenoide Operação 20*)
+__STEPPRAGMA
+0,7
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+_IO_EM_DO_02 := _IO_EM_DI_27 AND _IO_EM_DI_00 AND OP20_CL_AT ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Saida DO-03 - Liberação da parafusadeira Operação 20*)
+__STEPPRAGMA
+0,9
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+_IO_EM_DO_03 := _IO_EM_DI_27 AND _IO_EM_DI_00 AND OP20_PF_LB ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Saida DO-04 - Sinaleiro Verde Operação 30*)
+__STEPPRAGMA
+0,11
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB5 := OP30_LD_VD ;
+__EDTB6 := OP30_LD_AM ;
+_IO_EM_DO_04 := (__EDTB5 OR __EDTB6) ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Saida DO-05 - Sinaleiro Vermelho Operação 30*)
+__STEPPRAGMA
+0,14
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB7 := OP30_LD_VM ;
+__EDTB8 := OP30_LD_AM ;
+_IO_EM_DO_05 := (__EDTB7 OR __EDTB8) ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Saida DO-06 - Liberação da parafusadeira Operação 30*)
+__STEPPRAGMA
+0,17
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+_IO_EM_DO_06 := OP30_PF_LB ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Saida DO-07 - Sinaleiro Verde Operação  40*)
+__STEPPRAGMA
+0,19
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB9 := OP40_LD_VD ;
+__EDTB10 := OP40_LD_AM ;
+_IO_EM_DO_07 := (__EDTB9 OR __EDTB10) ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Saida DO-08 -  Sinaleiro Vermelho Operação 40*)
+__STEPPRAGMA
+0,22
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB11 := OP40_LD_VM ;
+__EDTB12 := OP40_LD_AM ;
+_IO_EM_DO_08 := (__EDTB11 OR __EDTB12) ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Saida DO-09 - Valvula Solenoide Operação 40*)
+__STEPPRAGMA
+0,25
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+_IO_EM_DO_09 := _IO_EM_DI_27 AND _IO_EM_DI_09 AND OP40_CC1_AT ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Saida DO-10 - Sinaleiro Verde Operação 50*)
+__STEPPRAGMA
+0,27
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB13 := OP50_LD_VD ;
+__EDTB14 := OP50_LD_AM ;
+_IO_EM_DO_10 := (__EDTB13 OR __EDTB14) ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Saida DO-11 - Sinaleiro Vermelho Operação 50*)
+__STEPPRAGMA
+0,30
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB15 := OP50_LD_VM ;
+__EDTB16 := OP50_LD_AM ;
+_IO_EM_DO_11 := (__EDTB15 OR __EDTB16) ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Saida DO-12 -  Liberação da parafusadeira Operação 50*)
+__STEPPRAGMA
+0,33
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+_IO_EM_DO_12 := _IO_EM_DI_27 AND OP50_PF_LB ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Saida DO-13 - Sinaleiro Verde Operação 60*)
+__STEPPRAGMA
+0,35
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+_IO_EM_DO_13 := OP60_LD_VD ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Saida DO-14 - Sinaleiro Vermelho Operação 60*)
+__STEPPRAGMA
+0,37
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+_IO_EM_DO_14 := OP60_LD_AM ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Saida DO-15 - Valvula Solenoide Operação 60*)
+__STEPPRAGMA
+0,39
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+_IO_EM_DO_15 := _IO_EM_DI_27 AND _IO_EM_DI_16 AND OP60_TD1_AT ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Saida DO-16 - Rele Inverte polaridade dos Motores Operação 60*)
+__STEPPRAGMA
+0,41
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+_IO_EM_DO_16 := _IO_EM_DI_27 AND _IO_EM_DI_16 AND OP60_K1 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Saida DO-18 - Rele Liga Motor Y+ Operação 60*)
+__STEPPRAGMA
+0,43
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+_IO_EM_DO_17 := _IO_EM_DI_27 AND _IO_EM_DI_16 AND OP60_K2 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Saida DO-18 - Rele Liga Motor Y+ Operação 60*)
+__STEPPRAGMA
+0,45
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+_IO_EM_DO_18 := _IO_EM_DI_27 AND _IO_EM_DI_16 AND OP60_K3 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Saida DO-19 - Rele Liga Teste de Aquecimetno Operação 60*)
+__STEPPRAGMA
+0,47
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+_IO_EM_DO_19 := _IO_EM_DI_27 AND _IO_EM_DI_16 AND OP60_K4 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Code for the end of File **************)
+__GL __LG0000 ;
+
+
+
+(*************** Local Symbols table *******************)
+(* __EDTB1 *)
+(* __EDTB2 *)
+(* __EDTB3 *)
+(* __EDTB4 *)
+(* __EDTB5 *)
+(* __EDTB6 *)
+(* __EDTB7 *)
+(* __EDTB8 *)
+(* __EDTB9 *)
+(* __EDTB10 *)
+(* __EDTB11 *)
+(* __EDTB12 *)
+(* __EDTB13 *)
+(* __EDTB14 *)
+(* __EDTB15 *)
+(* __EDTB16 *)
+

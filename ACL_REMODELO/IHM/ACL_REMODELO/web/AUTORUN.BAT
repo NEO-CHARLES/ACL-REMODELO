@@ -1,0 +1,2 @@
+@TIMEOUT 30 /NOBREAK
+START C:\Projetos_Indusoft\PHEVOS\20200821_IHM_PHEVOS\web\iniciop40.html

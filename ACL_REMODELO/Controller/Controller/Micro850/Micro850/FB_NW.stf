@@ -1,0 +1,16 @@
+FUNCTION_BLOCK FB_NW
+#info= QLD
+BOF
+
+
+(*20211216 ALTERADO VAR DE VL PARA NW_VL E NW PARA VL*)
+
+SOR  [0,1] (**) (**)  XIC  [1,0] (*IN*) (**)  FB  [2,0] (*<>*) (*58*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*NW_VL*) (**)  , (*i2:*)(*VL*) (**) ; (*o1:*)(**) (**) )  
+ BST  OTE  [5,0] (*Q*) (**)
+   NXB  XIC  [5,1] (*Q*) (**)  FB  [6,1] (*TON*) (*TON_1*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*T#500MS*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  FB  [9,1] (*1 gain*) (*59*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*NW_VL*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*VL*) (**) )
+ BND
+
+EOR [12,0]
+EOF
+#end_info
+END_FUNCTION_BLOCK

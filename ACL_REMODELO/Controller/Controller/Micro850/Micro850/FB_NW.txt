@@ -1,0 +1,42 @@
+(****** QuickLD compiler *******************************)
+(****** Copyright Rockwell Automation Canada, Ltd ******)
+(****** ST *********************************************)
+
+(*************** Rung **********************************)
+(*20211216 ALTERADO VAR DE VL PARA NW_VL E NW PARA VL*)
+__STEPPRAGMA
+0,1
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB2 := IN ;
+IF __EDTB2 THEN
+(* Operator output on : <> with __EDTB1 *)
+__EDTB1 := (NW_VL <> VL) ;
+ELSE
+__EDTB1 := FALSE ;
+END_IF ;
+__MO_DIFF_1 := __EDTB1 ;
+Q := __EDTB1 ;
+(* FB call: TON *)
+TON_1(__EDTB1 AND Q, T#500MS) ;
+__EDTB3 := TON_1.Q ;
+IF __EDTB3 THEN
+VL := (  NW_VL) ;
+END_IF ;
+__MO_1GAIN_1 := __EDTB3 ;
+__EDTB4 := __EDTB3 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Code for the end of File **************)
+__GL __LG0000 ;
+
+
+
+(*************** Local Symbols table *******************)
+(* __EDTB1 *)
+(* __EDTB2 *)
+(* __EDTB3 *)
+(* __EDTB4 *)
+

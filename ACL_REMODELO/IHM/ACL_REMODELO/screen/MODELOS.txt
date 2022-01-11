@@ -1,0 +1,5 @@
+0 - SEM MODELO,
+1 - RMT HTD LE,
+2 - RMT HTD LD,
+3 - MAN UHT LE,
+4 - MAN UHT LD,

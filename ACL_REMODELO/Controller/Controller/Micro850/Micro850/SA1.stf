@@ -1,0 +1,101 @@
+PROGRAM SA1
+#info= QLD
+BOF
+
+
+(*ENTRADAS*)
+
+SOR  [0,1] (**) (**)  
+ BST  
+ BST  FB  [1,0] (*ANY_TO_INT*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*_IO_P1_AI_02*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*SA_AI*) (**) )
+   NXB  FB  [1,2] (*1 gain*) (*63*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*IHM_SA1_MX*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*SA_MX*) (**) )
+ BND
+
+   NXB  
+ BST  FB  [1,4] (*1 gain*) (*63*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*IHM_SA1_MN*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*SA_MN*) (**) )
+   NXB  FB  [1,6] (*1 gain*) (*63*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*IHM_SA1_MED*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*SA_MD*) (**) )
+ BND
+
+ BND
+  
+ BST  
+ BST  XIC  [4,0] (*OP60_BTL*) (**)  FB  [5,0] (*TON*) (*TON_3*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*t#3S*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )
+   NXB  
+ BST  XIC  [4,2] (*OP60_SA1_TT*) (**)
+   NXB  XIC  [4,3] (*IHM_SA1_TT*) (**)
+ BND
+
+ BND
+  OTS  [8,0] (*SA_TT*) (**)
+   NXB  
+ BST  XIC  [4,4] (*OP60_SA1_RT*) (**)  OTE  [5,4] (*SA_RT*) (**)
+   NXB  
+ BST  XIP  [4,5] (*IHM_SA1_CLB*) (**)  OTS  [5,5] (*SA_CLB*) (**)
+   NXB  XIP  [4,6] (*IHM_SA1_ZR*) (**)  OTS  [5,6] (*SA_ZR*) (**)
+ BND
+
+ BND
+
+ BND
+
+EOR [9,0]
+
+
+(*SAÍDAS*)
+
+SOR  [0,10] (**) (**)  
+ BST  
+ BST  FB  [1,0] (*ANY_TO_INT*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*SA_AI*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*IHM_SA1_AI*) (**) )
+   NXB  FB  [1,2] (*ANY_TO_INT*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*SA_SN*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*IHM_SA1_SN*) (**) )
+ BND
+
+   NXB  FB  [1,4] (*ANY_TO_INT*) (*64*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*SA_PKS*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*IHM_SA1_PKS*) (**) )
+ BND
+  
+ BST  XIC  [4,0] (*SA_AT*) (**)  OTE  [5,0] (*OP60_SA1_AT*) (**)
+   NXB  
+ BST  XIP  [4,1] (*SA_AP*) (**)  OTS  [5,1] (*OP60_SA1_AP*) (**)
+   NXB  XIP  [4,2] (*SA_RP*) (**)  OTS  [5,2] (*OP60_SA1_RP*) (**)
+ BND
+
+ BND
+
+EOR [6,0]
+
+
+(*ESCALA*)
+
+SOR  [0,17] (**) (**)  FB  [1,0] (*ANY_TO_REAL*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*SA_AI*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*SCL_E*) (**) )  FB  [4,0] (*SCALER*) (*SCALER_1*) ( (*EN:EN*)(**) (**)  , (*Input:*)(*SCL_E*) (**)  , (*InputMin:*)(*SCL_EMN*) (**)  , (*InputMax:*)(*SCL_EMX*) (**)  , (*OutputMin:*)(*SCL_SMN*) (**)  , (*OutputMax:*)(*SCL_SMX*) (**) ; (*ENO:ENO*)(**) (**)  , (*Output:*)(*SCL_SN0*) (**) )  FB  [7,0] (*ANY_TO_INT*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*SCL_SN0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*SA_SN*) (**) )
+EOR [10,0]
+
+
+(*Zero*)
+
+SOR  [0,24] (**) (**)  XIC  [1,0] (*SA_ZR*) (**)  XIO  [2,0] (*SA_AT*) (**)  
+ BST  FB  [3,0] (*ANY_TO_REAL*) (*80*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*SCL_E*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*SCL_EMN*) (**) )
+   NXB  FB  [3,2] (*ANY_TO_REAL*) (*81*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*SCL_SMN*) (**) )
+ BND
+  FB  [6,0] (*TON*) (*TON_1*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*T#500mS*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTR  [9,0] (*SA_ZR*) (**)
+EOR [10,0]
+
+
+(*Calibração*)
+
+SOR  [0,29] (**) (**)  XIC  [1,0] (*SA_CLB*) (**)  
+ BST  FB  [2,0] (*ANY_TO_REAL*) (*72*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*SA_PKE*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*SCL_EMX*) (**) )
+   NXB  FB  [2,2] (*ANY_TO_REAL*) (*72*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*SA_MD*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*SCL_SMX*) (**) )
+ BND
+  FB  [5,0] (*TON*) (*TON_2*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*T#500mS*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTR  [8,0] (*SA_CLB*) (**)
+EOR [9,0]
+
+
+(*Teste*)
+
+SOR  [0,34] (**) (**)  XIC  [1,0] (*SA_TT*) (**)  FB  [2,0] (*FB_PK_V2*) (*FB_PK_V2_1*) ( (*IN:*)(**) (**)  , (*SN1:*)(*SA_SN*) (**)  , (*SN2:*)(*SA_AI*) (**)  , (*TM:*)(*T#3S*) (**)  , (*RT:*)(*SA_RT*) (**) ; (*Q:*)(**) (**)  , (*S1:*)(*SA_AT*) (**)  , (*PKP1:*)(*SA_PKS*) (**)  , (*PKP2:*)(*SA_PKE*) (**) )  FB  [5,0] (*FB_PV*) (*FB_PV_2*) ( (*IN:*)(**) (**)  , (*VL:*)(*SA_PKS*) (**)  , (*MX:*)(*SA_MX*) (**)  , (*MN:*)(*SA_MN*) (**) ; (*Q:*)(**) (**)  , (*AP:*)(*SA_AP*) (**)  , (*RP:*)(*SA_RP*) (**) )  OTR  [8,0] (*SA_TT*) (**)
+EOR [9,0]
+EOF
+#end_info
+#info= ID_MAX
+NextId=81
+#end_info
+END_PROGRAM

@@ -1,0 +1,53 @@
+TABLE
+{
+    BORDER-RIGHT: 5px;
+    BORDER-TOP: 5px;
+    BORDER-LEFT: 5px;
+    BORDER-BOTTOM: 5px;
+    BORDER-COLLAPSE: collapse
+}
+TD
+{
+    BORDER-RIGHT: groove;
+    PADDING-RIGHT: 0em;
+    BORDER-TOP: groove;
+    BORDER-LEFT: groove;
+    BORDER-BOTTOM: groove
+}
+TH
+{
+    BORDER-RIGHT: groove;
+    BORDER-TOP: groove;
+    BORDER-LEFT: groove;
+    BORDER-BOTTOM: groove
+}
+TABLE.header
+{
+    BORDER-RIGHT: medium none;
+    BORDER-TOP: medium none;
+    BORDER-LEFT: medium none;
+    BORDER-BOTTOM: medium none
+}
+TD.header
+{
+    BORDER-RIGHT: medium none;
+    BORDER-TOP: medium none;
+    BORDER-LEFT: medium none;
+    BORDER-BOTTOM: medium none
+}
+H1
+{
+    FONT-SIZE: larger
+}
+.alrmessage
+{
+    WIDTH: 50%
+}
+.tagdescription
+{
+    WIDTH: 70%
+}
+.alrtag
+{
+    WIDTH: 20%
+}

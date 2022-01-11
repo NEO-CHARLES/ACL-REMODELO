@@ -1,92 +1,92 @@
 <modbusServer Version="2.0">
   <modbusRegister name="COILS">
-    <mapping variable="bResetFalhas" parent="Micro850" dataType="Bool" address="000001" va="0x499">
+    <mapping variable="IHM_AL_RS" parent="Micro850" dataType="Bool" address="000001" va="0x497">
       <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
     </mapping>
-    <mapping variable="bSalvarDadosOp30" parent="Micro850" dataType="Bool" address="000002" va="0x49b">
+    <mapping variable="OP30_SV" parent="Micro850" dataType="Bool" address="000002" va="0x499">
       <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
     </mapping>
-    <mapping variable="bAprovadoOp30" parent="Micro850" dataType="Bool" address="000003" va="0x49c">
+    <mapping variable="OP30_AL10" parent="Micro850" dataType="Bool" address="000003" va="0x49a">
       <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
     </mapping>
-    <mapping variable="bReprovadoOp30" parent="Micro850" dataType="Bool" address="000004" va="0x49d">
+    <mapping variable="OP30_AL11" parent="Micro850" dataType="Bool" address="000004" va="0x49b">
       <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
     </mapping>
-    <mapping variable="bSalvarDados_Op40" parent="Micro850" dataType="Bool" address="000005" va="0x49f">
+    <mapping variable="OP40_SV" parent="Micro850" dataType="Bool" address="000005" va="0x49d">
       <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
     </mapping>
-    <mapping variable="bImprimirOp50" parent="Micro850" dataType="Bool" address="000006" va="0x4a4">
+    <mapping variable="IMP_AT" parent="Micro850" dataType="Bool" address="000006" va="0x4a2">
       <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
     </mapping>
-    <mapping variable="bAprovadoOp50" parent="Micro850" dataType="Bool" address="000007" va="0x4a1">
+    <mapping variable="OP50_AL10" parent="Micro850" dataType="Bool" address="000007" va="0x49f">
       <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
     </mapping>
-    <mapping variable="bSalvarDadosOp50" parent="Micro850" dataType="Bool" address="000008" va="0x4a3">
+    <mapping variable="OP50_SV" parent="Micro850" dataType="Bool" address="000008" va="0x4a1">
       <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
     </mapping>
-    <mapping variable="bLiberaBloqueioEstacoes" parent="Micro850" dataType="Bool" address="000009" va="0x4a6">
+    <mapping variable="IHM_DP_LB" parent="Micro850" dataType="Bool" address="000009" va="0x4a3">
       <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
     </mapping>
-    <mapping variable="bTesteFinalLiberado" parent="Micro850" dataType="Bool" address="000010" va="0x4c0">
+    <mapping variable="bTesteFinalLiberado" parent="Micro850" dataType="Bool" address="000010" va="0x4b1">
       <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
     </mapping>
-    <mapping variable="bEmergenciaPressionada" parent="Micro850" dataType="Bool" address="000011" va="0x4a7">
+    <mapping variable="PG1_AL00" parent="Micro850" dataType="Bool" address="000011" va="0x4a4">
       <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
     </mapping>
-    <mapping variable="bAlarmeEscamoteamento" parent="Micro850" dataType="Bool" address="000012" va="0x4b4">
+    <mapping variable="bAlarmeEscamoteamento" parent="Micro850" dataType="Bool" address="000012" va="0x4a5">
       <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
     </mapping>
-    <mapping variable="bAlarmeBlinker" parent="Micro850" dataType="Bool" address="000013" va="0x4b5">
+    <mapping variable="bAlarmeBlinker" parent="Micro850" dataType="Bool" address="000013" va="0x4a6">
       <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
     </mapping>
-    <mapping variable="bAlarmeAquecimento" parent="Micro850" dataType="Bool" address="000014" va="0x4b6">
+    <mapping variable="bAlarmeAquecimento" parent="Micro850" dataType="Bool" address="000014" va="0x4a7">
       <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
     </mapping>
-    <mapping variable="bAlarmeMovimento" parent="Micro850" dataType="Bool" address="000015" va="0x4b7">
+    <mapping variable="bAlarmeMovimento" parent="Micro850" dataType="Bool" address="000015" va="0x4a8">
       <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
     </mapping>
-    <mapping variable="bAlarmeForcaAuxiliar" parent="Micro850" dataType="Bool" address="000016" va="0x4b8">
+    <mapping variable="bAlarmeForcaAuxiliar" parent="Micro850" dataType="Bool" address="000016" va="0x4a9">
       <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
     </mapping>
-    <mapping variable="bAlarmeForcaPrincipal" parent="Micro850" dataType="Bool" address="000017" va="0x4b9">
+    <mapping variable="bAlarmeForcaPrincipal" parent="Micro850" dataType="Bool" address="000017" va="0x4aa">
       <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
     </mapping>
-    <mapping variable="bAlarmeCortina" parent="Micro850" dataType="Bool" address="000018" va="0x4ba">
+    <mapping variable="bAlarmeCortina" parent="Micro850" dataType="Bool" address="000018" va="0x4ab">
       <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
     </mapping>
-    <mapping variable="bStopOp20" parent="Micro850" dataType="Bool" address="000019" va="0x4bb">
+    <mapping variable="bStopOp20" parent="Micro850" dataType="Bool" address="000019" va="0x4ac">
       <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
     </mapping>
-    <mapping variable="bStopOp201" parent="Micro850" dataType="Bool" address="000020" va="0x4bc">
+    <mapping variable="bStopOp201" parent="Micro850" dataType="Bool" address="000020" va="0x4ad">
       <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
     </mapping>
-    <mapping variable="bStopOp30" parent="Micro850" dataType="Bool" address="000021" va="0x4bd">
+    <mapping variable="bStopOp30" parent="Micro850" dataType="Bool" address="000021" va="0x4ae">
       <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
     </mapping>
-    <mapping variable="bStopOp40" parent="Micro850" dataType="Bool" address="000022" va="0x4be">
+    <mapping variable="bStopOp40" parent="Micro850" dataType="Bool" address="000022" va="0x4af">
       <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
     </mapping>
-    <mapping variable="bStopOp50" parent="Micro850" dataType="Bool" address="000023" va="0x4bf">
+    <mapping variable="bStopOp50" parent="Micro850" dataType="Bool" address="000023" va="0x4b0">
       <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
     </mapping>
   </modbusRegister>
   <modbusRegister name="HOLDING_REGISTERS">
-    <mapping variable="nModelo" parent="Micro850" dataType="Int" address="400001" va="0x546">
+    <mapping variable="IHM_MD" parent="Micro850" dataType="Int" address="400001" va="0x5e2">
       <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
     </mapping>
-    <mapping variable="nForcaEscamoteamento" parent="Micro850" dataType="Int" address="400002" va="0x544">
+    <mapping variable="CC1_PKS" parent="Micro850" dataType="Int" address="400002" va="0x5e0">
       <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
     </mapping>
-    <mapping variable="nMinimoEscamoteamento" parent="Micro850" dataType="Int" address="400003" va="0x548">
+    <mapping variable="CC1_MN" parent="Micro850" dataType="Int" address="400003" va="0x5e4">
       <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
     </mapping>
-    <mapping variable="nMaximoEscamoteamento" parent="Micro850" dataType="Int" address="400004" va="0x54a">
+    <mapping variable="CC1_MX" parent="Micro850" dataType="Int" address="400004" va="0x5e6">
       <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
     </mapping>
-    <mapping variable="nMinimoAquecimento" parent="Micro850" dataType="Int" address="400006" va="0x54c">
+    <mapping variable="SA1_MN" parent="Micro850" dataType="Int" address="400006" va="0x5e8">
       <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
     </mapping>
-    <mapping variable="nLeituraAquecimento" parent="Micro850" dataType="Int" address="400028" va="0x54e">
+    <mapping variable="SAI_SN" parent="Micro850" dataType="Int" address="400028" va="0x5ea">
       <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
     </mapping>
   </modbusRegister>

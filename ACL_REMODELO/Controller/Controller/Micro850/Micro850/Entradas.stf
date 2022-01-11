@@ -59,7 +59,7 @@ EOR [3,0]
 
 (**)
 
-SOR  [0,19] (**) (**)  XIC  [1,0] (*_IO_EM_DI_09*) (*OP40_STOP*)  OTE  [2,0] (*OP30_BTS*) (**)
+SOR  [0,19] (**) (**)  XIC  [1,0] (*_IO_EM_DI_09*) (**)  OTE  [2,0] (*OP40_BTS*) (**)
 EOR [3,0]
 
 
@@ -77,97 +77,97 @@ EOR [3,0]
 
 (**)
 
-SOR  [0,25] (**) (**)  XIC  [1,0] (*_IO_EM_DI_12*) (*OP40_SN*)  OTE  [2,0] (*CC1_RT*) (**)
+SOR  [0,25] (**) (**)  XIC  [1,0] (*_IO_EM_DI_12*) (**)  OTE  [2,0] (*OP40_CC1_RT*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,27] (**) (**)  XIC  [1,0] (*_IO_EM_DI_13*) (**)  XIO  [2,0] (*_IO_EM_DI_19*) (**)  FB  [3,0] (*TON*) (*TON_1*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*TM*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTE  [6,0] (*OP50_SU_LD*) (**)
-EOR [7,0]
-
-
-(**)
-
-SOR  [0,30] (**) (**)  XIC  [1,0] (*_IO_EM_DI_14*) (**)  OTE  [2,0] (*OP50_SN_E*) (**)
+SOR  [0,27] (**) (**)  XIC  [1,0] (*_IO_EM_DI_13*) (**)  OTE  [2,0] (*OP50_SU_LD*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,32] (**) (**)  XIC  [1,0] (*_IO_EM_DI_15*) (**)  OTE  [2,0] (*OP50_SN_D*) (**)
+SOR  [0,29] (**) (**)  XIC  [1,0] (*_IO_EM_DI_14*) (**)  OTE  [2,0] (*OP50_SN_E*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,34] (**) (**)  XIC  [1,0] (*_IO_EM_DI_16*) (*OP60_STOP*)  OTE  [2,0] (*OP60_BTS*) (**)
+SOR  [0,31] (**) (**)  XIC  [1,0] (*_IO_EM_DI_15*) (**)  OTE  [2,0] (*OP50_SN_D*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,36] (**) (**)  XIC  [1,0] (*_IO_EM_DI_17*) (*OP60_START*)  OTE  [2,0] (*OP60_BTL*) (**)
+SOR  [0,33] (**) (**)  XIC  [1,0] (*_IO_EM_DI_16*) (*OP60_STOP*)  OTE  [2,0] (*OP60_BTS*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,38] (**) (**)  XIC  [1,0] (*_IO_EM_DI_18*) (**)  OTE  [2,0] (*OP60_SN*) (**)
+SOR  [0,35] (**) (**)  XIC  [1,0] (*_IO_EM_DI_17*) (*OP60_START*)  OTE  [2,0] (*OP60_BTL*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,40] (**) (**)  XIC  [1,0] (*_IO_EM_DI_19*) (**)  XIO  [2,0] (*_IO_EM_DI_13*) (**)  FB  [3,0] (*TON*) (*TON_3*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*TM*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTE  [6,0] (*OP50_SU_LE*) (**)
-EOR [7,0]
+SOR  [0,37] (**) (**)  XIC  [1,0] (*_IO_EM_DI_18*) (**)  OTE  [2,0] (*OP60_SN*) (**)
+EOR [3,0]
 
 
 (**)
 
-SOR  [0,43] (**) (**)  XIC  [1,0] (*_IO_EM_DI_20*) (**)
+SOR  [0,39] (**) (**)  XIC  [1,0] (*_IO_EM_DI_19*) (**)  OTE  [2,0] (*OP50_SU_LE*) (**)
+EOR [3,0]
+
+
+(**)
+
+SOR  [0,41] (**) (**)  XIC  [1,0] (*_IO_EM_DI_20*) (**)
 EOR [2,0]
 
 
 (**)
 
-SOR  [0,45] (**) (**)  XIC  [1,0] (*_IO_EM_DI_21*) (*bOP20_SN_D*)  OTE  [2,0] (*OP20_SU_LD_Holder*) (**)
+SOR  [0,43] (**) (**)  XIC  [1,0] (*_IO_EM_DI_21*) (*bOP20_SN_D*)  OTE  [2,0] (*OP20_SU_LD_Holder*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,47] (**) (**)  XIC  [1,0] (*_IO_EM_DI_22*) (*bOP20_SN_TUBOD*)  OTE  [2,0] (*OP20_SU_LD_Tubo*) (**)
+SOR  [0,45] (**) (**)  XIC  [1,0] (*_IO_EM_DI_22*) (*bOP20_SN_TUBOD*)  OTE  [2,0] (*OP20_SU_LD_Tubo*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,49] (**) (**)  XIC  [1,0] (*_IO_EM_DI_23*) (*bOP60_SN_TUBO_E*)  OTE  [2,0] (*OP60_SU_LE*) (**)
+SOR  [0,47] (**) (**)  XIC  [1,0] (*_IO_EM_DI_23*) (**)  OTE  [2,0] (*OP60_SU_LE_Tubo*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,51] (**) (**)  XIC  [1,0] (*_IO_EM_DI_24*) (*bOP60_SN_TUBO_D*)  OTE  [2,0] (*OP60_SU_LD*) (**)
+SOR  [0,49] (**) (**)  XIC  [1,0] (*_IO_EM_DI_24*) (**)  OTE  [2,0] (*OP60_SU_LD_Tubo*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,53] (**) (**)  XIC  [1,0] (*_IO_EM_DI_25*) (**)
+SOR  [0,51] (**) (**)  XIC  [1,0] (*_IO_EM_DI_25*) (**)
 EOR [2,0]
 
 
 (**)
 
-SOR  [0,55] (**) (**)  XIC  [1,0] (*_IO_EM_DI_26*) (*PG1_RESET*)  OTE  [2,0] (*PG1_BTR*) (**)
+SOR  [0,53] (**) (**)  XIC  [1,0] (*_IO_EM_DI_26*) (*PG1_RESET*)  OTE  [2,0] (*PG1_BTR*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,57] (**) (**)  XIC  [1,0] (*_IO_EM_DI_27*) (*PG1_EMERGENCIA*)  OTE  [2,0] (*PG1_BTS*) (**)
+SOR  [0,55] (**) (**)  XIC  [1,0] (*_IO_EM_DI_27*) (*PG1_EMERGENCIA*)  OTE  [2,0] (*PG1_BTS*) (**)
 EOR [3,0]
 EOF
 #end_info

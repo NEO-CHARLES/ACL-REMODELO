@@ -1,0 +1,1356 @@
+(****** QuickLD compiler *******************************)
+(****** Copyright Rockwell Automation Canada, Ltd ******)
+(****** ST *********************************************)
+
+(*************** Rung **********************************)
+(*CONTROLE BOTÃO STOP/EMERGENCIA*)
+__STEPPRAGMA
+0,1
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB1 := NOT(_IO_EM_DI_16) ;
+IF __EDTB1 THEN
+(*Set coil*)
+BOP60_ALERTA_00 := TRUE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*CONTROLE DE SINALIZAÇÃO*)
+__STEPPRAGMA
+0,3
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB2 := BOP60_ALERTA_00 ;
+__EDTB3 := BOP60_ALERTA_09 ;
+__EDTB4 := (__EDTB2 OR __EDTB3) AND PISCA_1S ;
+__EDTB5 := BOP60_ALERTA_01 ;
+__EDTB6 := BOP60_ALERTA_03 ;
+__EDTB7 := BOP60_ALERTA_04 ;
+__EDTB8 := BOP60_ALERTA_05 ;
+__EDTB9 := BOP60_ALERTA_06 ;
+__EDTB10 := BOP60_ALERTA_07 ;
+__EDTB11 := BOP60_ALERTA_08 ;
+__EDTB12 := (__EDTB10 OR __EDTB11) ;
+__EDTB13 := (__EDTB9 OR __EDTB12) ;
+__EDTB14 := (__EDTB8 OR __EDTB13) ;
+__EDTB15 := (__EDTB7 OR __EDTB14) ;
+__EDTB16 := (__EDTB6 OR __EDTB15) ;
+__EDTB17 := (__EDTB5 OR __EDTB16) ;
+__EDTB18 := (__EDTB4 OR __EDTB17) ;
+OP60_LD_VM := __EDTB18 ;
+__EDTB19 := __EDTB18 ;
+IF __EDTB19 THEN
+(*Set coil*)
+BCLP_MOV0 := TRUE ;
+END_IF ;
+__EDTB20 := __EDTB18 ;
+IF __EDTB20 THEN
+(*Reset coil*)
+OP60_K4 := FALSE ;
+END_IF ;
+__EDTB21 := __EDTB18 ;
+IF __EDTB21 THEN
+OP60_STP := (  100) ;
+END_IF ;
+__MO_1GAIN_1 := __EDTB21 ;
+__EDTB22 := __EDTB21 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,13
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB23 := MD_LE AND _IO_EM_DI_24 ;
+__EDTB24 := MD_LD AND _IO_EM_DI_23 ;
+; (*Pulse detection on : _IO_EM_DI_17 with __MEMO__1___IO_EM_DI_17 *)
+__EDTB25 := (__EDTB23 OR __EDTB24) AND (_IO_EM_DI_17 AND NOT(__MEMO__1___IO_EM_DI_17)) ;
+IF __EDTB25 THEN
+(*Set coil*)
+BOP60_ALERTA_09 := TRUE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+__MEMO__1___IO_EM_DI_17 := _IO_EM_DI_17 ; (*Pulse detection on : _IO_EM_DI_17 with __MEMO__1___IO_EM_DI_17 *)
+
+
+(*************** Rung **********************************)
+(*PASSO 0 - VERIFICAÇÃO DE SEGURANÇA*)
+__STEPPRAGMA
+0,16
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB27 := TRUE ;
+IF __EDTB27 THEN
+(* Operator output on : = with __EDTB26 *)
+__EDTB26 := (OP60_STP = 0) ;
+ELSE
+__EDTB26 := FALSE ;
+END_IF ;
+__MO_EQUAL_1 := __EDTB26 ;
+__EDTB28 := __EDTB26 AND _IO_EM_DI_27 AND _IO_EM_DI_16 AND NOT(BOP60_ALERTA_00) ;
+__EDTB29 := __EDTB28 ;
+__EDTB30 := __EDTB28 ;
+IF __EDTB30 THEN
+(*Reset coil*)
+OP60_TD1_AT := FALSE ;
+END_IF ;
+(* FB call: TON *)
+TON_4(__EDTB28, T#1S) ;
+__EDTB31 := TON_4.Q ;
+; (*Pulse detection on : _IO_EM_DI_17 with __MEMO__2___IO_EM_DI_17 *)
+__EDTB32 := __EDTB31 AND (_IO_EM_DI_17 AND NOT(__MEMO__2___IO_EM_DI_17)) ;
+__EDTB33 := __EDTB32 ;
+IF __EDTB33 THEN
+(*Reset coil*)
+OP60_AP := FALSE ;
+END_IF ;
+__EDTB34 := __EDTB32 ;
+IF __EDTB34 THEN
+OP60_STP := (  10) ;
+END_IF ;
+__MO_1GAIN_2 := __EDTB34 ;
+__EDTB35 := __EDTB34 ;
+__EDTB36 := __EDTB32 ;
+IF __EDTB36 THEN
+RLEITURA_SENSOR := (  0.0) ;
+END_IF ;
+__MO_1GAIN_3 := __EDTB36 ;
+__EDTB37 := __EDTB36 ;
+__EDTB38 := (__EDTB35 OR __EDTB37) ;
+OP60_LD_VD := __EDTB31 ;
+
+(*************** Code for the end of Rung **************)
+__MEMO__2___IO_EM_DI_17 := _IO_EM_DI_17 ; (*Pulse detection on : _IO_EM_DI_17 with __MEMO__2___IO_EM_DI_17 *)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,25
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB40 := TRUE ;
+IF __EDTB40 THEN
+(* Operator output on : = with __EDTB39 *)
+__EDTB39 := (OP60_STP = 10) ;
+ELSE
+__EDTB39 := FALSE ;
+END_IF ;
+__MO_EQUAL_2 := __EDTB39 ;
+__EDTB41 := __EDTB39 AND MD_LE AND _IO_EM_DI_23 ;
+__EDTB42 := __EDTB39 AND MD_LD AND _IO_EM_DI_24 ;
+__EDTB43 := (__EDTB41 OR __EDTB42) ;
+__EDTB44 := __EDTB43 ;
+IF __EDTB44 THEN
+OP60_STP := (  11) ;
+END_IF ;
+__MO_1GAIN_4 := __EDTB44 ;
+__EDTB45 := __EDTB44 ;
+(* FB call: TON *)
+TON_1(__EDTB43, T#5S) ;
+__EDTB46 := TON_1.Q ;
+IF __EDTB46 THEN
+(*Set coil*)
+BOP60_ALERTA_09 := TRUE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*PASSO 0 - ACIONA CILINDRO*)
+__STEPPRAGMA
+0,30
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB48 := TRUE ;
+IF __EDTB48 THEN
+(* Operator output on : = with __EDTB47 *)
+__EDTB47 := (OP60_STP = 11) ;
+ELSE
+__EDTB47 := FALSE ;
+END_IF ;
+__MO_EQUAL_3 := __EDTB47 ;
+__EDTB49 := __EDTB47 ;
+IF __EDTB49 THEN
+(*Set coil*)
+OP60_TD1_AT := TRUE ;
+END_IF ;
+__EDTB50 := __EDTB47 AND _IO_EM_DI_18 ;
+(* FB call: TON *)
+TON_2(__EDTB47, T#3S) ;
+__EDTB51 := TON_2.Q ;
+__EDTB52 := (__EDTB50 OR __EDTB51) ;
+IF __EDTB52 THEN
+OP60_STP := (  20) ;
+END_IF ;
+__MO_1GAIN_5 := __EDTB52 ;
+__EDTB53 := __EDTB52 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Passo 20 - TESTE DE PRESENÇA DE ESPELHO*)
+__STEPPRAGMA
+0,35
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB55 := TRUE ;
+IF __EDTB55 THEN
+(* Operator output on : = with __EDTB54 *)
+__EDTB54 := (OP60_STP = 20) ;
+ELSE
+__EDTB54 := FALSE ;
+END_IF ;
+__MO_EQUAL_4 := __EDTB54 ;
+__EDTB57 := __EDTB54 ;
+IF __EDTB57 THEN
+(* Operator output on : >= with __EDTB56 *)
+__EDTB56 := (RCONV_REGUAA >= 250.0) ;
+ELSE
+__EDTB56 := FALSE ;
+END_IF ;
+__MO_GREATEQUAL_1 := __EDTB56 ;
+__EDTB59 := __EDTB56 ;
+IF __EDTB59 THEN
+(* Operator output on : <= with __EDTB58 *)
+__EDTB58 := (RCONV_REGUAA <= 700.0) ;
+ELSE
+__EDTB58 := FALSE ;
+END_IF ;
+__MO_LESSEQUAL_1 := __EDTB58 ;
+PRES_REG_A_OK := __EDTB58 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Passo 20 - TESTE DE PRESENÇA DE ESPELHO*)
+__STEPPRAGMA
+0,39
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB61 := TRUE ;
+IF __EDTB61 THEN
+(* Operator output on : = with __EDTB60 *)
+__EDTB60 := (OP60_STP = 20) ;
+ELSE
+__EDTB60 := FALSE ;
+END_IF ;
+__MO_EQUAL_5 := __EDTB60 ;
+__EDTB63 := __EDTB60 ;
+IF __EDTB63 THEN
+(* Operator output on : >= with __EDTB62 *)
+__EDTB62 := (RCONV_REGUAB >= 280.0) ;
+ELSE
+__EDTB62 := FALSE ;
+END_IF ;
+__MO_GREATEQUAL_2 := __EDTB62 ;
+__EDTB65 := __EDTB62 ;
+IF __EDTB65 THEN
+(* Operator output on : <= with __EDTB64 *)
+__EDTB64 := (RCONV_REGUAB <= 999.0) ;
+ELSE
+__EDTB64 := FALSE ;
+END_IF ;
+__MO_LESSEQUAL_2 := __EDTB64 ;
+PRES_REG_B_OK := __EDTB64 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Passo 20 - TESTE DE PRESENÇA DE ESPELHO (APROVA)*)
+__STEPPRAGMA
+0,43
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB67 := TRUE ;
+IF __EDTB67 THEN
+(* Operator output on : = with __EDTB66 *)
+__EDTB66 := (OP60_STP = 20) ;
+ELSE
+__EDTB66 := FALSE ;
+END_IF ;
+__MO_EQUAL_6 := __EDTB66 ;
+__EDTB68 := __EDTB66 AND PRES_REG_A_OK AND PRES_REG_B_OK ;
+__EDTB69 := __EDTB68 AND NOT(MD_HTU) ;
+IF __EDTB69 THEN
+OP60_STP := (  21) ;
+END_IF ;
+__MO_1GAIN_6 := __EDTB69 ;
+__EDTB70 := __EDTB69 ;
+__EDTB71 := __EDTB68 AND MD_HTU AND MD_AMAN ;
+__EDTB72 := __EDTB71 ;
+IF __EDTB72 THEN
+OP60_STP := (  0) ;
+END_IF ;
+__MO_1GAIN_7 := __EDTB72 ;
+__EDTB73 := __EDTB72 ;
+__EDTB74 := __EDTB71 ;
+IF __EDTB74 THEN
+(*Set coil*)
+OP60_AP := TRUE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Passo 20 - TESTE DE PRESENÇA DE ESPELHO (REPROVA)*)
+__STEPPRAGMA
+0,49
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB76 := TRUE ;
+IF __EDTB76 THEN
+(* Operator output on : = with __EDTB75 *)
+__EDTB75 := (OP60_STP = 20) ;
+ELSE
+__EDTB75 := FALSE ;
+END_IF ;
+__MO_EQUAL_7 := __EDTB75 ;
+__EDTB77 := __EDTB75 AND NOT(PRES_REG_A_OK) ;
+__EDTB78 := __EDTB75 AND NOT(PRES_REG_B_OK) ;
+(* FB call: TON *)
+TON_5((__EDTB77 OR __EDTB78), T#3S) ;
+__EDTB79 := TON_5.Q ;
+IF __EDTB79 THEN
+(*Set coil*)
+BOP60_ALERTA_03 := TRUE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,53
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB81 := TRUE ;
+IF __EDTB81 THEN
+(* Operator output on : = with __EDTB80 *)
+__EDTB80 := (OP60_STP = 21) ;
+ELSE
+__EDTB80 := FALSE ;
+END_IF ;
+__MO_EQUAL_8 := __EDTB80 ;
+__EDTB83 := __EDTB80 ;
+IF __EDTB83 THEN
+(* Operator output on : < with __EDTB82 *)
+__EDTB82 := (RCONV_REGUAA < 450.0) ;
+ELSE
+__EDTB82 := FALSE ;
+END_IF ;
+__MO_LESS_1 := __EDTB82 ;
+BAJ_MOV1 := __EDTB82 ;
+__EDTB85 := __EDTB80 ;
+IF __EDTB85 THEN
+(* Operator output on : > with __EDTB84 *)
+__EDTB84 := (RCONV_REGUAA > 500.0) ;
+ELSE
+__EDTB84 := FALSE ;
+END_IF ;
+__MO_GREAT_1 := __EDTB84 ;
+BAJ_MOV2 := __EDTB84 ;
+(* FB call: TON *)
+TON_7(__EDTB80, T#5S) ;
+__EDTB86 := TON_7.Q ;
+IF __EDTB86 THEN
+(*Set coil*)
+BOP60_ALERTA_04 := TRUE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,62
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB88 := TRUE ;
+IF __EDTB88 THEN
+(* Operator output on : = with __EDTB87 *)
+__EDTB87 := (OP60_STP = 21) ;
+ELSE
+__EDTB87 := FALSE ;
+END_IF ;
+__MO_EQUAL_9 := __EDTB87 ;
+__EDTB90 := __EDTB87 ;
+IF __EDTB90 THEN
+(* Operator output on : >= with __EDTB89 *)
+__EDTB89 := (RCONV_REGUAA >= 450.0) ;
+ELSE
+__EDTB89 := FALSE ;
+END_IF ;
+__MO_GREATEQUAL_3 := __EDTB89 ;
+__EDTB92 := __EDTB89 ;
+IF __EDTB92 THEN
+(* Operator output on : <= with __EDTB91 *)
+__EDTB91 := (RCONV_REGUAA <= 500.0) ;
+ELSE
+__EDTB91 := FALSE ;
+END_IF ;
+__MO_LESSEQUAL_3 := __EDTB91 ;
+__EDTB93 := __EDTB91 ;
+IF __EDTB93 THEN
+OP60_STP := (  22) ;
+END_IF ;
+__MO_1GAIN_8 := __EDTB93 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,66
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB95 := TRUE ;
+IF __EDTB95 THEN
+(* Operator output on : = with __EDTB94 *)
+__EDTB94 := (OP60_STP = 22) ;
+ELSE
+__EDTB94 := FALSE ;
+END_IF ;
+__MO_EQUAL_10 := __EDTB94 ;
+__EDTB97 := __EDTB94 ;
+IF __EDTB97 THEN
+(* Operator output on : < with __EDTB96 *)
+__EDTB96 := (RCONV_REGUAB < 565.0) ;
+ELSE
+__EDTB96 := FALSE ;
+END_IF ;
+__MO_LESS_2 := __EDTB96 ;
+BAJ_MOV4 := __EDTB96 ;
+__EDTB99 := __EDTB94 ;
+IF __EDTB99 THEN
+(* Operator output on : > with __EDTB98 *)
+__EDTB98 := (RCONV_REGUAB > 615.0) ;
+ELSE
+__EDTB98 := FALSE ;
+END_IF ;
+__MO_GREAT_2 := __EDTB98 ;
+BAJ_MOV3 := __EDTB98 ;
+(* FB call: TON *)
+TON_6(__EDTB94, T#5S) ;
+__EDTB100 := TON_6.Q ;
+IF __EDTB100 THEN
+(*Set coil*)
+BOP60_ALERTA_04 := TRUE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,75
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB102 := TRUE ;
+IF __EDTB102 THEN
+(* Operator output on : = with __EDTB101 *)
+__EDTB101 := (OP60_STP = 22) ;
+ELSE
+__EDTB101 := FALSE ;
+END_IF ;
+__MO_EQUAL_11 := __EDTB101 ;
+__EDTB104 := __EDTB101 ;
+IF __EDTB104 THEN
+(* Operator output on : >= with __EDTB103 *)
+__EDTB103 := (RCONV_REGUAB >= 565.0) ;
+ELSE
+__EDTB103 := FALSE ;
+END_IF ;
+__MO_GREATEQUAL_4 := __EDTB103 ;
+__EDTB106 := __EDTB103 ;
+IF __EDTB106 THEN
+(* Operator output on : <= with __EDTB105 *)
+__EDTB105 := (RCONV_REGUAB <= 615.0) ;
+ELSE
+__EDTB105 := FALSE ;
+END_IF ;
+__MO_LESSEQUAL_4 := __EDTB105 ;
+__EDTB107 := __EDTB105 ;
+IF __EDTB107 THEN
+OP60_STP := (  25) ;
+END_IF ;
+__MO_1GAIN_9 := __EDTB107 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Passo 20 - TESTE DE PRESENÇA DE ESPELHO*)
+__STEPPRAGMA
+0,79
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB109 := TRUE ;
+IF __EDTB109 THEN
+(* Operator output on : = with __EDTB108 *)
+__EDTB108 := (OP60_STP = 25) ;
+ELSE
+__EDTB108 := FALSE ;
+END_IF ;
+__MO_EQUAL_12 := __EDTB108 ;
+__EDTB111 := __EDTB108 ;
+IF __EDTB111 THEN
+(* Operator output on : >= with __EDTB110 *)
+__EDTB110 := (RCONV_REGUAB >= RMINIMO_REGUAB) ;
+ELSE
+__EDTB110 := FALSE ;
+END_IF ;
+__MO_GREATEQUAL_5 := __EDTB110 ;
+__EDTB113 := __EDTB110 ;
+IF __EDTB113 THEN
+(* Operator output on : <= with __EDTB112 *)
+__EDTB112 := (RCONV_REGUAB <= RMAXIMO_REGUAB) ;
+ELSE
+__EDTB112 := FALSE ;
+END_IF ;
+__MO_LESSEQUAL_5 := __EDTB112 ;
+__EDTB114 := __EDTB112 ;
+IF __EDTB114 THEN
+INI_REG_B := (  RCONV_REGUAB) ;
+END_IF ;
+__MO_1GAIN_10 := __EDTB114 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Passo 20 - TESTE DE PRESENÇA DE ESPELHO*)
+__STEPPRAGMA
+0,83
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB116 := TRUE ;
+IF __EDTB116 THEN
+(* Operator output on : = with __EDTB115 *)
+__EDTB115 := (OP60_STP = 25) ;
+ELSE
+__EDTB115 := FALSE ;
+END_IF ;
+__MO_EQUAL_13 := __EDTB115 ;
+__EDTB118 := __EDTB115 ;
+IF __EDTB118 THEN
+(* Operator output on : >= with __EDTB117 *)
+__EDTB117 := (RCONV_REGUAA >= RMINIMO_REGUAA) ;
+ELSE
+__EDTB117 := FALSE ;
+END_IF ;
+__MO_GREATEQUAL_6 := __EDTB117 ;
+__EDTB120 := __EDTB117 ;
+IF __EDTB120 THEN
+(* Operator output on : <= with __EDTB119 *)
+__EDTB119 := (RCONV_REGUAA <= RMAXIMO_REGUAA) ;
+ELSE
+__EDTB119 := FALSE ;
+END_IF ;
+__MO_LESSEQUAL_6 := __EDTB119 ;
+__EDTB121 := __EDTB119 ;
+__EDTB122 := __EDTB119 ;
+IF __EDTB122 THEN
+INI_REG_A := (  RCONV_REGUAA) ;
+END_IF ;
+__MO_1GAIN_11 := __EDTB122 ;
+__EDTB123 := __EDTB122 ;
+__EDTB124 := __EDTB119 ;
+IF __EDTB124 THEN
+OP60_STP := (  30) ;
+END_IF ;
+__MO_1GAIN_12 := __EDTB124 ;
+__EDTB125 := __EDTB124 ;
+__EDTB126 := (__EDTB123 OR __EDTB125) ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*PASSO 30 SETUP VALORES MINIMOS REGUAS*)
+__STEPPRAGMA
+0,89
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB128 := TRUE ;
+IF __EDTB128 THEN
+(* Operator output on : = with __EDTB127 *)
+__EDTB127 := (OP60_STP = 30) ;
+ELSE
+__EDTB127 := FALSE ;
+END_IF ;
+__MO_EQUAL_14 := __EDTB127 ;
+__EDTB129 := __EDTB127 ;
+IF __EDTB129 THEN
+MIN_REG_A := (INI_REG_A - RDIF_REGUAA) ;
+END_IF ;
+__MO_MINUS_1 := __EDTB129 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*PASSO 30 SETUP VALORES MINIMOS REGUAS*)
+__STEPPRAGMA
+0,93
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB131 := TRUE ;
+IF __EDTB131 THEN
+(* Operator output on : = with __EDTB130 *)
+__EDTB130 := (OP60_STP = 30) ;
+ELSE
+__EDTB130 := FALSE ;
+END_IF ;
+__MO_EQUAL_15 := __EDTB130 ;
+__EDTB132 := __EDTB130 ;
+IF __EDTB132 THEN
+MIN_REG_B := (INI_REG_B - RDIF_REGUAB) ;
+END_IF ;
+__MO_MINUS_2 := __EDTB132 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Aciona teste de aquecimento*)
+__STEPPRAGMA
+0,97
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB134 := TRUE ;
+IF __EDTB134 THEN
+(* Operator output on : = with __EDTB133 *)
+__EDTB133 := (OP60_STP = 30) ;
+ELSE
+__EDTB133 := FALSE ;
+END_IF ;
+__MO_EQUAL_16 := __EDTB133 ;
+__EDTB135 := __EDTB133 ;
+IF __EDTB135 THEN
+(*Set coil*)
+OP60_K4 := TRUE ;
+END_IF ;
+__EDTB136 := __EDTB133 ;
+IF __EDTB136 THEN
+OP60_STP := (  31) ;
+END_IF ;
+__MO_1GAIN_13 := __EDTB136 ;
+__EDTB137 := __EDTB136 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,101
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB139 := TRUE ;
+IF __EDTB139 THEN
+(* Operator output on : = with __EDTB138 *)
+__EDTB138 := (OP60_STP = 31) ;
+ELSE
+__EDTB138 := FALSE ;
+END_IF ;
+__MO_EQUAL_17 := __EDTB138 ;
+BCLP_MOV3 := __EDTB138 ;
+__EDTB141 := __EDTB138 ;
+IF __EDTB141 THEN
+(* Operator output on : <= with __EDTB140 *)
+__EDTB140 := (RCONV_REGUAB <= MIN_REG_B) ;
+ELSE
+__EDTB140 := FALSE ;
+END_IF ;
+__MO_LESSEQUAL_7 := __EDTB140 ;
+__EDTB142 := __EDTB140 ;
+IF __EDTB142 THEN
+OP60_STP := (  32) ;
+END_IF ;
+__MO_1GAIN_14 := __EDTB142 ;
+__EDTB143 := __EDTB142 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,106
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB145 := TRUE ;
+IF __EDTB145 THEN
+(* Operator output on : = with __EDTB144 *)
+__EDTB144 := (OP60_STP = 32) ;
+ELSE
+__EDTB144 := FALSE ;
+END_IF ;
+__MO_EQUAL_18 := __EDTB144 ;
+BCLP_MOV4 := __EDTB144 ;
+__EDTB147 := __EDTB144 ;
+IF __EDTB147 THEN
+(* Operator output on : >= with __EDTB146 *)
+__EDTB146 := (RCONV_REGUAB >= INI_REG_B) ;
+ELSE
+__EDTB146 := FALSE ;
+END_IF ;
+__MO_GREATEQUAL_7 := __EDTB146 ;
+__EDTB148 := __EDTB146 ;
+IF __EDTB148 THEN
+OP60_STP := (  33) ;
+END_IF ;
+__MO_1GAIN_15 := __EDTB148 ;
+__EDTB149 := __EDTB148 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,111
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB151 := TRUE ;
+IF __EDTB151 THEN
+(* Operator output on : = with __EDTB150 *)
+__EDTB150 := (OP60_STP = 33) ;
+ELSE
+__EDTB150 := FALSE ;
+END_IF ;
+__MO_EQUAL_19 := __EDTB150 ;
+BCLP_MOV2 := __EDTB150 ;
+__EDTB153 := __EDTB150 ;
+IF __EDTB153 THEN
+(* Operator output on : <= with __EDTB152 *)
+__EDTB152 := (RCONV_REGUAA <= MIN_REG_A) ;
+ELSE
+__EDTB152 := FALSE ;
+END_IF ;
+__MO_LESSEQUAL_8 := __EDTB152 ;
+__EDTB154 := __EDTB152 ;
+IF __EDTB154 THEN
+OP60_STP := (  34) ;
+END_IF ;
+__MO_1GAIN_16 := __EDTB154 ;
+__EDTB155 := __EDTB154 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,116
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB157 := TRUE ;
+IF __EDTB157 THEN
+(* Operator output on : = with __EDTB156 *)
+__EDTB156 := (OP60_STP = 34) ;
+ELSE
+__EDTB156 := FALSE ;
+END_IF ;
+__MO_EQUAL_20 := __EDTB156 ;
+BCLP_MOV1 := __EDTB156 ;
+__EDTB159 := __EDTB156 ;
+IF __EDTB159 THEN
+(* Operator output on : >= with __EDTB158 *)
+__EDTB158 := (RCONV_REGUAA >= INI_REG_A) ;
+ELSE
+__EDTB158 := FALSE ;
+END_IF ;
+__MO_GREATEQUAL_8 := __EDTB158 ;
+__EDTB160 := __EDTB158 ;
+IF __EDTB160 THEN
+OP60_STP := (  35) ;
+END_IF ;
+__MO_1GAIN_17 := __EDTB160 ;
+__EDTB161 := __EDTB160 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,121
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB163 := TRUE ;
+IF __EDTB163 THEN
+(* Operator output on : = with __EDTB162 *)
+__EDTB162 := (OP60_STP = 35) ;
+ELSE
+__EDTB162 := FALSE ;
+END_IF ;
+__MO_EQUAL_21 := __EDTB162 ;
+BMOV0 := __EDTB162 ;
+__EDTB164 := __EDTB162 ;
+IF __EDTB164 THEN
+(*Reset coil*)
+OP60_K4 := FALSE ;
+END_IF ;
+__EDTB165 := __EDTB162 ;
+IF __EDTB165 THEN
+OP60_STP := (  40) ;
+END_IF ;
+__MO_1GAIN_18 := __EDTB165 ;
+__EDTB166 := __EDTB165 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,126
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB168 := TRUE ;
+IF __EDTB168 THEN
+(* Operator output on : >= with __EDTB167 *)
+__EDTB167 := (OP60_STP >= 30) ;
+ELSE
+__EDTB167 := FALSE ;
+END_IF ;
+__MO_GREATEQUAL_9 := __EDTB167 ;
+__EDTB170 := __EDTB167 ;
+IF __EDTB170 THEN
+(* Operator output on : < with __EDTB169 *)
+__EDTB169 := (OP60_STP < 40) ;
+ELSE
+__EDTB169 := FALSE ;
+END_IF ;
+__MO_LESS_3 := __EDTB169 ;
+__EDTB171 := __EDTB169 AND BMOV1 ;
+__EDTB172 := __EDTB169 AND BMOV2 ;
+__EDTB173 := __EDTB169 AND BMOV3 ;
+__EDTB174 := __EDTB169 AND BMOV4 ;
+__EDTB175 := (__EDTB173 OR __EDTB174) ;
+__EDTB176 := (__EDTB172 OR __EDTB175) ;
+(* FB call: TON *)
+TON_3((__EDTB171 OR __EDTB176), T#10S) ;
+__EDTB177 := TON_3.Q ;
+BMOV0 := __EDTB177 ;
+__EDTB178 := __EDTB177 AND BMOV1 ;
+IF __EDTB178 THEN
+(*Set coil*)
+BOP60_ALERTA_04 := TRUE ;
+END_IF ;
+__EDTB179 := __EDTB177 AND BMOV2 ;
+IF __EDTB179 THEN
+(*Set coil*)
+BOP60_ALERTA_05 := TRUE ;
+END_IF ;
+__EDTB180 := __EDTB177 AND BMOV3 ;
+IF __EDTB180 THEN
+(*Set coil*)
+BOP60_ALERTA_06 := TRUE ;
+END_IF ;
+__EDTB181 := __EDTB177 AND BMOV4 ;
+IF __EDTB181 THEN
+(*Set coil*)
+BOP60_ALERTA_07 := TRUE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,132
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB183 := TRUE ;
+IF __EDTB183 THEN
+(* Operator output on : >= with __EDTB182 *)
+__EDTB182 := (OP60_STP >= 30) ;
+ELSE
+__EDTB182 := FALSE ;
+END_IF ;
+__MO_GREATEQUAL_10 := __EDTB182 ;
+__EDTB185 := __EDTB182 ;
+IF __EDTB185 THEN
+(* Operator output on : < with __EDTB184 *)
+__EDTB184 := (OP60_STP < 40) ;
+ELSE
+__EDTB184 := FALSE ;
+END_IF ;
+__MO_LESS_4 := __EDTB184 ;
+__EDTB187 := __EDTB184 ;
+IF __EDTB187 THEN
+(* Operator output on : >= with __EDTB186 *)
+__EDTB186 := (RCONV_SENSORCORRENTE >= RLEITURA_SENSOR) ;
+ELSE
+__EDTB186 := FALSE ;
+END_IF ;
+__MO_GREATEQUAL_11 := __EDTB186 ;
+__EDTB188 := __EDTB186 ;
+IF __EDTB188 THEN
+RLEITURA_SENSOR := (  RCONV_SENSORCORRENTE) ;
+END_IF ;
+__MO_1GAIN_19 := __EDTB188 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,136
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB190 := TRUE ;
+IF __EDTB190 THEN
+(* Operator output on : = with __EDTB189 *)
+__EDTB189 := (OP60_STP = 40) ;
+ELSE
+__EDTB189 := FALSE ;
+END_IF ;
+__MO_EQUAL_22 := __EDTB189 ;
+__EDTB192 := __EDTB189 ;
+IF __EDTB192 THEN
+(* Operator output on : >= with __EDTB191 *)
+__EDTB191 := (RLEITURA_SENSOR >= RMINIMO_AQUECIMENTO) ;
+ELSE
+__EDTB191 := FALSE ;
+END_IF ;
+__MO_GREATEQUAL_12 := __EDTB191 ;
+__EDTB194 := __EDTB191 ;
+IF __EDTB194 THEN
+(* Operator output on : <= with __EDTB193 *)
+__EDTB193 := (RLEITURA_SENSOR <= RMAXIMO_AQUECIMENTO) ;
+ELSE
+__EDTB193 := FALSE ;
+END_IF ;
+__MO_LESSEQUAL_9 := __EDTB193 ;
+__EDTB195 := __EDTB193 ;
+IF __EDTB195 THEN
+(*Set coil*)
+OP60_AP := TRUE ;
+END_IF ;
+AQ_OK := __EDTB193 ;
+__EDTB196 := __EDTB193 ;
+IF __EDTB196 THEN
+OP60_STP := (  0) ;
+END_IF ;
+__MO_1GAIN_20 := __EDTB196 ;
+__EDTB197 := __EDTB196 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,141
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB199 := TRUE ;
+IF __EDTB199 THEN
+(* Operator output on : = with __EDTB198 *)
+__EDTB198 := (OP60_STP = 40) ;
+ELSE
+__EDTB198 := FALSE ;
+END_IF ;
+__MO_EQUAL_23 := __EDTB198 ;
+__EDTB201 := __EDTB198 ;
+IF __EDTB201 THEN
+(* Operator output on : < with __EDTB200 *)
+__EDTB200 := (RLEITURA_SENSOR < RMINIMO_AQUECIMENTO) ;
+ELSE
+__EDTB200 := FALSE ;
+END_IF ;
+__MO_LESS_5 := __EDTB200 ;
+__EDTB202 := __EDTB200 ;
+__EDTB204 := __EDTB198 ;
+IF __EDTB204 THEN
+(* Operator output on : > with __EDTB203 *)
+__EDTB203 := (RLEITURA_CELULA > RMAXIMO_AQUECIMENTO) ;
+ELSE
+__EDTB203 := FALSE ;
+END_IF ;
+__MO_GREAT_3 := __EDTB203 ;
+__EDTB205 := __EDTB203 ;
+__EDTB206 := (__EDTB202 OR __EDTB205) ;
+__EDTB207 := __EDTB206 ;
+IF __EDTB207 THEN
+(*Set coil*)
+BOP60_ALERTA_08 := TRUE ;
+END_IF ;
+__EDTB208 := __EDTB206 ;
+IF __EDTB208 THEN
+OP60_STP := (  100) ;
+END_IF ;
+__MO_1GAIN_21 := __EDTB208 ;
+__EDTB209 := __EDTB208 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*PASSO 100 - RESET DE FALHAS*)
+__STEPPRAGMA
+0,148
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB211 := TRUE ;
+IF __EDTB211 THEN
+(* Operator output on : = with __EDTB210 *)
+__EDTB210 := (OP60_STP = 100) ;
+ELSE
+__EDTB210 := FALSE ;
+END_IF ;
+__MO_EQUAL_24 := __EDTB210 ;
+; (*Pulse detection on : _IO_EM_DI_17 with __MEMO__3___IO_EM_DI_17 *)
+__EDTB212 := __EDTB210 AND (_IO_EM_DI_17 AND NOT(__MEMO__3___IO_EM_DI_17)) ;
+; (*Pulse detection on : _IO_EM_DI_26 with __MEMO__4___IO_EM_DI_26 *)
+__EDTB213 := __EDTB210 AND (_IO_EM_DI_26 AND NOT(__MEMO__4___IO_EM_DI_26)) ;
+__EDTB214 := (__EDTB212 OR __EDTB213) ;
+__EDTB215 := __EDTB214 ;
+IF __EDTB215 THEN
+(*Reset coil*)
+BOP60_ALERTA_00 := FALSE ;
+END_IF ;
+__EDTB216 := __EDTB214 ;
+IF __EDTB216 THEN
+(*Reset coil*)
+BOP60_ALERTA_01 := FALSE ;
+END_IF ;
+__EDTB217 := __EDTB214 ;
+IF __EDTB217 THEN
+(*Reset coil*)
+BOP60_ALERTA_03 := FALSE ;
+END_IF ;
+__EDTB218 := __EDTB214 ;
+IF __EDTB218 THEN
+(*Reset coil*)
+BOP60_ALERTA_04 := FALSE ;
+END_IF ;
+__EDTB219 := __EDTB214 ;
+IF __EDTB219 THEN
+(*Reset coil*)
+BOP60_ALERTA_05 := FALSE ;
+END_IF ;
+__EDTB220 := __EDTB214 ;
+IF __EDTB220 THEN
+(*Reset coil*)
+BOP60_ALERTA_06 := FALSE ;
+END_IF ;
+__EDTB221 := __EDTB214 ;
+IF __EDTB221 THEN
+(*Reset coil*)
+BOP60_ALERTA_07 := FALSE ;
+END_IF ;
+__EDTB222 := __EDTB214 ;
+IF __EDTB222 THEN
+(*Reset coil*)
+BOP60_ALERTA_08 := FALSE ;
+END_IF ;
+__EDTB223 := __EDTB214 ;
+IF __EDTB223 THEN
+(*Reset coil*)
+BOP60_ALERTA_09 := FALSE ;
+END_IF ;
+__EDTB224 := __EDTB214 ;
+IF __EDTB224 THEN
+(*Reset coil*)
+BCLP_MOV0 := FALSE ;
+END_IF ;
+__EDTB225 := __EDTB214 ;
+IF __EDTB225 THEN
+OP60_STP := (  0) ;
+END_IF ;
+__MO_1GAIN_22 := __EDTB225 ;
+__EDTB226 := __EDTB225 ;
+
+(*************** Code for the end of Rung **************)
+__MEMO__3___IO_EM_DI_17 := _IO_EM_DI_17 ; (*Pulse detection on : _IO_EM_DI_17 with __MEMO__3___IO_EM_DI_17 *)
+__MEMO__4___IO_EM_DI_26 := _IO_EM_DI_26 ; (*Pulse detection on : _IO_EM_DI_26 with __MEMO__4___IO_EM_DI_26 *)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,161
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+STR_IMPRIME := OP60_AP ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,163
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB227 := COUNT_UP ;
+__EDTB228 := OP60_AP ;
+(* FB call: CTUD *)
+CTUD_1((__EDTB227 OR __EDTB228), COUNT_DOWN, OP60_CT_RS, , NPRODUCAO) ;
+NTOTAL := CTUD_1.CV ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Code for the end of File **************)
+__GL __LG0000 ;
+
+
+
+(*************** Local Symbols table *******************)
+(* __EDTB1 *)
+(* __EDTB2 *)
+(* __EDTB3 *)
+(* __EDTB4 *)
+(* __EDTB5 *)
+(* __EDTB6 *)
+(* __EDTB7 *)
+(* __EDTB8 *)
+(* __EDTB9 *)
+(* __EDTB10 *)
+(* __EDTB11 *)
+(* __EDTB12 *)
+(* __EDTB13 *)
+(* __EDTB14 *)
+(* __EDTB15 *)
+(* __EDTB16 *)
+(* __EDTB17 *)
+(* __EDTB18 *)
+(* __EDTB19 *)
+(* __EDTB20 *)
+(* __EDTB21 *)
+(* __EDTB22 *)
+(* __EDTB23 *)
+(* __EDTB24 *)
+(* __MEMO__1___IO_EM_DI_17 *)
+(* __EDTB25 *)
+(* __EDTB26 *)
+(* __EDTB27 *)
+(* __EDTB28 *)
+(* __EDTB29 *)
+(* __EDTB30 *)
+(* __EDTB31 *)
+(* __MEMO__2___IO_EM_DI_17 *)
+(* __EDTB32 *)
+(* __EDTB33 *)
+(* __EDTB34 *)
+(* __EDTB35 *)
+(* __EDTB36 *)
+(* __EDTB37 *)
+(* __EDTB38 *)
+(* __EDTB39 *)
+(* __EDTB40 *)
+(* __EDTB41 *)
+(* __EDTB42 *)
+(* __EDTB43 *)
+(* __EDTB44 *)
+(* __EDTB45 *)
+(* __EDTB46 *)
+(* __EDTB47 *)
+(* __EDTB48 *)
+(* __EDTB49 *)
+(* __EDTB50 *)
+(* __EDTB51 *)
+(* __EDTB52 *)
+(* __EDTB53 *)
+(* __EDTB54 *)
+(* __EDTB55 *)
+(* __EDTB56 *)
+(* __EDTB57 *)
+(* __EDTB58 *)
+(* __EDTB59 *)
+(* __EDTB60 *)
+(* __EDTB61 *)
+(* __EDTB62 *)
+(* __EDTB63 *)
+(* __EDTB64 *)
+(* __EDTB65 *)
+(* __EDTB66 *)
+(* __EDTB67 *)
+(* __EDTB68 *)
+(* __EDTB69 *)
+(* __EDTB70 *)
+(* __EDTB71 *)
+(* __EDTB72 *)
+(* __EDTB73 *)
+(* __EDTB74 *)
+(* __EDTB75 *)
+(* __EDTB76 *)
+(* __EDTB77 *)
+(* __EDTB78 *)
+(* __EDTB79 *)
+(* __EDTB80 *)
+(* __EDTB81 *)
+(* __EDTB82 *)
+(* __EDTB83 *)
+(* __EDTB84 *)
+(* __EDTB85 *)
+(* __EDTB86 *)
+(* __EDTB87 *)
+(* __EDTB88 *)
+(* __EDTB89 *)
+(* __EDTB90 *)
+(* __EDTB91 *)
+(* __EDTB92 *)
+(* __EDTB93 *)
+(* __EDTB94 *)
+(* __EDTB95 *)
+(* __EDTB96 *)
+(* __EDTB97 *)
+(* __EDTB98 *)
+(* __EDTB99 *)
+(* __EDTB100 *)
+(* __EDTB101 *)
+(* __EDTB102 *)
+(* __EDTB103 *)
+(* __EDTB104 *)
+(* __EDTB105 *)
+(* __EDTB106 *)
+(* __EDTB107 *)
+(* __EDTB108 *)
+(* __EDTB109 *)
+(* __EDTB110 *)
+(* __EDTB111 *)
+(* __EDTB112 *)
+(* __EDTB113 *)
+(* __EDTB114 *)
+(* __EDTB115 *)
+(* __EDTB116 *)
+(* __EDTB117 *)
+(* __EDTB118 *)
+(* __EDTB119 *)
+(* __EDTB120 *)
+(* __EDTB121 *)
+(* __EDTB122 *)
+(* __EDTB123 *)
+(* __EDTB124 *)
+(* __EDTB125 *)
+(* __EDTB126 *)
+(* __EDTB127 *)
+(* __EDTB128 *)
+(* __EDTB129 *)
+(* __EDTB130 *)
+(* __EDTB131 *)
+(* __EDTB132 *)
+(* __EDTB133 *)
+(* __EDTB134 *)
+(* __EDTB135 *)
+(* __EDTB136 *)
+(* __EDTB137 *)
+(* __EDTB138 *)
+(* __EDTB139 *)
+(* __EDTB140 *)
+(* __EDTB141 *)
+(* __EDTB142 *)
+(* __EDTB143 *)
+(* __EDTB144 *)
+(* __EDTB145 *)
+(* __EDTB146 *)
+(* __EDTB147 *)
+(* __EDTB148 *)
+(* __EDTB149 *)
+(* __EDTB150 *)
+(* __EDTB151 *)
+(* __EDTB152 *)
+(* __EDTB153 *)
+(* __EDTB154 *)
+(* __EDTB155 *)
+(* __EDTB156 *)
+(* __EDTB157 *)
+(* __EDTB158 *)
+(* __EDTB159 *)
+(* __EDTB160 *)
+(* __EDTB161 *)
+(* __EDTB162 *)
+(* __EDTB163 *)
+(* __EDTB164 *)
+(* __EDTB165 *)
+(* __EDTB166 *)
+(* __EDTB167 *)
+(* __EDTB168 *)
+(* __EDTB169 *)
+(* __EDTB170 *)
+(* __EDTB171 *)
+(* __EDTB172 *)
+(* __EDTB173 *)
+(* __EDTB174 *)
+(* __EDTB175 *)
+(* __EDTB176 *)
+(* __EDTB177 *)
+(* __EDTB178 *)
+(* __EDTB179 *)
+(* __EDTB180 *)
+(* __EDTB181 *)
+(* __EDTB182 *)
+(* __EDTB183 *)
+(* __EDTB184 *)
+(* __EDTB185 *)
+(* __EDTB186 *)
+(* __EDTB187 *)
+(* __EDTB188 *)
+(* __EDTB189 *)
+(* __EDTB190 *)
+(* __EDTB191 *)
+(* __EDTB192 *)
+(* __EDTB193 *)
+(* __EDTB194 *)
+(* __EDTB195 *)
+(* __EDTB196 *)
+(* __EDTB197 *)
+(* __EDTB198 *)
+(* __EDTB199 *)
+(* __EDTB200 *)
+(* __EDTB201 *)
+(* __EDTB202 *)
+(* __EDTB203 *)
+(* __EDTB204 *)
+(* __EDTB205 *)
+(* __EDTB206 *)
+(* __EDTB207 *)
+(* __EDTB208 *)
+(* __EDTB209 *)
+(* __EDTB210 *)
+(* __EDTB211 *)
+(* __MEMO__3___IO_EM_DI_17 *)
+(* __EDTB212 *)
+(* __MEMO__4___IO_EM_DI_26 *)
+(* __EDTB213 *)
+(* __EDTB214 *)
+(* __EDTB215 *)
+(* __EDTB216 *)
+(* __EDTB217 *)
+(* __EDTB218 *)
+(* __EDTB219 *)
+(* __EDTB220 *)
+(* __EDTB221 *)
+(* __EDTB222 *)
+(* __EDTB223 *)
+(* __EDTB224 *)
+(* __EDTB225 *)
+(* __EDTB226 *)
+(* __EDTB227 *)
+(* __EDTB228 *)
+

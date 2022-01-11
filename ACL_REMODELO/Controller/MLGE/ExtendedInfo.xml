@@ -6,23 +6,20 @@
   <AcfElementGuid Guid="1f33a682-fca2-4228-92de-2a5738e653a4">
     <File>DATA_HORA.AcfMlge</File>
   </AcfElementGuid>
-  <AcfElementGuid Guid="200e0672-6dbf-4e3f-b8e7-4d98320bdd8b">
-    <File>Prog1.AcfMlge</File>
-  </AcfElementGuid>
-  <AcfElementGuid Guid="2b6c4d40-f5b0-40c3-94c2-8682c32d80c4">
-    <File>OP50.AcfMlge</File>
-  </AcfElementGuid>
-  <AcfElementGuid Guid="303c6879-d285-49d9-939e-9c274a0bc427">
-    <File>ALERTAS.AcfMlge</File>
-  </AcfElementGuid>
-  <AcfElementGuid Guid="4f41d7a3-7585-4ab6-9c48-a8ec89d57659">
-    <File>OP30OLD.AcfMlge</File>
+  <AcfElementGuid Guid="42a460ca-2807-41cc-b38d-7554b565c544">
+    <File>FB_NW.AcfMlge</File>
   </AcfElementGuid>
   <AcfElementGuid Guid="53d03a7a-6729-491d-bf59-f6b191aea4cf">
     <File>IHM.AcfMlge</File>
   </AcfElementGuid>
+  <AcfElementGuid Guid="5de23e12-09f0-411c-9cf6-2abf4659ecde">
+    <File>OP50.AcfMlge</File>
+  </AcfElementGuid>
   <AcfElementGuid Guid="722bd5fa-20ec-41dd-b697-23c135c01066">
     <File>HISTORICO.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="733695f3-e5e5-4e33-a216-66c6c25b5102">
+    <File>OP60.AcfMlge</File>
   </AcfElementGuid>
   <AcfElementGuid Guid="760acd6c-71b9-4575-8270-d1233c156af5">
     <File>PARTN.AcfMlge</File>
@@ -34,7 +31,7 @@
     <File>CC1.AcfMlge</File>
   </AcfElementGuid>
   <AcfElementGuid Guid="7842bbf5-9c40-40fc-9763-4765f9e6b182">
-    <File>MOTO_MOVIMENTOS.AcfMlge</File>
+    <File>MT.AcfMlge</File>
   </AcfElementGuid>
   <AcfElementGuid Guid="794b6b85-8936-4844-8ecf-85d0f1565fc1">
     <File>STRINGS.AcfMlge</File>
@@ -45,11 +42,17 @@
   <AcfElementGuid Guid="84790b4b-9882-44e7-9b31-22d8f66afb4b">
     <File>SEGURANCA.AcfMlge</File>
   </AcfElementGuid>
+  <AcfElementGuid Guid="85225841-cbd4-4bbb-8aa1-e2255f140a9d">
+    <File>FB_MOV.AcfMlge</File>
+  </AcfElementGuid>
   <AcfElementGuid Guid="8ae50ef6-6910-423a-9dc0-ae56afe79219">
     <File>Entradas.AcfMlge</File>
   </AcfElementGuid>
   <AcfElementGuid Guid="8f3ae2b4-6ef3-49e5-b557-57da016c80df">
     <File>FB_BM.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="93ad9f7e-6a37-4fec-aea4-1a44f4a077a7">
+    <File>FB_IMP.AcfMlge</File>
   </AcfElementGuid>
   <AcfElementGuid Guid="93f8abe3-59ed-4a7f-b359-3ba073e6a271">
     <File>FB_PV.AcfMlge</File>
@@ -57,11 +60,8 @@
   <AcfElementGuid Guid="94879564-0161-4a48-a058-2a3329c3c245">
     <File>ASCII_PROG.AcfMlge</File>
   </AcfElementGuid>
-  <AcfElementGuid Guid="a7930b9b-dcee-4f3f-b399-2dc28db7c088">
-    <File>Entrar.AcfMlge</File>
-  </AcfElementGuid>
-  <AcfElementGuid Guid="a9f6ef95-66f0-4f3d-b643-d83edcc26d37">
-    <File>OP40_ACCELO.AcfMlge</File>
+  <AcfElementGuid Guid="9d379ee1-bf4d-4f87-a7b0-2c452fb15d57">
+    <File>SA1.AcfMlge</File>
   </AcfElementGuid>
   <AcfElementGuid Guid="c54898a8-cabd-41dd-91e9-aeb0d731a519">
     <File>TORK_MODULE.AcfMlge</File>
@@ -69,11 +69,17 @@
   <AcfElementGuid Guid="cd70533b-220b-46b2-a76b-51f5ecbd672a">
     <File>OP60_ACCELO.AcfMlge</File>
   </AcfElementGuid>
+  <AcfElementGuid Guid="ce2ca469-d128-411b-9603-268bdd1c5137">
+    <File>OP40.AcfMlge</File>
+  </AcfElementGuid>
   <AcfElementGuid Guid="ceb6e226-d309-4403-8a94-8cb2781f9d01">
     <File>Analogicas.AcfMlge</File>
   </AcfElementGuid>
   <AcfElementGuid Guid="d174ee9d-668f-4554-b14c-bb4433d88d9a">
     <File>OP20.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="d25c6ee9-3578-4c22-9675-499800f8e172">
+    <File>FB_INFO.AcfMlge</File>
   </AcfElementGuid>
   <AcfElementGuid Guid="d783e38b-af05-4c52-9d4f-f8e540b75a38">
     <File>Modelo.AcfMlge</File>

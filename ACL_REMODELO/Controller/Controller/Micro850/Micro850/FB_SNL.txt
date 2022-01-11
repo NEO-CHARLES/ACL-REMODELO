@@ -1,0 +1,206 @@
+(****** QuickLD compiler *******************************)
+(****** Copyright Rockwell Automation Canada, Ltd ******)
+(****** ST *********************************************)
+
+(*************** Rung **********************************)
+(*20210708 - ADICIONAMO MODO HIBERNAÇÃO*)
+__STEPPRAGMA
+0,1
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB1 := IN ;
+(* FB call: TON *)
+TON_2(__EDTB1 AND BLNK, T#500MS) ;
+__EDTB2 := TON_2.Q ;
+IF __EDTB2 THEN
+(*Reset coil*)
+BLNK := FALSE ;
+END_IF ;
+(* FB call: TON *)
+TON_1(__EDTB1 AND NOT(BLNK), T#500MS) ;
+__EDTB3 := TON_1.Q ;
+IF __EDTB3 THEN
+(*Set coil*)
+BLNK := TRUE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,6
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB4 := IN ;
+__EDTB6 := __EDTB4 ;
+IF __EDTB6 THEN
+(* Operator output on : <> with __EDTB5 *)
+__EDTB5 := (STP <> NW) ;
+ELSE
+__EDTB5 := FALSE ;
+END_IF ;
+__MO_DIFF_1 := __EDTB5 ;
+__EDTB7 := __EDTB5 ;
+IF __EDTB7 THEN
+NW := (  STP) ;
+END_IF ;
+__MO_1GAIN_1 := __EDTB7 ;
+__EDTB8 := __EDTB7 ;
+__EDTB10 := __EDTB4 ;
+IF __EDTB10 THEN
+(* Operator output on : = with __EDTB9 *)
+__EDTB9 := (STP = NW) ;
+ELSE
+__EDTB9 := FALSE ;
+END_IF ;
+__MO_EQUAL_1 := __EDTB9 ;
+(* FB call: TON *)
+TON_3(__EDTB9, T#5M) ;
+HIB := TON_3.Q ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*CONTROLE SINALIZADORES 
+LD VM*)
+__STEPPRAGMA
+0,13
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB11 := IN AND NOT(HIB) ;
+__EDTB13 := __EDTB11 ;
+IF __EDTB13 THEN
+(* Operator output on : = with __EDTB12 *)
+__EDTB12 := (STP = 500) ;
+ELSE
+__EDTB12 := FALSE ;
+END_IF ;
+__MO_EQUAL_2 := __EDTB12 ;
+__EDTB14 := __EDTB12 ;
+__EDTB16 := __EDTB11 ;
+IF __EDTB16 THEN
+(* Operator output on : = with __EDTB15 *)
+__EDTB15 := (STP = 501) ;
+ELSE
+__EDTB15 := FALSE ;
+END_IF ;
+__MO_EQUAL_3 := __EDTB15 ;
+__EDTB17 := __EDTB15 AND BLNK ;
+RD := (__EDTB14 OR __EDTB17) ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*CONTROLE SINALIZADORES 
+LD AM*)
+__STEPPRAGMA
+0,20
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB18 := IN AND NOT(HIB) ;
+__EDTB20 := __EDTB18 ;
+IF __EDTB20 THEN
+(* Operator output on : > with __EDTB19 *)
+__EDTB19 := (STP > 10) ;
+ELSE
+__EDTB19 := FALSE ;
+END_IF ;
+__MO_GREAT_1 := __EDTB19 ;
+__EDTB22 := __EDTB19 ;
+IF __EDTB22 THEN
+(* Operator output on : < with __EDTB21 *)
+__EDTB21 := (STP < 500) ;
+ELSE
+__EDTB21 := FALSE ;
+END_IF ;
+__MO_LESS_1 := __EDTB21 ;
+__EDTB23 := __EDTB21 ;
+__EDTB25 := __EDTB18 ;
+IF __EDTB25 THEN
+(* Operator output on : = with __EDTB24 *)
+__EDTB24 := (STP = 1) ;
+ELSE
+__EDTB24 := FALSE ;
+END_IF ;
+__MO_EQUAL_4 := __EDTB24 ;
+__EDTB26 := __EDTB24 AND BLNK ;
+YL := (__EDTB23 OR __EDTB26) ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*CONTROLE SINALIZADORES 
+LD VD*)
+__STEPPRAGMA
+0,27
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB27 := IN AND NOT(HIB) ;
+__EDTB29 := __EDTB27 ;
+IF __EDTB29 THEN
+(* Operator output on : = with __EDTB28 *)
+__EDTB28 := (STP = 10) ;
+ELSE
+__EDTB28 := FALSE ;
+END_IF ;
+__MO_EQUAL_5 := __EDTB28 ;
+__EDTB30 := __EDTB28 ;
+__EDTB32 := __EDTB27 ;
+IF __EDTB32 THEN
+(* Operator output on : = with __EDTB31 *)
+__EDTB31 := (STP = 0) ;
+ELSE
+__EDTB31 := FALSE ;
+END_IF ;
+__MO_EQUAL_6 := __EDTB31 ;
+__EDTB33 := __EDTB31 AND BLNK ;
+GR := (__EDTB30 OR __EDTB33) ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Code for the end of File **************)
+__GL __LG0000 ;
+
+
+
+(*************** Local Symbols table *******************)
+(* __EDTB1 *)
+(* __EDTB2 *)
+(* __EDTB3 *)
+(* __EDTB4 *)
+(* __EDTB5 *)
+(* __EDTB6 *)
+(* __EDTB7 *)
+(* __EDTB8 *)
+(* __EDTB9 *)
+(* __EDTB10 *)
+(* __EDTB11 *)
+(* __EDTB12 *)
+(* __EDTB13 *)
+(* __EDTB14 *)
+(* __EDTB15 *)
+(* __EDTB16 *)
+(* __EDTB17 *)
+(* __EDTB18 *)
+(* __EDTB19 *)
+(* __EDTB20 *)
+(* __EDTB21 *)
+(* __EDTB22 *)
+(* __EDTB23 *)
+(* __EDTB24 *)
+(* __EDTB25 *)
+(* __EDTB26 *)
+(* __EDTB27 *)
+(* __EDTB28 *)
+(* __EDTB29 *)
+(* __EDTB30 *)
+(* __EDTB31 *)
+(* __EDTB32 *)
+(* __EDTB33 *)
+

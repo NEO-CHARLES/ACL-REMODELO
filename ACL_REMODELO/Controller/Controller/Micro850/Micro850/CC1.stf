@@ -11,11 +11,15 @@ SOR  [0,1] (**) (**)
  BND
   
  BST  
- BST  XIC  [7,0] (*OP40_BMD*) (**)  FB  [8,0] (*TON*) (*TON_3*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*t#3S*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )
-   NXB  XIF  [7,2] (*OP40_CC1_TT*) (**)
+ BST  XIC  [7,0] (*OP40_BMD*) (**)  FB  [8,0] (*TON*) (*TON_5*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*t#3S*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )
+   NXB  
+ BST  XIC  [7,2] (*OP40_CC1_TT*) (**)
+   NXB  XIC  [7,3] (*IHM_CC1_TT*) (**)
+ BND
+
  BND
   OTS  [11,0] (*CC_TT*) (**)
-   NXB XIL [7,3] (**) (**)
+   NXB  XIC  [7,4] (*OP40_CC1_RT*) (**)  OTE  [8,4] (*CC_RT*) (**)
  BND
 
 EOR [12,0]
@@ -23,29 +27,37 @@ EOR [12,0]
 
 (*SAÍDAS*)
 
-SOR  [0,6] (**) (**)  
+SOR  [0,7] (**) (**)  
  BST  FB  [1,0] (*ANY_TO_INT*) (*64*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*CC_PKS*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*IHM_CC1_PKS*) (**) )  FB  [4,0] (*ANY_TO_INT*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*CC_AI*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*IHM_CC1_AI*) (**) )
    NXB  FB  [1,2] (*ANY_TO_INT*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*CC_SN*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*IHM_CC1_SN*) (**) )
  BND
+  
+ BST  XIC  [7,0] (*CC_AT*) (**)  OTS  [8,0] (*OP40_CC1_AT*) (**)
+   NXB  
+ BST  XIP  [7,1] (*CC_AP*) (**)  OTS  [8,1] (*OP40_CC1_AP*) (**)
+   NXB  XIP  [7,2] (*CC_RP*) (**)  OTS  [8,2] (*OP40_CC1_RP*) (**)
+ BND
 
-EOR [7,0]
+ BND
+
+EOR [9,0]
 
 
 (*ESCALA*)
 
-SOR  [0,11] (**) (**)  FB  [1,0] (*ANY_TO_REAL*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*CC_AI*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*SCL_E*) (**) )  FB  [4,0] (*SCALER*) (*SCALER_1*) ( (*EN:EN*)(**) (**)  , (*Input:*)(*SCL_E*) (**)  , (*InputMin:*)(*870.0*) (**)  , (*InputMax:*)(*4854.0*) (**)  , (*OutputMin:*)(*19.62*) (**)  , (*OutputMax:*)(*215.82*) (**) ; (*ENO:ENO*)(**) (**)  , (*Output:*)(*SCL_SN0*) (**) )
+SOR  [0,12] (**) (**)  FB  [1,0] (*ANY_TO_REAL*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*CC_AI*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*SCL_E*) (**) )  FB  [4,0] (*SCALER*) (*SCALER_1*) ( (*EN:EN*)(**) (**)  , (*Input:*)(*SCL_E*) (**)  , (*InputMin:*)(*870.0*) (**)  , (*InputMax:*)(*4854.0*) (**)  , (*OutputMin:*)(*19.62*) (**)  , (*OutputMax:*)(*215.82*) (**) ; (*ENO:ENO*)(**) (**)  , (*Output:*)(*SCL_SN0*) (**) )
 EOR [7,0]
 
 
 (*CORREÇÃO*)
 
-SOR  [0,18] (**) (**)  FB  [1,0] (***) (*65*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*SCL_SN0*) (**)  , (*i2:*)(*SCL_Ganho*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*SCL_SN1*) (**) )  FB  [4,0] (*+*) (*66*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*SCL_SN1*) (**)  , (*i2:*)(*SCL_Offset*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*SCL_SN2*) (**) )  FB  [7,0] (*ANY_TO_INT*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*SCL_SN2*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*CC_SN*) (**) )
+SOR  [0,19] (**) (**)  FB  [1,0] (***) (*65*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*SCL_SN0*) (**)  , (*i2:*)(*SCL_Ganho*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*SCL_SN1*) (**) )  FB  [4,0] (*+*) (*66*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*SCL_SN1*) (**)  , (*i2:*)(*SCL_Offset*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*SCL_SN2*) (**) )  FB  [7,0] (*ANY_TO_INT*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*SCL_SN2*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*CC_SN*) (**) )
 EOR [10,0]
 
 
 (*SETUP*)
 
-SOR  [0,22] (**) (**)  
+SOR  [0,23] (**) (**)  
  BST  XIC  [1,0] (*MD_LE*) (**)  
  BST  FB  [2,0] (*ANY_TO_REAL*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*TP1_OFFSET*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*SCL_Offset*) (**) )
    NXB  FB  [2,2] (*ANY_TO_REAL*) (*78*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*TP1_GANHO*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*SCL_Ganho*) (**) )
@@ -71,11 +83,7 @@ EOR [13,0]
 
 (*TEMPO DFE AVANÇO DO CILINDRO*)
 
-SOR  [0,31] (**) (**)  XIC  [1,0] (*CC_TT*) (**)  
- BST  OTS  [2,0] (*CC_AT*) (**)
-   NXB  FB  [2,1] (*FB_PK_V2*) (*FB_PK_V2_1*) ( (*IN:*)(**) (**)  , (*SN1:*)(*CC_SN*) (**)  , (*SN2:*)(*CC_AI*) (**)  , (*TM:*)(*T#3S*) (**)  , (*RT:*)(*CC_RT*) (**) ; (*Q:*)(**) (**)  , (*S1:*)(**) (**)  , (*PKP1:*)(*CC_PKS*) (**)  , (*PKP2:*)(*CC_PKE*) (**) )  FB  [5,1] (*FB_PV*) (*FB_PV_2*) ( (*IN:*)(**) (**)  , (*VL:*)(*CC_PKS*) (**)  , (*MX:*)(*CC_MX*) (**)  , (*MN:*)(*CC_MN*) (**) ; (*Q:*)(**) (**)  , (*AP:*)(*CC_AP*) (**)  , (*RP:*)(*CC_RP*) (**) )  OTR  [8,1] (*CC_TT*) (**)
- BND
-
+SOR  [0,32] (**) (**)  XIC  [1,0] (*CC_TT*) (**)  FB  [2,0] (*FB_PK_V2*) (*FB_PK_V2_1*) ( (*IN:*)(**) (**)  , (*SN1:*)(*CC_SN*) (**)  , (*SN2:*)(*CC_AI*) (**)  , (*TM:*)(*T#3S*) (**)  , (*RT:*)(*CC_RT*) (**) ; (*Q:*)(**) (**)  , (*S1:*)(*CC_AT*) (**)  , (*PKP1:*)(*CC_PKS*) (**)  , (*PKP2:*)(*CC_PKE*) (**) )  FB  [5,0] (*FB_PV*) (*FB_PV_2*) ( (*IN:*)(**) (**)  , (*VL:*)(*CC_PKS*) (**)  , (*MX:*)(*CC_MX*) (**)  , (*MN:*)(*CC_MN*) (**) ; (*Q:*)(**) (**)  , (*AP:*)(*CC_AP*) (**)  , (*RP:*)(*CC_RP*) (**) )  OTR  [8,0] (*CC_TT*) (**)
 EOR [9,0]
 EOF
 #end_info

@@ -1,0 +1,554 @@
+(****** QuickLD compiler *******************************)
+(****** Copyright Rockwell Automation Canada, Ltd ******)
+(****** ST *********************************************)
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,1
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB2 := TRUE ;
+IF __EDTB2 THEN
+(* Operator output on : = with __EDTB1 *)
+__EDTB1 := (STR_PASSOS = 0) ;
+ELSE
+__EDTB1 := FALSE ;
+END_IF ;
+__MO_EQUAL_1 := __EDTB1 ;
+; (*Pulse detection on : STR_IMPRIME with __MEMO__1__STR_IMPRIME *)
+__EDTB3 := __EDTB1 AND (STR_IMPRIME AND NOT(__MEMO__1__STR_IMPRIME)) ;
+ACL1_GATILHO := __EDTB3 ;
+__EDTB4 := __EDTB3 AND ACL1_GATILHO ;
+__EDTB5 := __EDTB4 ;
+IF __EDTB5 THEN
+STR_PASSOS := (  1) ;
+END_IF ;
+__MO_1GAIN_1 := __EDTB5 ;
+__EDTB6 := __EDTB5 ;
+__EDTB7 := __EDTB4 ;
+IF __EDTB7 THEN
+NMOD_ATUAL := (  IHM_MD) ;
+END_IF ;
+__MO_1GAIN_2 := __EDTB7 ;
+__EDTB8 := __EDTB7 ;
+__EDTB9 := (__EDTB6 OR __EDTB8) ;
+
+(*************** Code for the end of Rung **************)
+__MEMO__1__STR_IMPRIME := STR_IMPRIME ; (*Pulse detection on : STR_IMPRIME with __MEMO__1__STR_IMPRIME *)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,7
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB11 := TRUE ;
+IF __EDTB11 THEN
+(* Operator output on : = with __EDTB10 *)
+__EDTB10 := (STR_PASSOS = 1) ;
+ELSE
+__EDTB10 := FALSE ;
+END_IF ;
+__MO_EQUAL_2 := __EDTB10 ;
+ABL1_GATILHO := __EDTB10 ;
+__EDTB12 := __EDTB10 AND ABL1_GATILHO ;
+IF __EDTB12 THEN
+STR_PASSOS := (  2) ;
+END_IF ;
+__MO_1GAIN_3 := __EDTB12 ;
+__EDTB13 := __EDTB12 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,11
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB15 := TRUE ;
+IF __EDTB15 THEN
+(* Operator output on : = with __EDTB14 *)
+__EDTB14 := (STR_PASSOS = 2) ;
+ELSE
+__EDTB14 := FALSE ;
+END_IF ;
+__MO_EQUAL_3 := __EDTB14 ;
+AWT_GAT_00 := __EDTB14 ;
+__EDTB16 := __EDTB14 AND AWT_GAT_00 ;
+IF __EDTB16 THEN
+STR_PASSOS := (  3) ;
+END_IF ;
+__MO_1GAIN_4 := __EDTB16 ;
+__EDTB17 := __EDTB16 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,15
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB19 := TRUE ;
+IF __EDTB19 THEN
+(* Operator output on : = with __EDTB18 *)
+__EDTB18 := (STR_PASSOS = 3) ;
+ELSE
+__EDTB18 := FALSE ;
+END_IF ;
+__MO_EQUAL_4 := __EDTB18 ;
+AWT_GAT_01 := __EDTB18 ;
+__EDTB20 := __EDTB18 AND AWT_GAT_01 ;
+IF __EDTB20 THEN
+STR_PASSOS := (  4) ;
+END_IF ;
+__MO_1GAIN_5 := __EDTB20 ;
+__EDTB21 := __EDTB20 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,19
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB23 := TRUE ;
+IF __EDTB23 THEN
+(* Operator output on : = with __EDTB22 *)
+__EDTB22 := (STR_PASSOS = 4) ;
+ELSE
+__EDTB22 := FALSE ;
+END_IF ;
+__MO_EQUAL_5 := __EDTB22 ;
+AWT_GAT_02 := __EDTB22 ;
+__EDTB24 := __EDTB22 AND AWT_GAT_02 ;
+IF __EDTB24 THEN
+STR_PASSOS := (  5) ;
+END_IF ;
+__MO_1GAIN_6 := __EDTB24 ;
+__EDTB25 := __EDTB24 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,23
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB27 := TRUE ;
+IF __EDTB27 THEN
+(* Operator output on : = with __EDTB26 *)
+__EDTB26 := (STR_PASSOS = 5) ;
+ELSE
+__EDTB26 := FALSE ;
+END_IF ;
+__MO_EQUAL_6 := __EDTB26 ;
+AWT_GAT_03 := __EDTB26 ;
+__EDTB28 := __EDTB26 AND AWT_GAT_03 ;
+IF __EDTB28 THEN
+STR_PASSOS := (  6) ;
+END_IF ;
+__MO_1GAIN_7 := __EDTB28 ;
+__EDTB29 := __EDTB28 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,27
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB31 := TRUE ;
+IF __EDTB31 THEN
+(* Operator output on : = with __EDTB30 *)
+__EDTB30 := (STR_PASSOS = 6) ;
+ELSE
+__EDTB30 := FALSE ;
+END_IF ;
+__MO_EQUAL_7 := __EDTB30 ;
+AWT_GAT_04 := __EDTB30 ;
+__EDTB32 := __EDTB30 AND AWT_GAT_04 ;
+IF __EDTB32 THEN
+STR_PASSOS := (  7) ;
+END_IF ;
+__MO_1GAIN_8 := __EDTB32 ;
+__EDTB33 := __EDTB32 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,31
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB35 := TRUE ;
+IF __EDTB35 THEN
+(* Operator output on : = with __EDTB34 *)
+__EDTB34 := (STR_PASSOS = 7) ;
+ELSE
+__EDTB34 := FALSE ;
+END_IF ;
+__MO_EQUAL_8 := __EDTB34 ;
+__EDTB36 := __EDTB34 AND MD_AMAN ;
+AWT_GAT_05 := __EDTB36 ;
+__EDTB37 := __EDTB36 AND AWT_GAT_05 ;
+IF __EDTB37 THEN
+STR_PASSOS := (  9) ;
+END_IF ;
+__MO_1GAIN_9 := __EDTB37 ;
+__EDTB38 := __EDTB37 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,35
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB40 := TRUE ;
+IF __EDTB40 THEN
+(* Operator output on : = with __EDTB39 *)
+__EDTB39 := (STR_PASSOS = 7) ;
+ELSE
+__EDTB39 := FALSE ;
+END_IF ;
+__MO_EQUAL_9 := __EDTB39 ;
+__EDTB41 := __EDTB39 AND MD_AREM ;
+AWT_GAT_06 := __EDTB41 ;
+__EDTB42 := __EDTB41 AND AWT_GAT_06 ;
+IF __EDTB42 THEN
+STR_PASSOS := (  9) ;
+END_IF ;
+__MO_1GAIN_10 := __EDTB42 ;
+__EDTB43 := __EDTB42 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,39
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB45 := TRUE ;
+IF __EDTB45 THEN
+(* Operator output on : = with __EDTB44 *)
+__EDTB44 := (STR_PASSOS = 9) ;
+ELSE
+__EDTB44 := FALSE ;
+END_IF ;
+__MO_EQUAL_10 := __EDTB44 ;
+AWT_GAT_07 := __EDTB44 ;
+__EDTB46 := __EDTB44 AND AWT_GAT_07 ;
+IF __EDTB46 THEN
+STR_PASSOS := (  10) ;
+END_IF ;
+__MO_1GAIN_11 := __EDTB46 ;
+__EDTB47 := __EDTB46 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,43
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB49 := TRUE ;
+IF __EDTB49 THEN
+(* Operator output on : = with __EDTB48 *)
+__EDTB48 := (STR_PASSOS = 10) ;
+ELSE
+__EDTB48 := FALSE ;
+END_IF ;
+__MO_EQUAL_11 := __EDTB48 ;
+AWT_GAT_08 := __EDTB48 ;
+__EDTB50 := __EDTB48 AND AWT_GAT_08 ;
+IF __EDTB50 THEN
+STR_PASSOS := (  11) ;
+END_IF ;
+__MO_1GAIN_12 := __EDTB50 ;
+__EDTB51 := __EDTB50 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,47
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB53 := TRUE ;
+IF __EDTB53 THEN
+(* Operator output on : = with __EDTB52 *)
+__EDTB52 := (STR_PASSOS = 11) ;
+ELSE
+__EDTB52 := FALSE ;
+END_IF ;
+__MO_EQUAL_12 := __EDTB52 ;
+AWT_GAT_09 := __EDTB52 ;
+__EDTB54 := __EDTB52 AND AWT_GAT_09 ;
+IF __EDTB54 THEN
+STR_PASSOS := (  12) ;
+END_IF ;
+__MO_1GAIN_13 := __EDTB54 ;
+__EDTB55 := __EDTB54 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,51
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB57 := TRUE ;
+IF __EDTB57 THEN
+(* Operator output on : = with __EDTB56 *)
+__EDTB56 := (STR_PASSOS = 12) ;
+ELSE
+__EDTB56 := FALSE ;
+END_IF ;
+__MO_EQUAL_13 := __EDTB56 ;
+AWT_GAT_10 := __EDTB56 ;
+__EDTB58 := __EDTB56 AND AWT_GAT_10 ;
+IF __EDTB58 THEN
+STR_PASSOS := (  13) ;
+END_IF ;
+__MO_1GAIN_14 := __EDTB58 ;
+__EDTB59 := __EDTB58 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,55
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB61 := TRUE ;
+IF __EDTB61 THEN
+(* Operator output on : = with __EDTB60 *)
+__EDTB60 := (STR_PASSOS = 13) ;
+ELSE
+__EDTB60 := FALSE ;
+END_IF ;
+__MO_EQUAL_14 := __EDTB60 ;
+AWT_GAT_11 := __EDTB60 ;
+__EDTB62 := __EDTB60 AND AWT_GAT_11 ;
+IF __EDTB62 THEN
+STR_PASSOS := (  14) ;
+END_IF ;
+__MO_1GAIN_15 := __EDTB62 ;
+__EDTB63 := __EDTB62 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,59
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB65 := TRUE ;
+IF __EDTB65 THEN
+(* Operator output on : = with __EDTB64 *)
+__EDTB64 := (STR_PASSOS = 14) ;
+ELSE
+__EDTB64 := FALSE ;
+END_IF ;
+__MO_EQUAL_15 := __EDTB64 ;
+AWT_GAT_12 := __EDTB64 ;
+__EDTB66 := __EDTB64 AND AWT_GAT_12 ;
+IF __EDTB66 THEN
+STR_PASSOS := (  15) ;
+END_IF ;
+__MO_1GAIN_16 := __EDTB66 ;
+__EDTB67 := __EDTB66 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,63
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB69 := TRUE ;
+IF __EDTB69 THEN
+(* Operator output on : = with __EDTB68 *)
+__EDTB68 := (STR_PASSOS = 15) ;
+ELSE
+__EDTB68 := FALSE ;
+END_IF ;
+__MO_EQUAL_16 := __EDTB68 ;
+AWT_GAT_13 := __EDTB68 ;
+__EDTB70 := __EDTB68 AND AWT_GAT_13 ;
+IF __EDTB70 THEN
+STR_PASSOS := (  16) ;
+END_IF ;
+__MO_1GAIN_17 := __EDTB70 ;
+__EDTB71 := __EDTB70 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,67
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB73 := TRUE ;
+IF __EDTB73 THEN
+(* Operator output on : = with __EDTB72 *)
+__EDTB72 := (STR_PASSOS = 16) ;
+ELSE
+__EDTB72 := FALSE ;
+END_IF ;
+__MO_EQUAL_17 := __EDTB72 ;
+AWT_GAT_14 := __EDTB72 ;
+__EDTB74 := __EDTB72 AND AWT_GAT_14 ;
+IF __EDTB74 THEN
+STR_PASSOS := (  17) ;
+END_IF ;
+__MO_1GAIN_18 := __EDTB74 ;
+__EDTB75 := __EDTB74 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,71
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB77 := TRUE ;
+IF __EDTB77 THEN
+(* Operator output on : = with __EDTB76 *)
+__EDTB76 := (STR_PASSOS = 17) ;
+ELSE
+__EDTB76 := FALSE ;
+END_IF ;
+__MO_EQUAL_18 := __EDTB76 ;
+AWT_GAT_15 := __EDTB76 ;
+__EDTB78 := __EDTB76 ;
+IF __EDTB78 THEN
+STR_PASSOS := (  0) ;
+END_IF ;
+__MO_1GAIN_19 := __EDTB78 ;
+__EDTB79 := __EDTB78 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Code for the end of File **************)
+__GL __LG0000 ;
+
+
+
+(*************** Local Symbols table *******************)
+(* __EDTB1 *)
+(* __EDTB2 *)
+(* __MEMO__1__STR_IMPRIME *)
+(* __EDTB3 *)
+(* __EDTB4 *)
+(* __EDTB5 *)
+(* __EDTB6 *)
+(* __EDTB7 *)
+(* __EDTB8 *)
+(* __EDTB9 *)
+(* __EDTB10 *)
+(* __EDTB11 *)
+(* __EDTB12 *)
+(* __EDTB13 *)
+(* __EDTB14 *)
+(* __EDTB15 *)
+(* __EDTB16 *)
+(* __EDTB17 *)
+(* __EDTB18 *)
+(* __EDTB19 *)
+(* __EDTB20 *)
+(* __EDTB21 *)
+(* __EDTB22 *)
+(* __EDTB23 *)
+(* __EDTB24 *)
+(* __EDTB25 *)
+(* __EDTB26 *)
+(* __EDTB27 *)
+(* __EDTB28 *)
+(* __EDTB29 *)
+(* __EDTB30 *)
+(* __EDTB31 *)
+(* __EDTB32 *)
+(* __EDTB33 *)
+(* __EDTB34 *)
+(* __EDTB35 *)
+(* __EDTB36 *)
+(* __EDTB37 *)
+(* __EDTB38 *)
+(* __EDTB39 *)
+(* __EDTB40 *)
+(* __EDTB41 *)
+(* __EDTB42 *)
+(* __EDTB43 *)
+(* __EDTB44 *)
+(* __EDTB45 *)
+(* __EDTB46 *)
+(* __EDTB47 *)
+(* __EDTB48 *)
+(* __EDTB49 *)
+(* __EDTB50 *)
+(* __EDTB51 *)
+(* __EDTB52 *)
+(* __EDTB53 *)
+(* __EDTB54 *)
+(* __EDTB55 *)
+(* __EDTB56 *)
+(* __EDTB57 *)
+(* __EDTB58 *)
+(* __EDTB59 *)
+(* __EDTB60 *)
+(* __EDTB61 *)
+(* __EDTB62 *)
+(* __EDTB63 *)
+(* __EDTB64 *)
+(* __EDTB65 *)
+(* __EDTB66 *)
+(* __EDTB67 *)
+(* __EDTB68 *)
+(* __EDTB69 *)
+(* __EDTB70 *)
+(* __EDTB71 *)
+(* __EDTB72 *)
+(* __EDTB73 *)
+(* __EDTB74 *)
+(* __EDTB75 *)
+(* __EDTB76 *)
+(* __EDTB77 *)
+(* __EDTB78 *)
+(* __EDTB79 *)
+
