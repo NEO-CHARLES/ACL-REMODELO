@@ -112,8 +112,8 @@
 >:gem:
 
 ## Créditos
-[<img src="https://avatars.githubusercontent.com/u/65552370?s=400&u=a51a36b92ee23c192a91f55a1df334b5f9c3276e&v=4" width=115 > <br> <sub> Charles Oliveira </sub>](https://github.com/NEO-CHARLES) |[<img src="https://avatars.githubusercontent.com/u/65552370?s=400&u=a51a36b92ee23c192a91f55a1df334b5f9c3276e&v=4" width=115 > <br> <sub> Charles Oliveira </sub>](https://github.com/NEO-CHARLES) |
-| :---: | :---: |
+[<img src="https://avatars.githubusercontent.com/u/65552370?s=400&u=a51a36b92ee23c192a91f55a1df334b5f9c3276e&v=4" width=115 > <br> <sub> Charles Oliveira </sub>](https://github.com/NEO-CHARLES) |<br> <br> <br> <br>Contato:<br>neo_charles@outlook.com<br>+55 15 99737 8000|
+| :---: | :--- |
 
 ## Tarefas em aberto
 >:pushpin:
