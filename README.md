@@ -1,7 +1,9 @@
 <h1 align="center"> ACL_REMODELO </h1>
 
-## Tópicos
+<img src="https://user-images.githubusercontent.com/65552370/152361291-af7d112e-b3bd-4e3c-b569-31171f0e42bd.JPG" width=400 > <br> <sub> Tela de setup </sub> | <img src="https://user-images.githubusercontent.com/65552370/152365506-99267c04-079f-4a46-b2f6-22ba97518966.png" width=590> <br> <sub> CLP </sub>|
+|---|---|
 
+## Tópicos
 >:small_blue_diamond: [Descrição do projeto](#descri%C3%A7%C3%A3o)
 >
 >:small_blue_diamond: [Status](#status)
