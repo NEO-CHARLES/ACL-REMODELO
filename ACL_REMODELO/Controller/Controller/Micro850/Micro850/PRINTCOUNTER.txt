@@ -1,0 +1,58 @@
+(****** QuickLD compiler *******************************)
+(****** Copyright Rockwell Automation Canada, Ltd ******)
+(****** ST *********************************************)
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,1
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB2 := IN AND NOT(TRIGGER) ;
+IF __EDTB2 THEN
+(* Operator output on : > with __EDTB1 *)
+__EDTB1 := (AMOUNT > 0) ;
+ELSE
+__EDTB1 := FALSE ;
+END_IF ;
+__MO_GREAT_1 := __EDTB1 ;
+(* FB call: TON *)
+TON_1(__EDTB1, T#500MS) ;
+__EDTB3 := TON_1.Q ;
+IF __EDTB3 THEN
+(*Set coil*)
+TRIGGER := TRUE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,5
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+; (*Pulse detection on : PRINTSENT with __MEMO__1__PRINTSENT *)
+__EDTB4 := IN AND TRIGGER AND (PRINTSENT AND NOT(__MEMO__1__PRINTSENT)) ;
+IF __EDTB4 THEN
+(*Reset coil*)
+TRIGGER := FALSE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+__MEMO__1__PRINTSENT := PRINTSENT ; (*Pulse detection on : PRINTSENT with __MEMO__1__PRINTSENT *)
+
+
+(*************** Code for the end of File **************)
+__GL __LG0000 ;
+
+
+
+(*************** Local Symbols table *******************)
+(* __EDTB1 *)
+(* __EDTB2 *)
+(* __EDTB3 *)
+(* __MEMO__1__PRINTSENT *)
+(* __EDTB4 *)
+

@@ -26,7 +26,7 @@ OUT
  
 IF ENA THEN
 	IF INDICE < 7 THEN
-		VET[0,INDICE] :=  DIA + '/' + MES +'/'+ ANO;
+		VET[0,INDICE] :=  DIA + '/' + MES +'/'+ DT_Year;
  		VET[1,INDICE] := HORA + ':' + MINUTO +':'+ SEGUNDO;
 		VET[2,INDICE] := VAR_IN;
 	END_IF;
@@ -37,4 +37,5 @@ IF ENA THEN
 END_IF;
   
    ENOU := ENA;
+
 END_FUNCTION_BLOCK

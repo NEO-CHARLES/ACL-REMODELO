@@ -1,0 +1,278 @@
+(****** QuickLD compiler *******************************)
+(****** Copyright Rockwell Automation Canada, Ltd ******)
+(****** ST *********************************************)
+
+(*************** Rung **********************************)
+(*ENTRADAS*)
+__STEPPRAGMA
+0,1
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB1 := TRUE ;
+IF __EDTB1 THEN
+SA_AI := ANY_TO_INT(_IO_P1_AI_02) ;
+END_IF ;
+__MO_ANY_TO_INT_1 := __EDTB1 ;
+__EDTB2 := __EDTB1 ;
+__EDTB3 := TRUE ;
+IF __EDTB3 THEN
+SA_MX := (  IHM_SA1_MX) ;
+END_IF ;
+__MO_1GAIN_1 := __EDTB3 ;
+__EDTB4 := __EDTB3 ;
+__EDTB5 := (__EDTB2 OR __EDTB4) ;
+__EDTB6 := TRUE ;
+IF __EDTB6 THEN
+SA_MN := (  IHM_SA1_MN) ;
+END_IF ;
+__MO_1GAIN_2 := __EDTB6 ;
+__EDTB7 := __EDTB6 ;
+__EDTB8 := TRUE ;
+IF __EDTB8 THEN
+SA_MD := (  IHM_SA1_MED) ;
+END_IF ;
+__MO_1GAIN_3 := __EDTB8 ;
+__EDTB9 := __EDTB8 ;
+__EDTB10 := (__EDTB7 OR __EDTB9) ;
+__EDTB11 := (__EDTB5 OR __EDTB10) ;
+(* FB call: TON *)
+TON_3(__EDTB11 AND OP60_BTSTART, T#3S) ;
+__EDTB12 := TON_3.Q ;
+__EDTB13 := __EDTB11 AND HEATING1TESTSTART ;
+__EDTB14 := __EDTB11 AND IHM_HEATINGTEST1START ;
+__EDTB15 := (__EDTB13 OR __EDTB14) ;
+__EDTB16 := (__EDTB12 OR __EDTB15) ;
+IF __EDTB16 THEN
+(*Set coil*)
+SA_TT := TRUE ;
+END_IF ;
+SA_RT := __EDTB11 AND HEATING1TESTFINSHED ;
+; (*Pulse detection on : HEATING1CALIBRATE with __MEMO__1__HEATING1CALIBRATE *)
+__EDTB17 := __EDTB11 AND (HEATING1CALIBRATE AND NOT(__MEMO__1__HEATING1CALIBRATE)) ;
+IF __EDTB17 THEN
+(*Set coil*)
+SA_CLB := TRUE ;
+END_IF ;
+; (*Pulse detection on : IHM_HEATINGTESTZERO with __MEMO__2__IHM_HEATINGTESTZERO *)
+__EDTB18 := __EDTB11 AND (IHM_HEATINGTESTZERO AND NOT(__MEMO__2__IHM_HEATINGTESTZERO)) ;
+IF __EDTB18 THEN
+(*Set coil*)
+SA_ZR := TRUE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+__MEMO__1__HEATING1CALIBRATE := HEATING1CALIBRATE ; (*Pulse detection on : HEATING1CALIBRATE with __MEMO__1__HEATING1CALIBRATE *)
+__MEMO__2__IHM_HEATINGTESTZERO := IHM_HEATINGTESTZERO ; (*Pulse detection on : IHM_HEATINGTESTZERO with __MEMO__2__IHM_HEATINGTESTZERO *)
+
+
+(*************** Rung **********************************)
+(*SAÍDAS*)
+__STEPPRAGMA
+0,10
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB19 := TRUE ;
+IF __EDTB19 THEN
+IHM_SA1_AI := ANY_TO_INT(SA_AI) ;
+END_IF ;
+__MO_ANY_TO_INT_2 := __EDTB19 ;
+__EDTB20 := __EDTB19 ;
+__EDTB21 := TRUE ;
+IF __EDTB21 THEN
+IHM_SA1_SN := ANY_TO_INT(SA_SN) ;
+END_IF ;
+__MO_ANY_TO_INT_3 := __EDTB21 ;
+__EDTB22 := __EDTB21 ;
+__EDTB23 := (__EDTB20 OR __EDTB22) ;
+__EDTB24 := TRUE ;
+IF __EDTB24 THEN
+IHM_SA1_PKS := ANY_TO_INT(SA_PKS) ;
+END_IF ;
+__MO_ANY_TO_INT_4 := __EDTB24 ;
+__EDTB25 := __EDTB24 ;
+__EDTB26 := (__EDTB23 OR __EDTB25) ;
+HEATING1ACTUATOR := __EDTB26 AND SA_AT ;
+; (*Pulse detection on : SA_AP with __MEMO__3__SA_AP *)
+__EDTB27 := __EDTB26 AND (SA_AP AND NOT(__MEMO__3__SA_AP)) ;
+IF __EDTB27 THEN
+(*Set coil*)
+HEATING1TESTAPPROVED := TRUE ;
+END_IF ;
+; (*Pulse detection on : SA_RP with __MEMO__4__SA_RP *)
+__EDTB28 := __EDTB26 AND (SA_RP AND NOT(__MEMO__4__SA_RP)) ;
+IF __EDTB28 THEN
+(*Set coil*)
+HEATING1TESTDISAPPROVED := TRUE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+__MEMO__3__SA_AP := SA_AP ; (*Pulse detection on : SA_AP with __MEMO__3__SA_AP *)
+__MEMO__4__SA_RP := SA_RP ; (*Pulse detection on : SA_RP with __MEMO__4__SA_RP *)
+
+
+(*************** Rung **********************************)
+(*ESCALA*)
+__STEPPRAGMA
+0,17
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB29 := TRUE ;
+IF __EDTB29 THEN
+SCL_E := ANY_TO_REAL(SA_AI) ;
+END_IF ;
+__MO_ANY_TO_REAL_1 := __EDTB29 ;
+__EDTB30 := __EDTB29 ;
+IF __EDTB30 THEN
+(* FB call: SCALER *)
+SCALER_1(SCL_E, SCL_EMN, SCL_EMX, SCL_SMN, SCL_SMX) ;
+SCL_SN0 := SCALER_1.Output ;
+END_IF ;
+__MO_SCALER_1 := __EDTB30 ;
+__EDTB31 := __EDTB30 ;
+IF __EDTB31 THEN
+SA_SN := ANY_TO_INT(SCL_SN0) ;
+END_IF ;
+__MO_ANY_TO_INT_5 := __EDTB31 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Zero*)
+__STEPPRAGMA
+0,24
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB32 := SA_ZR AND NOT(SA_AT) ;
+__EDTB33 := __EDTB32 ;
+IF __EDTB33 THEN
+SCL_EMN := ANY_TO_REAL(SCL_E) ;
+END_IF ;
+__MO_ANY_TO_REAL_2 := __EDTB33 ;
+__EDTB34 := __EDTB33 ;
+__EDTB35 := __EDTB32 ;
+IF __EDTB35 THEN
+SCL_SMN := ANY_TO_REAL(0) ;
+END_IF ;
+__MO_ANY_TO_REAL_3 := __EDTB35 ;
+__EDTB36 := __EDTB35 ;
+(* FB call: TON *)
+TON_1((__EDTB34 OR __EDTB36), T#500MS) ;
+__EDTB37 := TON_1.Q ;
+IF __EDTB37 THEN
+(*Reset coil*)
+SA_ZR := FALSE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Calibração*)
+__STEPPRAGMA
+0,29
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB38 := SA_CLB ;
+__EDTB39 := __EDTB38 ;
+IF __EDTB39 THEN
+SCL_EMX := ANY_TO_REAL(SA_PKE) ;
+END_IF ;
+__MO_ANY_TO_REAL_4 := __EDTB39 ;
+__EDTB40 := __EDTB39 ;
+__EDTB41 := __EDTB38 ;
+IF __EDTB41 THEN
+SCL_SMX := ANY_TO_REAL(SA_MD) ;
+END_IF ;
+__MO_ANY_TO_REAL_5 := __EDTB41 ;
+__EDTB42 := __EDTB41 ;
+(* FB call: TON *)
+TON_2((__EDTB40 OR __EDTB42), T#500MS) ;
+__EDTB43 := TON_2.Q ;
+IF __EDTB43 THEN
+(*Reset coil*)
+SA_CLB := FALSE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Teste*)
+__STEPPRAGMA
+0,34
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+(* FB call: FB_PK_V2 *)
+FB_PK_V2_1(SA_TT, SA_SN, SA_AI, T#3S, SA_RT) ;
+SA_AT := FB_PK_V2_1.S1 ;
+SA_PKS := FB_PK_V2_1.PKP1 ;
+SA_PKE := FB_PK_V2_1.PKP2 ;
+(* FB call: FB_PV *)
+FB_PV_2(FB_PK_V2_1.Q, SA_PKS, SA_MX, SA_MN) ;
+SA_AP := FB_PV_2.AP ;
+SA_RP := FB_PV_2.RP ;
+__EDTB44 := FB_PV_2.Q ;
+IF __EDTB44 THEN
+(*Reset coil*)
+SA_TT := FALSE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Code for the end of File **************)
+__GL __LG0000 ;
+
+
+
+(*************** Local Symbols table *******************)
+(* __EDTB1 *)
+(* __EDTB2 *)
+(* __EDTB3 *)
+(* __EDTB4 *)
+(* __EDTB5 *)
+(* __EDTB6 *)
+(* __EDTB7 *)
+(* __EDTB8 *)
+(* __EDTB9 *)
+(* __EDTB10 *)
+(* __EDTB11 *)
+(* __EDTB12 *)
+(* __EDTB13 *)
+(* __EDTB14 *)
+(* __EDTB15 *)
+(* __EDTB16 *)
+(* __MEMO__1__HEATING1CALIBRATE *)
+(* __EDTB17 *)
+(* __MEMO__2__IHM_HEATINGTESTZERO *)
+(* __EDTB18 *)
+(* __EDTB19 *)
+(* __EDTB20 *)
+(* __EDTB21 *)
+(* __EDTB22 *)
+(* __EDTB23 *)
+(* __EDTB24 *)
+(* __EDTB25 *)
+(* __EDTB26 *)
+(* __MEMO__3__SA_AP *)
+(* __EDTB27 *)
+(* __MEMO__4__SA_RP *)
+(* __EDTB28 *)
+(* __EDTB29 *)
+(* __EDTB30 *)
+(* __EDTB31 *)
+(* __EDTB32 *)
+(* __EDTB33 *)
+(* __EDTB34 *)
+(* __EDTB35 *)
+(* __EDTB36 *)
+(* __EDTB37 *)
+(* __EDTB38 *)
+(* __EDTB39 *)
+(* __EDTB40 *)
+(* __EDTB41 *)
+(* __EDTB42 *)
+(* __EDTB43 *)
+(* __EDTB44 *)
+

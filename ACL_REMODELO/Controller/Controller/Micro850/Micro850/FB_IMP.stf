@@ -7,10 +7,12 @@ FUNCTION_BLOCK FB_IMP
   | EMAIL: neo_charles@outlook.com     			|
   | VERSION/REVISION : 1.0.0					|
   | DATE : 20201130								|
-  | CHANGE : MELHORIA							|
   |---------------------------------------------|
-  20201208 - INCLUSÃO DO CABEÇALHO COM 
-  20201208 - INCLUSÃO DO CARACTERE DE TERMINAÇÃO '$N' SUBSTITUINDO 13 10  
+  
+  CHANGES : 
+  20201208 - INCLUSÃO DO CABEÇALHO COM.
+  20201208 - INCLUSÃO DO CARACTERE DE TERMINAÇÃO '$N' SUBSTITUINDO 13 10.
+  20220228 - ESTRUTURAÇÃO DO CÓDIGO E ALTERAÇÃO DESCRITIVAS DAS VARIÁVEIS EM INGLES.
  */
   
  /*
@@ -18,76 +20,86 @@ OUT
 	BCBC	01/01/2001	10:10:10
 	BCBC	ID: 123
 	BCBC	OP: 123456
-	BCBC	PD: 1234
-	BCBC	PN: 12 3456 789
-	BCBC	MAN UHT LD
+	BCBC	PD: 1234/9999
+	BCBC	PN: 12 1234 123
+	BCBC	MD: MAN UHT LD
 	BCBC	Q:000 ZGS:000
 */
 
-E_BG := '';
-E_BG := ANY_TO_STRING('I8,A,001$NQ272,024$Nq831$NrN$NS3$ND7$NZT$NJF$NO$NR199,0$Nf100$NN$N');
+//Var Initialization
+Length := 70;
 
-E_BC := '';
-E_BC := ANY_TO_STRING('B325,225,3,1C,2,6,64,B,"X"$N');
-E_BC := REPLACE(E_BC,BC,1,25);
 
-E_DT := '';
-E_DT := ANY_TO_STRING('A320,200,2,3,1,1,N,"DT: X"$N');
-E_DT := REPLACE(E_DT,TM,1,25);
+//AWT Config
+AWT_INPUT.Channel := Channel;
+AWT_INPUT.Length := ANY_TO_UINT(Length);
+AWT_INPUT.Cancel := FALSE;
 
-E_ID := '';
-E_ID := ANY_TO_STRING('A320,150,2,3,1,1,N,"ID: X"$N');
-E_ID := REPLACE(E_ID,ID,1,25);
 
-E_OP := '';
-E_OP := ANY_TO_STRING('A320,175,2,3,1,1,N,"OP: X"$N');
-E_OP := REPLACE(E_OP,OP,1,25);
+//Input conversion to EPL
+E_Config := '';
+E_Config := ANY_TO_STRING('I8,A,001$NQ272,024$Nq831$NrN$NS3$ND7$NZT$NJF$NO$NR199,0$Nf100$NN$N');
 
-E_PD := '';
-E_PD := ANY_TO_STRING('A320,125,2,3,1,1,N,"PD: X"$N');
-E_PD := REPLACE(E_PD,PD,1,25);
+E_Barcode := '';
+E_Barcode := ANY_TO_STRING('B325,225,3,1C,2,6,64,B,"X"$N');
+E_Barcode := REPLACE(E_Barcode,Barcode,1,25);
 
-E_PN := '';
-E_PN := ANY_TO_STRING('A320,225,2,3,1,1,N,"PN: X"$N');
-E_PN := REPLACE(E_PN,PN,1,25);
+E_Date := '';
+E_Date := ANY_TO_STRING('A320,200,2,3,1,1,N,"DT: X"$N');
+E_Date := REPLACE(E_Date,DateTime,1,25);
 
-E_MD := '';
-E_MD := ANY_TO_STRING('A320,100,2,3,1,1,N,"MD: X"$N');
-E_MD := REPLACE(E_MD,MD,1,25);
+E_User := '';
+E_User := ANY_TO_STRING('A320,150,2,3,1,1,N,"ID: X"$N');
+E_User := REPLACE(E_User,User,1,25);
 
-E_VS := '';
-E_VS := ANY_TO_STRING('A320,075,2,3,1,1,N,"VS: X"$N');
-E_VS := REPLACE(E_VS,VS,1,25);
+E_ProdOrder := '';
+E_ProdOrder := ANY_TO_STRING('A320,175,2,3,1,1,N,"OP: X"$N');
+E_ProdOrder := REPLACE(E_ProdOrder,ProdOrder,1,25);
 
-FOR INDEX := 1 TO 70 BY 1 DO
+E_ProdCount := '';
+E_ProdCount := ANY_TO_STRING('A320,125,2,3,1,1,N,"PD: X"$N');
+E_ProdCount := REPLACE(E_ProdCount,ProdCount,1,25);
 
-	A_BG[INDEX] := ANY_TO_BYTE(ASCII(E_BG, INDEX));
-	A_BC[INDEX] := ANY_TO_BYTE(ASCII(E_BC, INDEX));
-	A_DT[INDEX] := ANY_TO_BYTE(ASCII(E_DT, INDEX));
-	A_ID[INDEX] := ANY_TO_BYTE(ASCII(E_ID, INDEX));
-	A_OP[INDEX] := ANY_TO_BYTE(ASCII(E_OP, INDEX));
-	A_PD[INDEX] := ANY_TO_BYTE(ASCII(E_PD, INDEX));
-	A_PN[INDEX] := ANY_TO_BYTE(ASCII(E_PN, INDEX));		
-	A_MD[INDEX] := ANY_TO_BYTE(ASCII(E_MD, INDEX));		
-	A_VS[INDEX] := ANY_TO_BYTE(ASCII(E_VS, INDEX));
+E_PartNumber := '';
+E_PartNumber := ANY_TO_STRING('A320,225,2,3,1,1,N,"PN: X"$N');
+E_PartNumber := REPLACE(E_PartNumber,PartNumber,1,25);
+
+E_Model := '';
+E_Model := ANY_TO_STRING('A320,100,2,3,1,1,N,"MD: X"$N');
+E_Model := REPLACE(E_Model,Model,1,25);
+
+E_Version := '';
+E_Version := ANY_TO_STRING('A320,075,2,3,1,1,N,"VS: X"$N');
+E_Version := REPLACE(E_Version,Version,1,25);
+
+
+//Character conversion to ASCII
+FOR Index := 1 TO Length BY 1 DO
+	A_Config[Index] 	:= ANY_TO_BYTE(ASCII(E_Config, Index));
+	A_Barcode[Index] 	:= ANY_TO_BYTE(ASCII(E_Barcode, Index));
+	A_Date[Index] 		:= ANY_TO_BYTE(ASCII(E_Date, Index));
+	A_User[Index] 		:= ANY_TO_BYTE(ASCII(E_User, Index));
+	A_ProdOrder[Index] 	:= ANY_TO_BYTE(ASCII(E_ProdOrder, Index));
+	A_ProdCount[Index] 	:= ANY_TO_BYTE(ASCII(E_ProdCount, Index));
+	A_PartNumber[Index] := ANY_TO_BYTE(ASCII(E_PartNumber, Index));		
+	A_Model[Index] 		:= ANY_TO_BYTE(ASCII(E_Model, Index));		
+	A_Version[Index] 	:= ANY_TO_BYTE(ASCII(E_Version, Index));
 
 END_FOR;
 
-AWT_INPUT.Channel := CH;
-AWT_INPUT.Length := ANY_TO_UINT(70);
-AWT_INPUT.Cancel := FALSE;
 
-IF (IN = TRUE) THEN
-	AWT_01(TRIGG,AWT_INPUT,A_BG);
-	AWT_02(TRIGG,AWT_INPUT,A_DT);
-	AWT_03(TRIGG,AWT_INPUT,A_ID);
-	AWT_04(TRIGG,AWT_INPUT,A_OP);
-	AWT_05(TRIGG,AWT_INPUT,A_PD);
-	AWT_06(TRIGG,AWT_INPUT,A_PN);
-	AWT_07(TRIGG,AWT_INPUT,A_MD);
-	AWT_08(TRIGG,AWT_INPUT,A_VS);
-	AWT_09(TRIGG,AWT_INPUT,A_BC);
-	AWT_10(TRIGG,AWT_INPUT,A_END);
+//Send to Printer
+IF IN THEN
+	AWT_01(Trigger,AWT_INPUT,A_Config);
+	AWT_02(Trigger,AWT_INPUT,A_Date);
+	AWT_03(Trigger,AWT_INPUT,A_User);
+	AWT_04(Trigger,AWT_INPUT,A_ProdOrder);
+	AWT_05(Trigger,AWT_INPUT,A_ProdCount);
+	AWT_06(Trigger,AWT_INPUT,A_PartNumber);
+	AWT_07(Trigger,AWT_INPUT,A_Model);
+	AWT_08(Trigger,AWT_INPUT,A_Version);
+	AWT_09(Trigger,AWT_INPUT,A_Barcode);
+	AWT_10(Trigger,AWT_INPUT,A_Confirm);
 	
 	Q := AWT_10.Q;
 	

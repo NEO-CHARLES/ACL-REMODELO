@@ -1,0 +1,16 @@
+FUNCTION_BLOCK Blinker
+#info= QLD
+BOF
+
+
+(*20210503 - ALTERADO NOMES DAS VARIAVEIS*)
+
+SOR  [0,1] (**) (**)  
+ BST  XIO  [1,0] (*Q*) (**)  FB  [2,0] (*TON*) (*TON_1*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*TM_OFF*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTS  [5,0] (*Q*) (**)
+   NXB  XIC  [1,2] (*Q*) (**)  FB  [2,2] (*TON*) (*TON_2*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*TM_ON*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTR  [5,2] (*Q*) (**)
+ BND
+
+EOR [6,0]
+EOF
+#end_info
+END_FUNCTION_BLOCK

@@ -18,8 +18,8 @@ IF __EDTB2 THEN
 OP20_SV := (  SALVAR) ;
 END_IF ;
 __MO_1GAIN_2 := __EDTB2 ;
-OP20_LD_VM := __EDTB2 AND VM ;
-OP20_LD_AM := __EDTB2 AND AM ;
+OP20_LD_RED := __EDTB2 AND VM ;
+OP20_LD_YELLOW := __EDTB2 AND AM ;
 OP20_LD_VD := __EDTB2 AND VD ;
 OP20_CL_AT := __EDTB2 AND CL_AT ;
 
@@ -36,7 +36,7 @@ BME := OP20_BME ;
 BMD := OP20_BMD ;
 BTS := OP20_BTS ;
 __EDTB3 := OP20_BMD ;
-__EDTB4 := IHM_AL_RS ;
+__EDTB4 := IHM_ALARMRESET ;
 AL_RS := (__EDTB3 OR __EDTB4) ;
 SU_LE1 := NOT(OP20_SU_LD_TUBO) ;
 SU_LD1 := OP20_SU_LD_TUBO ;
@@ -53,8 +53,8 @@ __STEPPRAGMA
 __ENDSTEPPRAGMA
 (*Label :*)(**)
 PF_RT := OP20_PF_RT ;
-OP20_PF_LB := PF_LB ;
-OP20_PF_RS := PF_RS ;
+OP20_PF_RELEASE := PF_LB ;
+OP20_PF_RESET := PF_RS ;
 
 (*************** Code for the end of Rung **************)
 
@@ -98,8 +98,8 @@ __STEPPRAGMA
 0,28
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-__EDTB6 := MD_LE AND SU_LE1 AND SU_LE2 ;
-__EDTB7 := MD_LD AND SU_LD1 AND SU_LD2 ;
+__EDTB6 := MODELSIDELEFT AND SU_LE1 AND SU_LE2 ;
+__EDTB7 := MODELSIDERIGHT AND SU_LD1 AND SU_LD2 ;
 SU := (__EDTB6 OR __EDTB7) ;
 
 (*************** Code for the end of Rung **************)
@@ -131,7 +131,7 @@ __ENDSTEPPRAGMA
 (*Label :*)(**)
 __EDTB9 := AL00 ;
 IF __EDTB9 THEN
-ALARME := ANY_TO_INT(2000) ;
+ALARMNUMBER := ANY_TO_INT(2000) ;
 END_IF ;
 __MO_ANY_TO_INT_1 := __EDTB9 ;
 __EDTB10 := __EDTB9 ;
@@ -146,7 +146,7 @@ AL00 := FALSE ;
 END_IF ;
 __EDTB12 := AL20 ;
 IF __EDTB12 THEN
-ALARME := ANY_TO_INT(2020) ;
+ALARMNUMBER := ANY_TO_INT(2020) ;
 END_IF ;
 __MO_ANY_TO_INT_3 := __EDTB12 ;
 __EDTB13 := __EDTB12 ;
@@ -288,7 +288,7 @@ __EDTB35 := __EDTB34 ;
 
 
 (*************** Rung **********************************)
-(*PASSO 300 - Teste *)
+(*PASSO 300 - Teste*)
 __STEPPRAGMA
 0,57
 __ENDSTEPPRAGMA
@@ -337,13 +337,13 @@ RP := TRUE ;
 END_IF ;
 __EDTB42 := __EDTB39 AND AP ;
 IF __EDTB42 THEN
-ALARME := (  2010) ;
+ALARMNUMBER := (  2010) ;
 END_IF ;
 __MO_1GAIN_8 := __EDTB42 ;
 __EDTB43 := __EDTB42 ;
 __EDTB44 := __EDTB39 AND RP ;
 IF __EDTB44 THEN
-ALARME := (  2011) ;
+ALARMNUMBER := (  2011) ;
 END_IF ;
 __MO_1GAIN_9 := __EDTB44 ;
 __EDTB45 := __EDTB44 ;
@@ -411,7 +411,7 @@ __MO_EQUAL_8 := __EDTB57 ;
 ; (*Fall detection on  : AL_RS with __MEMO__4__AL_RS *)
 __EDTB59 := __EDTB57 AND (__MEMO__4__AL_RS AND NOT(AL_RS)) ;
 IF __EDTB59 THEN
-ALARME := (  0) ;
+ALARMNUMBER := (  0) ;
 END_IF ;
 __MO_1GAIN_13 := __EDTB59 ;
 __EDTB60 := __EDTB59 ;

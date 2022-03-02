@@ -1,0 +1,37 @@
+(****** QuickLD compiler *******************************)
+(****** Copyright Rockwell Automation Canada, Ltd ******)
+(****** ST *********************************************)
+
+(*************** Rung **********************************)
+(*20210503 - ALTERADO NOMES DAS VARIAVEIS*)
+__STEPPRAGMA
+0,1
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+(* FB call: TON *)
+TON_1(NOT(Q), TM_OFF) ;
+__EDTB1 := TON_1.Q ;
+IF __EDTB1 THEN
+(*Set coil*)
+Q := TRUE ;
+END_IF ;
+(* FB call: TON *)
+TON_2(Q, TM_ON) ;
+__EDTB2 := TON_2.Q ;
+IF __EDTB2 THEN
+(*Reset coil*)
+Q := FALSE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Code for the end of File **************)
+__GL __LG0000 ;
+
+
+
+(*************** Local Symbols table *******************)
+(* __EDTB1 *)
+(* __EDTB2 *)
+

@@ -1,0 +1,90 @@
+(****** QuickLD compiler *******************************)
+(****** Copyright Rockwell Automation Canada, Ltd ******)
+(****** ST *********************************************)
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,1
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB1 := MOTOR1UP ;
+__EDTB2 := IHM_MOTOR1UP ;
+MOVEUP := (__EDTB1 OR __EDTB2) ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,4
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB3 := MOTOR1DOWN ;
+__EDTB4 := IHM_MOTOR1DOWN ;
+MOVEDOWN := (__EDTB3 OR __EDTB4) ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,7
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB5 := MOTOR1LEFT ;
+__EDTB6 := IHM_MOTOR1LEFT ;
+MOVELEFT := (__EDTB5 OR __EDTB6) ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,10
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB7 := MOTOR1RIGTH ;
+__EDTB8 := IHM_MOTOR1RIGHT ;
+MOVERIGHT := (__EDTB7 OR __EDTB8) ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,13
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB9 := MOTOR1STOP ;
+__EDTB10 := IHM_MOTOR1STOP ;
+(* FB call: MotorCommand *)
+MotorCommand_2((__EDTB9 OR __EDTB10), MOVEUP, MOVEDOWN, MOVELEFT, MOVERIGHT) ;
+K2_MOTOR1UPDOWN := MotorCommand_2.UpDown ;
+K3_MOTOR1LEFTRIGHT := MotorCommand_2.LeftRight ;
+K1_MOTOR1COM := MotorCommand_2.Com ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Code for the end of File **************)
+__GL __LG0000 ;
+
+
+
+(*************** Local Symbols table *******************)
+(* __EDTB1 *)
+(* __EDTB2 *)
+(* __EDTB3 *)
+(* __EDTB4 *)
+(* __EDTB5 *)
+(* __EDTB6 *)
+(* __EDTB7 *)
+(* __EDTB8 *)
+(* __EDTB9 *)
+(* __EDTB10 *)
+

@@ -1,0 +1,36 @@
+FUNCTION_BLOCK MotorCommand
+#info= QLD
+BOF
+
+
+(**)
+
+SOR  [0,1] (**) (**)  XIO  [1,0] (*MoveStop*) (**)  
+ BST  XIC  [2,0] (*MoveUp*) (**)
+   NXB  XIC  [2,1] (*MoveRight*) (**)
+ BND
+  OTE  [3,0] (*UpDown*) (**)
+EOR [4,0]
+
+
+(**)
+
+SOR  [0,4] (**) (**)  XIO  [1,0] (*MoveStop*) (**)  
+ BST  XIC  [2,0] (*MoveDown*) (**)
+   NXB  XIC  [2,1] (*MoveRight*) (**)
+ BND
+  OTE  [3,0] (*Com*) (**)
+EOR [4,0]
+
+
+(**)
+
+SOR  [0,7] (**) (**)  XIO  [1,0] (*MoveStop*) (**)  
+ BST  XIC  [2,0] (*MoveDown*) (**)
+   NXB  XIC  [2,1] (*MoveLeft*) (**)
+ BND
+  OTE  [3,0] (*LeftRight*) (**)
+EOR [4,0]
+EOF
+#end_info
+END_FUNCTION_BLOCK

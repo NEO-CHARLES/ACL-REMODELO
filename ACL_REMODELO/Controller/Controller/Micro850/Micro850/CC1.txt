@@ -8,36 +8,28 @@ __STEPPRAGMA
 0,1
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-__EDTB1 := TRUE ;
-IF __EDTB1 THEN
-CC_MN := (  IHM_CC1_MN) ;
-END_IF ;
-__MO_1GAIN_1 := __EDTB1 ;
-__EDTB2 := __EDTB1 ;
-IF __EDTB2 THEN
-CC_MX := (  IHM_CC1_MX) ;
-END_IF ;
-__MO_1GAIN_2 := __EDTB2 ;
-__EDTB3 := __EDTB2 ;
-__EDTB4 := TRUE ;
-IF __EDTB4 THEN
-CC_AI := ANY_TO_INT(_IO_P1_AI_03) ;
-END_IF ;
-__MO_ANY_TO_INT_1 := __EDTB4 ;
-__EDTB5 := __EDTB4 ;
-__EDTB6 := (__EDTB3 OR __EDTB5) ;
+(* FB call: IntDeclaration *)
+VarDeclarationINT_1(TRUE, IHM_CC1_MN, IHM_CC1_MX, CC_PKS, CC_AI, CC_SN, , , , , ) ;
+CC_MN := VarDeclarationINT_1.o0 ;
+CC_MX := VarDeclarationINT_1.o1 ;
+IHM_CC1_PKS := VarDeclarationINT_1.o2 ;
+IHM_CC1_AI := VarDeclarationINT_1.o3 ;
+IHM_CC1_SN := VarDeclarationINT_1.o4 ;
+(* FB call: BoolDeclaration *)
+VarDeclarationBOOL_1(VarDeclarationINT_1.Q, BREAKWAY1TESTFINISHED, , , , , , , , , ) ;
+CC_RT := VarDeclarationBOOL_1.o0 ;
+__EDTB1 := VarDeclarationBOOL_1.Q ;
 (* FB call: TON *)
-TON_5(__EDTB6 AND OP40_BMD, T#3S) ;
-__EDTB7 := TON_5.Q ;
-__EDTB8 := __EDTB6 AND OP40_CC1_TT ;
-__EDTB9 := __EDTB6 AND IHM_CC1_TT ;
-__EDTB10 := (__EDTB8 OR __EDTB9) ;
-__EDTB11 := (__EDTB7 OR __EDTB10) ;
-IF __EDTB11 THEN
+TON_2(__EDTB1 AND OP40_BTRIGHT, T#3S) ;
+__EDTB2 := TON_2.Q ;
+__EDTB3 := __EDTB1 AND BREAKWAY1TESTRUN ;
+__EDTB4 := __EDTB1 AND IHM_BREAKWAY1TESTSTART ;
+__EDTB5 := (__EDTB3 OR __EDTB4) ;
+__EDTB6 := (__EDTB2 OR __EDTB5) ;
+IF __EDTB6 THEN
 (*Set coil*)
 CC_TT := TRUE ;
 END_IF ;
-CC_RT := __EDTB6 AND OP40_CC1_RT ;
 
 (*************** Code for the end of Rung **************)
 
@@ -45,43 +37,30 @@ CC_RT := __EDTB6 AND OP40_CC1_RT ;
 (*************** Rung **********************************)
 (*SAÍDAS*)
 __STEPPRAGMA
-0,7
+0,13
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-__EDTB12 := TRUE ;
-IF __EDTB12 THEN
-IHM_CC1_PKS := ANY_TO_INT(CC_PKS) ;
+__EDTB7 := TRUE ;
+IF __EDTB7 THEN
+CC_AI := ANY_TO_INT(_IO_P1_AI_03) ;
 END_IF ;
-__MO_ANY_TO_INT_2 := __EDTB12 ;
-__EDTB13 := __EDTB12 ;
-IF __EDTB13 THEN
-IHM_CC1_AI := ANY_TO_INT(CC_AI) ;
-END_IF ;
-__MO_ANY_TO_INT_3 := __EDTB13 ;
-__EDTB14 := __EDTB13 ;
-__EDTB15 := TRUE ;
-IF __EDTB15 THEN
-IHM_CC1_SN := ANY_TO_INT(CC_SN) ;
-END_IF ;
-__MO_ANY_TO_INT_4 := __EDTB15 ;
-__EDTB16 := __EDTB15 ;
-__EDTB17 := (__EDTB14 OR __EDTB16) ;
-__EDTB18 := __EDTB17 AND CC_AT ;
-IF __EDTB18 THEN
+__MO_ANY_TO_INT_1 := __EDTB7 ;
+__EDTB8 := __EDTB7 AND CC_AT ;
+IF __EDTB8 THEN
 (*Set coil*)
 OP40_CC1_AT := TRUE ;
 END_IF ;
 ; (*Pulse detection on : CC_AP with __MEMO__1__CC_AP *)
-__EDTB19 := __EDTB17 AND (CC_AP AND NOT(__MEMO__1__CC_AP)) ;
-IF __EDTB19 THEN
+__EDTB9 := __EDTB7 AND (CC_AP AND NOT(__MEMO__1__CC_AP)) ;
+IF __EDTB9 THEN
 (*Set coil*)
-OP40_CC1_AP := TRUE ;
+BREAKWAY1TESTAPPROVED := TRUE ;
 END_IF ;
 ; (*Pulse detection on : CC_RP with __MEMO__2__CC_RP *)
-__EDTB20 := __EDTB17 AND (CC_RP AND NOT(__MEMO__2__CC_RP)) ;
-IF __EDTB20 THEN
+__EDTB10 := __EDTB7 AND (CC_RP AND NOT(__MEMO__2__CC_RP)) ;
+IF __EDTB10 THEN
 (*Set coil*)
-OP40_CC1_RP := TRUE ;
+BREAKWAY1TESTDISAPROVED := TRUE ;
 END_IF ;
 
 (*************** Code for the end of Rung **************)
@@ -92,21 +71,21 @@ __MEMO__2__CC_RP := CC_RP ; (*Pulse detection on : CC_RP with __MEMO__2__CC_RP *
 (*************** Rung **********************************)
 (*ESCALA*)
 __STEPPRAGMA
-0,12
+0,17
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-__EDTB21 := TRUE ;
-IF __EDTB21 THEN
+__EDTB11 := TRUE ;
+IF __EDTB11 THEN
 SCL_E := ANY_TO_REAL(CC_AI) ;
 END_IF ;
-__MO_ANY_TO_REAL_1 := __EDTB21 ;
-__EDTB22 := __EDTB21 ;
-IF __EDTB22 THEN
+__MO_ANY_TO_REAL_1 := __EDTB11 ;
+__EDTB12 := __EDTB11 ;
+IF __EDTB12 THEN
 (* FB call: SCALER *)
 SCALER_1(SCL_E, 870.0, 4854.0, 19.62, 215.82) ;
 SCL_SN0 := SCALER_1.Output ;
 END_IF ;
-__MO_SCALER_1 := __EDTB22 ;
+__MO_SCALER_1 := __EDTB12 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -114,24 +93,24 @@ __MO_SCALER_1 := __EDTB22 ;
 (*************** Rung **********************************)
 (*CORREÇÃO*)
 __STEPPRAGMA
-0,19
+0,24
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-__EDTB23 := TRUE ;
-IF __EDTB23 THEN
+__EDTB13 := TRUE ;
+IF __EDTB13 THEN
 SCL_SN1 := (SCL_SN0 * SCL_GANHO) ;
 END_IF ;
-__MO_MULT_1 := __EDTB23 ;
-__EDTB24 := __EDTB23 ;
-IF __EDTB24 THEN
+__MO_MULT_1 := __EDTB13 ;
+__EDTB14 := __EDTB13 ;
+IF __EDTB14 THEN
 SCL_SN2 := (SCL_SN1 + SCL_OFFSET) ;
 END_IF ;
-__MO_PLUS_1 := __EDTB24 ;
-__EDTB25 := __EDTB24 ;
-IF __EDTB25 THEN
+__MO_PLUS_1 := __EDTB14 ;
+__EDTB15 := __EDTB14 ;
+IF __EDTB15 THEN
 CC_SN := ANY_TO_INT(SCL_SN2) ;
 END_IF ;
-__MO_ANY_TO_INT_5 := __EDTB25 ;
+__MO_ANY_TO_INT_2 := __EDTB15 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -139,67 +118,67 @@ __MO_ANY_TO_INT_5 := __EDTB25 ;
 (*************** Rung **********************************)
 (*SETUP*)
 __STEPPRAGMA
-0,23
+0,28
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-__EDTB26 := MD_LE ;
-__EDTB27 := __EDTB26 ;
-IF __EDTB27 THEN
+__EDTB16 := MODELSIDELEFT ;
+__EDTB17 := __EDTB16 ;
+IF __EDTB17 THEN
 SCL_OFFSET := ANY_TO_REAL(TP1_OFFSET) ;
 END_IF ;
-__MO_ANY_TO_REAL_2 := __EDTB27 ;
-__EDTB28 := __EDTB27 ;
-__EDTB29 := __EDTB26 ;
-IF __EDTB29 THEN
+__MO_ANY_TO_REAL_2 := __EDTB17 ;
+__EDTB18 := __EDTB17 ;
+__EDTB19 := __EDTB16 ;
+IF __EDTB19 THEN
 SCL_GANHO := ANY_TO_REAL(TP1_GANHO) ;
 END_IF ;
-__MO_ANY_TO_REAL_3 := __EDTB29 ;
-__EDTB30 := __EDTB29 ;
-__EDTB31 := (__EDTB28 OR __EDTB30) AND CC_CLB ;
-__EDTB32 := __EDTB31 ;
-IF __EDTB32 THEN
-TP1_OFFSET := ANY_TO_REAL(IHM_CC1_OFFSET) ;
+__MO_ANY_TO_REAL_3 := __EDTB19 ;
+__EDTB20 := __EDTB19 ;
+__EDTB21 := (__EDTB18 OR __EDTB20) AND CC_CLB ;
+__EDTB22 := __EDTB21 ;
+IF __EDTB22 THEN
+TP1_OFFSET := ANY_TO_REAL(IHM_BREAKWAY1PARAMOFFSET) ;
 END_IF ;
-__MO_ANY_TO_REAL_4 := __EDTB32 ;
-__EDTB33 := __EDTB32 ;
-__EDTB34 := __EDTB31 ;
-IF __EDTB34 THEN
-TP1_GANHO := ANY_TO_REAL(IHM_CC1_GANHO) ;
+__MO_ANY_TO_REAL_4 := __EDTB22 ;
+__EDTB23 := __EDTB22 ;
+__EDTB24 := __EDTB21 ;
+IF __EDTB24 THEN
+TP1_GANHO := ANY_TO_REAL(IHM_BREAKWAY1PARAMGAIN) ;
 END_IF ;
-__MO_ANY_TO_REAL_5 := __EDTB34 ;
-__EDTB35 := __EDTB34 ;
-__EDTB36 := (__EDTB33 OR __EDTB35) ;
-__EDTB37 := MD_LD ;
-__EDTB38 := __EDTB37 ;
-IF __EDTB38 THEN
+__MO_ANY_TO_REAL_5 := __EDTB24 ;
+__EDTB25 := __EDTB24 ;
+__EDTB26 := (__EDTB23 OR __EDTB25) ;
+__EDTB27 := MODELSIDERIGHT ;
+__EDTB28 := __EDTB27 ;
+IF __EDTB28 THEN
 SCL_OFFSET := ANY_TO_REAL(TP2_OFFSET) ;
 END_IF ;
-__MO_ANY_TO_REAL_6 := __EDTB38 ;
-__EDTB39 := __EDTB38 ;
-__EDTB40 := __EDTB37 ;
-IF __EDTB40 THEN
+__MO_ANY_TO_REAL_6 := __EDTB28 ;
+__EDTB29 := __EDTB28 ;
+__EDTB30 := __EDTB27 ;
+IF __EDTB30 THEN
 SCL_GANHO := ANY_TO_REAL(TP2_GANHO) ;
 END_IF ;
-__MO_ANY_TO_REAL_7 := __EDTB40 ;
-__EDTB41 := __EDTB40 ;
-__EDTB42 := (__EDTB39 OR __EDTB41) AND CC_CLB ;
-__EDTB43 := __EDTB42 ;
-IF __EDTB43 THEN
-TP2_OFFSET := ANY_TO_REAL(IHM_CC1_OFFSET) ;
+__MO_ANY_TO_REAL_7 := __EDTB30 ;
+__EDTB31 := __EDTB30 ;
+__EDTB32 := (__EDTB29 OR __EDTB31) AND CC_CLB ;
+__EDTB33 := __EDTB32 ;
+IF __EDTB33 THEN
+TP2_OFFSET := ANY_TO_REAL(IHM_BREAKWAY1PARAMOFFSET) ;
 END_IF ;
-__MO_ANY_TO_REAL_8 := __EDTB43 ;
-__EDTB44 := __EDTB43 ;
-__EDTB45 := __EDTB42 ;
-IF __EDTB45 THEN
-TP2_GANHO := ANY_TO_REAL(IHM_CC1_GANHO) ;
+__MO_ANY_TO_REAL_8 := __EDTB33 ;
+__EDTB34 := __EDTB33 ;
+__EDTB35 := __EDTB32 ;
+IF __EDTB35 THEN
+TP2_GANHO := ANY_TO_REAL(IHM_BREAKWAY1PARAMGAIN) ;
 END_IF ;
-__MO_ANY_TO_REAL_9 := __EDTB45 ;
-__EDTB46 := __EDTB45 ;
-__EDTB47 := (__EDTB44 OR __EDTB46) ;
+__MO_ANY_TO_REAL_9 := __EDTB35 ;
+__EDTB36 := __EDTB35 ;
+__EDTB37 := (__EDTB34 OR __EDTB36) ;
 (* FB call: TON *)
-TON_1((__EDTB36 OR __EDTB47), T#1S) ;
-__EDTB48 := TON_1.Q ;
-IF __EDTB48 THEN
+TON_1((__EDTB26 OR __EDTB37), T#1S) ;
+__EDTB38 := TON_1.Q ;
+IF __EDTB38 THEN
 (*Reset coil*)
 CC_CLB := FALSE ;
 END_IF ;
@@ -210,7 +189,7 @@ END_IF ;
 (*************** Rung **********************************)
 (*TEMPO DFE AVANÇO DO CILINDRO*)
 __STEPPRAGMA
-0,32
+0,37
 __ENDSTEPPRAGMA
 (*Label :*)(**)
 (* FB call: FB_PK_V2 *)
@@ -222,8 +201,8 @@ CC_PKE := FB_PK_V2_1.PKP2 ;
 FB_PV_2(FB_PK_V2_1.Q, CC_PKS, CC_MX, CC_MN) ;
 CC_AP := FB_PV_2.AP ;
 CC_RP := FB_PV_2.RP ;
-__EDTB49 := FB_PV_2.Q ;
-IF __EDTB49 THEN
+__EDTB39 := FB_PV_2.Q ;
+IF __EDTB39 THEN
 (*Reset coil*)
 CC_TT := FALSE ;
 END_IF ;
@@ -245,7 +224,9 @@ __GL __LG0000 ;
 (* __EDTB6 *)
 (* __EDTB7 *)
 (* __EDTB8 *)
+(* __MEMO__1__CC_AP *)
 (* __EDTB9 *)
+(* __MEMO__2__CC_RP *)
 (* __EDTB10 *)
 (* __EDTB11 *)
 (* __EDTB12 *)
@@ -255,9 +236,7 @@ __GL __LG0000 ;
 (* __EDTB16 *)
 (* __EDTB17 *)
 (* __EDTB18 *)
-(* __MEMO__1__CC_AP *)
 (* __EDTB19 *)
-(* __MEMO__2__CC_RP *)
 (* __EDTB20 *)
 (* __EDTB21 *)
 (* __EDTB22 *)
@@ -278,14 +257,4 @@ __GL __LG0000 ;
 (* __EDTB37 *)
 (* __EDTB38 *)
 (* __EDTB39 *)
-(* __EDTB40 *)
-(* __EDTB41 *)
-(* __EDTB42 *)
-(* __EDTB43 *)
-(* __EDTB44 *)
-(* __EDTB45 *)
-(* __EDTB46 *)
-(* __EDTB47 *)
-(* __EDTB48 *)
-(* __EDTB49 *)
 

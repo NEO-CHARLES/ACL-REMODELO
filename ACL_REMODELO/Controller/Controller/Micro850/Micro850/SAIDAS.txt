@@ -9,7 +9,7 @@ __STEPPRAGMA
 __ENDSTEPPRAGMA
 (*Label :*)(**)
 __EDTB1 := OP20_LD_VD ;
-__EDTB2 := OP20_LD_AM ;
+__EDTB2 := OP20_LD_YELLOW ;
 _IO_EM_DO_00 := (__EDTB1 OR __EDTB2) ;
 
 (*************** Code for the end of Rung **************)
@@ -21,8 +21,8 @@ __STEPPRAGMA
 0,4
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-__EDTB3 := OP20_LD_VM ;
-__EDTB4 := OP20_LD_AM ;
+__EDTB3 := OP20_LD_RED ;
+__EDTB4 := OP20_LD_YELLOW ;
 _IO_EM_DO_01 := (__EDTB3 OR __EDTB4) ;
 
 (*************** Code for the end of Rung **************)
@@ -45,7 +45,7 @@ __STEPPRAGMA
 0,9
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-_IO_EM_DO_03 := _IO_EM_DI_27 AND _IO_EM_DI_00 AND OP20_PF_LB ;
+_IO_EM_DO_03 := _IO_EM_DI_27 AND _IO_EM_DI_00 AND OP20_PF_RELEASE ;
 
 (*************** Code for the end of Rung **************)
 
@@ -167,7 +167,7 @@ __STEPPRAGMA
 0,35
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-_IO_EM_DO_13 := OP60_LD_VD ;
+_IO_EM_DO_13 := OP60_LEDGREEN ;
 
 (*************** Code for the end of Rung **************)
 
@@ -178,7 +178,7 @@ __STEPPRAGMA
 0,37
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-_IO_EM_DO_14 := OP60_LD_AM ;
+_IO_EM_DO_14 := OP60_LEDYELLOW ;
 
 (*************** Code for the end of Rung **************)
 
@@ -200,7 +200,7 @@ __STEPPRAGMA
 0,41
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-_IO_EM_DO_16 := _IO_EM_DI_27 AND _IO_EM_DI_16 AND OP60_K1 ;
+_IO_EM_DO_16 := _IO_EM_DI_27 AND _IO_EM_DI_16 AND K1_MOTOR1COM ;
 
 (*************** Code for the end of Rung **************)
 
@@ -211,7 +211,7 @@ __STEPPRAGMA
 0,43
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-_IO_EM_DO_17 := _IO_EM_DI_27 AND _IO_EM_DI_16 AND OP60_K2 ;
+_IO_EM_DO_17 := _IO_EM_DI_27 AND _IO_EM_DI_16 AND K2_MOTOR1UPDOWN ;
 
 (*************** Code for the end of Rung **************)
 
@@ -222,7 +222,7 @@ __STEPPRAGMA
 0,45
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-_IO_EM_DO_18 := _IO_EM_DI_27 AND _IO_EM_DI_16 AND OP60_K3 ;
+_IO_EM_DO_18 := _IO_EM_DI_27 AND _IO_EM_DI_16 AND K3_MOTOR1LEFTRIGHT ;
 
 (*************** Code for the end of Rung **************)
 
@@ -233,7 +233,7 @@ __STEPPRAGMA
 0,47
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-_IO_EM_DO_19 := _IO_EM_DI_27 AND _IO_EM_DI_16 AND OP60_K4 ;
+_IO_EM_DO_19 := _IO_EM_DI_27 AND _IO_EM_DI_16 AND K4_HEATINGTESTACTUATOR ;
 
 (*************** Code for the end of Rung **************)
 

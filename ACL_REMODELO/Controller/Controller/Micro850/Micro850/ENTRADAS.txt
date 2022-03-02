@@ -107,7 +107,7 @@ __STEPPRAGMA
 0,19
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP40_BTS := _IO_EM_DI_09 ;
+OP40_BTSTOP := _IO_EM_DI_09 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -118,7 +118,7 @@ __STEPPRAGMA
 0,21
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP40_BME := _IO_EM_DI_10 ;
+OP40_BTLEFT := _IO_EM_DI_10 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -129,7 +129,7 @@ __STEPPRAGMA
 0,23
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP40_BMD := _IO_EM_DI_11 ;
+OP40_BTRIGHT := _IO_EM_DI_11 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -140,7 +140,7 @@ __STEPPRAGMA
 0,25
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP40_CC1_RT := _IO_EM_DI_12 ;
+BREAKWAY1TESTFINISHED := _IO_EM_DI_12 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -184,7 +184,7 @@ __STEPPRAGMA
 0,33
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP60_BTS := _IO_EM_DI_16 ;
+OP60_BTSTOP := _IO_EM_DI_16 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -195,7 +195,7 @@ __STEPPRAGMA
 0,35
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP60_BTL := _IO_EM_DI_17 ;
+OP60_BTSTART := _IO_EM_DI_17 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -206,7 +206,7 @@ __STEPPRAGMA
 0,37
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP60_SN := _IO_EM_DI_18 ;
+OP60_SENSOR := _IO_EM_DI_18 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -260,7 +260,7 @@ __STEPPRAGMA
 0,47
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP60_SU_LE_TUBO := _IO_EM_DI_23 ;
+OP60_SETUPSENSORLEFT1TUBE := _IO_EM_DI_23 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -271,7 +271,7 @@ __STEPPRAGMA
 0,49
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP60_SU_LD_TUBO := _IO_EM_DI_24 ;
+OP60_SETUPSENSORRIGHT1TUBE := _IO_EM_DI_24 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -292,7 +292,7 @@ __STEPPRAGMA
 0,53
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-PG1_BTR := _IO_EM_DI_26 ;
+PG1_BTRESET := _IO_EM_DI_26 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -303,7 +303,7 @@ __STEPPRAGMA
 0,55
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-PG1_BTS := _IO_EM_DI_27 ;
+PG1_BTSTOP := _IO_EM_DI_27 ;
 
 (*************** Code for the end of Rung **************)
 

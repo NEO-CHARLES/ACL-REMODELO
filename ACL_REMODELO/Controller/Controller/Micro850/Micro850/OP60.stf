@@ -5,117 +5,87 @@ BOF
 
 (*CONTROLE Sinalizador LED*)
 
-SOR  [0,1] (**) (**)  FB  [1,0] (*1 gain*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*STP*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*OP60_STP*) (**) )  
+SOR  [0,1] (**) (**)  FB  [1,0] (*IntDeclaration*) (*IntDeclaration_2*) ( (*IN:*)(**) (**)  , (*i0:*)(*Step*) (**)  , (*i1:*)(**) (**)  , (*i2:*)(**) (**)  , (*i3:*)(**) (**)  , (*i4:*)(**) (**)  , (*i5:*)(**) (**)  , (*i6:*)(**) (**)  , (*i7:*)(**) (**)  , (*i8:*)(**) (**)  , (*i9:*)(**) (**) ; (*Q:*)(**) (**)  , (*o0:*)(*OP60_Step*) (**)  , (*o1:*)(**) (**)  , (*o2:*)(**) (**)  , (*o3:*)(**) (**)  , (*o4:*)(**) (**)  , (*o5:*)(**) (**)  , (*o6:*)(**) (**)  , (*o7:*)(**) (**)  , (*o8:*)(**) (**)  , (*o9:*)(**) (**) )  FB  [4,0] (*BoolDeclaration*) (*BoolDeclaration_1*) ( (*IN:*)(**) (**)  , (*i0:*)(*LedRed*) (**)  , (*i1:*)(*LedYellow*) (**)  , (*i2:*)(*LedGreen*) (**)  , (*i3:*)(*OP60_ProductionSubtract*) (**)  , (*i4:*)(*OP60_SetupSensorLeft1Tube*) (**)  , (*i5:*)(*OP60_SetupSensorRight1Tube*) (**)  , (*i6:*)(*Approved*) (**)  , (*i7:*)(*DatabaseRecord*) (**)  , (*i8:*)(**) (**)  , (*i9:*)(**) (**) ; (*Q:*)(**) (**)  , (*o0:*)(*OP60_LedRed*) (**)  , (*o1:*)(*OP60_LedYellow*) (**)  , (*o2:*)(*OP60_LedGreen*) (**)  , (*o3:*)(*ProductionSubtract*) (**)  , (*o4:*)(*SetupSensorLeft1*) (**)  , (*o5:*)(*SetupSensorRight1*) (**)  , (*o6:*)(*OP60_TestApproved*) (**)  , (*o7:*)(*OP60_DatabaseRecord*) (**)  , (*o8:*)(**) (**)  , (*o9:*)(**) (**) )  FB  [7,0] (*FB_SNL*) (*FB_SNL_1*) ( (*IN:*)(**) (**)  , (*STP:*)(*Step*) (**) ; (*RD:*)(**) (**)  , (*YL:*)(*LedYellow*) (**)  , (*GR:*)(*LedGreen*) (**) )  OTE  [10,0] (*LedRed*) (**)
+EOR [11,0]
+
+
+(*CONTROLE DE Histórico*)
+
+SOR  [0,13] (**) (**)  XIC  [1,0] (*Recording*) (**)  FB  [2,0] (*FB_SV*) (*FB_SV_1*) ( (*IN:*)(**) (**)  , (*TM:*)(*T#1S*) (**) ; (*Q:*)(**) (**)  , (*TG:*)(*DatabaseRecord*) (**) )  OTR  [5,0] (*Recording*) (**)
+EOR [6,0]
+
+
+(*VARIÁVEIS DE Produção*)
+
+SOR  [0,16] (**) (**)  
+ BST  FB  [1,0] (*ANY_TO_DINT*) (*4*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*IHM_ProdGoal*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*ProductionGoal*) (**) )
+   NXB  FB  [1,2] (*ANY_TO_INT*) (*5*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*ProductionCount*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*OP60_ProdCount*) (**) )
+ BND
+  
  BST  
- BST  XIC  [4,0] (*VM*) (**)  OTE  [5,0] (*OP60_LD_VM*) (**)
+ BST  XIC  [4,0] (*OP60_ProductionAdd*) (**)
+   NXB  XIC  [4,1] (*Approved*) (**)
+ BND
+  OTE  [5,0] (*ProductionAdd*) (**)
    NXB  
- BST  XIC  [4,1] (*AM*) (**)  OTE  [5,1] (*OP60_LD_AM*) (**)
-   NXB  XIC  [4,2] (*VD*) (**)  OTE  [5,2] (*OP60_LD_VD*) (**)
+ BST  XIC  [4,2] (*OP60_ProductionReset*) (**)
+   NXB  XIC  [4,3] (*IHM_ProductionReset*) (**)
+ BND
+  OTE  [5,2] (*ProductionReset*) (**)
  BND
 
- BND
-
-   NXB  FB  [4,3] (*FB_SNL*) (*FB_SNL_1*) ( (*IN:*)(**) (**)  , (*STP:*)(*STP*) (**) ; (*RD:*)(**) (**)  , (*YL:*)(*AM*) (**)  , (*GR:*)(*VD*) (**) )  OTE  [7,3] (*VM*) (**)
- BND
-
-EOR [8,0]
+EOR [6,0]
 
 
 (*VARIÁVEIS Dispositivo
 Variáveis Global => Local*)
 
-SOR  [0,8] (**) (**)  
+SOR  [0,21] (**) (**)  
  BST  
  BST  
- BST  XIC  [1,0] (*BTL*) (**)
-   NXB  XIC  [1,1] (*IHM_RS*) (**)
+ BST  XIC  [1,0] (*ButtonStart*) (**)
+   NXB  XIC  [1,1] (*IHM_AlarmReset*) (**)
  BND
-  OTE  [2,0] (*AL_RS*) (**)
-   NXB  XIC  [1,2] (*DP_RS*) (**)  OTR  [2,2] (*CL_AT*) (**)
+  OTE  [2,0] (*AlarmReset*) (**)
+   NXB  XIC  [1,2] (*DeviceReset*) (**)  OTR  [2,2] (*CilinderAdvance*) (**)
  BND
 
    NXB  
- BST  XIC  [1,3] (*IHM_LB*) (**)
-   NXB  XIC  [1,4] (*OP60_DP_LB*) (**)  XIO  [2,4] (*PD_OK*) (**)  XIO  [3,4] (*SV*) (**)
+ BST  XIC  [1,3] (*IHM_DeviceRelease*) (**)
+   NXB  XIC  [1,4] (*OP60_DeviceRelease*) (**)  XIO  [2,4] (*ProductionFull*) (**)  XIO  [3,4] (*Recording*) (**)
  BND
-  OTE  [4,3] (*DP_LB*) (**)
+  OTE  [4,3] (*DeviceRelease*) (**)
  BND
 
 EOR [5,0]
 
 
-(*VARIÁVEIS DE Produção*)
-
-SOR  [0,14] (**) (**)  
- BST  FB  [1,0] (*ANY_TO_DINT*) (*4*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*IHM_PD_AV*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*PD_AV*) (**) )
-   NXB  FB  [1,2] (*ANY_TO_INT*) (*5*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*PD_AT*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*OP60_PD_AT*) (**) )
- BND
-  
- BST  
- BST  XIC  [4,0] (*OP60_PD_UP*) (**)
-   NXB  XIC  [4,1] (*AP*) (**)
- BND
-  OTE  [5,0] (*PD_UP*) (**)
-   NXB  
- BST  
- BST  XIC  [4,2] (*OP60_PD_RS*) (**)
-   NXB  XIC  [4,3] (*IHM_PD_RS*) (**)
- BND
-  OTE  [5,2] (*PD_RS*) (**)
-   NXB  XIC  [4,4] (*OP60_PD_DW*) (**)  OTE  [5,4] (*PD_DW*) (**)
- BND
-
- BND
-
-EOR [6,0]
-
-
-(*VARIÁVEIS Setup*)
-
-SOR  [0,20] (**) (**)  
- BST  XIC  [1,0] (*OP60_SU_LE_Tubo*) (**)  OTE  [2,0] (*SU_LE1*) (**)
-   NXB  XIC  [1,1] (*OP60_SU_LD_Tubo*) (**)  OTE  [2,1] (*SU_LD1*) (**)
- BND
-
-EOR [3,0]
-
-
 (*CONTORLE DE Setup*)
 
-SOR  [0,23] (**) (**)  
- BST  XIC  [1,0] (*MD_LE*) (**)  XIC  [2,0] (*SU_LE1*) (**)
-   NXB  XIC  [1,1] (*MD_LD*) (**)  XIC  [2,1] (*SU_LD1*) (**)
+SOR  [0,27] (**) (**)  
+ BST  XIC  [1,0] (*ModelSideLeft*) (**)  XIC  [2,0] (*SetupSensorLeft1*) (**)
+   NXB  XIC  [1,1] (*ModelSideRight*) (**)  XIC  [2,1] (*SetupSensorRight1*) (**)
  BND
-  OTE  [3,0] (*SU*) (**)
+  OTE  [3,0] (*DeviceSetup*) (**)
 EOR [4,0]
-
-
-(*CONTROLE DE Histórico*)
-
-SOR  [0,26] (**) (**)  
- BST  FB  [1,0] (*1 gain*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Salvar*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*OP60_SV*) (**) )
-   NXB  XIC  [1,2] (*SV*) (**)  FB  [2,2] (*FB_SV*) (*FB_SV_1*) ( (*IN:*)(**) (**)  , (*TM:*)(*T#1S*) (**) ; (*Q:*)(**) (**)  , (*TG:*)(*Salvar*) (**) )  OTR  [5,2] (*SV*) (**)
- BND
-
-EOR [6,0]
 
 
 (*CONTROLE DE Alertas*)
 
-SOR  [0,31] (**) (**)  
+SOR  [0,30] (**) (**)  
  BST  
- BST  XIC  [1,0] (*AL00*) (**)  FB  [2,0] (*ANY_TO_INT*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*6000*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*ALARME*) (**) )  FB  [5,0] (*ANY_TO_INT*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*501*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STP*) (**) )  OTR  [8,0] (*AL00*) (**)
-   NXB  XIC  [1,2] (*AP*) (**)  FB  [2,2] (*ANY_TO_INT*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*6010*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*ALARME*) (**) )  FB  [5,2] (*ANY_TO_INT*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*400*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STP*) (**) )  OTR  [8,2] (*AP*) (**)
+ BST  XIC  [1,0] (*AlarmButtonStopPressed*) (**)  FB  [2,0] (*ANY_TO_INT*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*6000*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*AlarmNumber*) (**) )  FB  [5,0] (*ANY_TO_INT*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*501*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Step*) (**) )  OTR  [8,0] (*AlarmButtonStopPressed*) (**)
+   NXB  XIC  [1,2] (*Approved*) (**)  FB  [2,2] (*ANY_TO_INT*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*6010*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*AlarmNumber*) (**) )  FB  [5,2] (*ANY_TO_INT*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*400*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Step*) (**) )  OTR  [8,2] (*Approved*) (**)
  BND
 
    NXB  
  BST  
- BST  XIC  [1,4] (*RP*) (**)  FB  [2,4] (*ANY_TO_INT*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*6011*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*ALARME*) (**) )  FB  [5,4] (*ANY_TO_INT*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*400*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STP*) (**) )  OTR  [8,4] (*RP*) (**)
+ BST  XIC  [1,4] (*Disapproved*) (**)  FB  [2,4] (*ANY_TO_INT*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*6011*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*AlarmNumber*) (**) )  FB  [5,4] (*ANY_TO_INT*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*400*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Step*) (**) )  OTR  [8,4] (*Disapproved*) (**)
    NXB  
- BST  XIC  [1,6] (*AL20*) (**)  FB  [2,6] (*ANY_TO_INT*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*6020*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*ALARME*) (**) )  FB  [5,6] (*ANY_TO_INT*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*500*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STP*) (**) )  OTR  [8,6] (*AL20*) (**)
+ BST  XIC  [1,6] (*AlarmSetupError*) (**)  FB  [2,6] (*ANY_TO_INT*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*6020*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*AlarmNumber*) (**) )  FB  [5,6] (*ANY_TO_INT*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*500*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Step*) (**) )  OTR  [8,6] (*AlarmSetupError*) (**)
    NXB  
- BST  XIC  [1,8] (*MD_HTD*) (**)  XIC  [2,8] (*SA_RP*) (**)  FB  [3,8] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*6050*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*ALARME*) (**) )  OTR  [6,8] (*SA_RP*) (**)
-   NXB  XIC  [1,10] (*MD_HTU*) (**)  XIC  [2,10] (*SA_AP*) (**)  FB  [3,10] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*6050*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*ALARME*) (**) )  OTR  [6,10] (*SA_AP*) (**)
+ BST  XIC  [1,8] (*ModelHeatingWith*) (**)  XIC  [2,8] (*HeatingTestDisaproved*) (**)  FB  [3,8] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*6050*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*AlarmNumber*) (**) )  OTR  [6,8] (*HeatingTestDisaproved*) (**)
+   NXB  XIC  [1,10] (*ModelHeatingNot*) (**)  XIC  [2,10] (*HeatingTestAproved*) (**)  FB  [3,10] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*6050*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*AlarmNumber*) (**) )  OTR  [6,10] (*HeatingTestAproved*) (**)
  BND
 
  BND
@@ -127,14 +97,14 @@ SOR  [0,31] (**) (**)
  BST  XIP  [1,12] (*TDX_RP*) (**)
    NXB  XIP  [1,13] (*TDY_RP*) (**)
  BND
-  FB  [2,12] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*6030*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*ALARME*) (**) )
+  FB  [2,12] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*6030*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*AlarmNumber*) (**) )
    NXB  
  BST  XIP  [1,14] (*DX_RP*) (**)
    NXB  XIP  [1,15] (*DY_RP*) (**)
  BND
-  FB  [2,14] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*6040*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*ALARME*) (**) )
+  FB  [2,14] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*6040*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*AlarmNumber*) (**) )
  BND
-  OTS  [5,12] (*RP*) (**)
+  OTS  [5,12] (*Disapproved*) (**)
  BND
 
  BND
@@ -144,19 +114,15 @@ EOR [9,0]
 
 (*CONTROLE DE Produção*)
 
-SOR  [0,48] (**) (**)  
- BST  XIC  [1,0] (*PD_UP*) (**)  FB  [2,0] (*CTUD*) (*CTUD_1*) ( (*CU:CU*)(**) (**)  , (*CD:CD*)(*PD_DW*) (**)  , (*RESET:RESE*)(*PD_RS*) (**)  , (*LOAD:LOAD*)(**) (**)  , (*PV:PV*)(*PD_AV*) (**) ; (*QU:QU*)(**) (**)  , (*QD:QD*)(**) (**)  , (*CV:CV*)(*PD_AT*) (**) )  FB  [5,0] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*6100*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*ALARME*) (**) )  OTE  [8,0] (*PD_OK*) (**)
-   NXB XIL [1,5] (**) (**)
- BND
-
+SOR  [0,47] (**) (**)  XIC  [1,0] (*ProductionAdd*) (**)  FB  [2,0] (*CTUD*) (*CTUD_1*) ( (*CU:CU*)(**) (**)  , (*CD:CD*)(*ProductionSubtract*) (**)  , (*RESET:RESE*)(*ProductionReset*) (**)  , (*LOAD:LOAD*)(**) (**)  , (*PV:PV*)(*ProductionGoal*) (**) ; (*QU:QU*)(**) (**)  , (*QD:QD*)(**) (**)  , (*CV:CV*)(*ProductionCount*) (**) )  FB  [5,0] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*6100*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*AlarmNumber*) (**) )  OTE  [8,0] (*ProductionFull*) (**)
 EOR [9,0]
 
 
 (*PASSO 00 - RESET*)
 
-SOR  [0,54] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*STP*) (**)  , (*i2:*)(*0*) (**) ; (*o1:*)(**) (**) )  
- BST  FB  [4,0] (*TP*) (*TP_1*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*T#2S*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTE  [7,0] (*DP_RS*) (**)
-   NXB  FB  [4,2] (*TON*) (*TON_3*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*T#1S*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  XIC  [7,2] (*DP_LB*) (**)  FB  [8,2] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*1*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STP*) (**) )
+SOR  [0,53] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Step*) (**)  , (*i2:*)(*0*) (**) ; (*o1:*)(**) (**) )  
+ BST  FB  [4,0] (*TP*) (*TP_1*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*T#2S*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTE  [7,0] (*DeviceReset*) (**)
+   NXB  FB  [4,2] (*TON*) (*TON_3*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*T#1S*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  XIC  [7,2] (*DeviceRelease*) (**)  FB  [8,2] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*1*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Step*) (**) )
  BND
 
 EOR [11,0]
@@ -164,9 +130,9 @@ EOR [11,0]
 
 (*PASSO 01 - SETUP NOK*)
 
-SOR  [0,59] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*STP*) (**)  , (*i2:*)(*1*) (**) ; (*o1:*)(**) (**) )  
- BST  XIC  [4,0] (*SU*) (**)  FB  [5,0] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*10*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STP*) (**) )
-   NXB  XIF  [4,2] (*BTL*) (**)  OTS  [5,2] (*AL20*) (**)
+SOR  [0,58] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Step*) (**)  , (*i2:*)(*1*) (**) ; (*o1:*)(**) (**) )  
+ BST  XIC  [4,0] (*DeviceSetup*) (**)  FB  [5,0] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*10*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Step*) (**) )
+   NXB  XIF  [4,2] (*ButtonStart*) (**)  OTS  [5,2] (*AlarmSetupError*) (**)
  BND
 
 EOR [8,0]
@@ -174,9 +140,9 @@ EOR [8,0]
 
 (*PASSO 10 - STUP OK*)
 
-SOR  [0,63] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*STP*) (**)  , (*i2:*)(*10*) (**) ; (*o1:*)(**) (**) )  
- BST  XIF  [4,0] (*BTL*) (**)  FB  [5,0] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*20*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STP*) (**) )
-   NXB  XIO  [4,2] (*SU*) (**)  FB  [5,2] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*1*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STP*) (**) )
+SOR  [0,62] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Step*) (**)  , (*i2:*)(*10*) (**) ; (*o1:*)(**) (**) )  
+ BST  XIF  [4,0] (*ButtonStart*) (**)  FB  [5,0] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*20*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Step*) (**) )
+   NXB  XIO  [4,2] (*DeviceSetup*) (**)  FB  [5,2] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*1*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Step*) (**) )
  BND
 
 EOR [8,0]
@@ -184,13 +150,13 @@ EOR [8,0]
 
 (*PASSO 20 - INICIO*)
 
-SOR  [0,68] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*STP*) (**)  , (*i2:*)(*20*) (**) ; (*o1:*)(**) (**) )  
+SOR  [0,67] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Step*) (**)  , (*i2:*)(*20*) (**) ; (*o1:*)(**) (**) )  
  BST  
- BST  OTR  [4,0] (*AP*) (**)
-   NXB  OTR  [4,1] (*RP*) (**)
+ BST  OTR  [4,0] (*Approved*) (**)
+   NXB  OTR  [4,1] (*Disapproved*) (**)
  BND
 
-   NXB  XIO  [4,2] (*AP*) (**)  XIO  [5,2] (*RP*) (**)  FB  [6,2] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*30*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STP*) (**) )
+   NXB  XIO  [4,2] (*Approved*) (**)  XIO  [5,2] (*Disapproved*) (**)  FB  [6,2] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*30*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Step*) (**) )
  BND
 
 EOR [9,0]
@@ -198,9 +164,29 @@ EOR [9,0]
 
 (**)
 
-SOR  [0,73] (**) (**)  FB  [1,0] (*FB_PV*) (*FB_PV_7*) ( (*IN:*)(**) (**)  , (*VL:*)(*STP*) (**)  , (*MX:*)(*299*) (**)  , (*MN:*)(*20*) (**) ; (*Q:*)(**) (**)  , (*AP:*)(*STP_AP*) (**)  , (*RP:*)(**) (**) )  XIC  [4,0] (*STP_AP*) (**)  
- BST  XIO  [5,0] (*SA_TT*) (**)  FB  [6,0] (*TON*) (*TON_2*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*T#500MS*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTS  [9,0] (*SA_TT*) (**)
-   NXB XIL [5,2] (**) (**)
+SOR  [0,72] (**) (**)  FB  [1,0] (*FB_PV*) (*STEP_1*) ( (*IN:*)(**) (**)  , (*VL:*)(*Step*) (**)  , (*MX:*)(*299*) (**)  , (*MN:*)(*20*) (**) ; (*Q:*)(**) (**)  , (*AP:*)(**) (**)  , (*RP:*)(**) (**) )  XIC  [4,0] (*STEP_1.AP*) (**)  XIO  [5,0] (*HeatingTestStart*) (**)  FB  [6,0] (*TON*) (*TON_2*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*T#500MS*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTS  [9,0] (*HeatingTestStart*) (**)
+EOR [10,0]
+
+
+(**)
+
+SOR  [0,77] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Step*) (**)  , (*i2:*)(*30*) (**) ; (*o1:*)(**) (**) )  FB  [4,0] (*MoveTest*) (*MoveTest_1*) ( (*IN:*)(**) (**)  , (*PosSensor:*)(*Transducer1Sensor*) (**)  , (*MoveTime:*)(*T#3S*) (**) ; (*Q:*)(**) (**)  , (*MoveP:*)(**) (**)  , (*MoveN:*)(**) (**)  , (*PosVariation:*)(**) (**) )  
+ BST  OTS  [7,0] (*CilinderAdvance*) (**)
+   NXB  XIC  [7,1] (*CilinderAdvance*) (**)  FB  [8,1] (*FB_PK_V2*) (*FB_PK_V2_1*) ( (*IN:*)(**) (**)  , (*SN1:*)(*Transducer1Sensor*) (**)  , (*SN2:*)(*Transducer2Sense*) (**)  , (*TM:*)(*T#3S*) (**)  , (*RT:*)(*CilinderAdvanced*) (**) ; (*Q:*)(**) (**)  , (*S1:*)(**) (**)  , (*PKP1:*)(*Transducer1Peak*) (**)  , (*PKP2:*)(*Transducer2Peak*) (**) )  
+ BST  FB  [11,1] (*FB_PV*) (*FB_PV_5*) ( (*IN:*)(**) (**)  , (*VL:*)(*Transducer1Peak*) (**)  , (*MX:*)(*Transducer1Max*) (**)  , (*MN:*)(*Transducer1Min*) (**) ; (*Q:*)(**) (**)  , (*AP:*)(*TDX_AP*) (**)  , (*RP:*)(*TDX_RP*) (**) )
+   NXB  FB  [11,5] (*FB_PV*) (*FB_PV_6*) ( (*IN:*)(**) (**)  , (*VL:*)(*Transducer2Peak*) (**)  , (*MX:*)(*Transducer1Max*) (**)  , (*MN:*)(*Transducer1Min*) (**) ; (*Q:*)(**) (**)  , (*AP:*)(*TDY_AP*) (**)  , (*RP:*)(*TDY_RP*) (**) )
+ BND
+
+ BND
+
+EOR [14,0]
+
+
+(**)
+
+SOR  [0,87] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Step*) (**)  , (*i2:*)(*30*) (**) ; (*o1:*)(**) (**) )  XIC  [4,0] (*TDX_AP*) (**)  XIC  [5,0] (*TDY_AP*) (**)  
+ BST  XIC  [6,0] (*ModelAjustmentRemote*) (**)  FB  [7,0] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*40*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Step*) (**) )
+   NXB  XIC  [6,2] (*ModelAdjustmentManual*) (**)  FB  [7,2] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*300*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Step*) (**) )
  BND
 
 EOR [10,0]
@@ -208,23 +194,9 @@ EOR [10,0]
 
 (**)
 
-SOR  [0,78] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*STP*) (**)  , (*i2:*)(*30*) (**) ; (*o1:*)(**) (**) )  
- BST  OTS  [4,0] (*CL_AT*) (**)
-   NXB  XIC  [4,1] (*CL_AT*) (**)  FB  [5,1] (*FB_PK_V2*) (*FB_PK_V2_1*) ( (*IN:*)(**) (**)  , (*SN1:*)(*TD1_SN*) (**)  , (*SN2:*)(*TD2_SN*) (**)  , (*TM:*)(*T#3S*) (**)  , (*RT:*)(*CL_RT*) (**) ; (*Q:*)(**) (**)  , (*S1:*)(**) (**)  , (*PKP1:*)(*TD1_PK*) (**)  , (*PKP2:*)(*TD2_PK*) (**) )  
- BST  FB  [8,1] (*FB_PV*) (*FB_PV_5*) ( (*IN:*)(**) (**)  , (*VL:*)(*TD1_PK*) (**)  , (*MX:*)(*TD1_MX*) (**)  , (*MN:*)(*TD1_MN*) (**) ; (*Q:*)(**) (**)  , (*AP:*)(*TDX_AP*) (**)  , (*RP:*)(*TDX_RP*) (**) )
-   NXB  FB  [8,5] (*FB_PV*) (*FB_PV_6*) ( (*IN:*)(**) (**)  , (*VL:*)(*TD2_PK*) (**)  , (*MX:*)(*TD1_MX*) (**)  , (*MN:*)(*TD1_MN*) (**) ; (*Q:*)(**) (**)  , (*AP:*)(*TDY_AP*) (**)  , (*RP:*)(*TDY_RP*) (**) )
- BND
-
- BND
-
-EOR [11,0]
-
-
-(**)
-
-SOR  [0,88] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*STP*) (**)  , (*i2:*)(*30*) (**) ; (*o1:*)(**) (**) )  XIC  [4,0] (*TDX_AP*) (**)  XIC  [5,0] (*TDY_AP*) (**)  
- BST  XIC  [6,0] (*MD_AREM*) (**)  FB  [7,0] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*40*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STP*) (**) )
-   NXB  XIC  [6,2] (*MD_AMAN*) (**)  FB  [7,2] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*300*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STP*) (**) )
+SOR  [0,92] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Step*) (**)  , (*i2:*)(*40*) (**) ; (*o1:*)(**) (**) )  
+ BST  FB  [4,0] (*MoveTest*) (*MoveTest_2*) ( (*IN:*)(**) (**)  , (*PosSensor:*)(*Transducer1Sensor*) (**)  , (*MoveTime:*)(*T#3S*) (**) ; (*Q:*)(**) (**)  , (*MoveP:*)(*Motor1Up*) (**)  , (*MoveN:*)(*Motor1Down*) (**)  , (*PosVariation:*)(*DX*) (**) )  FB  [7,0] (*FB_PV*) (*FB_PV_8*) ( (*IN:*)(**) (**)  , (*VL:*)(*DX*) (**)  , (*MX:*)(*DX_MX*) (**)  , (*MN:*)(*DX_MN*) (**) ; (*Q:*)(**) (**)  , (*AP:*)(*DX_AP*) (**)  , (*RP:*)(*DX_RP*) (**) )
+   NXB  XIC  [4,4] (*DX_AP*) (**)  FB  [5,4] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*50*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Step*) (**) )
  BND
 
 EOR [10,0]
@@ -232,9 +204,9 @@ EOR [10,0]
 
 (**)
 
-SOR  [0,93] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*STP*) (**)  , (*i2:*)(*40*) (**) ; (*o1:*)(**) (**) )  
- BST  FB  [4,0] (*FB_MOV*) (*FB_MOV_2*) ( (*IN:*)(**) (**)  , (*SN:*)(*TD1_SN*) (**)  , (*TM:*)(*T#3S*) (**) ; (*Q:*)(**) (**)  , (*M1:*)(*MT1_X1*) (**)  , (*M2:*)(*MT1_X2*) (**)  , (*VL:*)(*DX*) (**) )  FB  [7,0] (*FB_PV*) (*FB_PV_8*) ( (*IN:*)(**) (**)  , (*VL:*)(*DX*) (**)  , (*MX:*)(*DX_MX*) (**)  , (*MN:*)(*DX_MN*) (**) ; (*Q:*)(**) (**)  , (*AP:*)(*DX_AP*) (**)  , (*RP:*)(*DX_RP*) (**) )
-   NXB  XIC  [4,4] (*DX_AP*) (**)  FB  [5,4] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*50*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STP*) (**) )
+SOR  [0,99] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Step*) (**)  , (*i2:*)(*50*) (**) ; (*o1:*)(**) (**) )  
+ BST  FB  [4,0] (*MoveTest*) (*MoveTest_3*) ( (*IN:*)(**) (**)  , (*PosSensor:*)(*Transducer2Sense*) (**)  , (*MoveTime:*)(*T#3S*) (**) ; (*Q:*)(**) (**)  , (*MoveP:*)(*Motor1Rigth*) (**)  , (*MoveN:*)(*Motor1Left*) (**)  , (*PosVariation:*)(*DY*) (**) )  FB  [7,0] (*FB_PV*) (*FB_PV_9*) ( (*IN:*)(**) (**)  , (*VL:*)(*DY*) (**)  , (*MX:*)(*DY_MX*) (**)  , (*MN:*)(*DY_MN*) (**) ; (*Q:*)(**) (**)  , (*AP:*)(*DY_AP*) (**)  , (*RP:*)(*DY_RP*) (**) )
+   NXB  XIC  [4,4] (*DY_AP*) (**)  FB  [5,4] (*1 gain*) (*6*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*300*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Step*) (**) )
  BND
 
 EOR [10,0]
@@ -242,29 +214,19 @@ EOR [10,0]
 
 (**)
 
-SOR  [0,100] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*STP*) (**)  , (*i2:*)(*50*) (**) ; (*o1:*)(**) (**) )  
- BST  FB  [4,0] (*FB_MOV*) (*FB_MOV_1*) ( (*IN:*)(**) (**)  , (*SN:*)(*TD2_SN*) (**)  , (*TM:*)(*T#3S*) (**) ; (*Q:*)(**) (**)  , (*M1:*)(*MT1_Y1*) (**)  , (*M2:*)(*MT1_Y2*) (**)  , (*VL:*)(*DY*) (**) )  FB  [7,0] (*FB_PV*) (*FB_PV_9*) ( (*IN:*)(**) (**)  , (*VL:*)(*DY*) (**)  , (*MX:*)(*DY_MX*) (**)  , (*MN:*)(*DY_MN*) (**) ; (*Q:*)(**) (**)  , (*AP:*)(*DY_AP*) (**)  , (*RP:*)(*DY_RP*) (**) )
-   NXB  XIC  [4,4] (*DY_AP*) (**)  FB  [5,4] (*1 gain*) (*6*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*300*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STP*) (**) )
- BND
-
-EOR [10,0]
-
-
-(**)
-
-SOR  [0,107] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*STP*) (**)  , (*i2:*)(*300*) (**) ; (*o1:*)(**) (**) )  XIO  [4,0] (*RP*) (**)  OTS  [5,0] (*AP*) (**)
+SOR  [0,106] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Step*) (**)  , (*i2:*)(*300*) (**) ; (*o1:*)(**) (**) )  XIO  [4,0] (*Disapproved*) (**)  OTS  [5,0] (*Approved*) (**)
 EOR [6,0]
 
 
 (*PASSO 300 - TESTE*)
 
-SOR  [0,111] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*STP*) (**)  , (*i2:*)(*300*) (**) ; (*o1:*)(**) (**) )  
- BST  FB  [4,0] (*TON*) (*TON_1*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*T#3S*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTS  [7,0] (*RP*) (**)
+SOR  [0,110] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Step*) (**)  , (*i2:*)(*300*) (**) ; (*o1:*)(**) (**) )  
+ BST  FB  [4,0] (*TON*) (*TON_1*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*T#3S*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTS  [7,0] (*Disapproved*) (**)
    NXB  
- BST  XIC  [4,2] (*AP*) (**)  FB  [5,2] (*1 gain*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*5010*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*ALARME*) (**) )
-   NXB  XIC  [4,4] (*RP*) (**)  FB  [5,4] (*1 gain*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*5011*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*ALARME*) (**) )
+ BST  XIC  [4,2] (*Approved*) (**)  FB  [5,2] (*1 gain*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*5010*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*AlarmNumber*) (**) )
+   NXB  XIC  [4,4] (*Disapproved*) (**)  FB  [5,4] (*1 gain*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*5011*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*AlarmNumber*) (**) )
  BND
-  FB  [8,2] (*1 gain*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*400*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STP*) (**) )
+  FB  [8,2] (*1 gain*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*400*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Step*) (**) )
  BND
 
 EOR [11,0]
@@ -272,11 +234,11 @@ EOR [11,0]
 
 (*PASSO 400 - SALVA HISTÓRICO*)
 
-SOR  [0,118] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*STP*) (**)  , (*i2:*)(*400*) (**) ; (*o1:*)(**) (**) )  
- BST  OTS  [4,0] (*SV*) (**)
-   NXB  XIC  [4,1] (*SV*) (**)  
- BST  XIC  [5,1] (*AP*) (**)  FB  [6,1] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STP*) (**) )
-   NXB  XIC  [5,3] (*RP*) (**)  FB  [6,3] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*500*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STP*) (**) )
+SOR  [0,117] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Step*) (**)  , (*i2:*)(*400*) (**) ; (*o1:*)(**) (**) )  
+ BST  OTS  [4,0] (*Recording*) (**)
+   NXB  XIC  [4,1] (*Recording*) (**)  
+ BST  XIC  [5,1] (*Approved*) (**)  FB  [6,1] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Step*) (**) )
+   NXB  XIC  [5,3] (*Disapproved*) (**)  FB  [6,3] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*500*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Step*) (**) )
  BND
 
  BND
@@ -286,9 +248,9 @@ EOR [9,0]
 
 (*PASSO 500 - RESET DE FALHAS*)
 
-SOR  [0,124] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*STP*) (**)  , (*i2:*)(*500*) (**) ; (*o1:*)(**) (**) )  XIF  [4,0] (*AL_RS*) (**)  
- BST  FB  [5,0] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*ALARME*) (**) )  OTS  [8,0] (*VVS*) (**)
-   NXB  XIC  [5,2] (*VVS*) (**)  FB  [6,2] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STP*) (**) )
+SOR  [0,123] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Step*) (**)  , (*i2:*)(*500*) (**) ; (*o1:*)(**) (**) )  XIF  [4,0] (*AlarmReset*) (**)  
+ BST  FB  [5,0] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*AlarmNumber*) (**) )  OTS  [8,0] (*SecurityValve*) (**)
+   NXB  XIC  [5,2] (*SecurityValve*) (**)  FB  [6,2] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Step*) (**) )
  BND
 
 EOR [9,0]
@@ -296,9 +258,9 @@ EOR [9,0]
 
 (*PASSO 501 - SEGURANÇA*)
 
-SOR  [0,129] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*STP*) (**)  , (*i2:*)(*501*) (**) ; (*o1:*)(**) (**) )  
- BST  OTR  [4,0] (*VVS*) (**)
-   NXB  XIO  [4,1] (*VVS*) (**)  XIC  [5,1] (*BTS*) (**)  FB  [6,1] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*500*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STP*) (**) )
+SOR  [0,128] (**) (**)  FB  [1,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Step*) (**)  , (*i2:*)(*501*) (**) ; (*o1:*)(**) (**) )  
+ BST  OTR  [4,0] (*SecurityValve*) (**)
+   NXB  XIO  [4,1] (*SecurityValve*) (**)  XIC  [5,1] (*ButtonStop*) (**)  FB  [6,1] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*500*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Step*) (**) )
  BND
 
 EOR [9,0]

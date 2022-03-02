@@ -8,222 +8,46 @@ __STEPPRAGMA
 0,1
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-(* FB call: FB_INFO *)
-FB_INFO_1(TRUE, IHM_MD, IHM_OP1, IHM_OP2, IHM_ID, IHM_ANO, IHM_MES, IHM_DIA, IHM_HORA, IHM_MINUTO, HM_SEGUNDO, IHM_PD_AV, IHM_PD_AT, Q, ZGS) ;
-IHM_PD_RS := FB_INFO_1.PD_RS ;
-(* FB call: FB_IMP *)
-FB_IMP_1(FB_INFO_1.Q, OP60_AP, 2, , , , , , , , ) ;
-
-(*************** Code for the end of Rung **************)
-
-
-(*************** Rung **********************************)
-(**)
-__STEPPRAGMA
-0,17
-__ENDSTEPPRAGMA
-(*Label :*)(**)
-__EDTB1 := TRUE ;
+(* FB call: PrintCounter *)
+PrintCounter_1(TRUE, PRINTAMOUNT, PRINTCOMANDSENT) ;
+IMPRIME := PrintCounter_1.Trigger ;
+; (*Pulse detection on : OP60_TESTAPPROVED with __MEMO__1__OP60_TESTAPPROVED *)
+__EDTB1 := (OP60_TESTAPPROVED AND NOT(__MEMO__1__OP60_TESTAPPROVED)) ;
 IF __EDTB1 THEN
-STR_OP := ANY_TO_STRING(OP) ;
+PRINTAMOUNT := (  1) ;
 END_IF ;
-__MO_ANY_TO_STRING_1 := __EDTB1 ;
+__MO_1GAIN_1 := __EDTB1 ;
 __EDTB2 := __EDTB1 ;
-IF __EDTB2 THEN
-STR_OP1 := ASCII(STR_OP, 1) ;
-END_IF ;
-__MO_ASCII_1 := __EDTB2 ;
-__EDTB3 := __EDTB2 ;
+
+(*************** Code for the end of Rung **************)
+__MEMO__1__OP60_TESTAPPROVED := OP60_TESTAPPROVED ; (*Pulse detection on : OP60_TESTAPPROVED with __MEMO__1__OP60_TESTAPPROVED *)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,7
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+(* FB call: FB_INFO *)
+FB_INFO_1(TRUE, IHM_MODEL, IHM_PRODUCTIONORDER1, IHM_PRODUCTIONORDER2, IHM_USERID, IHM_DATEYEAR, IHM_DATEMONTH, IHM_DATEDAY, IHM_TIMEHOUR, IHM_TIMEMINUTE, IHM_TIMESECOND, IHM_PRODGOAL, IHM_PRODCOUNT, IHM_VERSIONQ, IHM_VERSIONZGS) ;
+PRODUCTIONRESET := FB_INFO_1.ProdReset ;
+SBARCODE := FB_INFO_1.sBarcode ;
+SDATE := FB_INFO_1.sDate ;
+SUSER := FB_INFO_1.sUser ;
+SPRODORDER := FB_INFO_1.sProdOrder ;
+SPARTNUMBER := FB_INFO_1.sPartNumber ;
+SPRODCOUNT := FB_INFO_1.sProdCount ;
+SMODEL := FB_INFO_1.sModel ;
+SVERSION := FB_INFO_1.sVersion ;
+(* FB call: PrinterSender *)
+PrinterSender_1(FB_INFO_1.Q, IMPRIME, 2, SBARCODE, SDATE, SUSER, SPRODORDER, SPARTNUMBER, SPRODCOUNT, SMODEL, SVERSION) ;
+__EDTB3 := PrinterSender_1.Q ;
 IF __EDTB3 THEN
-STR_04_OP[25] := ANY_TO_BYTE(STR_OP1) ;
+PRINTAMOUNT := (PRINTAMOUNT - 1) ;
 END_IF ;
-__MO_ANY_TO_BYTE_1 := __EDTB3 ;
-__EDTB4 := __EDTB3 ;
-__EDTB5 := __EDTB1 ;
-IF __EDTB5 THEN
-STR_OP2 := ASCII(STR_OP, 2) ;
-END_IF ;
-__MO_ASCII_2 := __EDTB5 ;
-__EDTB6 := __EDTB5 ;
-IF __EDTB6 THEN
-STR_04_OP[26] := ANY_TO_BYTE(STR_OP2) ;
-END_IF ;
-__MO_ANY_TO_BYTE_2 := __EDTB6 ;
-__EDTB7 := __EDTB6 ;
-__EDTB8 := (__EDTB4 OR __EDTB7) ;
-__EDTB9 := __EDTB1 ;
-IF __EDTB9 THEN
-STR_OP3 := ASCII(STR_OP, 3) ;
-END_IF ;
-__MO_ASCII_3 := __EDTB9 ;
-__EDTB10 := __EDTB9 ;
-IF __EDTB10 THEN
-STR_04_OP[27] := ANY_TO_BYTE(STR_OP3) ;
-END_IF ;
-__MO_ANY_TO_BYTE_3 := __EDTB10 ;
-__EDTB11 := __EDTB10 ;
-__EDTB12 := (__EDTB8 OR __EDTB11) ;
-__EDTB13 := __EDTB1 ;
-IF __EDTB13 THEN
-STR_OP4 := ASCII(STR_OP, 4) ;
-END_IF ;
-__MO_ASCII_4 := __EDTB13 ;
-__EDTB14 := __EDTB13 ;
-IF __EDTB14 THEN
-STR_04_OP[28] := ANY_TO_BYTE(STR_OP4) ;
-END_IF ;
-__MO_ANY_TO_BYTE_4 := __EDTB14 ;
-__EDTB15 := __EDTB14 ;
-__EDTB16 := (__EDTB12 OR __EDTB15) ;
-__EDTB17 := __EDTB1 ;
-IF __EDTB17 THEN
-STR_OP5 := ASCII(STR_OP, 5) ;
-END_IF ;
-__MO_ASCII_5 := __EDTB17 ;
-__EDTB18 := __EDTB17 ;
-IF __EDTB18 THEN
-STR_04_OP[29] := ANY_TO_BYTE(STR_OP5) ;
-END_IF ;
-__MO_ANY_TO_BYTE_5 := __EDTB18 ;
-__EDTB19 := __EDTB18 ;
-__EDTB20 := (__EDTB16 OR __EDTB19) ;
-__EDTB21 := __EDTB1 ;
-IF __EDTB21 THEN
-STR_OP6 := ASCII(STR_OP, 6) ;
-END_IF ;
-__MO_ASCII_6 := __EDTB21 ;
-__EDTB22 := __EDTB21 ;
-IF __EDTB22 THEN
-STR_04_OP[30] := ANY_TO_BYTE(STR_OP6) ;
-END_IF ;
-__MO_ANY_TO_BYTE_6 := __EDTB22 ;
-__EDTB23 := __EDTB22 ;
-
-(*************** Code for the end of Rung **************)
-
-
-(*************** Rung **********************************)
-(**)
-__STEPPRAGMA
-0,36
-__ENDSTEPPRAGMA
-(*Label :*)(**)
-__EDTB24 := TRUE ;
-IF __EDTB24 THEN
-STR_ZGS := ANY_TO_STRING(ZGS) ;
-END_IF ;
-__MO_ANY_TO_STRING_2 := __EDTB24 ;
-__EDTB25 := __EDTB24 ;
-IF __EDTB25 THEN
-ZGS1 := ASCII(STR_ZGS, 1) ;
-END_IF ;
-__MO_ASCII_7 := __EDTB25 ;
-__EDTB26 := __EDTB25 ;
-__EDTB27 := __EDTB24 ;
-IF __EDTB27 THEN
-ZGS2 := ASCII(STR_ZGS, 2) ;
-END_IF ;
-__MO_ASCII_8 := __EDTB27 ;
-__EDTB28 := __EDTB27 ;
-__EDTB29 := __EDTB24 ;
-IF __EDTB29 THEN
-ZGS3 := ASCII(STR_ZGS, 3) ;
-END_IF ;
-__MO_ASCII_9 := __EDTB29 ;
-__EDTB30 := __EDTB29 ;
-__EDTB31 := (__EDTB28 OR __EDTB30) ;
-
-(*************** Code for the end of Rung **************)
-
-
-(*************** Rung **********************************)
-(**)
-__STEPPRAGMA
-0,46
-__ENDSTEPPRAGMA
-(*Label :*)(**)
-__EDTB32 := TRUE ;
-IF __EDTB32 THEN
-STR_Q := ANY_TO_STRING(Q) ;
-END_IF ;
-__MO_ANY_TO_STRING_3 := __EDTB32 ;
-__EDTB33 := __EDTB32 ;
-IF __EDTB33 THEN
-Q1 := ASCII(STR_Q, 1) ;
-END_IF ;
-__MO_ASCII_10 := __EDTB33 ;
-__EDTB34 := __EDTB33 ;
-__EDTB35 := __EDTB32 ;
-IF __EDTB35 THEN
-Q2 := ASCII(STR_Q, 2) ;
-END_IF ;
-__MO_ASCII_11 := __EDTB35 ;
-__EDTB36 := __EDTB35 ;
-__EDTB37 := __EDTB32 ;
-IF __EDTB37 THEN
-Q3 := ASCII(STR_Q, 3) ;
-END_IF ;
-__MO_ASCII_12 := __EDTB37 ;
-__EDTB38 := __EDTB37 ;
-__EDTB39 := (__EDTB36 OR __EDTB38) ;
-
-(*************** Code for the end of Rung **************)
-
-
-(*************** Rung **********************************)
-(**)
-__STEPPRAGMA
-0,56
-__ENDSTEPPRAGMA
-(*Label :*)(**)
-__EDTB40 := TRUE ;
-IF __EDTB40 THEN
-STR_10_PART_NUM3[25] := ANY_TO_BYTE(ZGS1) ;
-END_IF ;
-__MO_ANY_TO_BYTE_7 := __EDTB40 ;
-__EDTB41 := __EDTB40 ;
-__EDTB42 := TRUE ;
-IF __EDTB42 THEN
-STR_10_PART_NUM3[26] := ANY_TO_BYTE(ZGS2) ;
-END_IF ;
-__MO_ANY_TO_BYTE_8 := __EDTB42 ;
-__EDTB43 := __EDTB42 ;
-__EDTB44 := TRUE ;
-IF __EDTB44 THEN
-STR_10_PART_NUM3[27] := ANY_TO_BYTE(ZGS3) ;
-END_IF ;
-__MO_ANY_TO_BYTE_9 := __EDTB44 ;
-__EDTB45 := __EDTB44 ;
-__EDTB46 := (__EDTB43 OR __EDTB45) ;
-
-(*************** Code for the end of Rung **************)
-
-
-(*************** Rung **********************************)
-(**)
-__STEPPRAGMA
-0,63
-__ENDSTEPPRAGMA
-(*Label :*)(**)
-__EDTB47 := TRUE ;
-IF __EDTB47 THEN
-STR_10_PART_NUM3[31] := ANY_TO_BYTE(Q1) ;
-END_IF ;
-__MO_ANY_TO_BYTE_10 := __EDTB47 ;
-__EDTB48 := __EDTB47 ;
-__EDTB49 := TRUE ;
-IF __EDTB49 THEN
-STR_10_PART_NUM3[32] := ANY_TO_BYTE(Q2) ;
-END_IF ;
-__MO_ANY_TO_BYTE_11 := __EDTB49 ;
-__EDTB50 := __EDTB49 ;
-__EDTB51 := TRUE ;
-IF __EDTB51 THEN
-STR_10_PART_NUM3[33] := ANY_TO_BYTE(Q3) ;
-END_IF ;
-__MO_ANY_TO_BYTE_12 := __EDTB51 ;
-__EDTB52 := __EDTB51 ;
-__EDTB53 := (__EDTB50 OR __EDTB52) ;
+__MO_MINUS_1 := __EDTB3 ;
+PRINTCOMANDSENT := __EDTB3 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -234,57 +58,8 @@ __GL __LG0000 ;
 
 
 (*************** Local Symbols table *******************)
+(* __MEMO__1__OP60_TESTAPPROVED *)
 (* __EDTB1 *)
 (* __EDTB2 *)
 (* __EDTB3 *)
-(* __EDTB4 *)
-(* __EDTB5 *)
-(* __EDTB6 *)
-(* __EDTB7 *)
-(* __EDTB8 *)
-(* __EDTB9 *)
-(* __EDTB10 *)
-(* __EDTB11 *)
-(* __EDTB12 *)
-(* __EDTB13 *)
-(* __EDTB14 *)
-(* __EDTB15 *)
-(* __EDTB16 *)
-(* __EDTB17 *)
-(* __EDTB18 *)
-(* __EDTB19 *)
-(* __EDTB20 *)
-(* __EDTB21 *)
-(* __EDTB22 *)
-(* __EDTB23 *)
-(* __EDTB24 *)
-(* __EDTB25 *)
-(* __EDTB26 *)
-(* __EDTB27 *)
-(* __EDTB28 *)
-(* __EDTB29 *)
-(* __EDTB30 *)
-(* __EDTB31 *)
-(* __EDTB32 *)
-(* __EDTB33 *)
-(* __EDTB34 *)
-(* __EDTB35 *)
-(* __EDTB36 *)
-(* __EDTB37 *)
-(* __EDTB38 *)
-(* __EDTB39 *)
-(* __EDTB40 *)
-(* __EDTB41 *)
-(* __EDTB42 *)
-(* __EDTB43 *)
-(* __EDTB44 *)
-(* __EDTB45 *)
-(* __EDTB46 *)
-(* __EDTB47 *)
-(* __EDTB48 *)
-(* __EDTB49 *)
-(* __EDTB50 *)
-(* __EDTB51 *)
-(* __EDTB52 *)
-(* __EDTB53 *)
 

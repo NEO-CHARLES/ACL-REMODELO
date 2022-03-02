@@ -5,93 +5,21 @@ BOF
 
 (**)
 
-SOR  [0,1] (**) (**)  FB  [1,0] (*FB_INFO*) (*FB_INFO_1*) ( (*IN:*)(**) (**)  , (*MD:MODELO*)(*IHM_MD*) (**)  , (*NOP_1:*)(*IHM_OP1*) (**)  , (*NOP_2:*)(*IHM_OP2*) (**)  , (*INT_ID:*)(*IHM_ID*) (**)  , (*DT_YYYY:*)(*IHM_Ano*) (**)  , (*DT_MM:*)(*IHM_Mes*) (**)  , (*DT_DD:*)(*IHM_Dia*) (**)  , (*TM_HH:*)(*IHM_Hora*) (**)  , (*TM_MM:*)(*IHM_Minuto*) (**)  , (*TM_SS:*)(*HM_Segundo*) (**)  , (*PD_AV:*)(*IHM_PD_AV*) (**)  , (*PD_AT:*)(*IHM_PD_AT*) (**)  , (*VS_Q:*)(*Q*) (**)  , (*VS_ZGS:*)(*ZGS*) (**) ; (*Q:*)(**) (**)  , (*PD_RS:*)(*IHM_PD_RS*) (**)  , (*S_BC:*)(**) (**)  , (*S_DT:*)(**) (**)  , (*S_ID:*)(**) (**)  , (*S_OP:*)(**) (**)  , (*S_PN:*)(**) (**)  , (*S_PD:*)(**) (**)  , (*S_MD:*)(**) (**)  , (*S_VS:*)(**) (**) )  FB  [4,0] (*FB_IMP*) (*FB_IMP_1*) ( (*IN:*)(**) (**)  , (*TRIGG:*)(*OP60_AP*) (**)  , (*CH:*)(*2*) (**)  , (*BC:*)(**) (**)  , (*TM:*)(**) (**)  , (*ID:*)(**) (**)  , (*OP:*)(**) (**)  , (*PN:*)(**) (**)  , (*PD:*)(**) (**)  , (*MD:*)(**) (**)  , (*VS:*)(**) (**) ; (*Q:*)(**) (**) )
-EOR [7,0]
+SOR  [0,1] (**) (**)  
+ BST  FB  [1,0] (*PrintCounter*) (*PrintCounter_1*) ( (*IN:*)(**) (**)  , (*Amount:*)(*Printer1Amount*) (**)  , (*PrintSent:*)(*Printer1CommandSent*) (**) ; (*Trigger:*)(**) (**) )  OTE  [4,0] (*Printer1Print*) (**)
+   NXB  XIP  [1,3] (*OP60_TestApproved*) (**)  FB  [2,3] (*1 gain*) (*16*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*1*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Printer1Amount*) (**) )
+ BND
+
+EOR [5,0]
 
 
 (**)
 
-SOR  [0,17] (**) (**)  FB  [1,0] (*ANY_TO_STRING*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*OP*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STR_OP*) (**) )  
- BST  
- BST  
- BST  
- BST  
- BST  FB  [4,0] (*ASCII*) (*2*) ( (*EN:EN*)(**) (**)  , (*IN:IN*)(*STR_OP*) (**)  , (*Pos:Pos*)(*1*) (**) ; (*ENO:ENO*)(**) (**)  , (*ASCII:Code*)(*STR_OP1*) (**) )  FB  [7,0] (*ANY_TO_BYTE*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*STR_OP1*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STR_04_OP[25]*) (**) )
-   NXB  FB  [4,3] (*ASCII*) (*2*) ( (*EN:EN*)(**) (**)  , (*IN:IN*)(*STR_OP*) (**)  , (*Pos:Pos*)(*2*) (**) ; (*ENO:ENO*)(**) (**)  , (*ASCII:Code*)(*STR_OP2*) (**) )  FB  [7,3] (*ANY_TO_BYTE*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*STR_OP2*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STR_04_OP[26]*) (**) )
- BND
-
-   NXB  FB  [4,6] (*ASCII*) (*2*) ( (*EN:EN*)(**) (**)  , (*IN:IN*)(*STR_OP*) (**)  , (*Pos:Pos*)(*3*) (**) ; (*ENO:ENO*)(**) (**)  , (*ASCII:Code*)(*STR_OP3*) (**) )  FB  [7,6] (*ANY_TO_BYTE*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*STR_OP3*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STR_04_OP[27]*) (**) )
- BND
-
-   NXB  FB  [4,9] (*ASCII*) (*2*) ( (*EN:EN*)(**) (**)  , (*IN:IN*)(*STR_OP*) (**)  , (*Pos:Pos*)(*4*) (**) ; (*ENO:ENO*)(**) (**)  , (*ASCII:Code*)(*STR_OP4*) (**) )  FB  [7,9] (*ANY_TO_BYTE*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*STR_OP4*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STR_04_OP[28]*) (**) )
- BND
-
-   NXB  FB  [4,12] (*ASCII*) (*2*) ( (*EN:EN*)(**) (**)  , (*IN:IN*)(*STR_OP*) (**)  , (*Pos:Pos*)(*5*) (**) ; (*ENO:ENO*)(**) (**)  , (*ASCII:Code*)(*STR_OP5*) (**) )  FB  [7,12] (*ANY_TO_BYTE*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*STR_OP5*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STR_04_OP[29]*) (**) )
- BND
-
-   NXB  FB  [4,15] (*ASCII*) (*2*) ( (*EN:EN*)(**) (**)  , (*IN:IN*)(*STR_OP*) (**)  , (*Pos:Pos*)(*6*) (**) ; (*ENO:ENO*)(**) (**)  , (*ASCII:Code*)(*STR_OP6*) (**) )  FB  [7,15] (*ANY_TO_BYTE*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*STR_OP6*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STR_04_OP[30]*) (**) )
- BND
-
-EOR [10,0]
-
-
-(**)
-
-SOR  [0,36] (**) (**)  FB  [1,0] (*ANY_TO_STRING*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*ZGS*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STR_ZGS*) (**) )  
- BST  FB  [4,0] (*ASCII*) (*2*) ( (*EN:EN*)(**) (**)  , (*IN:IN*)(*STR_ZGS*) (**)  , (*Pos:Pos*)(*1*) (**) ; (*ENO:ENO*)(**) (**)  , (*ASCII:Code*)(*ZGS1*) (**) )
-   NXB  
- BST  FB  [4,3] (*ASCII*) (*2*) ( (*EN:EN*)(**) (**)  , (*IN:IN*)(*STR_ZGS*) (**)  , (*Pos:Pos*)(*2*) (**) ; (*ENO:ENO*)(**) (**)  , (*ASCII:Code*)(*ZGS2*) (**) )
-   NXB  FB  [4,6] (*ASCII*) (*2*) ( (*EN:EN*)(**) (**)  , (*IN:IN*)(*STR_ZGS*) (**)  , (*Pos:Pos*)(*3*) (**) ; (*ENO:ENO*)(**) (**)  , (*ASCII:Code*)(*ZGS3*) (**) )
- BND
-
- BND
-
-EOR [7,0]
-
-
-(**)
-
-SOR  [0,46] (**) (**)  FB  [1,0] (*ANY_TO_STRING*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Q*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STR_Q*) (**) )  
- BST  FB  [4,0] (*ASCII*) (*2*) ( (*EN:EN*)(**) (**)  , (*IN:IN*)(*STR_Q*) (**)  , (*Pos:Pos*)(*1*) (**) ; (*ENO:ENO*)(**) (**)  , (*ASCII:Code*)(*Q1*) (**) )
-   NXB  
- BST  FB  [4,3] (*ASCII*) (*2*) ( (*EN:EN*)(**) (**)  , (*IN:IN*)(*STR_Q*) (**)  , (*Pos:Pos*)(*2*) (**) ; (*ENO:ENO*)(**) (**)  , (*ASCII:Code*)(*Q2*) (**) )
-   NXB  FB  [4,6] (*ASCII*) (*2*) ( (*EN:EN*)(**) (**)  , (*IN:IN*)(*STR_Q*) (**)  , (*Pos:Pos*)(*3*) (**) ; (*ENO:ENO*)(**) (**)  , (*ASCII:Code*)(*Q3*) (**) )
- BND
-
- BND
-
-EOR [7,0]
-
-
-(**)
-
-SOR  [0,56] (**) (**)  
- BST  FB  [1,0] (*ANY_TO_BYTE*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*ZGS1*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STR_10_PART_NUM3[25]*) (**) )
-   NXB  
- BST  FB  [1,2] (*ANY_TO_BYTE*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*ZGS2*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STR_10_PART_NUM3[26]*) (**) )
-   NXB  FB  [1,4] (*ANY_TO_BYTE*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*ZGS3*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STR_10_PART_NUM3[27]*) (**) )
- BND
-
- BND
-
-EOR [4,0]
-
-
-(**)
-
-SOR  [0,63] (**) (**)  
- BST  FB  [1,0] (*ANY_TO_BYTE*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Q1*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STR_10_PART_NUM3[31]*) (**) )
-   NXB  
- BST  FB  [1,2] (*ANY_TO_BYTE*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Q2*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STR_10_PART_NUM3[32]*) (**) )
-   NXB  FB  [1,4] (*ANY_TO_BYTE*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Q3*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*STR_10_PART_NUM3[33]*) (**) )
- BND
-
- BND
-
-EOR [4,0]
+SOR  [0,7] (**) (**)  FB  [1,0] (*FB_INFO*) (*FB_INFO_1*) ( (*IN:*)(**) (**)  , (*Model:MODELO*)(*IHM_ModelNumber*) (**)  , (*OP1:*)(*IHM_ProductionOrder1*) (**)  , (*OP2:*)(*IHM_ProductionOrder2*) (**)  , (*User:*)(*IHM_UserID*) (**)  , (*Year:*)(*IHM_DateYear*) (**)  , (*Month:*)(*IHM_DateMonth*) (**)  , (*Day:*)(*IHM_DateDay*) (**)  , (*Hour:*)(*IHM_TimeHour*) (**)  , (*Minute:*)(*IHM_TimeMinute*) (**)  , (*Second:*)(*IHM_TimeSecond*) (**)  , (*ProdGoal:*)(*IHM_ProdGoal*) (**)  , (*ProdCount:*)(*IHM_ProdCount*) (**)  , (*VS_Q:*)(*IHM_VersionQ*) (**)  , (*VS_ZGS:*)(*IHM_VersionZGS*) (**) ; (*Q:*)(**) (**)  , (*ProdReset:*)(*IHM_ProductionReset*) (**)  , (*sBarcode:*)(*Barcode*) (**)  , (*sDate:*)(*DateTime*) (**)  , (*sUser:*)(*UserID*) (**)  , (*sProdOrder:*)(*ProductionOrder*) (**)  , (*sPartNumber:*)(*PartNumber*) (**)  , (*sProdCount:*)(*ProductionCount*) (**)  , (*sModel:*)(*ModelDescription*) (**)  , (*sVersion:*)(*Version*) (**) )  FB  [4,0] (*PrinterSender*) (*PrinterSender_1*) ( (*IN:*)(**) (**)  , (*Trigger:*)(*Printer1Print*) (**)  , (*Channel:*)(*2*) (**)  , (*Barcode:*)(*Barcode*) (**)  , (*DateTime:*)(*DateTime*) (**)  , (*User:*)(*UserID*) (**)  , (*ProdOrder:*)(*ProductionOrder*) (**)  , (*PartNumber:*)(*PartNumber*) (**)  , (*ProdCount:*)(*ProductionCount*) (**)  , (*Model:*)(*ModelDescription*) (**)  , (*Version:*)(*Version*) (**) ; (*Q:*)(**) (**) )  FB  [7,0] (*-*) (*15*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Printer1Amount*) (**)  , (*i2:*)(*1*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Printer1Amount*) (**) )  OTE  [10,0] (*Printer1CommandSent*) (**)
+EOR [11,0]
 EOF
 #end_info
 #info= ID_MAX
-NextId=13
+NextId=16
 #end_info
 END_PROGRAM

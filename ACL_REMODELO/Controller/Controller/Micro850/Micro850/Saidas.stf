@@ -7,7 +7,7 @@ BOF
 
 SOR  [0,1] (**) (**)  
  BST  XIC  [1,0] (*OP20_LD_VD*) (**)
-   NXB  XIC  [1,1] (*OP20_LD_AM*) (**)
+   NXB  XIC  [1,1] (*OP20_LD_Yellow*) (**)
  BND
   OTE  [2,0] (*_IO_EM_DO_00*) (**)
 EOR [3,0]
@@ -16,8 +16,8 @@ EOR [3,0]
 (*Saida DO-01 - Sinaleiro Vermelho Operação 20*)
 
 SOR  [0,4] (**) (**)  
- BST  XIC  [1,0] (*OP20_LD_VM*) (**)
-   NXB  XIC  [1,1] (*OP20_LD_AM*) (**)
+ BST  XIC  [1,0] (*OP20_LD_Red*) (**)
+   NXB  XIC  [1,1] (*OP20_LD_Yellow*) (**)
  BND
   OTE  [2,0] (*_IO_EM_DO_01*) (**)
 EOR [3,0]
@@ -31,7 +31,7 @@ EOR [5,0]
 
 (*Saida DO-03 - Liberação da parafusadeira Operação 20*)
 
-SOR  [0,9] (**) (**)  XIC  [1,0] (*_IO_EM_DI_27*) (*PG1_EMERGENCIA*)  XIC  [2,0] (*_IO_EM_DI_00*) (*OP20_STOP*)  XIC  [3,0] (*OP20_PF_LB*) (**)  OTE  [4,0] (*_IO_EM_DO_03*) (**)
+SOR  [0,9] (**) (**)  XIC  [1,0] (*_IO_EM_DI_27*) (*PG1_EMERGENCIA*)  XIC  [2,0] (*_IO_EM_DI_00*) (*OP20_STOP*)  XIC  [3,0] (*OP20_PF_Release*) (**)  OTE  [4,0] (*_IO_EM_DO_03*) (**)
 EOR [5,0]
 
 
@@ -83,7 +83,7 @@ EOR [3,0]
 
 (*Saida DO-09 - Valvula Solenoide Operação 40*)
 
-SOR  [0,25] (**) (**)  XIC  [1,0] (*_IO_EM_DI_27*) (*PG1_EMERGENCIA*)  XIC  [2,0] (*_IO_EM_DI_09*) (*OP40_STOP*)  XIC  [3,0] (*OP40_CC1_AT*) (**)  OTE  [4,0] (*_IO_EM_DO_09*) (**)
+SOR  [0,25] (**) (**)  XIC  [1,0] (*_IO_EM_DI_27*) (*PG1_EMERGENCIA*)  XIC  [2,0] (*_IO_EM_DI_09*) (**)  XIC  [3,0] (*OP40_CC1_AT*) (**)  OTE  [4,0] (*_IO_EM_DO_09*) (**)
 EOR [5,0]
 
 
@@ -115,13 +115,13 @@ EOR [4,0]
 
 (*Saida DO-13 - Sinaleiro Verde Operação 60*)
 
-SOR  [0,35] (**) (**)  XIC  [1,0] (*OP60_LD_VD*) (**)  OTE  [2,0] (*_IO_EM_DO_13*) (**)
+SOR  [0,35] (**) (**)  XIC  [1,0] (*OP60_LedGreen*) (**)  OTE  [2,0] (*_IO_EM_DO_13*) (**)
 EOR [3,0]
 
 
 (*Saida DO-14 - Sinaleiro Vermelho Operação 60*)
 
-SOR  [0,37] (**) (**)  XIC  [1,0] (*OP60_LD_AM*) (**)  OTE  [2,0] (*_IO_EM_DO_14*) (**)
+SOR  [0,37] (**) (**)  XIC  [1,0] (*OP60_LedYellow*) (**)  OTE  [2,0] (*_IO_EM_DO_14*) (**)
 EOR [3,0]
 
 
@@ -133,25 +133,25 @@ EOR [5,0]
 
 (*Saida DO-16 - Rele Inverte polaridade dos Motores Operação 60*)
 
-SOR  [0,41] (**) (**)  XIC  [1,0] (*_IO_EM_DI_27*) (*PG1_EMERGENCIA*)  XIC  [2,0] (*_IO_EM_DI_16*) (*OP60_STOP*)  XIC  [3,0] (*OP60_K1*) (**)  OTE  [4,0] (*_IO_EM_DO_16*) (**)
+SOR  [0,41] (**) (**)  XIC  [1,0] (*_IO_EM_DI_27*) (*PG1_EMERGENCIA*)  XIC  [2,0] (*_IO_EM_DI_16*) (*OP60_STOP*)  XIC  [3,0] (*K1_Motor1Com*) (**)  OTE  [4,0] (*_IO_EM_DO_16*) (**)
 EOR [5,0]
 
 
 (*Saida DO-18 - Rele Liga Motor Y+ Operação 60*)
 
-SOR  [0,43] (**) (**)  XIC  [1,0] (*_IO_EM_DI_27*) (*PG1_EMERGENCIA*)  XIC  [2,0] (*_IO_EM_DI_16*) (*OP60_STOP*)  XIC  [3,0] (*OP60_K2*) (**)  OTE  [4,0] (*_IO_EM_DO_17*) (**)
+SOR  [0,43] (**) (**)  XIC  [1,0] (*_IO_EM_DI_27*) (*PG1_EMERGENCIA*)  XIC  [2,0] (*_IO_EM_DI_16*) (*OP60_STOP*)  XIC  [3,0] (*K2_Motor1UpDown*) (**)  OTE  [4,0] (*_IO_EM_DO_17*) (**)
 EOR [5,0]
 
 
 (*Saida DO-18 - Rele Liga Motor Y+ Operação 60*)
 
-SOR  [0,45] (**) (**)  XIC  [1,0] (*_IO_EM_DI_27*) (*PG1_EMERGENCIA*)  XIC  [2,0] (*_IO_EM_DI_16*) (*OP60_STOP*)  XIC  [3,0] (*OP60_K3*) (**)  OTE  [4,0] (*_IO_EM_DO_18*) (**)
+SOR  [0,45] (**) (**)  XIC  [1,0] (*_IO_EM_DI_27*) (*PG1_EMERGENCIA*)  XIC  [2,0] (*_IO_EM_DI_16*) (*OP60_STOP*)  XIC  [3,0] (*K3_Motor1LeftRight*) (**)  OTE  [4,0] (*_IO_EM_DO_18*) (**)
 EOR [5,0]
 
 
 (*Saida DO-19 - Rele Liga Teste de Aquecimetno Operação 60*)
 
-SOR  [0,47] (**) (**)  XIC  [1,0] (*_IO_EM_DI_27*) (*PG1_EMERGENCIA*)  XIC  [2,0] (*_IO_EM_DI_16*) (*OP60_STOP*)  XIC  [3,0] (*OP60_K4*) (**)  OTE  [4,0] (*_IO_EM_DO_19*) (**)
+SOR  [0,47] (**) (**)  XIC  [1,0] (*_IO_EM_DI_27*) (*PG1_EMERGENCIA*)  XIC  [2,0] (*_IO_EM_DI_16*) (*OP60_STOP*)  XIC  [3,0] (*K4_HeatingTestActuator*) (**)  OTE  [4,0] (*_IO_EM_DO_19*) (**)
 EOR [5,0]
 EOF
 #end_info

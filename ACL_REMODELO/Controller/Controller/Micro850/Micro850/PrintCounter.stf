@@ -1,0 +1,21 @@
+FUNCTION_BLOCK PrintCounter
+#info= QLD
+BOF
+
+
+(**)
+
+SOR  [0,1] (**) (**)  XIC  [1,0] (*IN*) (**)  XIO  [2,0] (*Trigger*) (**)  FB  [3,0] (*>*) (*14*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Amount*) (**)  , (*i2:*)(*0*) (**) ; (*o1:*)(**) (**) )  FB  [6,0] (*TON*) (*TON_1*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*t#500ms*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTS  [9,0] (*Trigger*) (**)
+EOR [10,0]
+
+
+(**)
+
+SOR  [0,5] (**) (**)  XIC  [1,0] (*IN*) (**)  XIC  [2,0] (*Trigger*) (**)  XIP  [3,0] (*PrintSent*) (**)  OTR  [4,0] (*Trigger*) (**)
+EOR [5,0]
+EOF
+#end_info
+#info= ID_MAX
+NextId=1
+#end_info
+END_FUNCTION_BLOCK

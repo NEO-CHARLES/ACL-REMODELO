@@ -1,0 +1,56 @@
+PROGRAM Motor1
+#info= QLD
+BOF
+
+
+(**)
+
+SOR  [0,1] (**) (**)  
+ BST  XIC  [1,0] (*Motor1Up*) (**)
+   NXB  XIC  [1,1] (*IHM_Motor1Up*) (**)
+ BND
+  OTE  [2,0] (*MoveUp*) (**)
+EOR [3,0]
+
+
+(**)
+
+SOR  [0,4] (**) (**)  
+ BST  XIC  [1,0] (*Motor1Down*) (**)
+   NXB  XIC  [1,1] (*IHM_Motor1Down*) (**)
+ BND
+  OTE  [2,0] (*MoveDown*) (**)
+EOR [3,0]
+
+
+(**)
+
+SOR  [0,7] (**) (**)  
+ BST  XIC  [1,0] (*Motor1Left*) (**)
+   NXB  XIC  [1,1] (*IHM_Motor1Left*) (**)
+ BND
+  OTE  [2,0] (*MoveLeft*) (**)
+EOR [3,0]
+
+
+(**)
+
+SOR  [0,10] (**) (**)  
+ BST  XIC  [1,0] (*Motor1Rigth*) (**)
+   NXB  XIC  [1,1] (*IHM_Motor1Right*) (**)
+ BND
+  OTE  [2,0] (*MoveRight*) (**)
+EOR [3,0]
+
+
+(**)
+
+SOR  [0,13] (**) (**)  
+ BST  XIC  [1,0] (*Motor1Stop*) (**)
+   NXB  XIC  [1,1] (*IHM_Motor1Stop*) (**)
+ BND
+  FB  [2,0] (*MotorCommand*) (*MotorCommand_2*) ( (*MoveStop:*)(**) (**)  , (*MoveUp:*)(*MoveUp*) (**)  , (*MoveDown:*)(*MoveDown*) (**)  , (*MoveLeft:*)(*MoveLeft*) (**)  , (*MoveRight:*)(*MoveRight*) (**) ; (*Com:*)(**) (**)  , (*UpDown:*)(*K2_Motor1UpDown*) (**)  , (*LeftRight:*)(*K3_Motor1LeftRight*) (**) )  OTE  [5,0] (*K1_Motor1Com*) (**)
+EOR [6,0]
+EOF
+#end_info
+END_PROGRAM

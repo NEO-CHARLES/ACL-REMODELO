@@ -18,14 +18,14 @@ END_IF ;
 __MO_DIFF_1 := __EDTB1 ;
 __EDTB3 := __EDTB1 ;
 IF __EDTB3 THEN
-ALARME := (AL + 3000) ;
+ALARMNUMBER := (AL + 3000) ;
 END_IF ;
 __MO_PLUS_1 := __EDTB3 ;
 __EDTB4 := __EDTB3 ;
 ; (*Pulse detection on : AL_RS with __MEMO__1__AL_RS *)
 __EDTB5 := (AL_RS AND NOT(__MEMO__1__AL_RS)) ;
 IF __EDTB5 THEN
-ALARME := (  0) ;
+ALARMNUMBER := (  0) ;
 END_IF ;
 __MO_1GAIN_1 := __EDTB5 ;
 __EDTB6 := __EDTB5 ;
@@ -42,7 +42,7 @@ __ENDSTEPPRAGMA
 (*Label :*)(**)
 __EDTB7 := TRUE ;
 IF __EDTB7 THEN
-OP30_STP := (  STP) ;
+OP30_STEP := (  STP) ;
 END_IF ;
 __MO_1GAIN_2 := __EDTB7 ;
 __EDTB8 := __EDTB7 ;
@@ -67,7 +67,7 @@ __ENDSTEPPRAGMA
 (*Label :*)(**)
 PF_RT := OP30_PF_RT ;
 __EDTB9 := OP30_CL_AV ;
-__EDTB10 := IHM_AL_RS ;
+__EDTB10 := IHM_ALARMRESET ;
 AL_RS := (__EDTB9 OR __EDTB10) ;
 CL_AV := OP30_CL_AV ;
 SU_LE1 := OP30_SN_LE_HOLDER ;
@@ -113,8 +113,8 @@ __STEPPRAGMA
 0,27
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-__EDTB12 := MD_LE AND SU_LE1 ;
-__EDTB13 := MD_LD AND SU_LD1 ;
+__EDTB12 := MODELSIDELEFT AND SU_LE1 ;
+__EDTB13 := MODELSIDERIGHT AND SU_LD1 ;
 SU := (__EDTB12 OR __EDTB13) AND SU_CABO ;
 
 (*************** Code for the end of Rung **************)
@@ -301,13 +301,13 @@ END_IF ;
 __MO_EQUAL_6 := __EDTB41 ;
 __EDTB43 := __EDTB41 AND AP ;
 IF __EDTB43 THEN
-ALARME := (  3010) ;
+ALARMNUMBER := (  3010) ;
 END_IF ;
 __MO_1GAIN_10 := __EDTB43 ;
 __EDTB44 := __EDTB43 ;
 __EDTB45 := __EDTB41 AND RP ;
 IF __EDTB45 THEN
-ALARME := (  3011) ;
+ALARMNUMBER := (  3011) ;
 END_IF ;
 __MO_1GAIN_11 := __EDTB45 ;
 __EDTB46 := __EDTB45 ;
@@ -392,7 +392,7 @@ __MO_EQUAL_8 := __EDTB58 ;
 ; (*Fall detection on  : AL_RS with __MEMO__4__AL_RS *)
 __EDTB60 := __EDTB58 AND (__MEMO__4__AL_RS AND NOT(AL_RS)) ;
 IF __EDTB60 THEN
-ALARME := (  0) ;
+ALARMNUMBER := (  0) ;
 END_IF ;
 __MO_1GAIN_15 := __EDTB60 ;
 __EDTB61 := __EDTB60 ;
@@ -448,7 +448,7 @@ __ENDSTEPPRAGMA
 (*Label :*)(**)
 __EDTB69 := AL00 ;
 IF __EDTB69 THEN
-ALARME := ANY_TO_INT(3000) ;
+ALARMNUMBER := ANY_TO_INT(3000) ;
 END_IF ;
 __MO_ANY_TO_INT_1 := __EDTB69 ;
 __EDTB70 := __EDTB69 ;
@@ -463,7 +463,7 @@ AL00 := FALSE ;
 END_IF ;
 __EDTB72 := AL20 ;
 IF __EDTB72 THEN
-ALARME := ANY_TO_INT(3020) ;
+ALARMNUMBER := ANY_TO_INT(3020) ;
 END_IF ;
 __MO_ANY_TO_INT_3 := __EDTB72 ;
 __EDTB73 := __EDTB72 ;

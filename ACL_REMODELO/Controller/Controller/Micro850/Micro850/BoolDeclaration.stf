@@ -1,0 +1,39 @@
+FUNCTION_BLOCK BoolDeclaration
+/*
+  |---------------------------------------------|
+  | NAME OF THE UDFB: VarDeclaration BOOL		|
+  | CATEGORY: 	Variable set					|
+  | AUTHOR: 	CAHRLES OLIVEIRA 				|
+  | EMAIL: 		neo_charles@outlook.com			|
+  |	SITE: 		https://github.com/NEO-CHARLES	|
+  | VERSION/REVISION: 1.0.0						|
+  | DATE: 01 mar 2022							|
+  |---------------------------------------------|
+  
+Changes :
+	20220301 - Início
+	
+---------------------------------------------------------------------------------------------------------------------------------
+
+Example:
+	i => 0
+
+*/
+if IN THEN
+	o0 := i0;
+	o1 := i1;
+	o2 := i2;
+	o3 := i3;
+	o4 := i4;
+	o5 := i5;
+	o6 := i6;
+	o7 := i7;
+	o8 := i8;
+	o9 := i9;
+	
+	Q := IN;
+
+ELSE
+	Q := FALSE;
+END_IF;
+END_FUNCTION_BLOCK

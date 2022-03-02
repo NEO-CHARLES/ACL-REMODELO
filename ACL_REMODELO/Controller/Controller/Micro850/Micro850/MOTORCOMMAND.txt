@@ -1,0 +1,62 @@
+(****** QuickLD compiler *******************************)
+(****** Copyright Rockwell Automation Canada, Ltd ******)
+(****** ST *********************************************)
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,1
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB1 := NOT(MOVESTOP) ;
+__EDTB2 := __EDTB1 AND MOVEUP ;
+__EDTB3 := __EDTB1 AND MOVERIGHT ;
+UPDOWN := (__EDTB2 OR __EDTB3) ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,4
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB4 := NOT(MOVESTOP) ;
+__EDTB5 := __EDTB4 AND MOVEDOWN ;
+__EDTB6 := __EDTB4 AND MOVERIGHT ;
+COM := (__EDTB5 OR __EDTB6) ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,7
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB7 := NOT(MOVESTOP) ;
+__EDTB8 := __EDTB7 AND MOVEDOWN ;
+__EDTB9 := __EDTB7 AND MOVELEFT ;
+LEFTRIGHT := (__EDTB8 OR __EDTB9) ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Code for the end of File **************)
+__GL __LG0000 ;
+
+
+
+(*************** Local Symbols table *******************)
+(* __EDTB1 *)
+(* __EDTB2 *)
+(* __EDTB3 *)
+(* __EDTB4 *)
+(* __EDTB5 *)
+(* __EDTB6 *)
+(* __EDTB7 *)
+(* __EDTB8 *)
+(* __EDTB9 *)
+

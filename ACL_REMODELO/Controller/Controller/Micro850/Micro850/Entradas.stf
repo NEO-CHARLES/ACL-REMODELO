@@ -59,25 +59,25 @@ EOR [3,0]
 
 (**)
 
-SOR  [0,19] (**) (**)  XIC  [1,0] (*_IO_EM_DI_09*) (**)  OTE  [2,0] (*OP40_BTS*) (**)
+SOR  [0,19] (**) (**)  XIC  [1,0] (*_IO_EM_DI_09*) (**)  OTE  [2,0] (*OP40_BTStop*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,21] (**) (**)  XIC  [1,0] (*_IO_EM_DI_10*) (**)  OTE  [2,0] (*OP40_BME*) (**)
+SOR  [0,21] (**) (**)  XIC  [1,0] (*_IO_EM_DI_10*) (**)  OTE  [2,0] (*OP40_BTLeft*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,23] (**) (**)  XIC  [1,0] (*_IO_EM_DI_11*) (**)  OTE  [2,0] (*OP40_BMD*) (**)
+SOR  [0,23] (**) (**)  XIC  [1,0] (*_IO_EM_DI_11*) (**)  OTE  [2,0] (*OP40_BTRight*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,25] (**) (**)  XIC  [1,0] (*_IO_EM_DI_12*) (**)  OTE  [2,0] (*OP40_CC1_RT*) (**)
+SOR  [0,25] (**) (**)  XIC  [1,0] (*_IO_EM_DI_12*) (**)  OTE  [2,0] (*Breakway1TestFinished*) (**)
 EOR [3,0]
 
 
@@ -101,19 +101,19 @@ EOR [3,0]
 
 (**)
 
-SOR  [0,33] (**) (**)  XIC  [1,0] (*_IO_EM_DI_16*) (*OP60_STOP*)  OTE  [2,0] (*OP60_BTS*) (**)
+SOR  [0,33] (**) (**)  XIC  [1,0] (*_IO_EM_DI_16*) (*OP60_STOP*)  OTE  [2,0] (*OP60_BTStop*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,35] (**) (**)  XIC  [1,0] (*_IO_EM_DI_17*) (*OP60_START*)  OTE  [2,0] (*OP60_BTL*) (**)
+SOR  [0,35] (**) (**)  XIC  [1,0] (*_IO_EM_DI_17*) (*OP60_START*)  OTE  [2,0] (*OP60_ButtonStart*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,37] (**) (**)  XIC  [1,0] (*_IO_EM_DI_18*) (**)  OTE  [2,0] (*OP60_SN*) (**)
+SOR  [0,37] (**) (**)  XIC  [1,0] (*_IO_EM_DI_18*) (**)  OTE  [2,0] (*OP60_Sensor*) (**)
 EOR [3,0]
 
 
@@ -143,13 +143,13 @@ EOR [3,0]
 
 (**)
 
-SOR  [0,47] (**) (**)  XIC  [1,0] (*_IO_EM_DI_23*) (**)  OTE  [2,0] (*OP60_SU_LE_Tubo*) (**)
+SOR  [0,47] (**) (**)  XIC  [1,0] (*_IO_EM_DI_23*) (**)  OTE  [2,0] (*OP60_SetupSensorLeft1Tube*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,49] (**) (**)  XIC  [1,0] (*_IO_EM_DI_24*) (**)  OTE  [2,0] (*OP60_SU_LD_Tubo*) (**)
+SOR  [0,49] (**) (**)  XIC  [1,0] (*_IO_EM_DI_24*) (**)  OTE  [2,0] (*OP60_SetupSensorRight1Tube*) (**)
 EOR [3,0]
 
 
@@ -161,13 +161,13 @@ EOR [2,0]
 
 (**)
 
-SOR  [0,53] (**) (**)  XIC  [1,0] (*_IO_EM_DI_26*) (*PG1_RESET*)  OTE  [2,0] (*PG1_BTR*) (**)
+SOR  [0,53] (**) (**)  XIC  [1,0] (*_IO_EM_DI_26*) (*PG1_RESET*)  OTE  [2,0] (*PG1_BTReset*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,55] (**) (**)  XIC  [1,0] (*_IO_EM_DI_27*) (*PG1_EMERGENCIA*)  OTE  [2,0] (*PG1_BTS*) (**)
+SOR  [0,55] (**) (**)  XIC  [1,0] (*_IO_EM_DI_27*) (*PG1_EMERGENCIA*)  OTE  [2,0] (*PG1_BTStop*) (**)
 EOR [3,0]
 EOF
 #end_info

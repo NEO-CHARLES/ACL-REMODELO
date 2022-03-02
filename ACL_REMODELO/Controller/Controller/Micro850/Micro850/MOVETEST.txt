@@ -1,0 +1,258 @@
+(****** QuickLD compiler *******************************)
+(****** Copyright Rockwell Automation Canada, Ltd ******)
+(****** ST *********************************************)
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,1
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+; (*Pulse detection on : IN with __MEMO__1__IN *)
+__EDTB1 := (IN AND NOT(__MEMO__1__IN)) ;
+; (*Fall detection on  : IN with __MEMO__2__IN *)
+__EDTB2 := (__MEMO__2__IN AND NOT(IN)) ;
+__EDTB3 := (__EDTB1 OR __EDTB2) ;
+IF __EDTB3 THEN
+STEP := (  0) ;
+END_IF ;
+__MO_1GAIN_1 := __EDTB3 ;
+__EDTB4 := __EDTB3 ;
+IF __EDTB4 THEN
+REVERSETIME := (  T#500MS) ;
+END_IF ;
+__MO_1GAIN_2 := __EDTB4 ;
+
+(*************** Code for the end of Rung **************)
+__MEMO__1__IN := IN ; (*Pulse detection on : IN with __MEMO__1__IN *)
+__MEMO__2__IN := IN ; (*Fall detection on  : IN with __MEMO__2__IN *)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,4
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB6 := IN ;
+IF __EDTB6 THEN
+(* Operator output on : = with __EDTB5 *)
+__EDTB5 := (STEP = 0) ;
+ELSE
+__EDTB5 := FALSE ;
+END_IF ;
+__MO_EQUAL_1 := __EDTB5 ;
+__EDTB7 := __EDTB5 ;
+IF __EDTB7 THEN
+POSA := (  0) ;
+END_IF ;
+__MO_1GAIN_3 := __EDTB7 ;
+__EDTB8 := __EDTB7 ;
+__EDTB9 := __EDTB5 ;
+IF __EDTB9 THEN
+POSB := (  0) ;
+END_IF ;
+__MO_1GAIN_4 := __EDTB9 ;
+__EDTB10 := __EDTB9 ;
+__EDTB11 := __EDTB5 ;
+IF __EDTB11 THEN
+POSVARIATION := (  0) ;
+END_IF ;
+__MO_1GAIN_5 := __EDTB11 ;
+__EDTB12 := __EDTB11 ;
+__EDTB13 := (__EDTB10 OR __EDTB12) ;
+__EDTB14 := (__EDTB8 OR __EDTB13) ;
+IF __EDTB14 THEN
+STEP := (  10) ;
+END_IF ;
+__MO_1GAIN_6 := __EDTB14 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*MOVE X+*)
+__STEPPRAGMA
+0,11
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB16 := IN ;
+IF __EDTB16 THEN
+(* Operator output on : = with __EDTB15 *)
+__EDTB15 := (STEP = 10) ;
+ELSE
+__EDTB15 := FALSE ;
+END_IF ;
+__MO_EQUAL_2 := __EDTB15 ;
+(* FB call: TP *)
+TP_1(__EDTB15, MOVETIME) ;
+MOVEP := TP_1.Q ;
+; (*Fall detection on  : MOVEP with __MEMO__3__MOVEP *)
+__EDTB17 := __EDTB15 AND (__MEMO__3__MOVEP AND NOT(MOVEP)) ;
+IF __EDTB17 THEN
+STEP := (  11) ;
+END_IF ;
+__MO_1GAIN_7 := __EDTB17 ;
+__EDTB18 := __EDTB17 ;
+
+(*************** Code for the end of Rung **************)
+__MEMO__3__MOVEP := MOVEP ; (*Fall detection on  : MOVEP with __MEMO__3__MOVEP *)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,16
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB20 := IN ;
+IF __EDTB20 THEN
+(* Operator output on : = with __EDTB19 *)
+__EDTB19 := (STEP = 11) ;
+ELSE
+__EDTB19 := FALSE ;
+END_IF ;
+__MO_EQUAL_3 := __EDTB19 ;
+(* FB call: TON *)
+TON_1(__EDTB19, REVERSETIME) ;
+__EDTB21 := TON_1.Q ;
+IF __EDTB21 THEN
+POSB := (  POSSENSOR) ;
+END_IF ;
+__MO_1GAIN_8 := __EDTB21 ;
+__EDTB22 := __EDTB21 ;
+IF __EDTB22 THEN
+STEP := (  20) ;
+END_IF ;
+__MO_1GAIN_9 := __EDTB22 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*MOVE X-*)
+__STEPPRAGMA
+0,20
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB24 := IN ;
+IF __EDTB24 THEN
+(* Operator output on : = with __EDTB23 *)
+__EDTB23 := (STEP = 20) ;
+ELSE
+__EDTB23 := FALSE ;
+END_IF ;
+__MO_EQUAL_4 := __EDTB23 ;
+(* FB call: TP *)
+TP_2(__EDTB23, MOVETIME) ;
+MOVEN := TP_2.Q ;
+; (*Fall detection on  : MOVEN with __MEMO__4__MOVEN *)
+__EDTB25 := __EDTB23 AND (__MEMO__4__MOVEN AND NOT(MOVEN)) ;
+IF __EDTB25 THEN
+STEP := (  21) ;
+END_IF ;
+__MO_1GAIN_10 := __EDTB25 ;
+__EDTB26 := __EDTB25 ;
+
+(*************** Code for the end of Rung **************)
+__MEMO__4__MOVEN := MOVEN ; (*Fall detection on  : MOVEN with __MEMO__4__MOVEN *)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,25
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB28 := IN ;
+IF __EDTB28 THEN
+(* Operator output on : = with __EDTB27 *)
+__EDTB27 := (STEP = 21) ;
+ELSE
+__EDTB27 := FALSE ;
+END_IF ;
+__MO_EQUAL_5 := __EDTB27 ;
+(* FB call: TON *)
+TON_2(__EDTB27, REVERSETIME) ;
+__EDTB29 := TON_2.Q ;
+IF __EDTB29 THEN
+POSA := (  POSSENSOR) ;
+END_IF ;
+__MO_1GAIN_11 := __EDTB29 ;
+__EDTB30 := __EDTB29 ;
+IF __EDTB30 THEN
+STEP := (  30) ;
+END_IF ;
+__MO_1GAIN_12 := __EDTB30 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,29
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB32 := IN ;
+IF __EDTB32 THEN
+(* Operator output on : = with __EDTB31 *)
+__EDTB31 := (STEP = 30) ;
+ELSE
+__EDTB31 := FALSE ;
+END_IF ;
+__MO_EQUAL_6 := __EDTB31 ;
+__EDTB33 := __EDTB31 ;
+IF __EDTB33 THEN
+POSVARIATION := (POSB - POSA) ;
+END_IF ;
+__MO_MINUS_1 := __EDTB33 ;
+Q := __EDTB33 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Code for the end of File **************)
+__GL __LG0000 ;
+
+
+
+(*************** Local Symbols table *******************)
+(* __MEMO__1__IN *)
+(* __EDTB1 *)
+(* __MEMO__2__IN *)
+(* __EDTB2 *)
+(* __EDTB3 *)
+(* __EDTB4 *)
+(* __EDTB5 *)
+(* __EDTB6 *)
+(* __EDTB7 *)
+(* __EDTB8 *)
+(* __EDTB9 *)
+(* __EDTB10 *)
+(* __EDTB11 *)
+(* __EDTB12 *)
+(* __EDTB13 *)
+(* __EDTB14 *)
+(* __EDTB15 *)
+(* __EDTB16 *)
+(* __MEMO__3__MOVEP *)
+(* __EDTB17 *)
+(* __EDTB18 *)
+(* __EDTB19 *)
+(* __EDTB20 *)
+(* __EDTB21 *)
+(* __EDTB22 *)
+(* __EDTB23 *)
+(* __EDTB24 *)
+(* __MEMO__4__MOVEN *)
+(* __EDTB25 *)
+(* __EDTB26 *)
+(* __EDTB27 *)
+(* __EDTB28 *)
+(* __EDTB29 *)
+(* __EDTB30 *)
+(* __EDTB31 *)
+(* __EDTB32 *)
+(* __EDTB33 *)
+
