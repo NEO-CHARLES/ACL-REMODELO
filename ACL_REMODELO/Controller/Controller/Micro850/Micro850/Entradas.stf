@@ -5,73 +5,73 @@ BOF
 
 (**)
 
-SOR  [0,1] (**) (**)  XIC  [1,0] (*_IO_EM_DI_00*) (*OP20_STOP*)  OTE  [2,0] (*OP20_BTS*) (**)
+SOR  [0,1] (**) (**)  XIC  [1,0] (*_IO_EM_DI_00*) (*OP20_STOP*)  OTE  [2,0] (*OP20_ButtonStop*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,3] (**) (**)  XIC  [1,0] (*_IO_EM_DI_01*) (*OP20_BM_E*)  OTE  [2,0] (*OP20_BME*) (**)
+SOR  [0,3] (**) (**)  XIC  [1,0] (*_IO_EM_DI_01*) (*OP20_BM_E*)  OTE  [2,0] (*OP20_ButtonLeft*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,5] (**) (**)  XIC  [1,0] (*_IO_EM_DI_02*) (*OP20_BM_D*)  OTE  [2,0] (*OP20_BMD*) (**)
+SOR  [0,5] (**) (**)  XIC  [1,0] (*_IO_EM_DI_02*) (*OP20_BM_D*)  OTE  [2,0] (*OP20_ButtonRight*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,7] (**) (**)  XIC  [1,0] (*_IO_EM_DI_03*) (*OP20_SN*)  OTE  [2,0] (*OP20_CL_AV*) (**)
+SOR  [0,7] (**) (**)  XIC  [1,0] (*_IO_EM_DI_03*) (*OP20_SN*)  OTE  [2,0] (*OP20_CilinderAdvanced*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,9] (**) (**)  XIC  [1,0] (*_IO_EM_DI_04*) (**)  OTE  [2,0] (*OP20_PF_RT*) (**)
+SOR  [0,9] (**) (**)  XIC  [1,0] (*_IO_EM_DI_04*) (**)  OTE  [2,0] (*OP20_SkrewdriverOK*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,11] (**) (**)  XIC  [1,0] (*_IO_EM_DI_05*) (**)  OTE  [2,0] (*OP30_SU_Cabo*) (**)
+SOR  [0,11] (**) (**)  XIC  [1,0] (*_IO_EM_DI_05*) (**)  OTE  [2,0] (*OP30_SetupSensor1Cabo*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,13] (**) (**)  XIC  [1,0] (*_IO_EM_DI_06*) (**)  OTE  [2,0] (*OP30_CL_AV*) (**)
+SOR  [0,13] (**) (**)  XIC  [1,0] (*_IO_EM_DI_06*) (**)  OTE  [2,0] (*OP30_CylinderAdvance*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,15] (**) (**)  XIC  [1,0] (*_IO_EM_DI_07*) (*OP30_PARAF_RT*)  OTE  [2,0] (*OP30_PF_RT*) (**)
+SOR  [0,15] (**) (**)  XIC  [1,0] (*_IO_EM_DI_07*) (*OP30_PARAF_RT*)  OTE  [2,0] (*OP30_SkrewdriverOK*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,17] (**) (**)  XIC  [1,0] (*_IO_EM_DI_08*) (*OP30_SN_E*)  OTE  [2,0] (*OP30_SU_LE*) (**)
+SOR  [0,17] (**) (**)  XIC  [1,0] (*_IO_EM_DI_08*) (*OP30_SN_E*)  OTE  [2,0] (*OP30_SetupSensor1Left*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,19] (**) (**)  XIC  [1,0] (*_IO_EM_DI_09*) (**)  OTE  [2,0] (*OP40_BTStop*) (**)
+SOR  [0,19] (**) (**)  XIC  [1,0] (*_IO_EM_DI_09*) (**)  OTE  [2,0] (*OP40_ButtonStop*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,21] (**) (**)  XIC  [1,0] (*_IO_EM_DI_10*) (**)  OTE  [2,0] (*OP40_BTLeft*) (**)
+SOR  [0,21] (**) (**)  XIC  [1,0] (*_IO_EM_DI_10*) (**)  OTE  [2,0] (*OP40_ButtonLeft*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,23] (**) (**)  XIC  [1,0] (*_IO_EM_DI_11*) (**)  OTE  [2,0] (*OP40_BTRight*) (**)
+SOR  [0,23] (**) (**)  XIC  [1,0] (*_IO_EM_DI_11*) (**)  OTE  [2,0] (*OP40_ButtonRight*) (**)
 EOR [3,0]
 
 
@@ -83,25 +83,25 @@ EOR [3,0]
 
 (**)
 
-SOR  [0,27] (**) (**)  XIC  [1,0] (*_IO_EM_DI_13*) (**)  OTE  [2,0] (*OP50_SU_LD*) (**)
+SOR  [0,27] (**) (**)  XIC  [1,0] (*_IO_EM_DI_13*) (**)  OTE  [2,0] (*OP50_SetupSensor1Right*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,29] (**) (**)  XIC  [1,0] (*_IO_EM_DI_14*) (**)  OTE  [2,0] (*OP50_SN_E*) (**)
+SOR  [0,29] (**) (**)  XIC  [1,0] (*_IO_EM_DI_14*) (**)  OTE  [2,0] (*OP50_SensorLeft1*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,31] (**) (**)  XIC  [1,0] (*_IO_EM_DI_15*) (**)  OTE  [2,0] (*OP50_SN_D*) (**)
+SOR  [0,31] (**) (**)  XIC  [1,0] (*_IO_EM_DI_15*) (**)  OTE  [2,0] (*OP50_SensorRight1*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,33] (**) (**)  XIC  [1,0] (*_IO_EM_DI_16*) (*OP60_STOP*)  OTE  [2,0] (*OP60_BTStop*) (**)
+SOR  [0,33] (**) (**)  XIC  [1,0] (*_IO_EM_DI_16*) (*OP60_STOP*)  OTE  [2,0] (*OP60_ButtonStop*) (**)
 EOR [3,0]
 
 
@@ -119,7 +119,7 @@ EOR [3,0]
 
 (**)
 
-SOR  [0,39] (**) (**)  XIC  [1,0] (*_IO_EM_DI_19*) (**)  OTE  [2,0] (*OP50_SU_LE*) (**)
+SOR  [0,39] (**) (**)  XIC  [1,0] (*_IO_EM_DI_19*) (**)  OTE  [2,0] (*OP50_SensorSetupLeft1*) (**)
 EOR [3,0]
 
 
@@ -131,13 +131,13 @@ EOR [2,0]
 
 (**)
 
-SOR  [0,43] (**) (**)  XIC  [1,0] (*_IO_EM_DI_21*) (*bOP20_SN_D*)  OTE  [2,0] (*OP20_SU_LD_Holder*) (**)
+SOR  [0,43] (**) (**)  XIC  [1,0] (*_IO_EM_DI_21*) (*bOP20_SN_D*)  OTE  [2,0] (*OP20_SensorSetupLeft1Holder*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,45] (**) (**)  XIC  [1,0] (*_IO_EM_DI_22*) (*bOP20_SN_TUBOD*)  OTE  [2,0] (*OP20_SU_LD_Tubo*) (**)
+SOR  [0,45] (**) (**)  XIC  [1,0] (*_IO_EM_DI_22*) (*bOP20_SN_TUBOD*)  OTE  [2,0] (*OP20_SensorSetupLeft2Tube*) (**)
 EOR [3,0]
 
 
@@ -161,13 +161,13 @@ EOR [2,0]
 
 (**)
 
-SOR  [0,53] (**) (**)  XIC  [1,0] (*_IO_EM_DI_26*) (*PG1_RESET*)  OTE  [2,0] (*PG1_BTReset*) (**)
+SOR  [0,53] (**) (**)  XIC  [1,0] (*_IO_EM_DI_26*) (*PG1_RESET*)  OTE  [2,0] (*PG1_ButtonReset*) (**)
 EOR [3,0]
 
 
 (**)
 
-SOR  [0,55] (**) (**)  XIC  [1,0] (*_IO_EM_DI_27*) (*PG1_EMERGENCIA*)  OTE  [2,0] (*PG1_BTStop*) (**)
+SOR  [0,55] (**) (**)  XIC  [1,0] (*_IO_EM_DI_27*) (*PG1_EMERGENCIA*)  OTE  [2,0] (*PG1_ButtonStop*) (**)
 EOR [3,0]
 EOF
 #end_info

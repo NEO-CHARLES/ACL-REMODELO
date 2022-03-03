@@ -34,7 +34,7 @@ __STEPPRAGMA
 0,7
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-_IO_EM_DO_02 := _IO_EM_DI_27 AND _IO_EM_DI_00 AND OP20_CL_AT ;
+_IO_EM_DO_02 := _IO_EM_DI_27 AND _IO_EM_DI_00 AND OP20_CILINDERADVANCE ;
 
 (*************** Code for the end of Rung **************)
 

@@ -1,0 +1,66 @@
+FUNCTION_BLOCK LedSinalization
+#info= QLD
+BOF
+
+
+(*20210708 - ADICIONAMO MODO HIBERNAÇÃO
+20220302 - VARIABLES RENAMED TO CLEAR THE CODE*)
+
+SOR  [0,1] (**) (**)  XIC  [1,0] (*IN*) (**)  
+ BST  XIC  [2,0] (*LedBlink*) (**)  FB  [3,0] (*TON*) (*TON_2*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*T#500MS*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTR  [6,0] (*LedBlink*) (**)
+   NXB  XIO  [2,2] (*LedBlink*) (**)  FB  [3,2] (*TON*) (*TON_1*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*T#500MS*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTS  [6,2] (*LedBlink*) (**)
+ BND
+
+EOR [7,0]
+
+
+(**)
+
+SOR  [0,6] (**) (**)  XIC  [1,0] (*IN*) (**)  
+ BST  FB  [2,0] (*<>*) (*58*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Step*) (**)  , (*i2:*)(*OldStep*) (**) ; (*o1:*)(**) (**) )  FB  [5,0] (*1 gain*) (*59*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Step*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*OldStep*) (**) )
+   NXB  FB  [2,3] (*=*) (*5*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Step*) (**)  , (*i2:*)(*OldStep*) (**) ; (*o1:*)(**) (**) )  FB  [5,3] (*TON*) (*TON_3*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*T#5M*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTE  [8,3] (*Hibernation*) (**)
+ BND
+
+EOR [9,0]
+
+
+(*CONTROLE SINALIZADORES
+
+LD VM*)
+
+SOR  [0,13] (**) (**)  XIC  [1,0] (*IN*) (**)  XIO  [2,0] (*Hibernation*) (**)  
+ BST  FB  [3,0] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Step*) (**)  , (*i2:*)(*500*) (**) ; (*o1:*)(**) (**) )
+   NXB  FB  [3,3] (*=*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Step*) (**)  , (*i2:*)(*501*) (**) ; (*o1:*)(**) (**) )  XIC  [6,3] (*LedBlink*) (**)
+ BND
+  OTE  [7,0] (*LedRed*) (**)
+EOR [8,0]
+
+
+(*CONTROLE SINALIZADORES
+
+LD AM*)
+
+SOR  [0,20] (**) (**)  XIC  [1,0] (*IN*) (**)  XIO  [2,0] (*Hibernation*) (**)  
+ BST  FB  [3,0] (*>*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Step*) (**)  , (*i2:*)(*10*) (**) ; (*o1:*)(**) (**) )  FB  [6,0] (*<*) (*10*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Step*) (**)  , (*i2:*)(*500*) (**) ; (*o1:*)(**) (**) )
+   NXB  FB  [3,3] (*=*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Step*) (**)  , (*i2:*)(*1*) (**) ; (*o1:*)(**) (**) )  XIC  [6,3] (*LedBlink*) (**)
+ BND
+  OTE  [9,0] (*LedYellow*) (**)
+EOR [10,0]
+
+
+(*CONTROLE SINALIZADORES
+
+LD VD*)
+
+SOR  [0,27] (**) (**)  XIC  [1,0] (*IN*) (**)  XIO  [2,0] (*Hibernation*) (**)  
+ BST  FB  [3,0] (*=*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Step*) (**)  , (*i2:*)(*10*) (**) ; (*o1:*)(**) (**) )
+   NXB  FB  [3,3] (*=*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Step*) (**)  , (*i2:*)(*0*) (**) ; (*o1:*)(**) (**) )  XIC  [6,3] (*LedBlink*) (**)
+ BND
+  OTE  [7,0] (*LedGreen*) (**)
+EOR [8,0]
+EOF
+#end_info
+#info= ID_MAX
+NextId=5
+#end_info
+END_FUNCTION_BLOCK

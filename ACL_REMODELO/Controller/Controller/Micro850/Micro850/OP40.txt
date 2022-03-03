@@ -1,1 +1,589 @@
-(********************* No code *************************)
+(****** QuickLD compiler *******************************)
+(****** Copyright Rockwell Automation Canada, Ltd ******)
+(****** ST *********************************************)
+
+(*************** Rung **********************************)
+(*VARIÁVEIS Dispositivo Variáveis Local => Global*)
+__STEPPRAGMA
+0,1
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+(* FB call: BoolDeclaration *)
+VarDeclarationBOOL_2(TRUE, DATABASERECORD, LEDRED, LEDYELLOW, LEDGREEN, OP40_BUTTONLEFT, OP40_BUTTONRIGHT, OP40_BUTTONSTOP, BREAKWAYTEST, OP40_PD_SUBTRACT, ) ;
+OP40_DATABASERECORD := VarDeclarationBOOL_2.o0 ;
+OP40_LD_VM := VarDeclarationBOOL_2.o1 ;
+OP40_LD_AM := VarDeclarationBOOL_2.o2 ;
+OP40_LD_VD := VarDeclarationBOOL_2.o3 ;
+BT_LEFT := VarDeclarationBOOL_2.o4 ;
+BT_RIGHT := VarDeclarationBOOL_2.o5 ;
+BT_STOP := VarDeclarationBOOL_2.o6 ;
+BREAKWAY1TESTRUN := VarDeclarationBOOL_2.o7 ;
+PRODUCTIONSUBTRACT := VarDeclarationBOOL_2.o8 ;
+(* FB call: IntDeclaration *)
+VarDeclarationINT_1(VarDeclarationBOOL_2.Q, STEP, , , , , , , , , ) ;
+OP40_STEP := VarDeclarationINT_1.o0 ;
+__EDTB1 := VarDeclarationINT_1.Q ;
+__EDTB2 := __EDTB1 AND OP40_BUTTONRIGHT ;
+__EDTB3 := __EDTB1 AND IHM_ALARMRESET ;
+AL_RS := (__EDTB2 OR __EDTB3) ;
+__EDTB4 := __EDTB1 AND OP40_DP_LB AND NOT(SV) ;
+__EDTB5 := __EDTB1 AND IHM_DEVICERELEASE ;
+DEVICERELEASE := (__EDTB4 OR __EDTB5) ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*VARIÁVEIS Contador*)
+__STEPPRAGMA
+0,13
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB6 := TRUE ;
+IF __EDTB6 THEN
+PD_AV := ANY_TO_DINT(IHM_PRODGOAL) ;
+END_IF ;
+__MO_ANY_TO_DINT_1 := __EDTB6 ;
+__EDTB7 := __EDTB6 ;
+IF __EDTB7 THEN
+OP40_PRODCOUNT := ANY_TO_INT(PD_AT) ;
+END_IF ;
+__MO_ANY_TO_INT_1 := __EDTB7 ;
+__EDTB8 := __EDTB7 AND OP40_PD_ADD ;
+__EDTB9 := __EDTB7 AND CC_AP ;
+PRODUCTIONADD := (__EDTB8 OR __EDTB9) ;
+__EDTB10 := __EDTB7 AND OP40_PD_RS ;
+__EDTB11 := __EDTB7 AND IHM_PRODUCTIONRESET ;
+PD_RS := (__EDTB10 OR __EDTB11) ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*VARIÁVEIS Celula de carga CC1*)
+__STEPPRAGMA
+0,18
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB12 := DEVICERESET ;
+IF __EDTB12 THEN
+(*Reset coil*)
+OP40_CC1_AT := FALSE ;
+END_IF ;
+; (*Pulse detection on : BREAKWAY1TESTDISAPROVED with __MEMO__1__BREAKWAY1TESTDISAPROVED *)
+__EDTB13 := (BREAKWAY1TESTDISAPROVED AND NOT(__MEMO__1__BREAKWAY1TESTDISAPROVED)) ;
+IF __EDTB13 THEN
+(*Set coil*)
+BREAKWAYDISPPROVED := TRUE ;
+END_IF ;
+; (*Pulse detection on : BREAKWAY1TESTAPPROVED with __MEMO__2__BREAKWAY1TESTAPPROVED *)
+__EDTB14 := (BREAKWAY1TESTAPPROVED AND NOT(__MEMO__2__BREAKWAY1TESTAPPROVED)) ;
+IF __EDTB14 THEN
+(*Set coil*)
+CC_AP := TRUE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+__MEMO__1__BREAKWAY1TESTDISAPROVED := BREAKWAY1TESTDISAPROVED ; (*Pulse detection on : BREAKWAY1TESTDISAPROVED with __MEMO__1__BREAKWAY1TESTDISAPROVED *)
+__MEMO__2__BREAKWAY1TESTAPPROVED := BREAKWAY1TESTAPPROVED ; (*Pulse detection on : BREAKWAY1TESTAPPROVED with __MEMO__2__BREAKWAY1TESTAPPROVED *)
+
+
+(*************** Rung **********************************)
+(*CONTROLE Segurança*)
+__STEPPRAGMA
+0,22
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB15 := NOT(BT_STOP) ;
+IF __EDTB15 THEN
+(*Set coil*)
+AL00 := TRUE ;
+END_IF ;
+(* FB call: FB_BM *)
+FB_BM_1(BT_LEFT, BT_RIGHT) ;
+BT_START := FB_BM_1.Q ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*CONTROLE Sinalizador LED*)
+__STEPPRAGMA
+0,26
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+(* FB call: LedSinalization *)
+LedSinalization_1(TRUE, STEP) ;
+LEDYELLOW := LedSinalization_1.LedYellow ;
+LEDGREEN := LedSinalization_1.LedGreen ;
+LEDRED := LedSinalization_1.LedRed ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*CONTORLE DE Setup*)
+__STEPPRAGMA
+0,30
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+DEVICESETUP := TRUE ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*CONTROLE DE Histórico*)
+__STEPPRAGMA
+0,32
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+(* FB call: FB_SV *)
+FB_SV_1(SV, T#1S) ;
+DATABASERECORD := FB_SV_1.TG ;
+__EDTB16 := FB_SV_1.Q ;
+IF __EDTB16 THEN
+(*Reset coil*)
+SV := FALSE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*CONTROLE DE Alertas*)
+__STEPPRAGMA
+0,35
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB17 := AL00 ;
+IF __EDTB17 THEN
+ALARMNUMBER := ANY_TO_INT(40000) ;
+END_IF ;
+__MO_ANY_TO_INT_2 := __EDTB17 ;
+__EDTB18 := __EDTB17 ;
+IF __EDTB18 THEN
+STEP := ANY_TO_INT(501) ;
+END_IF ;
+__MO_ANY_TO_INT_3 := __EDTB18 ;
+__EDTB19 := __EDTB18 ;
+IF __EDTB19 THEN
+(*Reset coil*)
+AL00 := FALSE ;
+END_IF ;
+__EDTB20 := AL20 ;
+IF __EDTB20 THEN
+ALARMNUMBER := ANY_TO_INT(4020) ;
+END_IF ;
+__MO_ANY_TO_INT_4 := __EDTB20 ;
+__EDTB21 := __EDTB20 ;
+IF __EDTB21 THEN
+STEP := ANY_TO_INT(500) ;
+END_IF ;
+__MO_ANY_TO_INT_5 := __EDTB21 ;
+__EDTB22 := __EDTB21 ;
+IF __EDTB22 THEN
+(*Reset coil*)
+AL20 := FALSE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*CONTROLE de produção*)
+__STEPPRAGMA
+0,40
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+(* FB call: CTUD *)
+CTUD_1(PRODUCTIONADD, PRODUCTIONSUBTRACT, PD_RS, , PD_AV) ;
+PD_AT := CTUD_1.CV ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*PASSO 00 - RESET*)
+__STEPPRAGMA
+0,46
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB24 := TRUE ;
+IF __EDTB24 THEN
+(* Operator output on : = with __EDTB23 *)
+__EDTB23 := (STEP = 0) ;
+ELSE
+__EDTB23 := FALSE ;
+END_IF ;
+__MO_EQUAL_1 := __EDTB23 ;
+(* FB call: TP *)
+TP_1(__EDTB23, T#2S) ;
+DEVICERESET := TP_1.Q ;
+(* FB call: TON *)
+TON_3(__EDTB23, T#1S) ;
+__EDTB25 := TON_3.Q AND DEVICERELEASE ;
+IF __EDTB25 THEN
+STEP := (  1) ;
+END_IF ;
+__MO_1GAIN_1 := __EDTB25 ;
+__EDTB26 := __EDTB25 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*PASSO 01 - SETUP NOK*)
+__STEPPRAGMA
+0,51
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB28 := TRUE ;
+IF __EDTB28 THEN
+(* Operator output on : = with __EDTB27 *)
+__EDTB27 := (STEP = 1) ;
+ELSE
+__EDTB27 := FALSE ;
+END_IF ;
+__MO_EQUAL_2 := __EDTB27 ;
+__EDTB29 := __EDTB27 AND DEVICESETUP ;
+IF __EDTB29 THEN
+STEP := (  10) ;
+END_IF ;
+__MO_1GAIN_2 := __EDTB29 ;
+__EDTB30 := __EDTB29 ;
+; (*Fall detection on  : BT_START with __MEMO__3__BT_START *)
+__EDTB31 := __EDTB27 AND (__MEMO__3__BT_START AND NOT(BT_START)) ;
+IF __EDTB31 THEN
+(*Set coil*)
+AL20 := TRUE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+__MEMO__3__BT_START := BT_START ; (*Fall detection on  : BT_START with __MEMO__3__BT_START *)
+
+
+(*************** Rung **********************************)
+(*PASSO 10 - STUP OK*)
+__STEPPRAGMA
+0,55
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB33 := TRUE ;
+IF __EDTB33 THEN
+(* Operator output on : = with __EDTB32 *)
+__EDTB32 := (STEP = 10) ;
+ELSE
+__EDTB32 := FALSE ;
+END_IF ;
+__MO_EQUAL_3 := __EDTB32 ;
+; (*Fall detection on  : BT_START with __MEMO__4__BT_START *)
+__EDTB34 := __EDTB32 AND (__MEMO__4__BT_START AND NOT(BT_START)) ;
+IF __EDTB34 THEN
+STEP := (  20) ;
+END_IF ;
+__MO_1GAIN_3 := __EDTB34 ;
+__EDTB35 := __EDTB34 ;
+__EDTB36 := __EDTB32 AND NOT(DEVICESETUP) ;
+IF __EDTB36 THEN
+STEP := (  1) ;
+END_IF ;
+__MO_1GAIN_4 := __EDTB36 ;
+__EDTB37 := __EDTB36 ;
+
+(*************** Code for the end of Rung **************)
+__MEMO__4__BT_START := BT_START ; (*Fall detection on  : BT_START with __MEMO__4__BT_START *)
+
+
+(*************** Rung **********************************)
+(*PASSO 20 - INICIO*)
+__STEPPRAGMA
+0,60
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB39 := TRUE ;
+IF __EDTB39 THEN
+(* Operator output on : = with __EDTB38 *)
+__EDTB38 := (STEP = 20) ;
+ELSE
+__EDTB38 := FALSE ;
+END_IF ;
+__MO_EQUAL_4 := __EDTB38 ;
+__EDTB40 := __EDTB38 ;
+IF __EDTB40 THEN
+(*Reset coil*)
+CC_AP := FALSE ;
+END_IF ;
+__EDTB41 := __EDTB38 ;
+IF __EDTB41 THEN
+(*Reset coil*)
+BREAKWAYDISPPROVED := FALSE ;
+END_IF ;
+__EDTB42 := __EDTB38 AND NOT(CC_AP) AND NOT(BREAKWAYDISPPROVED) ;
+IF __EDTB42 THEN
+STEP := (  30) ;
+END_IF ;
+__MO_1GAIN_5 := __EDTB42 ;
+__EDTB43 := __EDTB42 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,65
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB45 := TRUE ;
+IF __EDTB45 THEN
+(* Operator output on : = with __EDTB44 *)
+__EDTB44 := (STEP = 30) ;
+ELSE
+__EDTB44 := FALSE ;
+END_IF ;
+__MO_EQUAL_5 := __EDTB44 ;
+BREAKWAYTEST := __EDTB44 ;
+__EDTB46 := __EDTB44 AND BREAKWAYTEST ;
+IF __EDTB46 THEN
+STEP := (  300) ;
+END_IF ;
+__MO_1GAIN_6 := __EDTB46 ;
+__EDTB47 := __EDTB46 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*PASSO 300 - TESTE*)
+__STEPPRAGMA
+0,69
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB49 := TRUE ;
+IF __EDTB49 THEN
+(* Operator output on : = with __EDTB48 *)
+__EDTB48 := (STEP = 300) ;
+ELSE
+__EDTB48 := FALSE ;
+END_IF ;
+__MO_EQUAL_6 := __EDTB48 ;
+(* FB call: TON *)
+TON_1(__EDTB48, T#5S) ;
+__EDTB50 := TON_1.Q ;
+IF __EDTB50 THEN
+(*Set coil*)
+BREAKWAYDISPPROVED := TRUE ;
+END_IF ;
+__EDTB51 := __EDTB48 AND CC_AP ;
+IF __EDTB51 THEN
+ALARMNUMBER := (  4010) ;
+END_IF ;
+__MO_1GAIN_7 := __EDTB51 ;
+__EDTB52 := __EDTB51 ;
+__EDTB53 := __EDTB48 AND BREAKWAYDISPPROVED ;
+IF __EDTB53 THEN
+ALARMNUMBER := (  4011) ;
+END_IF ;
+__MO_1GAIN_8 := __EDTB53 ;
+__EDTB54 := __EDTB53 ;
+__EDTB55 := (__EDTB52 OR __EDTB54) ;
+IF __EDTB55 THEN
+STEP := (  400) ;
+END_IF ;
+__MO_1GAIN_9 := __EDTB55 ;
+__EDTB56 := __EDTB55 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*PASSO 400 - SALVA HISTÓRICO*)
+__STEPPRAGMA
+0,76
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB58 := TRUE ;
+IF __EDTB58 THEN
+(* Operator output on : = with __EDTB57 *)
+__EDTB57 := (STEP = 400) ;
+ELSE
+__EDTB57 := FALSE ;
+END_IF ;
+__MO_EQUAL_7 := __EDTB57 ;
+__EDTB59 := __EDTB57 ;
+IF __EDTB59 THEN
+(*Set coil*)
+SV := TRUE ;
+END_IF ;
+__EDTB60 := __EDTB57 AND SV ;
+__EDTB61 := __EDTB60 AND CC_AP ;
+IF __EDTB61 THEN
+STEP := (  0) ;
+END_IF ;
+__MO_1GAIN_10 := __EDTB61 ;
+__EDTB62 := __EDTB61 ;
+__EDTB63 := __EDTB60 AND BREAKWAYDISPPROVED ;
+IF __EDTB63 THEN
+STEP := (  500) ;
+END_IF ;
+__MO_1GAIN_11 := __EDTB63 ;
+__EDTB64 := __EDTB63 ;
+__EDTB65 := (__EDTB62 OR __EDTB64) ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*PASSO 500 - RESET DE FALHAS*)
+__STEPPRAGMA
+0,82
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB67 := TRUE ;
+IF __EDTB67 THEN
+(* Operator output on : = with __EDTB66 *)
+__EDTB66 := (STEP = 500) ;
+ELSE
+__EDTB66 := FALSE ;
+END_IF ;
+__MO_EQUAL_8 := __EDTB66 ;
+; (*Fall detection on  : AL_RS with __MEMO__5__AL_RS *)
+__EDTB68 := __EDTB66 AND (__MEMO__5__AL_RS AND NOT(AL_RS)) ;
+IF __EDTB68 THEN
+ALARMNUMBER := (  0) ;
+END_IF ;
+__MO_1GAIN_12 := __EDTB68 ;
+__EDTB69 := __EDTB68 ;
+IF __EDTB69 THEN
+(*Set coil*)
+SECURITYVALVE := TRUE ;
+END_IF ;
+__EDTB70 := __EDTB68 AND SECURITYVALVE ;
+IF __EDTB70 THEN
+STEP := (  0) ;
+END_IF ;
+__MO_1GAIN_13 := __EDTB70 ;
+__EDTB71 := __EDTB70 ;
+
+(*************** Code for the end of Rung **************)
+__MEMO__5__AL_RS := AL_RS ; (*Fall detection on  : AL_RS with __MEMO__5__AL_RS *)
+
+
+(*************** Rung **********************************)
+(*PASSO 501 - SEGURANÇA*)
+__STEPPRAGMA
+0,86
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB73 := TRUE ;
+IF __EDTB73 THEN
+(* Operator output on : = with __EDTB72 *)
+__EDTB72 := (STEP = 501) ;
+ELSE
+__EDTB72 := FALSE ;
+END_IF ;
+__MO_EQUAL_9 := __EDTB72 ;
+__EDTB74 := __EDTB72 ;
+IF __EDTB74 THEN
+(*Reset coil*)
+SECURITYVALVE := FALSE ;
+END_IF ;
+__EDTB75 := __EDTB72 AND NOT(SECURITYVALVE) AND BT_STOP ;
+IF __EDTB75 THEN
+STEP := (  500) ;
+END_IF ;
+__MO_1GAIN_14 := __EDTB75 ;
+__EDTB76 := __EDTB75 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Code for the end of File **************)
+__GL __LG0000 ;
+
+
+
+(*************** Local Symbols table *******************)
+(* __EDTB1 *)
+(* __EDTB2 *)
+(* __EDTB3 *)
+(* __EDTB4 *)
+(* __EDTB5 *)
+(* __EDTB6 *)
+(* __EDTB7 *)
+(* __EDTB8 *)
+(* __EDTB9 *)
+(* __EDTB10 *)
+(* __EDTB11 *)
+(* __EDTB12 *)
+(* __MEMO__1__BREAKWAY1TESTDISAPROVED *)
+(* __EDTB13 *)
+(* __MEMO__2__BREAKWAY1TESTAPPROVED *)
+(* __EDTB14 *)
+(* __EDTB15 *)
+(* __EDTB16 *)
+(* __EDTB17 *)
+(* __EDTB18 *)
+(* __EDTB19 *)
+(* __EDTB20 *)
+(* __EDTB21 *)
+(* __EDTB22 *)
+(* __EDTB23 *)
+(* __EDTB24 *)
+(* __EDTB25 *)
+(* __EDTB26 *)
+(* __EDTB27 *)
+(* __EDTB28 *)
+(* __EDTB29 *)
+(* __EDTB30 *)
+(* __MEMO__3__BT_START *)
+(* __EDTB31 *)
+(* __EDTB32 *)
+(* __EDTB33 *)
+(* __MEMO__4__BT_START *)
+(* __EDTB34 *)
+(* __EDTB35 *)
+(* __EDTB36 *)
+(* __EDTB37 *)
+(* __EDTB38 *)
+(* __EDTB39 *)
+(* __EDTB40 *)
+(* __EDTB41 *)
+(* __EDTB42 *)
+(* __EDTB43 *)
+(* __EDTB44 *)
+(* __EDTB45 *)
+(* __EDTB46 *)
+(* __EDTB47 *)
+(* __EDTB48 *)
+(* __EDTB49 *)
+(* __EDTB50 *)
+(* __EDTB51 *)
+(* __EDTB52 *)
+(* __EDTB53 *)
+(* __EDTB54 *)
+(* __EDTB55 *)
+(* __EDTB56 *)
+(* __EDTB57 *)
+(* __EDTB58 *)
+(* __EDTB59 *)
+(* __EDTB60 *)
+(* __EDTB61 *)
+(* __EDTB62 *)
+(* __EDTB63 *)
+(* __EDTB64 *)
+(* __EDTB65 *)
+(* __EDTB66 *)
+(* __EDTB67 *)
+(* __MEMO__5__AL_RS *)
+(* __EDTB68 *)
+(* __EDTB69 *)
+(* __EDTB70 *)
+(* __EDTB71 *)
+(* __EDTB72 *)
+(* __EDTB73 *)
+(* __EDTB74 *)
+(* __EDTB75 *)
+(* __EDTB76 *)
+

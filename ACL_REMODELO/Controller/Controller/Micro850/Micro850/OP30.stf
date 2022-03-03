@@ -38,17 +38,17 @@ EOR [9,0]
 (*Variáveis Global => Local*)
 
 SOR  [0,13] (**) (**)  
- BST  XIC  [1,0] (*OP30_PF_RT*) (**)  OTE  [2,0] (*PF_RT*) (**)
+ BST  XIC  [1,0] (*OP30_SkrewdriverOK*) (**)  OTE  [2,0] (*PF_RT*) (**)
    NXB  
  BST  
  BST  
  BST  
  BST  
- BST  XIC  [1,1] (*OP30_CL_AV*) (**)
+ BST  XIC  [1,1] (*OP30_CylinderAdvance*) (**)
    NXB  XIC  [1,2] (*IHM_AlarmReset*) (**)
  BND
   OTE  [2,1] (*AL_RS*) (**)
-   NXB  XIC  [1,3] (*OP30_CL_AV*) (**)  OTE  [2,3] (*CL_AV*) (**)
+   NXB  XIC  [1,3] (*OP30_CylinderAdvance*) (**)  OTE  [2,3] (*CL_AV*) (**)
  BND
 
    NXB  XIC  [1,4] (*OP30_SN_LE_Holder*) (**)  OTE  [2,4] (*SU_LE1*) (**)
@@ -57,7 +57,7 @@ SOR  [0,13] (**) (**)
    NXB  XIO  [1,5] (*OP30_SN_LE_Holder*) (**)  OTE  [2,5] (*SU_LD1*) (**)
  BND
 
-   NXB  XIO  [1,6] (*OP30_SU_Cabo*) (**)  OTE  [2,6] (*SU_Cabo*) (**)
+   NXB  XIO  [1,6] (*OP30_SetupSensor1Cabo*) (**)  OTE  [2,6] (*SU_Cabo*) (**)
  BND
 
  BND
@@ -73,7 +73,7 @@ EOR [3,0]
 
 (*Sinalizador LED*)
 
-SOR  [0,23] (**) (**)  FB  [1,0] (*FB_SNL*) (*FB_SNL_1*) ( (*IN:*)(**) (**)  , (*STP:*)(*STP*) (**) ; (*RD:*)(**) (**)  , (*YL:*)(*AM*) (**)  , (*GR:*)(*VD*) (**) )  OTE  [4,0] (*VM*) (**)
+SOR  [0,23] (**) (**)  FB  [1,0] (*LedSinalization*) (*LedSinalization_1*) ( (*IN:*)(**) (**)  , (*Step:*)(*STP*) (**) ; (*LedRed:*)(**) (**)  , (*LedYellow:*)(*AM*) (**)  , (*LedGreen:*)(*VD*) (**) )  OTE  [4,0] (*VM*) (**)
 EOR [5,0]
 
 

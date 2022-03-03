@@ -21,7 +21,7 @@ __MO_1GAIN_2 := __EDTB2 ;
 OP20_LD_RED := __EDTB2 AND VM ;
 OP20_LD_YELLOW := __EDTB2 AND AM ;
 OP20_LD_VD := __EDTB2 AND VD ;
-OP20_CL_AT := __EDTB2 AND CL_AT ;
+OP20_CILINDERADVANCE := __EDTB2 AND CL_AT ;
 
 (*************** Code for the end of Rung **************)
 
@@ -32,16 +32,16 @@ __STEPPRAGMA
 0,6
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-BME := OP20_BME ;
-BMD := OP20_BMD ;
-BTS := OP20_BTS ;
-__EDTB3 := OP20_BMD ;
+BME := OP20_BUTTONLEFT ;
+BMD := OP20_BUTTONRIGHT ;
+BTS := OP20_BUTTONSTOP ;
+__EDTB3 := OP20_BUTTONRIGHT ;
 __EDTB4 := IHM_ALARMRESET ;
 AL_RS := (__EDTB3 OR __EDTB4) ;
-SU_LE1 := NOT(OP20_SU_LD_TUBO) ;
-SU_LD1 := OP20_SU_LD_TUBO ;
-SU_LE2 := NOT(OP20_SU_LD_HOLDER) ;
-SU_LD2 := OP20_SU_LD_HOLDER ;
+SU_LE1 := NOT(OP20_SENSORSETUPLEFT2TUBE) ;
+SU_LD1 := OP20_SENSORSETUPLEFT2TUBE ;
+SU_LE2 := NOT(OP20_SENSORSETUPLEFT1HOLDER) ;
+SU_LD2 := OP20_SENSORSETUPLEFT1HOLDER ;
 
 (*************** Code for the end of Rung **************)
 
@@ -52,7 +52,7 @@ __STEPPRAGMA
 0,16
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-PF_RT := OP20_PF_RT ;
+PF_RT := OP20_SKREWDRIVEROK ;
 OP20_PF_RELEASE := PF_LB ;
 OP20_PF_RESET := PF_RS ;
 
@@ -83,11 +83,11 @@ __STEPPRAGMA
 0,24
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-(* FB call: FB_SNL *)
-FB_SNL_1(TRUE, STP) ;
-AM := FB_SNL_1.YL ;
-VD := FB_SNL_1.GR ;
-VM := FB_SNL_1.RD ;
+(* FB call: LedSinalization *)
+LedSinalization_1(TRUE, STP) ;
+AM := LedSinalization_1.LedYellow ;
+VD := LedSinalization_1.LedGreen ;
+VM := LedSinalization_1.LedRed ;
 
 (*************** Code for the end of Rung **************)
 

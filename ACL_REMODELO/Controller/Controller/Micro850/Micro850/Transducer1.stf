@@ -3,10 +3,99 @@ PROGRAM Transducer1
 BOF
 
 
+(*Declaration*)
+
+SOR  [0,1] (**) (**)  FB  [1,0] (*BoolDeclaration*) (*BoolDeclaration_1*) ( (*IN:*)(**) (**)  , (*i0:*)(**) (**)  , (*i1:*)(**) (**)  , (*i2:*)(**) (**)  , (*i3:*)(**) (**)  , (*i4:*)(**) (**)  , (*i5:*)(**) (**)  , (*i6:*)(**) (**)  , (*i7:*)(**) (**)  , (*i8:*)(**) (**)  , (*i9:*)(**) (**) ; (*Q:*)(**) (**)  , (*o0:*)(*Move1TestRun*) (**)  , (*o1:*)(*Move1TestForced*) (**)  , (*o2:*)(**) (**)  , (*o3:*)(**) (**)  , (*o4:*)(**) (**)  , (*o5:*)(**) (**)  , (*o6:*)(**) (**)  , (*o7:*)(**) (**)  , (*o8:*)(**) (**)  , (*o9:*)(**) (**) )  FB  [4,0] (*IntDeclaration*) (*IntDeclaration_2*) ( (*IN:*)(**) (**)  , (*i0:*)(*Transducer1Sensor*) (**)  , (*i1:*)(*Transducer2Sensor*) (**)  , (*i2:*)(**) (**)  , (*i3:*)(**) (**)  , (*i4:*)(**) (**)  , (*i5:*)(**) (**)  , (*i6:*)(**) (**)  , (*i7:*)(**) (**)  , (*i8:*)(**) (**)  , (*i9:*)(**) (**) ; (*Q:*)(**) (**)  , (*o0:*)(*Move1Sensor*) (**)  , (*o1:*)(*Move2Sensor*) (**)  , (*o2:*)(**) (**)  , (*o3:*)(**) (**)  , (*o4:*)(**) (**)  , (*o5:*)(**) (**)  , (*o6:*)(**) (**)  , (*o7:*)(**) (**)  , (*o8:*)(**) (**)  , (*o9:*)(**) (**) )  FB  [7,0] (*RealDeclaration*) (*RealDeclaration_1*) ( (*IN:*)(**) (**)  , (*i0:*)(*0.0*) (**)  , (*i1:*)(*10000.0*) (**)  , (*i2:*)(*500.0*) (**)  , (*i3:*)(*0.0*) (**)  , (*i4:*)(*0.0*) (**)  , (*i5:*)(*10000.0*) (**)  , (*i6:*)(*500.0*) (**)  , (*i7:*)(*0.0*) (**)  , (*i8:*)(**) (**)  , (*i9:*)(**) (**) ; (*Q:*)(**) (**)  , (*o0:*)(*Transducer1InputMin*) (**)  , (*o1:*)(*Transducer1InputMax*) (**)  , (*o2:*)(*Transducer1OutputMin*) (**)  , (*o3:*)(*Transducer1OutputMax*) (**)  , (*o4:*)(*Transducer2InputMin*) (**)  , (*o5:*)(*Transducer2InputMax*) (**)  , (*o6:*)(*Transducer2OutputMin*) (**)  , (*o7:*)(*Transducer2OutputMax*) (**)  , (*o8:*)(**) (**)  , (*o9:*)(**) (**) )
+EOR [10,0]
+
+
+(*Transducer1*)
+
+SOR  [0,13] (**) (**)  FB  [1,0] (*ANY_TO_REAL*) (*31*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*_IO_P1_AI_00*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Transducer1Input*) (**) )  FB  [4,0] (*SCALER*) (*SCALER_1*) ( (*EN:EN*)(**) (**)  , (*Input:*)(*Transducer1Input*) (**)  , (*InputMin:*)(*Transducer1InputMin*) (**)  , (*InputMax:*)(*Transducer1InputMax*) (**)  , (*OutputMin:*)(*Transducer1OutputMin*) (**)  , (*OutputMax:*)(*Transducer1OutputMax*) (**) ; (*ENO:ENO*)(**) (**)  , (*Output:*)(*Transducer1Output*) (**) )  FB  [7,0] (*ANY_TO_INT*) (*34*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Transducer1Output*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Transducer1Sensor*) (**) )
+EOR [10,0]
+
+
+(*Transducer2*)
+
+SOR  [0,20] (**) (**)  FB  [1,0] (*ANY_TO_REAL*) (*31*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*_IO_P1_AI_01*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Transducer2Input*) (**) )  FB  [4,0] (*SCALER*) (*SCALER_2*) ( (*EN:EN*)(**) (**)  , (*Input:*)(*Transducer2Input*) (**)  , (*InputMin:*)(*Transducer2InputMin*) (**)  , (*InputMax:*)(*Transducer2InputMax*) (**)  , (*OutputMin:*)(*Transducer2OutputMin*) (**)  , (*OutputMax:*)(*Transducer2OutputMax*) (**) ; (*ENO:ENO*)(**) (**)  , (*Output:*)(*Transducer2Output*) (**) )  FB  [7,0] (*ANY_TO_INT*) (*35*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Transducer2Output*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Transducer2Sensor*) (**) )
+EOR [10,0]
+
+
 (**)
 
-SOR  [0,1] (**) (**)
-EOR [1,0]
+SOR  [0,27] (**) (**)  XIP  [1,0] (*PositionTest*) (**)  
+ BST  OTR  [2,0] (*PositionTestApproved*) (**)
+   NXB  OTR  [2,1] (*PositionTestDisapproved*) (**)
+ BND
+
+EOR [3,0]
+
+
+(**)
+
+SOR  [0,30] (**) (**)  XIC  [1,0] (*PositionTest*) (**)  
+ BST  OTS  [2,0] (*CylinderAdvance*) (**)
+   NXB  XIC  [2,1] (*CylinderAdvance*) (**)  FB  [3,1] (*FB_PK_V2*) (*FB_PK_V2_1*) ( (*IN:*)(**) (**)  , (*SN1:*)(*Move1Sensor*) (**)  , (*SN2:*)(*Move2Sensor*) (**)  , (*TM:*)(*T#3S*) (**)  , (*RT:*)(*CylinderAdvanced*) (**) ; (*Q:*)(**) (**)  , (*S1:*)(**) (**)  , (*PKP1:*)(*Peak1*) (**)  , (*PKP2:*)(*Peak2*) (**) )  
+ BST  FB  [6,1] (*FB_PV*) (*FB_PV_5*) ( (*IN:*)(**) (**)  , (*VL:*)(*Peak1*) (**)  , (*MX:*)(*ParameterMax*) (**)  , (*MN:*)(*ParameterMin*) (**) ; (*Q:*)(**) (**)  , (*AP:*)(*Position1Approved*) (**)  , (*RP:*)(*Position1Disapproved*) (**) )
+   NXB  
+ BST  FB  [6,5] (*FB_PV*) (*FB_PV_6*) ( (*IN:*)(**) (**)  , (*VL:*)(*Peak2*) (**)  , (*MX:*)(*ParameterMax*) (**)  , (*MN:*)(*ParameterMin*) (**) ; (*Q:*)(**) (**)  , (*AP:*)(*Position2Approved*) (**)  , (*RP:*)(*Position2Disapproved*) (**) )
+   NXB  
+ BST  XIC  [6,9] (*Position1Approved*) (**)  XIC  [7,9] (*Position2Approved*) (**)  OTS  [8,9] (*PositionTestApproved*) (**)
+   NXB  
+ BST  
+ BST  XIC  [6,10] (*Position1Disapproved*) (**)
+   NXB  XIC  [6,11] (*Position2Disapproved*) (**)
+ BND
+  OTS  [7,10] (*PositionTest*) (**)
+   NXB  
+ BST  XIC  [6,12] (*PositionTestApproved*) (**)
+   NXB  XIC  [6,13] (*PositionTestDisapproved*) (**)
+ BND
+  OTR  [7,12] (*PositionTest*) (**)
+ BND
+
+ BND
+
+ BND
+
+ BND
+
+ BND
+
+EOR [9,0]
+
+
+(**)
+
+SOR  [0,45] (**) (**)  FB  [1,0] (*1 gain*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*t#3S*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Move1Time*) (**) )  
+ BST  XIC  [4,0] (*Move1TestRun*) (**)  OTE  [5,0] (*Move1Run*) (**)
+   NXB  XIC  [4,1] (*Move2TestRun*) (**)  OTE  [5,1] (*Move2Run*) (**)
+ BND
+
+EOR [6,0]
+
+
+(**)
+
+SOR  [0,48] (**) (**)  XIC  [1,0] (*Move1Run*) (**)  
+ BST  FB  [2,0] (*FB_Move*) (*MoveTest_2*) ( (*IN:*)(**) (**)  , (*PosSensor:*)(*Move1Sensor*) (**)  , (*MoveTime:*)(*Move1Time*) (**) ; (*Q:*)(**) (**)  , (*MoveP:*)(*Move1Up*) (**)  , (*MoveN:*)(*Move1Down*) (**)  , (*PosVariation:*)(*Move1Variation*) (**) )  FB  [5,0] (*FB_PV*) (*FB_PV_8*) ( (*IN:*)(**) (**)  , (*VL:*)(*Move1Variation*) (**)  , (*MX:*)(*Move1ParameterMax*) (**)  , (*MN:*)(*Move1ParameterMin*) (**) ; (*Q:*)(**) (**)  , (*AP:*)(*Move1Approved*) (**)  , (*RP:*)(*Move1Disapproved*) (**) )
+   NXB  XIP  [2,4] (*Move1Disapproved*) (**)  OTS  [3,4] (*AlarmMove1Fail*) (**)
+ BND
+
+EOR [8,0]
+
+
+(**)
+
+SOR  [0,54] (**) (**)  XIC  [1,0] (*Move2Run*) (**)  
+ BST  FB  [2,0] (*FB_Move*) (*MoveTest_3*) ( (*IN:*)(**) (**)  , (*PosSensor:*)(*Move2Sensor*) (**)  , (*MoveTime:*)(*Move2Time*) (**) ; (*Q:*)(**) (**)  , (*MoveP:*)(*Move2Positive*) (**)  , (*MoveN:*)(*Move2Negative*) (**)  , (*PosVariation:*)(*Move2Variation*) (**) )  FB  [5,0] (*FB_PV*) (*FB_PV_9*) ( (*IN:*)(**) (**)  , (*VL:*)(*Move2Variation*) (**)  , (*MX:*)(*Move2VariationMax*) (**)  , (*MN:*)(*Move2VariationMin*) (**) ; (*Q:*)(**) (**)  , (*AP:*)(*Move2Approved*) (**)  , (*RP:*)(*Move2Disapproved*) (**) )
+   NXB  XIP  [2,4] (*Move2Disapproved*) (**)  OTS  [3,4] (*AlarmMove2Fail*) (**)
+ BND
+
+EOR [8,0]
 EOF
+#end_info
+#info= ID_MAX
+NextId=4
 #end_info
 END_PROGRAM

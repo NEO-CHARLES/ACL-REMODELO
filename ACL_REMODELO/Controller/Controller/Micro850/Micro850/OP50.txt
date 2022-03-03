@@ -16,11 +16,11 @@ __MO_1GAIN_1 := __EDTB1 ;
 OP50_LD_VM := __EDTB1 AND VM ;
 OP50_LD_AM := __EDTB1 AND AM ;
 OP50_LD_VD := __EDTB1 AND VD ;
-(* FB call: FB_SNL *)
-FB_SNL_1(__EDTB1, STP) ;
-AM := FB_SNL_1.YL ;
-VD := FB_SNL_1.GR ;
-VM := FB_SNL_1.RD ;
+(* FB call: LedSinalization *)
+LedSinalization_1(__EDTB1, STP) ;
+AM := LedSinalization_1.LedYellow ;
+VD := LedSinalization_1.LedGreen ;
+VM := LedSinalization_1.LedRed ;
 
 (*************** Code for the end of Rung **************)
 
@@ -64,7 +64,7 @@ __EDTB11 := __EDTB10 AND OP50_PD_UP ;
 __EDTB12 := __EDTB10 AND PF_RT ;
 PD_UP := (__EDTB11 OR __EDTB12) ;
 __EDTB13 := __EDTB10 AND OP50_PD_RS ;
-__EDTB14 := __EDTB10 AND PRODUCTIONRESET ;
+__EDTB14 := __EDTB10 AND IHM_PRODUCTIONRESET ;
 PD_RS := (__EDTB13 OR __EDTB14) ;
 PD_DW := __EDTB10 AND OP50_PD_DW ;
 
@@ -125,10 +125,10 @@ __STEPPRAGMA
 0,29
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-SU_LE1 := OP50_SN_E AND NOT(OP50_SN_D) ;
-SU_LE2 := OP50_SU_LE AND NOT(OP50_SU_LD) ;
-SU_LD1 := NOT(OP50_SN_E) AND OP50_SN_D ;
-SU_LD2 := NOT(OP50_SU_LE) AND OP50_SU_LD ;
+SU_LE1 := OP50_SENSORLEFT1 AND NOT(OP50_SENSORRIGHT1) ;
+SU_LE2 := OP50_SENSORSETUPLEFT1 AND NOT(OP50_SETUPSENSOR1RIGHT) ;
+SU_LD1 := NOT(OP50_SENSORLEFT1) AND OP50_SENSORRIGHT1 ;
+SU_LD2 := NOT(OP50_SENSORSETUPLEFT1) AND OP50_SETUPSENSOR1RIGHT ;
 
 (*************** Code for the end of Rung **************)
 

@@ -25,7 +25,7 @@ EOR [3,0]
 
 (*Saida DO-02 - Valvula Solenoide Operação 20*)
 
-SOR  [0,7] (**) (**)  XIC  [1,0] (*_IO_EM_DI_27*) (*PG1_EMERGENCIA*)  XIC  [2,0] (*_IO_EM_DI_00*) (*OP20_STOP*)  XIC  [3,0] (*OP20_CL_AT*) (**)  OTE  [4,0] (*_IO_EM_DO_02*) (**)
+SOR  [0,7] (**) (**)  XIC  [1,0] (*_IO_EM_DI_27*) (*PG1_EMERGENCIA*)  XIC  [2,0] (*_IO_EM_DI_00*) (*OP20_STOP*)  XIC  [3,0] (*OP20_CilinderAdvance*) (**)  OTE  [4,0] (*_IO_EM_DO_02*) (**)
 EOR [5,0]
 
 

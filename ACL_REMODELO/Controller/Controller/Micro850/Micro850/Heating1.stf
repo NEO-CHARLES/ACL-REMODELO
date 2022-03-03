@@ -1,0 +1,79 @@
+PROGRAM Heating1
+#info= QLD
+BOF
+
+
+(*ENTRADAS*)
+
+SOR  [0,1] (**) (**)  FB  [1,0] (*ANY_TO_INT*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*_IO_P1_AI_02*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*AnalogicInput*) (**) )  FB  [4,0] (*IntDeclaration*) (*IntDeclaration_1*) ( (*IN:*)(**) (**)  , (*i0:*)(*IHM_Heating1ParameterMax*) (**)  , (*i1:*)(*IHM_Heating1ParameterMin*) (**)  , (*i2:*)(*IHM_Heating1MeasuredValue*) (**)  , (*i3:*)(*AnalogicInput*) (**)  , (*i4:*)(*Sensor*) (**)  , (*i5:*)(*PeakOutput*) (**)  , (*i6:*)(**) (**)  , (*i7:*)(**) (**)  , (*i8:*)(**) (**)  , (*i9:*)(**) (**) ; (*Q:*)(**) (**)  , (*o0:*)(*ParameterMax*) (**)  , (*o1:*)(*ParameterMin*) (**)  , (*o2:*)(*MeasuredValue*) (**)  , (*o3:*)(*IHM_Heating1AnalogicValue*) (**)  , (*o4:*)(*IHM_Heating1Sensor*) (**)  , (*o5:*)(*IHM_Heating1PeakOutput*) (**)  , (*o6:*)(**) (**)  , (*o7:*)(**) (**)  , (*o8:*)(**) (**)  , (*o9:*)(**) (**) )  FB  [7,0] (*BoolDeclaration*) (*BoolDeclaration_1*) ( (*IN:*)(**) (**)  , (*i0:*)(**) (**)  , (*i1:*)(*Actuator*) (**)  , (*i2:*)(**) (**)  , (*i3:*)(*OP60_ButtonStart*) (**)  , (*i4:*)(**) (**)  , (*i5:*)(**) (**)  , (*i6:*)(**) (**)  , (*i7:*)(**) (**)  , (*i8:*)(**) (**)  , (*i9:*)(**) (**) ; (*Q:*)(**) (**)  , (*o0:*)(*End*) (**)  , (*o1:*)(*K4_HeatingTestActuator*) (**)  , (*o2:*)(**) (**)  , (*o3:*)(*ButtonStart*) (**)  , (*o4:*)(**) (**)  , (*o5:*)(**) (**)  , (*o6:*)(**) (**)  , (*o7:*)(**) (**)  , (*o8:*)(**) (**)  , (*o9:*)(**) (**) )  
+ BST  
+ BST  XIC  [10,0] (*ButtonStart*) (**)  FB  [11,0] (*TON*) (*TON_3*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*t#3S*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )
+   NXB  
+ BST  XIC  [10,2] (*Heating1TestRun*) (**)
+   NXB  XIC  [10,3] (*IHM_Heating1TestStart*) (**)
+ BND
+
+ BND
+  OTS  [14,0] (*Start*) (**)
+   NXB  
+ BST  XIP  [10,4] (*IHM_Heating1Calibrate*) (**)  OTS  [11,4] (*Calibrate*) (**)
+   NXB  
+ BST  XIP  [10,5] (*IHM_Heating1TestZero*) (**)  OTS  [11,5] (*Zero*) (**)
+   NXB  
+ BST  
+ BST  XIC  [10,6] (*ModelHeatingWith*) (**)  XIP  [11,6] (*Approved*) (**)
+   NXB  XIC  [10,7] (*ModelHeatingNot*) (**)  XIP  [11,7] (*Disapproved*) (**)
+ BND
+  OTS  [12,6] (*Heating1TestSuccess*) (**)
+   NXB  
+ BST  XIC  [10,8] (*ModelHeatingWith*) (**)  XIP  [11,8] (*Disapproved*) (**)
+   NXB  XIC  [10,9] (*ModelHeatingNot*) (**)  XIP  [11,9] (*Approved*) (**)
+ BND
+  OTS  [12,8] (*Heating1TestFail*) (**)
+ BND
+
+ BND
+
+ BND
+
+ BND
+
+EOR [15,0]
+
+
+(*ESCALA*)
+
+SOR  [0,13] (**) (**)  FB  [1,0] (*ANY_TO_REAL*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*AnalogicInput*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Input*) (**) )  FB  [4,0] (*SCALER*) (*SCALER_1*) ( (*EN:EN*)(**) (**)  , (*Input:*)(*Input*) (**)  , (*InputMin:*)(*InputMin*) (**)  , (*InputMax:*)(*InputMax*) (**)  , (*OutputMin:*)(*OutputMin*) (**)  , (*OutputMax:*)(*OutputMax*) (**) ; (*ENO:ENO*)(**) (**)  , (*Output:*)(*Output*) (**) )  FB  [7,0] (*ANY_TO_INT*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Output*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Sensor*) (**) )
+EOR [10,0]
+
+
+(*Zero*)
+
+SOR  [0,20] (**) (**)  XIC  [1,0] (*Zero*) (**)  XIO  [2,0] (*Actuator*) (**)  
+ BST  FB  [3,0] (*ANY_TO_REAL*) (*80*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Input*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*InputMin*) (**) )
+   NXB  FB  [3,2] (*ANY_TO_REAL*) (*81*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*OutputMin*) (**) )
+ BND
+  FB  [6,0] (*TON*) (*TON_1*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*T#500mS*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTR  [9,0] (*Zero*) (**)
+EOR [10,0]
+
+
+(*Calibração*)
+
+SOR  [0,25] (**) (**)  XIC  [1,0] (*Calibrate*) (**)  
+ BST  FB  [2,0] (*ANY_TO_REAL*) (*72*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*PeakInput*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*InputMax*) (**) )
+   NXB  FB  [2,2] (*ANY_TO_REAL*) (*72*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*MeasuredValue*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*OutputMax*) (**) )
+ BND
+  FB  [5,0] (*TON*) (*TON_2*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*T#500mS*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTR  [8,0] (*Calibrate*) (**)
+EOR [9,0]
+
+
+(*Teste*)
+
+SOR  [0,30] (**) (**)  XIC  [1,0] (*Start*) (**)  FB  [2,0] (*FB_PK_V2*) (*FB_PK_V2_1*) ( (*IN:*)(**) (**)  , (*SN1:*)(*Sensor*) (**)  , (*SN2:*)(*AnalogicInput*) (**)  , (*TM:*)(*T#3S*) (**)  , (*RT:*)(*End*) (**) ; (*Q:*)(**) (**)  , (*S1:*)(*Actuator*) (**)  , (*PKP1:*)(*PeakOutput*) (**)  , (*PKP2:*)(*PeakInput*) (**) )  FB  [5,0] (*FB_PV*) (*FB_PV_2*) ( (*IN:*)(**) (**)  , (*VL:*)(*PeakOutput*) (**)  , (*MX:*)(*ParameterMax*) (**)  , (*MN:*)(*ParameterMin*) (**) ; (*Q:*)(**) (**)  , (*AP:*)(*Approved*) (**)  , (*RP:*)(*Disapproved*) (**) )  OTR  [8,0] (*Start*) (**)
+EOR [9,0]
+EOF
+#end_info
+#info= ID_MAX
+NextId=81
+#end_info
+END_PROGRAM

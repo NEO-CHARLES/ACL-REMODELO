@@ -6,7 +6,7 @@ BOF
 (**)
 
 SOR  [0,1] (**) (**)  
- BST  XIC  [1,0] (*Motor1Up*) (**)
+ BST  XIC  [1,0] (*Move1Up*) (**)
    NXB  XIC  [1,1] (*IHM_Motor1Up*) (**)
  BND
   OTE  [2,0] (*MoveUp*) (**)
@@ -16,7 +16,7 @@ EOR [3,0]
 (**)
 
 SOR  [0,4] (**) (**)  
- BST  XIC  [1,0] (*Motor1Down*) (**)
+ BST  XIC  [1,0] (*Move1Down*) (**)
    NXB  XIC  [1,1] (*IHM_Motor1Down*) (**)
  BND
   OTE  [2,0] (*MoveDown*) (**)

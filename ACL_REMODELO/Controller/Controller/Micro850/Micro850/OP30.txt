@@ -65,14 +65,14 @@ __STEPPRAGMA
 0,13
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-PF_RT := OP30_PF_RT ;
-__EDTB9 := OP30_CL_AV ;
+PF_RT := OP30_SKREWDRIVEROK ;
+__EDTB9 := OP30_CYLINDERADVANCE ;
 __EDTB10 := IHM_ALARMRESET ;
 AL_RS := (__EDTB9 OR __EDTB10) ;
-CL_AV := OP30_CL_AV ;
+CL_AV := OP30_CYLINDERADVANCE ;
 SU_LE1 := OP30_SN_LE_HOLDER ;
 SU_LD1 := NOT(OP30_SN_LE_HOLDER) ;
-SU_CABO := NOT(OP30_SU_CABO) ;
+SU_CABO := NOT(OP30_SETUPSENSOR1CABO) ;
 
 (*************** Code for the end of Rung **************)
 
@@ -98,11 +98,11 @@ __STEPPRAGMA
 0,23
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-(* FB call: FB_SNL *)
-FB_SNL_1(TRUE, STP) ;
-AM := FB_SNL_1.YL ;
-VD := FB_SNL_1.GR ;
-VM := FB_SNL_1.RD ;
+(* FB call: LedSinalization *)
+LedSinalization_1(TRUE, STP) ;
+AM := LedSinalization_1.LedYellow ;
+VD := LedSinalization_1.LedGreen ;
+VM := LedSinalization_1.LedRed ;
 
 (*************** Code for the end of Rung **************)
 

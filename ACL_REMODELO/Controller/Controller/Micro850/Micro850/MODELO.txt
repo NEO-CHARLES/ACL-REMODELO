@@ -11,7 +11,7 @@ __ENDSTEPPRAGMA
 __EDTB2 := TRUE ;
 IF __EDTB2 THEN
 (* Operator output on : = with __EDTB1 *)
-__EDTB1 := (IHM_MODEL = 0) ;
+__EDTB1 := (IHM_MODELNUMBER = 0) ;
 ELSE
 __EDTB1 := FALSE ;
 END_IF ;
@@ -30,7 +30,7 @@ __ENDSTEPPRAGMA
 __EDTB4 := TRUE ;
 IF __EDTB4 THEN
 (* Operator output on : = with __EDTB3 *)
-__EDTB3 := (IHM_MODEL = 1) ;
+__EDTB3 := (IHM_MODELNUMBER = 1) ;
 ELSE
 __EDTB3 := FALSE ;
 END_IF ;
@@ -39,7 +39,7 @@ __EDTB5 := __EDTB3 ;
 __EDTB7 := TRUE ;
 IF __EDTB7 THEN
 (* Operator output on : = with __EDTB6 *)
-__EDTB6 := (IHM_MODEL = 3) ;
+__EDTB6 := (IHM_MODELNUMBER = 3) ;
 ELSE
 __EDTB6 := FALSE ;
 END_IF ;
@@ -48,7 +48,7 @@ __EDTB8 := __EDTB6 ;
 __EDTB10 := TRUE ;
 IF __EDTB10 THEN
 (* Operator output on : = with __EDTB9 *)
-__EDTB9 := (IHM_MODEL = 5) ;
+__EDTB9 := (IHM_MODELNUMBER = 5) ;
 ELSE
 __EDTB9 := FALSE ;
 END_IF ;
@@ -57,7 +57,7 @@ __EDTB11 := __EDTB9 ;
 __EDTB13 := TRUE ;
 IF __EDTB13 THEN
 (* Operator output on : = with __EDTB12 *)
-__EDTB12 := (IHM_MODEL = 7) ;
+__EDTB12 := (IHM_MODELNUMBER = 7) ;
 ELSE
 __EDTB12 := FALSE ;
 END_IF ;
@@ -79,7 +79,7 @@ __ENDSTEPPRAGMA
 __EDTB18 := TRUE ;
 IF __EDTB18 THEN
 (* Operator output on : = with __EDTB17 *)
-__EDTB17 := (IHM_MODEL = 2) ;
+__EDTB17 := (IHM_MODELNUMBER = 2) ;
 ELSE
 __EDTB17 := FALSE ;
 END_IF ;
@@ -88,7 +88,7 @@ __EDTB19 := __EDTB17 ;
 __EDTB21 := TRUE ;
 IF __EDTB21 THEN
 (* Operator output on : = with __EDTB20 *)
-__EDTB20 := (IHM_MODEL = 4) ;
+__EDTB20 := (IHM_MODELNUMBER = 4) ;
 ELSE
 __EDTB20 := FALSE ;
 END_IF ;
@@ -97,7 +97,7 @@ __EDTB22 := __EDTB20 ;
 __EDTB24 := TRUE ;
 IF __EDTB24 THEN
 (* Operator output on : = with __EDTB23 *)
-__EDTB23 := (IHM_MODEL = 6) ;
+__EDTB23 := (IHM_MODELNUMBER = 6) ;
 ELSE
 __EDTB23 := FALSE ;
 END_IF ;
@@ -106,7 +106,7 @@ __EDTB25 := __EDTB23 ;
 __EDTB27 := TRUE ;
 IF __EDTB27 THEN
 (* Operator output on : = with __EDTB26 *)
-__EDTB26 := (IHM_MODEL = 8) ;
+__EDTB26 := (IHM_MODELNUMBER = 8) ;
 ELSE
 __EDTB26 := FALSE ;
 END_IF ;
@@ -128,7 +128,7 @@ __ENDSTEPPRAGMA
 __EDTB32 := TRUE ;
 IF __EDTB32 THEN
 (* Operator output on : = with __EDTB31 *)
-__EDTB31 := (IHM_MODEL = 5) ;
+__EDTB31 := (IHM_MODELNUMBER = 5) ;
 ELSE
 __EDTB31 := FALSE ;
 END_IF ;
@@ -137,7 +137,7 @@ __EDTB33 := __EDTB31 ;
 __EDTB35 := TRUE ;
 IF __EDTB35 THEN
 (* Operator output on : = with __EDTB34 *)
-__EDTB34 := (IHM_MODEL = 6) ;
+__EDTB34 := (IHM_MODELNUMBER = 6) ;
 ELSE
 __EDTB34 := FALSE ;
 END_IF ;
@@ -146,7 +146,7 @@ __EDTB36 := __EDTB34 ;
 __EDTB38 := TRUE ;
 IF __EDTB38 THEN
 (* Operator output on : = with __EDTB37 *)
-__EDTB37 := (IHM_MODEL = 7) ;
+__EDTB37 := (IHM_MODELNUMBER = 7) ;
 ELSE
 __EDTB37 := FALSE ;
 END_IF ;
@@ -155,7 +155,7 @@ __EDTB39 := __EDTB37 ;
 __EDTB41 := TRUE ;
 IF __EDTB41 THEN
 (* Operator output on : = with __EDTB40 *)
-__EDTB40 := (IHM_MODEL = 8) ;
+__EDTB40 := (IHM_MODELNUMBER = 8) ;
 ELSE
 __EDTB40 := FALSE ;
 END_IF ;
@@ -163,7 +163,7 @@ __MO_EQUAL_13 := __EDTB40 ;
 __EDTB42 := __EDTB40 ;
 __EDTB43 := (__EDTB39 OR __EDTB42) ;
 __EDTB44 := (__EDTB36 OR __EDTB43) ;
-MODELMOTIONREMOTE := (__EDTB33 OR __EDTB44) ;
+MODELAJUSTMENTREMOTE := (__EDTB33 OR __EDTB44) ;
 
 (*************** Code for the end of Rung **************)
 
@@ -177,7 +177,7 @@ __ENDSTEPPRAGMA
 __EDTB46 := TRUE ;
 IF __EDTB46 THEN
 (* Operator output on : = with __EDTB45 *)
-__EDTB45 := (IHM_MODEL = 1) ;
+__EDTB45 := (IHM_MODELNUMBER = 1) ;
 ELSE
 __EDTB45 := FALSE ;
 END_IF ;
@@ -186,7 +186,7 @@ __EDTB47 := __EDTB45 ;
 __EDTB49 := TRUE ;
 IF __EDTB49 THEN
 (* Operator output on : = with __EDTB48 *)
-__EDTB48 := (IHM_MODEL = 2) ;
+__EDTB48 := (IHM_MODELNUMBER = 2) ;
 ELSE
 __EDTB48 := FALSE ;
 END_IF ;
@@ -195,7 +195,7 @@ __EDTB50 := __EDTB48 ;
 __EDTB52 := TRUE ;
 IF __EDTB52 THEN
 (* Operator output on : = with __EDTB51 *)
-__EDTB51 := (IHM_MODEL = 3) ;
+__EDTB51 := (IHM_MODELNUMBER = 3) ;
 ELSE
 __EDTB51 := FALSE ;
 END_IF ;
@@ -204,7 +204,7 @@ __EDTB53 := __EDTB51 ;
 __EDTB55 := TRUE ;
 IF __EDTB55 THEN
 (* Operator output on : = with __EDTB54 *)
-__EDTB54 := (IHM_MODEL = 4) ;
+__EDTB54 := (IHM_MODELNUMBER = 4) ;
 ELSE
 __EDTB54 := FALSE ;
 END_IF ;
@@ -212,7 +212,7 @@ __MO_EQUAL_17 := __EDTB54 ;
 __EDTB56 := __EDTB54 ;
 __EDTB57 := (__EDTB53 OR __EDTB56) ;
 __EDTB58 := (__EDTB50 OR __EDTB57) ;
-MODELMOTIONMANUAL := (__EDTB47 OR __EDTB58) ;
+MODELADJUSTMENTMANUAL := (__EDTB47 OR __EDTB58) ;
 
 (*************** Code for the end of Rung **************)
 
@@ -226,7 +226,7 @@ __ENDSTEPPRAGMA
 __EDTB60 := TRUE ;
 IF __EDTB60 THEN
 (* Operator output on : = with __EDTB59 *)
-__EDTB59 := (IHM_MODEL = 1) ;
+__EDTB59 := (IHM_MODELNUMBER = 1) ;
 ELSE
 __EDTB59 := FALSE ;
 END_IF ;
@@ -235,7 +235,7 @@ __EDTB61 := __EDTB59 ;
 __EDTB63 := TRUE ;
 IF __EDTB63 THEN
 (* Operator output on : = with __EDTB62 *)
-__EDTB62 := (IHM_MODEL = 2) ;
+__EDTB62 := (IHM_MODELNUMBER = 2) ;
 ELSE
 __EDTB62 := FALSE ;
 END_IF ;
@@ -244,7 +244,7 @@ __EDTB64 := __EDTB62 ;
 __EDTB66 := TRUE ;
 IF __EDTB66 THEN
 (* Operator output on : = with __EDTB65 *)
-__EDTB65 := (IHM_MODEL = 5) ;
+__EDTB65 := (IHM_MODELNUMBER = 5) ;
 ELSE
 __EDTB65 := FALSE ;
 END_IF ;
@@ -253,7 +253,7 @@ __EDTB67 := __EDTB65 ;
 __EDTB69 := TRUE ;
 IF __EDTB69 THEN
 (* Operator output on : = with __EDTB68 *)
-__EDTB68 := (IHM_MODEL = 6) ;
+__EDTB68 := (IHM_MODELNUMBER = 6) ;
 ELSE
 __EDTB68 := FALSE ;
 END_IF ;
@@ -275,7 +275,7 @@ __ENDSTEPPRAGMA
 __EDTB74 := TRUE ;
 IF __EDTB74 THEN
 (* Operator output on : = with __EDTB73 *)
-__EDTB73 := (IHM_MODEL = 3) ;
+__EDTB73 := (IHM_MODELNUMBER = 3) ;
 ELSE
 __EDTB73 := FALSE ;
 END_IF ;
@@ -284,7 +284,7 @@ __EDTB75 := __EDTB73 ;
 __EDTB77 := TRUE ;
 IF __EDTB77 THEN
 (* Operator output on : = with __EDTB76 *)
-__EDTB76 := (IHM_MODEL = 4) ;
+__EDTB76 := (IHM_MODELNUMBER = 4) ;
 ELSE
 __EDTB76 := FALSE ;
 END_IF ;
@@ -293,7 +293,7 @@ __EDTB78 := __EDTB76 ;
 __EDTB80 := TRUE ;
 IF __EDTB80 THEN
 (* Operator output on : = with __EDTB79 *)
-__EDTB79 := (IHM_MODEL = 7) ;
+__EDTB79 := (IHM_MODELNUMBER = 7) ;
 ELSE
 __EDTB79 := FALSE ;
 END_IF ;
@@ -302,7 +302,7 @@ __EDTB81 := __EDTB79 ;
 __EDTB83 := TRUE ;
 IF __EDTB83 THEN
 (* Operator output on : = with __EDTB82 *)
-__EDTB82 := (IHM_MODEL = 8) ;
+__EDTB82 := (IHM_MODELNUMBER = 8) ;
 ELSE
 __EDTB82 := FALSE ;
 END_IF ;

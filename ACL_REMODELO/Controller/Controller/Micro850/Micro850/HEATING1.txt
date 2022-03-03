@@ -1,0 +1,221 @@
+(****** QuickLD compiler *******************************)
+(****** Copyright Rockwell Automation Canada, Ltd ******)
+(****** ST *********************************************)
+
+(*************** Rung **********************************)
+(*ENTRADAS*)
+__STEPPRAGMA
+0,1
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB1 := TRUE ;
+IF __EDTB1 THEN
+ANALOGICINPUT := ANY_TO_INT(_IO_P1_AI_02) ;
+END_IF ;
+__MO_ANY_TO_INT_1 := __EDTB1 ;
+(* FB call: IntDeclaration *)
+IntDeclaration_1(__EDTB1, IHM_HEATING1PARAMETERMAX, IHM_HEATING1PARAMETERMIN, IHM_HEATING1MEASUREDVALUE, ANALOGICINPUT, SENSOR, PEAKOUTPUT, , , , ) ;
+PARAMETERMAX := IntDeclaration_1.o0 ;
+PARAMETERMIN := IntDeclaration_1.o1 ;
+MEASUREDVALUE := IntDeclaration_1.o2 ;
+IHM_HEATING1ANALOGICVALUE := IntDeclaration_1.o3 ;
+IHM_HEATING1SENSOR := IntDeclaration_1.o4 ;
+IHM_HEATING1PEAKOUTPUT := IntDeclaration_1.o5 ;
+(* FB call: BoolDeclaration *)
+BoolDeclaration_1(IntDeclaration_1.Q, , ACTUATOR, , OP60_BUTTONSTART, , , , , , ) ;
+END := BoolDeclaration_1.o0 ;
+K4_HEATINGTESTACTUATOR := BoolDeclaration_1.o1 ;
+BUTTONSTART := BoolDeclaration_1.o3 ;
+__EDTB2 := BoolDeclaration_1.Q ;
+(* FB call: TON *)
+TON_3(__EDTB2 AND BUTTONSTART, T#3S) ;
+__EDTB3 := TON_3.Q ;
+__EDTB4 := __EDTB2 AND HEATING1TESTSTART ;
+__EDTB5 := __EDTB2 AND IHM_HEATING1TESTSTART ;
+__EDTB6 := (__EDTB4 OR __EDTB5) ;
+__EDTB7 := (__EDTB3 OR __EDTB6) ;
+IF __EDTB7 THEN
+(*Set coil*)
+START := TRUE ;
+END_IF ;
+; (*Pulse detection on : IHM_HEATING1CALIBRATE with __MEMO__1__IHM_HEATING1CALIBRATE *)
+__EDTB8 := __EDTB2 AND (IHM_HEATING1CALIBRATE AND NOT(__MEMO__1__IHM_HEATING1CALIBRATE)) ;
+IF __EDTB8 THEN
+(*Set coil*)
+CALIBRATE := TRUE ;
+END_IF ;
+; (*Pulse detection on : IHM_HEATING1TESTZERO with __MEMO__2__IHM_HEATING1TESTZERO *)
+__EDTB9 := __EDTB2 AND (IHM_HEATING1TESTZERO AND NOT(__MEMO__2__IHM_HEATING1TESTZERO)) ;
+IF __EDTB9 THEN
+(*Set coil*)
+ZERO := TRUE ;
+END_IF ;
+; (*Pulse detection on : APPROVED with __MEMO__3__APPROVED *)
+__EDTB10 := __EDTB2 AND (APPROVED AND NOT(__MEMO__3__APPROVED)) ;
+IF __EDTB10 THEN
+(*Set coil*)
+HEATING1TESTAPPROVED := TRUE ;
+END_IF ;
+; (*Pulse detection on : DISAPPROVED with __MEMO__4__DISAPPROVED *)
+__EDTB11 := __EDTB2 AND (DISAPPROVED AND NOT(__MEMO__4__DISAPPROVED)) ;
+IF __EDTB11 THEN
+(*Set coil*)
+HEATING1TESTDISAPPROVED := TRUE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+__MEMO__1__IHM_HEATING1CALIBRATE := IHM_HEATING1CALIBRATE ; (*Pulse detection on : IHM_HEATING1CALIBRATE with __MEMO__1__IHM_HEATING1CALIBRATE *)
+__MEMO__2__IHM_HEATING1TESTZERO := IHM_HEATING1TESTZERO ; (*Pulse detection on : IHM_HEATING1TESTZERO with __MEMO__2__IHM_HEATING1TESTZERO *)
+__MEMO__3__APPROVED := APPROVED ; (*Pulse detection on : APPROVED with __MEMO__3__APPROVED *)
+__MEMO__4__DISAPPROVED := DISAPPROVED ; (*Pulse detection on : DISAPPROVED with __MEMO__4__DISAPPROVED *)
+
+
+(*************** Rung **********************************)
+(*ESCALA*)
+__STEPPRAGMA
+0,13
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB12 := TRUE ;
+IF __EDTB12 THEN
+INPUT := ANY_TO_REAL(ANALOGICINPUT) ;
+END_IF ;
+__MO_ANY_TO_REAL_1 := __EDTB12 ;
+__EDTB13 := __EDTB12 ;
+IF __EDTB13 THEN
+(* FB call: SCALER *)
+SCALER_1(INPUT, INPUTMIN, INPUTMAX, OUTPUTMIN, OUTPUTMAX) ;
+OUTPUT := SCALER_1.Output ;
+END_IF ;
+__MO_SCALER_1 := __EDTB13 ;
+__EDTB14 := __EDTB13 ;
+IF __EDTB14 THEN
+SENSOR := ANY_TO_INT(OUTPUT) ;
+END_IF ;
+__MO_ANY_TO_INT_2 := __EDTB14 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Zero*)
+__STEPPRAGMA
+0,20
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB15 := ZERO AND NOT(ACTUATOR) ;
+__EDTB16 := __EDTB15 ;
+IF __EDTB16 THEN
+INPUTMIN := ANY_TO_REAL(INPUT) ;
+END_IF ;
+__MO_ANY_TO_REAL_2 := __EDTB16 ;
+__EDTB17 := __EDTB16 ;
+__EDTB18 := __EDTB15 ;
+IF __EDTB18 THEN
+OUTPUTMIN := ANY_TO_REAL(0) ;
+END_IF ;
+__MO_ANY_TO_REAL_3 := __EDTB18 ;
+__EDTB19 := __EDTB18 ;
+(* FB call: TON *)
+TON_1((__EDTB17 OR __EDTB19), T#500MS) ;
+__EDTB20 := TON_1.Q ;
+IF __EDTB20 THEN
+(*Reset coil*)
+ZERO := FALSE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Calibração*)
+__STEPPRAGMA
+0,25
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB21 := CALIBRATE ;
+__EDTB22 := __EDTB21 ;
+IF __EDTB22 THEN
+INPUTMAX := ANY_TO_REAL(PEAKINPUT) ;
+END_IF ;
+__MO_ANY_TO_REAL_4 := __EDTB22 ;
+__EDTB23 := __EDTB22 ;
+__EDTB24 := __EDTB21 ;
+IF __EDTB24 THEN
+OUTPUTMAX := ANY_TO_REAL(MEASUREDVALUE) ;
+END_IF ;
+__MO_ANY_TO_REAL_5 := __EDTB24 ;
+__EDTB25 := __EDTB24 ;
+(* FB call: TON *)
+TON_2((__EDTB23 OR __EDTB25), T#500MS) ;
+__EDTB26 := TON_2.Q ;
+IF __EDTB26 THEN
+(*Reset coil*)
+CALIBRATE := FALSE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Teste*)
+__STEPPRAGMA
+0,30
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+(* FB call: FB_PK_V2 *)
+FB_PK_V2_1(START, SENSOR, ANALOGICINPUT, T#3S, END) ;
+ACTUATOR := FB_PK_V2_1.S1 ;
+PEAKOUTPUT := FB_PK_V2_1.PKP1 ;
+PEAKINPUT := FB_PK_V2_1.PKP2 ;
+(* FB call: FB_PV *)
+FB_PV_2(FB_PK_V2_1.Q, PEAKOUTPUT, PARAMETERMAX, PARAMETERMIN) ;
+APPROVED := FB_PV_2.AP ;
+DISAPPROVED := FB_PV_2.RP ;
+__EDTB27 := FB_PV_2.Q ;
+IF __EDTB27 THEN
+(*Reset coil*)
+START := FALSE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Code for the end of File **************)
+__GL __LG0000 ;
+
+
+
+(*************** Local Symbols table *******************)
+(* __EDTB1 *)
+(* __EDTB2 *)
+(* __EDTB3 *)
+(* __EDTB4 *)
+(* __EDTB5 *)
+(* __EDTB6 *)
+(* __EDTB7 *)
+(* __MEMO__1__IHM_HEATING1CALIBRATE *)
+(* __EDTB8 *)
+(* __MEMO__2__IHM_HEATING1TESTZERO *)
+(* __EDTB9 *)
+(* __MEMO__3__APPROVED *)
+(* __EDTB10 *)
+(* __MEMO__4__DISAPPROVED *)
+(* __EDTB11 *)
+(* __EDTB12 *)
+(* __EDTB13 *)
+(* __EDTB14 *)
+(* __EDTB15 *)
+(* __EDTB16 *)
+(* __EDTB17 *)
+(* __EDTB18 *)
+(* __EDTB19 *)
+(* __EDTB20 *)
+(* __EDTB21 *)
+(* __EDTB22 *)
+(* __EDTB23 *)
+(* __EDTB24 *)
+(* __EDTB25 *)
+(* __EDTB26 *)
+(* __EDTB27 *)
+

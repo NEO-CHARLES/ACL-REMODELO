@@ -8,7 +8,7 @@ __STEPPRAGMA
 0,1
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP20_BTS := _IO_EM_DI_00 ;
+OP20_BUTTONSTOP := _IO_EM_DI_00 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -19,7 +19,7 @@ __STEPPRAGMA
 0,3
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP20_BME := _IO_EM_DI_01 ;
+OP20_BUTTONLEFT := _IO_EM_DI_01 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -30,7 +30,7 @@ __STEPPRAGMA
 0,5
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP20_BMD := _IO_EM_DI_02 ;
+OP20_BUTTONRIGHT := _IO_EM_DI_02 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -41,7 +41,7 @@ __STEPPRAGMA
 0,7
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP20_CL_AV := _IO_EM_DI_03 ;
+OP20_CILINDERADVANCED := _IO_EM_DI_03 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -52,7 +52,7 @@ __STEPPRAGMA
 0,9
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP20_PF_RT := _IO_EM_DI_04 ;
+OP20_SKREWDRIVEROK := _IO_EM_DI_04 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -63,7 +63,7 @@ __STEPPRAGMA
 0,11
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP30_SU_CABO := _IO_EM_DI_05 ;
+OP30_SETUPSENSOR1CABO := _IO_EM_DI_05 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -74,7 +74,7 @@ __STEPPRAGMA
 0,13
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP30_CL_AV := _IO_EM_DI_06 ;
+OP30_CYLINDERADVANCE := _IO_EM_DI_06 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -85,7 +85,7 @@ __STEPPRAGMA
 0,15
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP30_PF_RT := _IO_EM_DI_07 ;
+OP30_SKREWDRIVEROK := _IO_EM_DI_07 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -96,7 +96,7 @@ __STEPPRAGMA
 0,17
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP30_SU_LE := _IO_EM_DI_08 ;
+OP30_SETUPSENSOR1LEFT := _IO_EM_DI_08 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -107,7 +107,7 @@ __STEPPRAGMA
 0,19
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP40_BTSTOP := _IO_EM_DI_09 ;
+OP40_BUTTONSTOP := _IO_EM_DI_09 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -118,7 +118,7 @@ __STEPPRAGMA
 0,21
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP40_BTLEFT := _IO_EM_DI_10 ;
+OP40_BUTTONLEFT := _IO_EM_DI_10 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -129,7 +129,7 @@ __STEPPRAGMA
 0,23
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP40_BTRIGHT := _IO_EM_DI_11 ;
+OP40_BUTTONRIGHT := _IO_EM_DI_11 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -151,7 +151,7 @@ __STEPPRAGMA
 0,27
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP50_SU_LD := _IO_EM_DI_13 ;
+OP50_SETUPSENSOR1RIGHT := _IO_EM_DI_13 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -162,7 +162,7 @@ __STEPPRAGMA
 0,29
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP50_SN_E := _IO_EM_DI_14 ;
+OP50_SENSORLEFT1 := _IO_EM_DI_14 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -173,7 +173,7 @@ __STEPPRAGMA
 0,31
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP50_SN_D := _IO_EM_DI_15 ;
+OP50_SENSORRIGHT1 := _IO_EM_DI_15 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -184,7 +184,7 @@ __STEPPRAGMA
 0,33
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP60_BTSTOP := _IO_EM_DI_16 ;
+OP60_BUTTONSTOP := _IO_EM_DI_16 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -195,7 +195,7 @@ __STEPPRAGMA
 0,35
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP60_BTSTART := _IO_EM_DI_17 ;
+OP60_BUTTONSTART := _IO_EM_DI_17 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -217,7 +217,7 @@ __STEPPRAGMA
 0,39
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP50_SU_LE := _IO_EM_DI_19 ;
+OP50_SENSORSETUPLEFT1 := _IO_EM_DI_19 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -238,7 +238,7 @@ __STEPPRAGMA
 0,43
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP20_SU_LD_HOLDER := _IO_EM_DI_21 ;
+OP20_SENSORSETUPLEFT1HOLDER := _IO_EM_DI_21 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -249,7 +249,7 @@ __STEPPRAGMA
 0,45
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-OP20_SU_LD_TUBO := _IO_EM_DI_22 ;
+OP20_SENSORSETUPLEFT2TUBE := _IO_EM_DI_22 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -292,7 +292,7 @@ __STEPPRAGMA
 0,53
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-PG1_BTRESET := _IO_EM_DI_26 ;
+PG1_BUTTONRESET := _IO_EM_DI_26 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -303,7 +303,7 @@ __STEPPRAGMA
 0,55
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-PG1_BTSTOP := _IO_EM_DI_27 ;
+PG1_BUTTONSTOP := _IO_EM_DI_27 ;
 
 (*************** Code for the end of Rung **************)
 

@@ -1,0 +1,177 @@
+<modbusServer Version="2.0">
+  <modbusRegister name="COILS">
+    <mapping variable="OP30_SV" parent="Micro850" dataType="Bool" address="000002">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="OP30_AL10" parent="Micro850" dataType="Bool" address="000003">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="OP30_AL11" parent="Micro850" dataType="Bool" address="000004">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="OP40_DatabaseRecord" parent="Micro850" dataType="Bool" address="000005">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="IMP_AT" parent="Micro850" dataType="Bool" address="000006">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="OP50_AL10" parent="Micro850" dataType="Bool" address="000007">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="OP50_SV" parent="Micro850" dataType="Bool" address="000008">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="IHM_DeviceRelease" parent="Micro850" dataType="Bool" address="000009">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="bTesteFinalLiberado" parent="Micro850" dataType="Bool" address="000010">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="PG1_AL00" parent="Micro850" dataType="Bool" address="000011">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="AlarmBreakwayTestFail" parent="Micro850" dataType="Bool" address="000012">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="AlarmBlinkerTestFail" parent="Micro850" dataType="Bool" address="000013">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="AlarmHeatingTestFail" parent="Micro850" dataType="Bool" address="000014">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="AlarmRemoteMotionTest" parent="Micro850" dataType="Bool" address="000015">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="AlarmAuxDriveForceTestFail" parent="Micro850" dataType="Bool" address="000016">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="AlarmDriveForceTestFail" parent="Micro850" dataType="Bool" address="000017">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="AlarmLightCurtainCrossed" parent="Micro850" dataType="Bool" address="000018">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="bStopOp20" parent="Micro850" dataType="Bool" address="000019">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="bStopOp201" parent="Micro850" dataType="Bool" address="000020">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="bStopOp30" parent="Micro850" dataType="Bool" address="000021">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="bStopOp40" parent="Micro850" dataType="Bool" address="000022">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="bStopOp50" parent="Micro850" dataType="Bool" address="000023">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="IHM_AlarmReset" parent="Micro850" dataType="Bool" address="005011">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="IHM_DeviceRelease" parent="Micro850" dataType="Bool" address="005012">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="IHM_Print" parent="Micro850" dataType="Bool" address="005013">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="IHM_Heating1TestZero" parent="Micro850" dataType="Bool" address="005211">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="IHM_Heating1Calibrate" parent="Micro850" dataType="Bool" address="005213">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="IHM_Breakway1TestZero" parent="Micro850" dataType="Bool" address="005311">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="IHM_Breakway1TestStart" parent="Micro850" dataType="Bool" address="005312">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="IHM_Breakway1TestCalibrate" parent="Micro850" dataType="Bool" address="005313">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+  </modbusRegister>
+  <modbusRegister name="HOLDING_REGISTERS">
+    <mapping variable="IHM_ModelNumber" parent="Micro850" dataType="Int" address="400001">
+      <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
+    </mapping>
+    <mapping variable="CC1_PKS" parent="Micro850" dataType="Int" address="400002">
+      <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
+    </mapping>
+    <mapping variable="CC1_MN" parent="Micro850" dataType="Int" address="400003">
+      <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
+    </mapping>
+    <mapping variable="CC1_MX" parent="Micro850" dataType="Int" address="400004">
+      <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
+    </mapping>
+    <mapping variable="SA1_MN" parent="Micro850" dataType="Int" address="400006">
+      <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
+    </mapping>
+    <mapping variable="SA1_SN" parent="Micro850" dataType="Int" address="400028">
+      <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
+    </mapping>
+    <mapping variable="IHM_Heating1AnalogicValue" parent="Micro850" dataType="Int" address="400211">
+      <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
+    </mapping>
+    <mapping variable="IHM_Heating1Sensor" parent="Micro850" dataType="Int" address="400212">
+      <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
+    </mapping>
+    <mapping variable="IHM_SA1_PKE" parent="Micro850" dataType="Int" address="400213">
+      <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
+    </mapping>
+    <mapping variable="IHM_Heating1PeakOutput" parent="Micro850" dataType="Int" address="400214">
+      <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
+    </mapping>
+    <mapping variable="IHM_CC1_AI" parent="Micro850" dataType="Int" address="400311">
+      <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
+    </mapping>
+    <mapping variable="IHM_CC1_SN" parent="Micro850" dataType="Int" address="400312">
+      <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
+    </mapping>
+    <mapping variable="IHM_CC1_PKE" parent="Micro850" dataType="Int" address="400313">
+      <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
+    </mapping>
+    <mapping variable="IHM_CC1_PKS" parent="Micro850" dataType="Int" address="400314">
+      <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
+    </mapping>
+    <mapping variable="IHM_CC1_Emin" parent="Micro850" dataType="Int" address="400315">
+      <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
+    </mapping>
+    <mapping variable="IHM_CC1_Emax" parent="Micro850" dataType="Int" address="400316">
+      <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
+    </mapping>
+    <mapping variable="IHM_CC1_Smin" parent="Micro850" dataType="Int" address="400317">
+      <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
+    </mapping>
+    <mapping variable="IHM_CC1_Smax" parent="Micro850" dataType="Int" address="400318">
+      <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
+    </mapping>
+    <mapping variable="IHM_Heating1MeasuredValue" parent="Micro850" dataType="Int" address="405211">
+      <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
+    </mapping>
+    <mapping variable="IHM_Heating1ParameterMin" parent="Micro850" dataType="Int" address="405212">
+      <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
+    </mapping>
+    <mapping variable="IHM_Heating1ParameterMax" parent="Micro850" dataType="Int" address="405213">
+      <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
+    </mapping>
+    <mapping variable="IHM_CC1_MED" parent="Micro850" dataType="Int" address="405311">
+      <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
+    </mapping>
+    <mapping variable="IHM_CC1_MN" parent="Micro850" dataType="Int" address="405312">
+      <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
+    </mapping>
+    <mapping variable="IHM_CC1_MX" parent="Micro850" dataType="Int" address="405313">
+      <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
+    </mapping>
+    <mapping variable="IHM_CC1_TM" parent="Micro850" dataType="Int" address="405314">
+      <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
+    </mapping>
+    <mapping variable="IHM_CC1_DL" parent="Micro850" dataType="Int" address="405315">
+      <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
+    </mapping>
+    <mapping variable="IHM_CC1_DA" parent="Micro850" dataType="Int" address="405316">
+      <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
+    </mapping>
+  </modbusRegister>
+</modbusServer>

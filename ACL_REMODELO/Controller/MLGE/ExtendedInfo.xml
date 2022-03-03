@@ -15,6 +15,9 @@
   <AcfElementGuid Guid="42a460ca-2807-41cc-b38d-7554b565c544">
     <File>FB_NW.AcfMlge</File>
   </AcfElementGuid>
+  <AcfElementGuid Guid="526908cd-af9a-4d3d-88fd-53fc7be88a96">
+    <File>RealDeclaration.AcfMlge</File>
+  </AcfElementGuid>
   <AcfElementGuid Guid="53d03a7a-6729-491d-bf59-f6b191aea4cf">
     <File>IHM.AcfMlge</File>
   </AcfElementGuid>
@@ -43,7 +46,7 @@
     <File>Saidas.AcfMlge</File>
   </AcfElementGuid>
   <AcfElementGuid Guid="85225841-cbd4-4bbb-8aa1-e2255f140a9d">
-    <File>MoveTest.AcfMlge</File>
+    <File>FB_Move.AcfMlge</File>
   </AcfElementGuid>
   <AcfElementGuid Guid="8ae50ef6-6910-423a-9dc0-ae56afe79219">
     <File>Entradas.AcfMlge</File>
@@ -61,16 +64,13 @@
     <File>FB_PV.AcfMlge</File>
   </AcfElementGuid>
   <AcfElementGuid Guid="9d379ee1-bf4d-4f87-a7b0-2c452fb15d57">
-    <File>SA1.AcfMlge</File>
+    <File>Heating1.AcfMlge</File>
   </AcfElementGuid>
   <AcfElementGuid Guid="9f8c1ab1-07e1-4994-9af6-5152793b2737">
     <File>IntDeclaration.AcfMlge</File>
   </AcfElementGuid>
   <AcfElementGuid Guid="ce2ca469-d128-411b-9603-268bdd1c5137">
     <File>OP40.AcfMlge</File>
-  </AcfElementGuid>
-  <AcfElementGuid Guid="ceb6e226-d309-4403-8a94-8cb2781f9d01">
-    <File>Analogicas.AcfMlge</File>
   </AcfElementGuid>
   <AcfElementGuid Guid="d174ee9d-668f-4554-b14c-bb4433d88d9a">
     <File>OP20.AcfMlge</File>
@@ -94,7 +94,7 @@
     <File>F_HORA.AcfMlge</File>
   </AcfElementGuid>
   <AcfElementGuid Guid="fc40945b-72b0-447f-82ed-8427d9830d95">
-    <File>FB_SNL.AcfMlge</File>
+    <File>LedSinalization.AcfMlge</File>
   </AcfElementGuid>
   <AcfElementGuid Guid="febce2d0-e045-4fbf-8347-d235754154d4">
     <File>OP30.AcfMlge</File>
