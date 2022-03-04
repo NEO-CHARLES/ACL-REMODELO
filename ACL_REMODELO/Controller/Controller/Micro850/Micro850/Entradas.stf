@@ -77,7 +77,7 @@ EOR [3,0]
 
 (**)
 
-SOR  [0,25] (**) (**)  XIC  [1,0] (*_IO_EM_DI_12*) (**)  OTE  [2,0] (*Breakway1TestFinished*) (**)
+SOR  [0,25] (**) (**)  XIC  [1,0] (*_IO_EM_DI_12*) (**)  OTE  [2,0] (*LoadCell1TestFinished*) (**)
 EOR [3,0]
 
 

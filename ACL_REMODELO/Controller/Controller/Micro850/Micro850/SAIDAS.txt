@@ -119,7 +119,7 @@ __STEPPRAGMA
 0,25
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-_IO_EM_DO_09 := _IO_EM_DI_27 AND _IO_EM_DI_09 AND OP40_CC1_AT ;
+_IO_EM_DO_09 := _IO_EM_DI_27 AND _IO_EM_DI_09 AND OP40_LOADCELL1ACTUATOR ;
 
 (*************** Code for the end of Rung **************)
 

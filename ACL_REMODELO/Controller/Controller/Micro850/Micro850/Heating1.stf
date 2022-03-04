@@ -69,7 +69,7 @@ EOR [9,0]
 
 (*Teste*)
 
-SOR  [0,30] (**) (**)  XIC  [1,0] (*Start*) (**)  FB  [2,0] (*FB_PK_V2*) (*FB_PK_V2_1*) ( (*IN:*)(**) (**)  , (*SN1:*)(*Sensor*) (**)  , (*SN2:*)(*AnalogicInput*) (**)  , (*TM:*)(*T#3S*) (**)  , (*RT:*)(*End*) (**) ; (*Q:*)(**) (**)  , (*S1:*)(*Actuator*) (**)  , (*PKP1:*)(*PeakOutput*) (**)  , (*PKP2:*)(*PeakInput*) (**) )  FB  [5,0] (*FB_PV*) (*FB_PV_2*) ( (*IN:*)(**) (**)  , (*VL:*)(*PeakOutput*) (**)  , (*MX:*)(*ParameterMax*) (**)  , (*MN:*)(*ParameterMin*) (**) ; (*Q:*)(**) (**)  , (*AP:*)(*Approved*) (**)  , (*RP:*)(*Disapproved*) (**) )  OTR  [8,0] (*Start*) (**)
+SOR  [0,30] (**) (**)  XIC  [1,0] (*Start*) (**)  FB  [2,0] (*ValuePeak*) (*ValuePeak_1*) ( (*IN:*)(**) (**)  , (*Sensor1:*)(*Sensor*) (**)  , (*Sensor2:*)(*AnalogicInput*) (**)  , (*Tiime:*)(*T#3S*) (**)  , (*End:*)(*End*) (**) ; (*Q:*)(**) (**)  , (*Actuator:*)(*Actuator*) (**)  , (*PeakSensor1:*)(*PeakOutput*) (**)  , (*PeakSensor2:*)(*PeakInput*) (**) )  FB  [5,0] (*ValueProof*) (*ValueProof_1*) ( (*IN:*)(**) (**)  , (*Value:*)(*PeakOutput*) (**)  , (*ValueMin:*)(*ParameterMax*) (**)  , (*ValueMax:*)(*ParameterMin*) (**) ; (*Q:*)(**) (**)  , (*Success:*)(*Approved*) (**)  , (*Fail:*)(*Disapproved*) (**) )  OTR  [8,0] (*Start*) (**)
 EOR [9,0]
 EOF
 #end_info

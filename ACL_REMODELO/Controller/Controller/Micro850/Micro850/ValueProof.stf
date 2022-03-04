@@ -1,0 +1,34 @@
+FUNCTION_BLOCK ValueProof
+#info= QLD
+BOF
+
+
+(*20211221 - ATERAADO POSIÇÃO DO TON.
+20201212 - ALTERADO NOMES VL, MN, MX.
+20220303 - I'm renaming the variables to apply the clean code concept.*)
+
+SOR  [0,1] (**) (**)  XIC  [1,0] (*IN*) (**)  FB  [2,0] (*>=*) (*24*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Value*) (**)  , (*i2:*)(*ValueMax*) (**) ; (*o1:*)(**) (**) )  FB  [5,0] (*<=*) (*26*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Value*) (**)  , (*i2:*)(*ValueMin*) (**) ; (*o1:*)(**) (**) )  FB  [8,0] (*TON*) (*TON_1*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*T#500MS*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTE  [11,0] (*Success*) (**)
+EOR [12,0]
+
+
+(**)
+
+SOR  [0,5] (**) (**)  XIC  [1,0] (*IN*) (**)  
+ BST  FB  [2,0] (*<*) (*28*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Value*) (**)  , (*i2:*)(*ValueMax*) (**) ; (*o1:*)(**) (**) )
+   NXB  FB  [2,3] (*>*) (*29*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Value*) (**)  , (*i2:*)(*ValueMin*) (**) ; (*o1:*)(**) (**) )
+ BND
+  FB  [5,0] (*TON*) (*TON_2*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*T#500MS*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTE  [8,0] (*Fail*) (**)
+EOR [9,0]
+
+
+(**)
+
+SOR  [0,12] (**) (**)  XIC  [1,0] (*IN*) (**)  
+ BST  XIC  [2,0] (*Success*) (**)
+   NXB  XIC  [2,1] (*Fail*) (**)
+ BND
+  OTE  [3,0] (*Q*) (**)
+EOR [4,0]
+EOF
+#end_info
+END_FUNCTION_BLOCK

@@ -1,0 +1,51 @@
+FUNCTION_BLOCK ValuePeak
+#info= QLD
+BOF
+
+
+(*20201222 - ADICIONADO S1*)
+
+SOR  [0,1] (**) (**)  XIP  [1,0] (*IN*) (**)  
+ BST  FB  [2,0] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*PeakSensor1*) (**) )  FB  [5,0] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*PeakSensor2*) (**) )
+   NXB  FB  [2,2] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*PeakNegativeSensor1*) (**) )  FB  [5,2] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*PeakNegativeSensor2*) (**) )
+ BND
+
+EOR [8,0]
+
+
+(**)
+
+SOR  [0,6] (**) (**)  XIC  [1,0] (*IN*) (**)  XIO  [2,0] (*Q*) (**)  
+ BST  
+ BST  OTE  [3,0] (*Actuator*) (**)
+   NXB  FB  [3,1] (*>*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Sensor1*) (**)  , (*i2:*)(*PeakSensor1*) (**) ; (*o1:*)(**) (**) )  FB  [6,1] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Sensor1*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*PeakSensor1*) (**) )
+ BND
+
+   NXB  
+ BST  FB  [3,4] (*<*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Sensor1*) (**)  , (*i2:*)(*PeakNegativeSensor1*) (**) ; (*o1:*)(**) (**) )  FB  [6,4] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Sensor1*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*PeakNegativeSensor1*) (**) )
+   NXB  
+ BST  FB  [3,7] (*>*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Sensor2*) (**)  , (*i2:*)(*PeakSensor2*) (**) ; (*o1:*)(**) (**) )  FB  [6,7] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Sensor2*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*PeakSensor2*) (**) )
+   NXB  FB  [3,10] (*<*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Sensor2*) (**)  , (*i2:*)(*PeakNegativeSensor2*) (**) ; (*o1:*)(**) (**) )  FB  [6,10] (*1 gain*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Sensor2*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*PeakNegativeSensor2*) (**) )
+ BND
+
+ BND
+
+ BND
+
+EOR [9,0]
+
+
+(**)
+
+SOR  [0,20] (**) (**)  XIC  [1,0] (*IN*) (**)  
+ BST  FB  [2,0] (*TON*) (*TON_2*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*Tiime*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )
+   NXB  XIC  [2,2] (*End*) (**)
+ BND
+  OTE  [5,0] (*Q*) (**)
+EOR [6,0]
+EOF
+#end_info
+#info= ID_MAX
+NextId=3
+#end_info
+END_FUNCTION_BLOCK

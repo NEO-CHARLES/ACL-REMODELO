@@ -150,7 +150,7 @@ EOR [9,0]
 
 (**)
 
-SOR  [0,68] (**) (**)  FB  [1,0] (*FB_PV*) (*STEP_1*) ( (*IN:*)(**) (**)  , (*VL:*)(*Step*) (**)  , (*MX:*)(*299*) (**)  , (*MN:*)(*20*) (**) ; (*Q:*)(**) (**)  , (*AP:*)(**) (**)  , (*RP:*)(**) (**) )  XIC  [4,0] (*STEP_1.AP*) (**)  XIO  [5,0] (*Heating1TestRun*) (**)  FB  [6,0] (*TON*) (*TON_2*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*T#500MS*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTS  [9,0] (*Heating1TestRun*) (**)
+SOR  [0,68] (**) (**)  FB  [1,0] (*ValueProof*) (*STEP_1*) ( (*IN:*)(**) (**)  , (*Value:*)(*Step*) (**)  , (*ValueMin:*)(*299*) (**)  , (*ValueMax:*)(*20*) (**) ; (*Q:*)(**) (**)  , (*Success:*)(**) (**)  , (*Fail:*)(**) (**) )  XIC  [4,0] (*STEP_1.Success*) (**)  XIO  [5,0] (*Heating1TestRun*) (**)  FB  [6,0] (*TON*) (*TON_2*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*T#500MS*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTS  [9,0] (*Heating1TestRun*) (**)
 EOR [10,0]
 
 

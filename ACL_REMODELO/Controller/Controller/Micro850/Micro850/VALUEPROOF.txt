@@ -3,7 +3,8 @@
 (****** ST *********************************************)
 
 (*************** Rung **********************************)
-(*20211221 - ATERAADO POSIÇÃO DO TON. 20201212 - ALTERADO NOMES VL, MN, MX.*)
+(*20211221 - ATERAADO POSIÇÃO DO TON. 20201212 - ALTERADO NOMES VL, MN, MX.
+20220303 - I'm renaming the variables to apply the clean code concept.*)
 __STEPPRAGMA
 0,1
 __ENDSTEPPRAGMA
@@ -11,7 +12,7 @@ __ENDSTEPPRAGMA
 __EDTB2 := IN ;
 IF __EDTB2 THEN
 (* Operator output on : >= with __EDTB1 *)
-__EDTB1 := (VL >= MN) ;
+__EDTB1 := (VALUE >= VALUEMAX) ;
 ELSE
 __EDTB1 := FALSE ;
 END_IF ;
@@ -19,14 +20,14 @@ __MO_GREATEQUAL_1 := __EDTB1 ;
 __EDTB4 := __EDTB1 ;
 IF __EDTB4 THEN
 (* Operator output on : <= with __EDTB3 *)
-__EDTB3 := (VL <= MX) ;
+__EDTB3 := (VALUE <= VALUEMIN) ;
 ELSE
 __EDTB3 := FALSE ;
 END_IF ;
 __MO_LESSEQUAL_1 := __EDTB3 ;
 (* FB call: TON *)
 TON_1(__EDTB3, T#500MS) ;
-AP := TON_1.Q ;
+SUCCESS := TON_1.Q ;
 
 (*************** Code for the end of Rung **************)
 
@@ -41,7 +42,7 @@ __EDTB5 := IN ;
 __EDTB7 := __EDTB5 ;
 IF __EDTB7 THEN
 (* Operator output on : < with __EDTB6 *)
-__EDTB6 := (VL < MN) ;
+__EDTB6 := (VALUE < VALUEMAX) ;
 ELSE
 __EDTB6 := FALSE ;
 END_IF ;
@@ -50,7 +51,7 @@ __EDTB8 := __EDTB6 ;
 __EDTB10 := __EDTB5 ;
 IF __EDTB10 THEN
 (* Operator output on : > with __EDTB9 *)
-__EDTB9 := (VL > MX) ;
+__EDTB9 := (VALUE > VALUEMIN) ;
 ELSE
 __EDTB9 := FALSE ;
 END_IF ;
@@ -58,7 +59,7 @@ __MO_GREAT_1 := __EDTB9 ;
 __EDTB11 := __EDTB9 ;
 (* FB call: TON *)
 TON_2((__EDTB8 OR __EDTB11), T#500MS) ;
-RP := TON_2.Q ;
+FAIL := TON_2.Q ;
 
 (*************** Code for the end of Rung **************)
 
@@ -70,8 +71,8 @@ __STEPPRAGMA
 __ENDSTEPPRAGMA
 (*Label :*)(**)
 __EDTB12 := IN ;
-__EDTB13 := __EDTB12 AND AP ;
-__EDTB14 := __EDTB12 AND RP ;
+__EDTB13 := __EDTB12 AND SUCCESS ;
+__EDTB14 := __EDTB12 AND FAIL ;
 Q := (__EDTB13 OR __EDTB14) ;
 
 (*************** Code for the end of Rung **************)

@@ -140,7 +140,7 @@ __STEPPRAGMA
 0,25
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-BREAKWAY1TESTFINISHED := _IO_EM_DI_12 ;
+LOADCELL1TESTFINISHED := _IO_EM_DI_12 ;
 
 (*************** Code for the end of Rung **************)
 

@@ -4,24 +4,21 @@
 
 (*************** Rung **********************************)
 (*20210106 - ADICIONADO TON_1 20201211 - PADRONIZAÇÃO DOS NOMES
-20210429 - ALTERADO NOME (FB_TG => FB_SV)*)
+20210429 - ALTERADO NOME (FB_TG => FB_SV)
+20220303 - Puse Start Sistem (Removed the IN switch at the beginning of each line)*)
 __STEPPRAGMA
 0,1
 __ENDSTEPPRAGMA
 (*Label :*)(**)
 ; (*Pulse detection on : IN with __MEMO__1__IN *)
 __EDTB1 := (IN AND NOT(__MEMO__1__IN)) ;
-; (*Fall detection on  : IN with __MEMO__2__IN *)
-__EDTB2 := (__MEMO__2__IN AND NOT(IN)) ;
-__EDTB3 := (__EDTB1 OR __EDTB2) ;
-IF __EDTB3 THEN
+IF __EDTB1 THEN
 STP := (  0) ;
 END_IF ;
-__MO_1GAIN_1 := __EDTB3 ;
+__MO_1GAIN_1 := __EDTB1 ;
 
 (*************** Code for the end of Rung **************)
 __MEMO__1__IN := IN ; (*Pulse detection on : IN with __MEMO__1__IN *)
-__MEMO__2__IN := IN ; (*Fall detection on  : IN with __MEMO__2__IN *)
 
 
 (*************** Rung **********************************)
@@ -30,21 +27,21 @@ __STEPPRAGMA
 0,4
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-__EDTB5 := IN ;
-IF __EDTB5 THEN
-(* Operator output on : = with __EDTB4 *)
-__EDTB4 := (STP = 0) ;
+__EDTB3 := TRUE ;
+IF __EDTB3 THEN
+(* Operator output on : = with __EDTB2 *)
+__EDTB2 := (STP = 0) ;
 ELSE
-__EDTB4 := FALSE ;
+__EDTB2 := FALSE ;
 END_IF ;
-__MO_EQUAL_1 := __EDTB4 ;
+__MO_EQUAL_1 := __EDTB2 ;
 (* FB call: TON *)
-TON_1(__EDTB4, TM) ;
-__EDTB6 := TON_1.Q ;
-IF __EDTB6 THEN
+TON_1(__EDTB2, TM) ;
+__EDTB4 := TON_1.Q ;
+IF __EDTB4 THEN
 STP := (  1) ;
 END_IF ;
-__MO_1GAIN_2 := __EDTB6 ;
+__MO_1GAIN_2 := __EDTB4 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -55,26 +52,26 @@ __STEPPRAGMA
 0,8
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-__EDTB8 := IN ;
-IF __EDTB8 THEN
-(* Operator output on : = with __EDTB7 *)
-__EDTB7 := (STP = 1) ;
+__EDTB6 := TRUE ;
+IF __EDTB6 THEN
+(* Operator output on : = with __EDTB5 *)
+__EDTB5 := (STP = 1) ;
 ELSE
-__EDTB7 := FALSE ;
+__EDTB5 := FALSE ;
 END_IF ;
-__MO_EQUAL_2 := __EDTB7 ;
-__EDTB9 := __EDTB7 AND NOT(TG) ;
-IF __EDTB9 THEN
+__MO_EQUAL_2 := __EDTB5 ;
+__EDTB7 := __EDTB5 AND NOT(TG) ;
+IF __EDTB7 THEN
 STP := (  2) ;
 END_IF ;
-__MO_1GAIN_3 := __EDTB9 ;
-__EDTB10 := __EDTB9 ;
-__EDTB11 := __EDTB7 AND TG ;
-IF __EDTB11 THEN
+__MO_1GAIN_3 := __EDTB7 ;
+__EDTB8 := __EDTB7 ;
+__EDTB9 := __EDTB5 AND TG ;
+IF __EDTB9 THEN
 STP := (  3) ;
 END_IF ;
-__MO_1GAIN_4 := __EDTB11 ;
-__EDTB12 := __EDTB11 ;
+__MO_1GAIN_4 := __EDTB9 ;
+__EDTB10 := __EDTB9 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -85,25 +82,25 @@ __STEPPRAGMA
 0,13
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-__EDTB14 := IN ;
-IF __EDTB14 THEN
-(* Operator output on : = with __EDTB13 *)
-__EDTB13 := (STP = 2) ;
+__EDTB12 := TRUE ;
+IF __EDTB12 THEN
+(* Operator output on : = with __EDTB11 *)
+__EDTB11 := (STP = 2) ;
 ELSE
-__EDTB13 := FALSE ;
+__EDTB11 := FALSE ;
 END_IF ;
-__MO_EQUAL_3 := __EDTB13 ;
-__EDTB15 := __EDTB13 ;
-IF __EDTB15 THEN
+__MO_EQUAL_3 := __EDTB11 ;
+__EDTB13 := __EDTB11 ;
+IF __EDTB13 THEN
 (*Set coil*)
 TG := TRUE ;
 END_IF ;
-__EDTB16 := __EDTB13 AND TG ;
-IF __EDTB16 THEN
+__EDTB14 := __EDTB11 AND TG ;
+IF __EDTB14 THEN
 STP := (  4) ;
 END_IF ;
-__MO_1GAIN_5 := __EDTB16 ;
-__EDTB17 := __EDTB16 ;
+__MO_1GAIN_5 := __EDTB14 ;
+__EDTB15 := __EDTB14 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -114,25 +111,25 @@ __STEPPRAGMA
 0,17
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-__EDTB19 := IN ;
-IF __EDTB19 THEN
-(* Operator output on : = with __EDTB18 *)
-__EDTB18 := (STP = 3) ;
+__EDTB17 := TRUE ;
+IF __EDTB17 THEN
+(* Operator output on : = with __EDTB16 *)
+__EDTB16 := (STP = 3) ;
 ELSE
-__EDTB18 := FALSE ;
+__EDTB16 := FALSE ;
 END_IF ;
-__MO_EQUAL_4 := __EDTB18 ;
-__EDTB20 := __EDTB18 ;
-IF __EDTB20 THEN
+__MO_EQUAL_4 := __EDTB16 ;
+__EDTB18 := __EDTB16 ;
+IF __EDTB18 THEN
 (*Reset coil*)
 TG := FALSE ;
 END_IF ;
-__EDTB21 := __EDTB18 AND NOT(TG) ;
-IF __EDTB21 THEN
+__EDTB19 := __EDTB16 AND NOT(TG) ;
+IF __EDTB19 THEN
 STP := (  4) ;
 END_IF ;
-__MO_1GAIN_6 := __EDTB21 ;
-__EDTB22 := __EDTB21 ;
+__MO_1GAIN_6 := __EDTB19 ;
+__EDTB20 := __EDTB19 ;
 
 (*************** Code for the end of Rung **************)
 
@@ -143,15 +140,15 @@ __STEPPRAGMA
 0,21
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-__EDTB24 := IN ;
-IF __EDTB24 THEN
-(* Operator output on : = with __EDTB23 *)
-__EDTB23 := (STP = 4) ;
+__EDTB22 := TRUE ;
+IF __EDTB22 THEN
+(* Operator output on : = with __EDTB21 *)
+__EDTB21 := (STP = 4) ;
 ELSE
-__EDTB23 := FALSE ;
+__EDTB21 := FALSE ;
 END_IF ;
-__MO_EQUAL_5 := __EDTB23 ;
-Q := __EDTB23 ;
+__MO_EQUAL_5 := __EDTB21 ;
+Q := __EDTB21 AND IN ;
 
 (*************** Code for the end of Rung **************)
 
@@ -164,7 +161,6 @@ __GL __LG0000 ;
 (*************** Local Symbols table *******************)
 (* __MEMO__1__IN *)
 (* __EDTB1 *)
-(* __MEMO__2__IN *)
 (* __EDTB2 *)
 (* __EDTB3 *)
 (* __EDTB4 *)
@@ -186,6 +182,4 @@ __GL __LG0000 ;
 (* __EDTB20 *)
 (* __EDTB21 *)
 (* __EDTB22 *)
-(* __EDTB23 *)
-(* __EDTB24 *)
 

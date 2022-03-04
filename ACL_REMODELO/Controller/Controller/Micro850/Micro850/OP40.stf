@@ -6,7 +6,7 @@ BOF
 (*VARIÁVEIS Dispositivo
 Variáveis Local => Global*)
 
-SOR  [0,1] (**) (**)  FB  [1,0] (*BoolDeclaration*) (*VarDeclarationBOOL_2*) ( (*IN:*)(**) (**)  , (*i0:*)(*DatabaseRecord*) (**)  , (*i1:*)(*LedRed*) (**)  , (*i2:*)(*LedYellow*) (**)  , (*i3:*)(*LedGreen*) (**)  , (*i4:*)(*OP40_ButtonLeft*) (**)  , (*i5:*)(*OP40_ButtonRight*) (**)  , (*i6:*)(*OP40_ButtonStop*) (**)  , (*i7:*)(*BreakwayTest*) (**)  , (*i8:*)(*OP40_PD_Subtract*) (**)  , (*i9:*)(**) (**) ; (*Q:*)(**) (**)  , (*o0:*)(*OP40_DatabaseRecord*) (**)  , (*o1:*)(*OP40_LD_VM*) (**)  , (*o2:*)(*OP40_LD_AM*) (**)  , (*o3:*)(*OP40_LD_VD*) (**)  , (*o4:*)(*BT_Left*) (**)  , (*o5:*)(*BT_Right*) (**)  , (*o6:*)(*BT_Stop*) (**)  , (*o7:*)(*Breakway1TestRun*) (**)  , (*o8:*)(*ProductionSubtract*) (**)  , (*o9:*)(**) (**) )  FB  [4,0] (*IntDeclaration*) (*VarDeclarationINT_1*) ( (*IN:*)(**) (**)  , (*i0:*)(*Step*) (**)  , (*i1:*)(**) (**)  , (*i2:*)(**) (**)  , (*i3:*)(**) (**)  , (*i4:*)(**) (**)  , (*i5:*)(**) (**)  , (*i6:*)(**) (**)  , (*i7:*)(**) (**)  , (*i8:*)(**) (**)  , (*i9:*)(**) (**) ; (*Q:*)(**) (**)  , (*o0:*)(*OP40_Step*) (**)  , (*o1:*)(**) (**)  , (*o2:*)(**) (**)  , (*o3:*)(**) (**)  , (*o4:*)(**) (**)  , (*o5:*)(**) (**)  , (*o6:*)(**) (**)  , (*o7:*)(**) (**)  , (*o8:*)(**) (**)  , (*o9:*)(**) (**) )  
+SOR  [0,1] (**) (**)  FB  [1,0] (*BoolDeclaration*) (*VarDeclarationBOOL_2*) ( (*IN:*)(**) (**)  , (*i0:*)(*DatabaseRecord*) (**)  , (*i1:*)(*LedRed*) (**)  , (*i2:*)(*LedYellow*) (**)  , (*i3:*)(*LedGreen*) (**)  , (*i4:*)(*OP40_ButtonLeft*) (**)  , (*i5:*)(*OP40_ButtonRight*) (**)  , (*i6:*)(*OP40_ButtonStop*) (**)  , (*i7:*)(*BreakwayTest*) (**)  , (*i8:*)(*OP40_PD_Subtract*) (**)  , (*i9:*)(**) (**) ; (*Q:*)(**) (**)  , (*o0:*)(*OP40_DatabaseRecord*) (**)  , (*o1:*)(*OP40_LD_VM*) (**)  , (*o2:*)(*OP40_LD_AM*) (**)  , (*o3:*)(*OP40_LD_VD*) (**)  , (*o4:*)(*BT_Left*) (**)  , (*o5:*)(*BT_Right*) (**)  , (*o6:*)(*BT_Stop*) (**)  , (*o7:*)(*LoadCell1TestRun*) (**)  , (*o8:*)(*ProductionSubtract*) (**)  , (*o9:*)(**) (**) )  FB  [4,0] (*IntDeclaration*) (*VarDeclarationINT_1*) ( (*IN:*)(**) (**)  , (*i0:*)(*Step*) (**)  , (*i1:*)(**) (**)  , (*i2:*)(**) (**)  , (*i3:*)(**) (**)  , (*i4:*)(**) (**)  , (*i5:*)(**) (**)  , (*i6:*)(**) (**)  , (*i7:*)(**) (**)  , (*i8:*)(**) (**)  , (*i9:*)(**) (**) ; (*Q:*)(**) (**)  , (*o0:*)(*OP40_Step*) (**)  , (*o1:*)(**) (**)  , (*o2:*)(**) (**)  , (*o3:*)(**) (**)  , (*o4:*)(**) (**)  , (*o5:*)(**) (**)  , (*o6:*)(**) (**)  , (*o7:*)(**) (**)  , (*o8:*)(**) (**)  , (*o9:*)(**) (**) )  
  BST  
  BST  XIC  [7,0] (*OP40_ButtonRight*) (**)
    NXB  XIC  [7,1] (*IHM_AlarmReset*) (**)
@@ -44,10 +44,10 @@ EOR [9,0]
 Celula de carga CC1*)
 
 SOR  [0,18] (**) (**)  
- BST  XIC  [1,0] (*DeviceReset*) (**)  OTR  [2,0] (*OP40_CC1_AT*) (**)
+ BST  XIC  [1,0] (*DeviceReset*) (**)  OTR  [2,0] (*OP40_LoadCell1Actuator*) (**)
    NXB  
- BST  XIP  [1,1] (*Breakway1TestDisaproved*) (**)  OTS  [2,1] (*BreakwayDispproved*) (**)
-   NXB  XIP  [1,2] (*Breakway1TestApproved*) (**)  OTS  [2,2] (*CC_AP*) (**)
+ BST  XIP  [1,1] (*LoadCell1TestFail*) (**)  OTS  [2,1] (*BreakwayDispproved*) (**)
+   NXB  XIP  [1,2] (*LoadCell1TestSuccess*) (**)  OTS  [2,2] (*CC_AP*) (**)
  BND
 
  BND

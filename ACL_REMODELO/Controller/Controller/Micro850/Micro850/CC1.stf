@@ -5,73 +5,75 @@ BOF
 
 (*ENTRADAS*)
 
-SOR  [0,1] (**) (**)  FB  [1,0] (*IntDeclaration*) (*VarDeclarationINT_1*) ( (*IN:*)(**) (**)  , (*i0:*)(*IHM_CC1_MN*) (**)  , (*i1:*)(*IHM_CC1_MX*) (**)  , (*i2:*)(*CC_PKS*) (**)  , (*i3:*)(*CC_AI*) (**)  , (*i4:*)(*CC_SN*) (**)  , (*i5:*)(**) (**)  , (*i6:*)(**) (**)  , (*i7:*)(**) (**)  , (*i8:*)(**) (**)  , (*i9:*)(**) (**) ; (*Q:*)(**) (**)  , (*o0:*)(*CC_MN*) (**)  , (*o1:*)(*CC_MX*) (**)  , (*o2:*)(*IHM_CC1_PKS*) (**)  , (*o3:*)(*IHM_CC1_AI*) (**)  , (*o4:*)(*IHM_CC1_SN*) (**)  , (*o5:*)(**) (**)  , (*o6:*)(**) (**)  , (*o7:*)(**) (**)  , (*o8:*)(**) (**)  , (*o9:*)(**) (**) )  FB  [4,0] (*BoolDeclaration*) (*VarDeclarationBOOL_1*) ( (*IN:*)(**) (**)  , (*i0:*)(*Breakway1TestFinished*) (**)  , (*i1:*)(**) (**)  , (*i2:*)(**) (**)  , (*i3:*)(**) (**)  , (*i4:*)(**) (**)  , (*i5:*)(**) (**)  , (*i6:*)(**) (**)  , (*i7:*)(**) (**)  , (*i8:*)(**) (**)  , (*i9:*)(**) (**) ; (*Q:*)(**) (**)  , (*o0:*)(*CC_RT*) (**)  , (*o1:*)(**) (**)  , (*o2:*)(**) (**)  , (*o3:*)(**) (**)  , (*o4:*)(**) (**)  , (*o5:*)(**) (**)  , (*o6:*)(**) (**)  , (*o7:*)(**) (**)  , (*o8:*)(**) (**)  , (*o9:*)(**) (**) )  
- BST  XIC  [7,0] (*OP40_ButtonRight*) (**)  FB  [8,0] (*TON*) (*TON_2*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*t#3S*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )
+SOR  [0,1] (**) (**)  FB  [1,0] (*BoolDeclaration*) (*VarDeclarationBOOL_1*) ( (*IN:*)(**) (**)  , (*i0:*)(*LoadCell1TestFinished*) (**)  , (*i1:*)(*OP40_ButtonRight*) (**)  , (*i2:*)(**) (**)  , (*i3:*)(**) (**)  , (*i4:*)(**) (**)  , (*i5:*)(**) (**)  , (*i6:*)(**) (**)  , (*i7:*)(**) (**)  , (*i8:*)(**) (**)  , (*i9:*)(**) (**) ; (*Q:*)(**) (**)  , (*o0:*)(*End*) (**)  , (*o1:*)(*Forced*) (**)  , (*o2:*)(**) (**)  , (*o3:*)(**) (**)  , (*o4:*)(**) (**)  , (*o5:*)(**) (**)  , (*o6:*)(**) (**)  , (*o7:*)(**) (**)  , (*o8:*)(**) (**)  , (*o9:*)(**) (**) )  FB  [4,0] (*IntDeclaration*) (*VarDeclarationINT_1*) ( (*IN:*)(**) (**)  , (*i0:*)(*IHM_LoadCell1Min*) (**)  , (*i1:*)(*IHM_LoadCell1Max*) (**)  , (*i2:*)(*SensorPeak*) (**)  , (*i3:*)(*AnalogicInput*) (**)  , (*i4:*)(*Sensor*) (**)  , (*i5:*)(*AnalogicInputPeak*) (**)  , (*i6:*)(**) (**)  , (*i7:*)(**) (**)  , (*i8:*)(**) (**)  , (*i9:*)(**) (**) ; (*Q:*)(**) (**)  , (*o0:*)(*SensorPeakMin*) (**)  , (*o1:*)(*SensorPeakMax*) (**)  , (*o2:*)(*IHM_LoadCell1SensorPeak*) (**)  , (*o3:*)(*IHM_LoadCell1AnalogicInput*) (**)  , (*o4:*)(*IHM_LoadCell1Sensor*) (**)  , (*o5:*)(*IHM_LoadCell1AnalogicInputPeak*) (**)  , (*o6:*)(**) (**)  , (*o7:*)(**) (**)  , (*o8:*)(**) (**)  , (*o9:*)(**) (**) )  FB  [7,0] (*RealDeclaration*) (*RealDeclaration_1*) ( (*IN:*)(**) (**)  , (*i0:*)(*870.0*) (**)  , (*i1:*)(*4854.0*) (**)  , (*i2:*)(*19.62*) (**)  , (*i3:*)(*215.82*) (**)  , (*i4:*)(**) (**)  , (*i5:*)(**) (**)  , (*i6:*)(**) (**)  , (*i7:*)(**) (**)  , (*i8:*)(**) (**)  , (*i9:*)(**) (**) ; (*Q:*)(**) (**)  , (*o0:*)(*InputMin*) (**)  , (*o1:*)(*InputMax*) (**)  , (*o2:*)(*OutputMin*) (**)  , (*o3:*)(*OutputMax*) (**)  , (*o4:*)(**) (**)  , (*o5:*)(**) (**)  , (*o6:*)(**) (**)  , (*o7:*)(**) (**)  , (*o8:*)(**) (**)  , (*o9:*)(**) (**) )  
+ BST  
+ BST  XIC  [10,0] (*Forced*) (**)  FB  [11,0] (*TON*) (*TON_3*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*t#3S*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )
    NXB  
- BST  XIC  [7,2] (*Breakway1TestRun*) (**)
-   NXB  XIC  [7,3] (*IHM_Breakway1TestStart*) (**)
+ BST  XIC  [10,2] (*LoadCell1TestRun*) (**)
+   NXB  XIC  [10,3] (*IHM_LoadCell1TestRun*) (**)
  BND
 
  BND
-  OTS  [11,0] (*CC_TT*) (**)
-EOR [12,0]
-
-
-(*SAÍDAS*)
-
-SOR  [0,13] (**) (**)  FB  [1,0] (*ANY_TO_INT*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*_IO_P1_AI_03*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*CC_AI*) (**) )  
- BST  XIC  [4,0] (*CC_AT*) (**)  OTS  [5,0] (*OP40_CC1_AT*) (**)
+  OTS  [14,0] (*Run*) (**)
    NXB  
- BST  XIP  [4,1] (*CC_AP*) (**)  OTS  [5,1] (*Breakway1TestApproved*) (**)
-   NXB  XIP  [4,2] (*CC_RP*) (**)  OTS  [5,2] (*Breakway1TestDisaproved*) (**)
+ BST  XIC  [10,4] (*Actuator*) (**)  OTS  [11,4] (*OP40_LoadCell1Actuator*) (**)
+   NXB  
+ BST  XIP  [10,5] (*Success*) (**)  OTS  [11,5] (*LoadCell1TestSuccess*) (**)
+   NXB  XIP  [10,6] (*Fail*) (**)  OTS  [11,6] (*LoadCell1TestFail*) (**)
  BND
 
  BND
 
-EOR [6,0]
+ BND
+
+EOR [15,0]
 
 
 (*ESCALA*)
 
-SOR  [0,17] (**) (**)  FB  [1,0] (*ANY_TO_REAL*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*CC_AI*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*SCL_E*) (**) )  FB  [4,0] (*SCALER*) (*SCALER_1*) ( (*EN:EN*)(**) (**)  , (*Input:*)(*SCL_E*) (**)  , (*InputMin:*)(*870.0*) (**)  , (*InputMax:*)(*4854.0*) (**)  , (*OutputMin:*)(*19.62*) (**)  , (*OutputMax:*)(*215.82*) (**) ; (*ENO:ENO*)(**) (**)  , (*Output:*)(*SCL_SN0*) (**) )
+SOR  [0,13] (**) (**)  
+ BST  FB  [1,0] (*ANY_TO_REAL*) (*1*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*AnalogicInput*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Imput*) (**) )
+   NXB  FB  [1,2] (*ANY_TO_INT*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*_IO_P1_AI_03*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*AnalogicInput*) (**) )
+ BND
+  FB  [4,0] (*SCALER*) (*SCALER_1*) ( (*EN:EN*)(**) (**)  , (*Input:*)(*Imput*) (**)  , (*InputMin:*)(*870.0*) (**)  , (*InputMax:*)(*4854.0*) (**)  , (*OutputMin:*)(*19.62*) (**)  , (*OutputMax:*)(*215.82*) (**) ; (*ENO:ENO*)(**) (**)  , (*Output:*)(*Output*) (**) )
 EOR [7,0]
 
 
 (*CORREÇÃO*)
 
-SOR  [0,24] (**) (**)  FB  [1,0] (***) (*65*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*SCL_SN0*) (**)  , (*i2:*)(*SCL_Ganho*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*SCL_SN1*) (**) )  FB  [4,0] (*+*) (*66*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*SCL_SN1*) (**)  , (*i2:*)(*SCL_Offset*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*SCL_SN2*) (**) )  FB  [7,0] (*ANY_TO_INT*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*SCL_SN2*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*CC_SN*) (**) )
+SOR  [0,20] (**) (**)  FB  [1,0] (***) (*65*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Output*) (**)  , (*i2:*)(*Gain*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*SCL_SN1*) (**) )  FB  [4,0] (*+*) (*66*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*SCL_SN1*) (**)  , (*i2:*)(*Offset*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*SCL_SN2*) (**) )  FB  [7,0] (*ANY_TO_INT*) (*2*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*SCL_SN2*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Sensor*) (**) )
 EOR [10,0]
 
 
 (*SETUP*)
 
-SOR  [0,28] (**) (**)  
+SOR  [0,24] (**) (**)  
  BST  XIC  [1,0] (*ModelSideLeft*) (**)  
- BST  FB  [2,0] (*ANY_TO_REAL*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*TP1_OFFSET*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*SCL_Offset*) (**) )
-   NXB  FB  [2,2] (*ANY_TO_REAL*) (*78*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*TP1_GANHO*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*SCL_Ganho*) (**) )
+ BST  FB  [2,0] (*ANY_TO_REAL*) (*3*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*OffsetLeft*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Offset*) (**) )
+   NXB  FB  [2,2] (*ANY_TO_REAL*) (*78*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*GainLeft*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Gain*) (**) )
  BND
-  XIC  [5,0] (*CC_CLB*) (**)  
- BST  FB  [6,0] (*ANY_TO_REAL*) (*72*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*IHM_Breakway1ParamOffset*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*TP1_OFFSET*) (**) )
-   NXB  FB  [6,2] (*ANY_TO_REAL*) (*72*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*IHM_Breakway1ParamGain*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*TP1_GANHO*) (**) )
+  XIC  [5,0] (*Calibrate*) (**)  
+ BST  FB  [6,0] (*ANY_TO_REAL*) (*72*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*IHM_LoadCell1Offset*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*OffsetLeft*) (**) )
+   NXB  FB  [6,2] (*ANY_TO_REAL*) (*72*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*IHM_LoadCell1Gain*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*GainLeft*) (**) )
  BND
 
    NXB  XIC  [1,4] (*ModelSideRight*) (**)  
- BST  FB  [2,4] (*ANY_TO_REAL*) (*68*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*TP2_OFFSET*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*SCL_Offset*) (**) )
-   NXB  FB  [2,6] (*ANY_TO_REAL*) (*75*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*TP2_GANHO*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*SCL_Ganho*) (**) )
+ BST  FB  [2,4] (*ANY_TO_REAL*) (*68*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*OffsetRight*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Offset*) (**) )
+   NXB  FB  [2,6] (*ANY_TO_REAL*) (*75*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*GainRight*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Gain*) (**) )
  BND
-  XIC  [5,4] (*CC_CLB*) (**)  
- BST  FB  [6,4] (*ANY_TO_REAL*) (*72*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*IHM_Breakway1ParamOffset*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*TP2_OFFSET*) (**) )
-   NXB  FB  [6,6] (*ANY_TO_REAL*) (*72*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*IHM_Breakway1ParamGain*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*TP2_GANHO*) (**) )
+  XIC  [5,4] (*Calibrate*) (**)  
+ BST  FB  [6,4] (*ANY_TO_REAL*) (*72*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*IHM_LoadCell1Offset*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*OffsetRight*) (**) )
+   NXB  FB  [6,6] (*ANY_TO_REAL*) (*72*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*IHM_LoadCell1Gain*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*GainRight*) (**) )
  BND
 
  BND
-  FB  [9,0] (*TON*) (*TON_1*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*T#1S*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTR  [12,0] (*CC_CLB*) (**)
+  FB  [9,0] (*TON*) (*TON_1*) ( (*IN:IN*)(**) (**)  , (*PT:PT*)(*T#1S*) (**) ; (*Q:Q*)(**) (**)  , (*ET:ET*)(**) (**) )  OTR  [12,0] (*Calibrate*) (**)
 EOR [13,0]
 
 
 (*TEMPO DFE AVANÇO DO CILINDRO*)
 
-SOR  [0,37] (**) (**)  XIC  [1,0] (*CC_TT*) (**)  FB  [2,0] (*FB_PK_V2*) (*FB_PK_V2_1*) ( (*IN:*)(**) (**)  , (*SN1:*)(*CC_SN*) (**)  , (*SN2:*)(*CC_AI*) (**)  , (*TM:*)(*T#3S*) (**)  , (*RT:*)(*CC_RT*) (**) ; (*Q:*)(**) (**)  , (*S1:*)(*CC_AT*) (**)  , (*PKP1:*)(*CC_PKS*) (**)  , (*PKP2:*)(*CC_PKE*) (**) )  FB  [5,0] (*FB_PV*) (*FB_PV_2*) ( (*IN:*)(**) (**)  , (*VL:*)(*CC_PKS*) (**)  , (*MX:*)(*CC_MX*) (**)  , (*MN:*)(*CC_MN*) (**) ; (*Q:*)(**) (**)  , (*AP:*)(*CC_AP*) (**)  , (*RP:*)(*CC_RP*) (**) )  OTR  [8,0] (*CC_TT*) (**)
+SOR  [0,33] (**) (**)  XIC  [1,0] (*Run*) (**)  FB  [2,0] (*ValuePeak*) (*ValuePeak_2*) ( (*IN:*)(**) (**)  , (*Sensor1:*)(*Sensor*) (**)  , (*Sensor2:*)(*AnalogicInput*) (**)  , (*Tiime:*)(*T#3S*) (**)  , (*End:*)(*End*) (**) ; (*Q:*)(**) (**)  , (*Actuator:*)(*Actuator*) (**)  , (*PeakSensor1:*)(*SensorPeak*) (**)  , (*PeakSensor2:*)(*AnalogicInputPeak*) (**) )  FB  [5,0] (*ValueProof*) (*ValueProof_1*) ( (*IN:*)(**) (**)  , (*Value:*)(*SensorPeak*) (**)  , (*ValueMin:*)(*SensorPeakMax*) (**)  , (*ValueMax:*)(*SensorPeakMin*) (**) ; (*Q:*)(**) (**)  , (*Success:*)(*Success*) (**)  , (*Fail:*)(*Fail*) (**) )  OTR  [8,0] (*Run*) (**)
 EOR [9,0]
 EOF
 #end_info

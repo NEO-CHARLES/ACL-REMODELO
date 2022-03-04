@@ -12,23 +12,23 @@ __ENDSTEPPRAGMA
 __EDTB1 := (IN AND NOT(__MEMO__1__IN)) ;
 __EDTB2 := __EDTB1 ;
 IF __EDTB2 THEN
-PKP1 := (  0) ;
+PEAKSENSOR1 := (  0) ;
 END_IF ;
 __MO_1GAIN_1 := __EDTB2 ;
 __EDTB3 := __EDTB2 ;
 IF __EDTB3 THEN
-PKP2 := (  0) ;
+PEAKSENSOR2 := (  0) ;
 END_IF ;
 __MO_1GAIN_2 := __EDTB3 ;
 __EDTB4 := __EDTB3 ;
 __EDTB5 := __EDTB1 ;
 IF __EDTB5 THEN
-PKN1 := (  0) ;
+PEAKNEGATIVESENSOR1 := (  0) ;
 END_IF ;
 __MO_1GAIN_3 := __EDTB5 ;
 __EDTB6 := __EDTB5 ;
 IF __EDTB6 THEN
-PKN2 := (  0) ;
+PEAKNEGATIVESENSOR2 := (  0) ;
 END_IF ;
 __MO_1GAIN_4 := __EDTB6 ;
 __EDTB7 := __EDTB6 ;
@@ -44,60 +44,60 @@ __STEPPRAGMA
 __ENDSTEPPRAGMA
 (*Label :*)(**)
 __EDTB8 := IN AND NOT(Q) ;
-S1 := __EDTB8 ;
+ACTUATOR := __EDTB8 ;
 __EDTB10 := __EDTB8 ;
 IF __EDTB10 THEN
 (* Operator output on : > with __EDTB9 *)
-__EDTB9 := (SN1 > PKP1) ;
+__EDTB9 := (SENSOR1 > PEAKSENSOR1) ;
 ELSE
 __EDTB9 := FALSE ;
 END_IF ;
 __MO_GREAT_1 := __EDTB9 ;
 __EDTB11 := __EDTB9 ;
 IF __EDTB11 THEN
-PKP1 := (  SN1) ;
+PEAKSENSOR1 := (  SENSOR1) ;
 END_IF ;
 __MO_1GAIN_5 := __EDTB11 ;
 __EDTB12 := __EDTB11 ;
 __EDTB14 := __EDTB8 ;
 IF __EDTB14 THEN
 (* Operator output on : < with __EDTB13 *)
-__EDTB13 := (SN1 < PKN1) ;
+__EDTB13 := (SENSOR1 < PEAKNEGATIVESENSOR1) ;
 ELSE
 __EDTB13 := FALSE ;
 END_IF ;
 __MO_LESS_1 := __EDTB13 ;
 __EDTB15 := __EDTB13 ;
 IF __EDTB15 THEN
-PKN1 := (  SN1) ;
+PEAKNEGATIVESENSOR1 := (  SENSOR1) ;
 END_IF ;
 __MO_1GAIN_6 := __EDTB15 ;
 __EDTB16 := __EDTB15 ;
 __EDTB18 := __EDTB8 ;
 IF __EDTB18 THEN
 (* Operator output on : > with __EDTB17 *)
-__EDTB17 := (SN2 > PKP2) ;
+__EDTB17 := (SENSOR2 > PEAKSENSOR2) ;
 ELSE
 __EDTB17 := FALSE ;
 END_IF ;
 __MO_GREAT_2 := __EDTB17 ;
 __EDTB19 := __EDTB17 ;
 IF __EDTB19 THEN
-PKP2 := (  SN2) ;
+PEAKSENSOR2 := (  SENSOR2) ;
 END_IF ;
 __MO_1GAIN_7 := __EDTB19 ;
 __EDTB20 := __EDTB19 ;
 __EDTB22 := __EDTB8 ;
 IF __EDTB22 THEN
 (* Operator output on : < with __EDTB21 *)
-__EDTB21 := (SN2 < PKN2) ;
+__EDTB21 := (SENSOR2 < PEAKNEGATIVESENSOR2) ;
 ELSE
 __EDTB21 := FALSE ;
 END_IF ;
 __MO_LESS_2 := __EDTB21 ;
 __EDTB23 := __EDTB21 ;
 IF __EDTB23 THEN
-PKN2 := (  SN2) ;
+PEAKNEGATIVESENSOR2 := (  SENSOR2) ;
 END_IF ;
 __MO_1GAIN_8 := __EDTB23 ;
 __EDTB24 := __EDTB23 ;
@@ -115,9 +115,9 @@ __ENDSTEPPRAGMA
 (*Label :*)(**)
 __EDTB27 := IN ;
 (* FB call: TON *)
-TON_2(__EDTB27, TM) ;
+TON_2(__EDTB27, TIIME) ;
 __EDTB28 := TON_2.Q ;
-__EDTB29 := __EDTB27 AND RT ;
+__EDTB29 := __EDTB27 AND END ;
 Q := (__EDTB28 OR __EDTB29) ;
 
 (*************** Code for the end of Rung **************)

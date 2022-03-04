@@ -83,7 +83,7 @@ EOR [3,0]
 
 (*Saida DO-09 - Valvula Solenoide Operação 40*)
 
-SOR  [0,25] (**) (**)  XIC  [1,0] (*_IO_EM_DI_27*) (*PG1_EMERGENCIA*)  XIC  [2,0] (*_IO_EM_DI_09*) (**)  XIC  [3,0] (*OP40_CC1_AT*) (**)  OTE  [4,0] (*_IO_EM_DO_09*) (**)
+SOR  [0,25] (**) (**)  XIC  [1,0] (*_IO_EM_DI_27*) (*PG1_EMERGENCIA*)  XIC  [2,0] (*_IO_EM_DI_09*) (**)  XIC  [3,0] (*OP40_LoadCell1Actuator*) (**)  OTE  [4,0] (*_IO_EM_DO_09*) (**)
 EOR [5,0]
 
 
