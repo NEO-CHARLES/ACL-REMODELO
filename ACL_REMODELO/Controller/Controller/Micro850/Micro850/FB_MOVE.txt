@@ -56,7 +56,7 @@ __MO_1GAIN_4 := __EDTB9 ;
 __EDTB10 := __EDTB9 ;
 __EDTB11 := __EDTB5 ;
 IF __EDTB11 THEN
-POSVARIATION := (  0) ;
+VARIATION := (  0) ;
 END_IF ;
 __MO_1GAIN_5 := __EDTB11 ;
 __EDTB12 := __EDTB11 ;
@@ -86,9 +86,9 @@ END_IF ;
 __MO_EQUAL_2 := __EDTB15 ;
 (* FB call: TP *)
 TP_1(__EDTB15, MOVETIME) ;
-MOVEP := TP_1.Q ;
-; (*Fall detection on  : MOVEP with __MEMO__3__MOVEP *)
-__EDTB17 := __EDTB15 AND (__MEMO__3__MOVEP AND NOT(MOVEP)) ;
+MOVEPOSITIVE := TP_1.Q ;
+; (*Fall detection on  : MOVEPOSITIVE with __MEMO__3__MOVEPOSITIVE *)
+__EDTB17 := __EDTB15 AND (__MEMO__3__MOVEPOSITIVE AND NOT(MOVEPOSITIVE)) ;
 IF __EDTB17 THEN
 STEP := (  11) ;
 END_IF ;
@@ -96,7 +96,7 @@ __MO_1GAIN_7 := __EDTB17 ;
 __EDTB18 := __EDTB17 ;
 
 (*************** Code for the end of Rung **************)
-__MEMO__3__MOVEP := MOVEP ; (*Fall detection on  : MOVEP with __MEMO__3__MOVEP *)
+__MEMO__3__MOVEPOSITIVE := MOVEPOSITIVE ; (*Fall detection on  : MOVEPOSITIVE with __MEMO__3__MOVEPOSITIVE *)
 
 
 (*************** Rung **********************************)
@@ -117,7 +117,7 @@ __MO_EQUAL_3 := __EDTB19 ;
 TON_1(__EDTB19, REVERSETIME) ;
 __EDTB21 := TON_1.Q ;
 IF __EDTB21 THEN
-POSB := (  POSSENSOR) ;
+POSB := (  SENSOR) ;
 END_IF ;
 __MO_1GAIN_8 := __EDTB21 ;
 __EDTB22 := __EDTB21 ;
@@ -145,9 +145,9 @@ END_IF ;
 __MO_EQUAL_4 := __EDTB23 ;
 (* FB call: TP *)
 TP_2(__EDTB23, MOVETIME) ;
-MOVEN := TP_2.Q ;
-; (*Fall detection on  : MOVEN with __MEMO__4__MOVEN *)
-__EDTB25 := __EDTB23 AND (__MEMO__4__MOVEN AND NOT(MOVEN)) ;
+MOVENEGATIVE := TP_2.Q ;
+; (*Fall detection on  : MOVENEGATIVE with __MEMO__4__MOVENEGATIVE *)
+__EDTB25 := __EDTB23 AND (__MEMO__4__MOVENEGATIVE AND NOT(MOVENEGATIVE)) ;
 IF __EDTB25 THEN
 STEP := (  21) ;
 END_IF ;
@@ -155,7 +155,7 @@ __MO_1GAIN_10 := __EDTB25 ;
 __EDTB26 := __EDTB25 ;
 
 (*************** Code for the end of Rung **************)
-__MEMO__4__MOVEN := MOVEN ; (*Fall detection on  : MOVEN with __MEMO__4__MOVEN *)
+__MEMO__4__MOVENEGATIVE := MOVENEGATIVE ; (*Fall detection on  : MOVENEGATIVE with __MEMO__4__MOVENEGATIVE *)
 
 
 (*************** Rung **********************************)
@@ -176,7 +176,7 @@ __MO_EQUAL_5 := __EDTB27 ;
 TON_2(__EDTB27, REVERSETIME) ;
 __EDTB29 := TON_2.Q ;
 IF __EDTB29 THEN
-POSA := (  POSSENSOR) ;
+POSA := (  SENSOR) ;
 END_IF ;
 __MO_1GAIN_11 := __EDTB29 ;
 __EDTB30 := __EDTB29 ;
@@ -204,7 +204,7 @@ END_IF ;
 __MO_EQUAL_6 := __EDTB31 ;
 __EDTB33 := __EDTB31 ;
 IF __EDTB33 THEN
-POSVARIATION := (POSB - POSA) ;
+VARIATION := (POSB - POSA) ;
 END_IF ;
 __MO_MINUS_1 := __EDTB33 ;
 Q := __EDTB33 ;
@@ -236,7 +236,7 @@ __GL __LG0000 ;
 (* __EDTB14 *)
 (* __EDTB15 *)
 (* __EDTB16 *)
-(* __MEMO__3__MOVEP *)
+(* __MEMO__3__MOVEPOSITIVE *)
 (* __EDTB17 *)
 (* __EDTB18 *)
 (* __EDTB19 *)
@@ -245,7 +245,7 @@ __GL __LG0000 ;
 (* __EDTB22 *)
 (* __EDTB23 *)
 (* __EDTB24 *)
-(* __MEMO__4__MOVEN *)
+(* __MEMO__4__MOVENEGATIVE *)
 (* __EDTB25 *)
 (* __EDTB26 *)
 (* __EDTB27 *)

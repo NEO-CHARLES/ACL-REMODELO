@@ -37,7 +37,7 @@
     <File>RA_ASCII_INPUT_TO_STRING.acfmlge</File>
   </AcfElementGuid>
   <AcfElementGuid Guid="779b9cbb-6be2-4ab9-8201-33273f4ae11a">
-    <File>CC1.AcfMlge</File>
+    <File>LoadCell1.AcfMlge</File>
   </AcfElementGuid>
   <AcfElementGuid Guid="7842bbf5-9c40-40fc-9763-4765f9e6b182">
     <File>Motor1.AcfMlge</File>
@@ -86,6 +86,9 @@
   </AcfElementGuid>
   <AcfElementGuid Guid="e2e7f7df-e3fd-4ecf-bdbf-23d97fdb18d0">
     <File>F_DATA.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="e6119f50-a9cc-413a-8bee-b53ac7a82cde">
+    <File>TTest.AcfMlge</File>
   </AcfElementGuid>
   <AcfElementGuid Guid="f4f0bb2f-2498-4678-9dac-44932dbdaec0">
     <File>ValuePeak.AcfMlge</File>

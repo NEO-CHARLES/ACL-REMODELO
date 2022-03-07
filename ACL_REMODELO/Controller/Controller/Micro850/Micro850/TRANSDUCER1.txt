@@ -1,1 +1,259 @@
-(********************* No code *************************)
+(****** QuickLD compiler *******************************)
+(****** Copyright Rockwell Automation Canada, Ltd ******)
+(****** ST *********************************************)
+
+(*************** Rung **********************************)
+(*Declaration*)
+__STEPPRAGMA
+0,1
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+(* FB call: BoolDeclaration *)
+BoolDeclaration_1(TRUE, MOVE1TESTRUN, MOVE2TESTRUN, , , , , , , , ) ;
+MOVE1RUN := BoolDeclaration_1.o0 ;
+MOVE2RUN := BoolDeclaration_1.o1 ;
+MOVE1TESTFORCED := BoolDeclaration_1.o2 ;
+(* FB call: IntDeclaration *)
+IntDeclaration_2(BoolDeclaration_1.Q, TRANSDUCER1SENSOR, TRANSDUCER2SENSOR, , , , , , , , ) ;
+SENSOR1 := IntDeclaration_2.o0 ;
+SENSOR2 := IntDeclaration_2.o1 ;
+(* FB call: RealDeclaration *)
+RealDeclaration_1(IntDeclaration_2.Q, 0.0, 10000.0, 500.0, 0.0, 0.0, 10000.0, 500.0, 0.0, , ) ;
+TRANSDUCER1INPUTMIN := RealDeclaration_1.o0 ;
+TRANSDUCER1INPUTMAX := RealDeclaration_1.o1 ;
+TRANSDUCER1OUTPUTMIN := RealDeclaration_1.o2 ;
+TRANSDUCER1OUTPUTMAX := RealDeclaration_1.o3 ;
+TRANSDUCER2INPUTMIN := RealDeclaration_1.o4 ;
+TRANSDUCER2INPUTMAX := RealDeclaration_1.o5 ;
+TRANSDUCER2OUTPUTMIN := RealDeclaration_1.o6 ;
+TRANSDUCER2OUTPUTMAX := RealDeclaration_1.o7 ;
+__EDTB1 := RealDeclaration_1.Q ;
+IF __EDTB1 THEN
+MOVE1TIME := (  T#3S) ;
+END_IF ;
+__MO_1GAIN_1 := __EDTB1 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Transducer1*)
+__STEPPRAGMA
+0,13
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB2 := TRUE ;
+IF __EDTB2 THEN
+TRANSDUCER1INPUT := ANY_TO_REAL(_IO_P1_AI_00) ;
+END_IF ;
+__MO_ANY_TO_REAL_1 := __EDTB2 ;
+__EDTB3 := __EDTB2 ;
+IF __EDTB3 THEN
+(* FB call: SCALER *)
+SCALER_1(TRANSDUCER1INPUT, TRANSDUCER1INPUTMIN, TRANSDUCER1INPUTMAX, TRANSDUCER1OUTPUTMIN, TRANSDUCER1OUTPUTMAX) ;
+TRANSDUCER1OUTPUT := SCALER_1.Output ;
+END_IF ;
+__MO_SCALER_1 := __EDTB3 ;
+__EDTB4 := __EDTB3 ;
+IF __EDTB4 THEN
+TRANSDUCER1SENSOR := ANY_TO_INT(TRANSDUCER1OUTPUT) ;
+END_IF ;
+__MO_ANY_TO_INT_1 := __EDTB4 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*Transducer2*)
+__STEPPRAGMA
+0,20
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB5 := TRUE ;
+IF __EDTB5 THEN
+TRANSDUCER2INPUT := ANY_TO_REAL(_IO_P1_AI_01) ;
+END_IF ;
+__MO_ANY_TO_REAL_2 := __EDTB5 ;
+__EDTB6 := __EDTB5 ;
+IF __EDTB6 THEN
+(* FB call: SCALER *)
+SCALER_2(TRANSDUCER2INPUT, TRANSDUCER2INPUTMIN, TRANSDUCER2INPUTMAX, TRANSDUCER2OUTPUTMIN, TRANSDUCER2OUTPUTMAX) ;
+TRANSDUCER2OUTPUT := SCALER_2.Output ;
+END_IF ;
+__MO_SCALER_2 := __EDTB6 ;
+__EDTB7 := __EDTB6 ;
+IF __EDTB7 THEN
+TRANSDUCER2SENSOR := ANY_TO_INT(TRANSDUCER2OUTPUT) ;
+END_IF ;
+__MO_ANY_TO_INT_2 := __EDTB7 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,27
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+; (*Pulse detection on : POSITIONTEST with __MEMO__1__POSITIONTEST *)
+__EDTB8 := (POSITIONTEST AND NOT(__MEMO__1__POSITIONTEST)) ;
+__EDTB9 := __EDTB8 ;
+IF __EDTB9 THEN
+(*Reset coil*)
+POSITIONTESTAPPROVED := FALSE ;
+END_IF ;
+__EDTB10 := __EDTB8 ;
+IF __EDTB10 THEN
+(*Reset coil*)
+POSITIONTESTDISAPPROVED := FALSE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+__MEMO__1__POSITIONTEST := POSITIONTEST ; (*Pulse detection on : POSITIONTEST with __MEMO__1__POSITIONTEST *)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,30
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB11 := POSITIONTEST ;
+__EDTB12 := __EDTB11 ;
+IF __EDTB12 THEN
+(*Set coil*)
+CYLINDERADVANCE := TRUE ;
+END_IF ;
+(* FB call: ValuePeak *)
+ValuePeak_1(__EDTB11 AND CYLINDERADVANCE, SENSOR1, SENSOR2, T#3S, CYLINDERADVANCED) ;
+PEAK1 := ValuePeak_1.PeakSensor1 ;
+PEAK2 := ValuePeak_1.PeakSensor2 ;
+__EDTB13 := ValuePeak_1.Q ;
+(* FB call: ValueProof *)
+ValueProof_1(__EDTB13, PEAK1, PARAMETERMAX, PARAMETERMIN) ;
+POSITION1APPROVED := ValueProof_1.Success ;
+POSITION1DISAPPROVED := ValueProof_1.Fail ;
+__EDTB14 := ValueProof_1.Q ;
+(* FB call: ValueProof *)
+ValueProof_2(__EDTB13, PEAK2, PARAMETERMAX, PARAMETERMIN) ;
+POSITION2APPROVED := ValueProof_2.Success ;
+POSITION2DISAPPROVED := ValueProof_2.Fail ;
+__EDTB15 := ValueProof_2.Q ;
+__EDTB16 := __EDTB13 AND POSITION1APPROVED AND POSITION2APPROVED ;
+IF __EDTB16 THEN
+(*Set coil*)
+POSITIONTESTAPPROVED := TRUE ;
+END_IF ;
+__EDTB17 := __EDTB13 AND POSITION1DISAPPROVED ;
+__EDTB18 := __EDTB13 AND POSITION2DISAPPROVED ;
+__EDTB19 := (__EDTB17 OR __EDTB18) ;
+IF __EDTB19 THEN
+(*Set coil*)
+POSITIONTEST := TRUE ;
+END_IF ;
+__EDTB20 := __EDTB13 AND POSITIONTESTAPPROVED ;
+__EDTB21 := __EDTB13 AND POSITIONTESTDISAPPROVED ;
+__EDTB22 := (__EDTB20 OR __EDTB21) ;
+IF __EDTB22 THEN
+(*Reset coil*)
+POSITIONTEST := FALSE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,45
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB23 := MOVE1RUN ;
+(* FB call: FB_Move *)
+FB_Move_1(__EDTB23, SENSOR1, MOVE1TIME) ;
+MOVE1UP := FB_Move_1.MovePositive ;
+MOVE1DOWN := FB_Move_1.MoveNegative ;
+MOVE1VARIATION := FB_Move_1.Variation ;
+(* FB call: ValueProof *)
+ValueProof_3(FB_Move_1.Q, MOVE1VARIATION, MOVE1VARIATIONMAX, MOVE1VARIATIONMIN) ;
+MOVE1SUCCESS := ValueProof_3.Success ;
+MOVE1FAIL := ValueProof_3.Fail ;
+__EDTB24 := ValueProof_3.Q ;
+; (*Pulse detection on : MOVE1FAIL with __MEMO__2__MOVE1FAIL *)
+__EDTB25 := __EDTB23 AND (MOVE1FAIL AND NOT(__MEMO__2__MOVE1FAIL)) ;
+IF __EDTB25 THEN
+(*Set coil*)
+ALARMMOVE1FAIL := TRUE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+__MEMO__2__MOVE1FAIL := MOVE1FAIL ; (*Pulse detection on : MOVE1FAIL with __MEMO__2__MOVE1FAIL *)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,51
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB26 := MOVE2RUN ;
+(* FB call: FB_Move *)
+FB_Move_2(__EDTB26, SENSOR2, MOVE2TIME) ;
+MOVE2POSITIVE := FB_Move_2.MovePositive ;
+MOVE2NEGATIVE := FB_Move_2.MoveNegative ;
+MOVE2VARIATION := FB_Move_2.Variation ;
+(* FB call: ValueProof *)
+ValueProof_4(FB_Move_2.Q, MOVE2VARIATION, MOVE2VARIATIONMAX, MOVE2VARIATIONMIN) ;
+MOVE2SUCCESS := ValueProof_4.Success ;
+MOVE2FAIL := ValueProof_4.Fail ;
+__EDTB27 := ValueProof_4.Q ;
+; (*Pulse detection on : MOVE2FAIL with __MEMO__3__MOVE2FAIL *)
+__EDTB28 := __EDTB26 AND (MOVE2FAIL AND NOT(__MEMO__3__MOVE2FAIL)) ;
+IF __EDTB28 THEN
+(*Set coil*)
+ALARMMOVE2FAIL := TRUE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+__MEMO__3__MOVE2FAIL := MOVE2FAIL ; (*Pulse detection on : MOVE2FAIL with __MEMO__3__MOVE2FAIL *)
+
+
+(*************** Code for the end of File **************)
+__GL __LG0000 ;
+
+
+
+(*************** Local Symbols table *******************)
+(* __EDTB1 *)
+(* __EDTB2 *)
+(* __EDTB3 *)
+(* __EDTB4 *)
+(* __EDTB5 *)
+(* __EDTB6 *)
+(* __EDTB7 *)
+(* __MEMO__1__POSITIONTEST *)
+(* __EDTB8 *)
+(* __EDTB9 *)
+(* __EDTB10 *)
+(* __EDTB11 *)
+(* __EDTB12 *)
+(* __EDTB13 *)
+(* __EDTB14 *)
+(* __EDTB15 *)
+(* __EDTB16 *)
+(* __EDTB17 *)
+(* __EDTB18 *)
+(* __EDTB19 *)
+(* __EDTB20 *)
+(* __EDTB21 *)
+(* __EDTB22 *)
+(* __EDTB23 *)
+(* __EDTB24 *)
+(* __MEMO__2__MOVE1FAIL *)
+(* __EDTB25 *)
+(* __EDTB26 *)
+(* __EDTB27 *)
+(* __MEMO__3__MOVE2FAIL *)
+(* __EDTB28 *)
+

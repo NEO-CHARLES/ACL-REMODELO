@@ -1,0 +1,12 @@
+FUNCTION_BLOCK TTest
+#info= QLD
+BOF
+
+
+(*TEMPO DFE AVANÇO DO CILINDRO*)
+
+SOR  [0,1] (**) (**)  XIC  [1,0] (*IN*) (**)  FB  [2,0] (*ValuePeak*) (*ValuePeak_1*) ( (*IN:*)(**) (**)  , (*Sensor1:*)(*Sensor1*) (**)  , (*Sensor2:*)(*Sensor2*) (**)  , (*Tiime:*)(*TestTime*) (**)  , (*End:*)(*End*) (**) ; (*Q:*)(**) (**)  , (*Actuator:*)(*Actuator*) (**)  , (*PeakSensor1:*)(*Peak1*) (**)  , (*PeakSensor2:*)(*Peak2*) (**) )  FB  [5,0] (*ValueProof*) (*ValueProof_1*) ( (*IN:*)(**) (**)  , (*Value:*)(*Peak1*) (**)  , (*ValueMin:*)(*Peak1Max*) (**)  , (*ValueMax:*)(*Peak1Min*) (**) ; (*Q:*)(**) (**)  , (*Success:*)(*Success*) (**)  , (*Fail:*)(*Fail*) (**) )  OTE  [8,0] (*Q*) (**)
+EOR [9,0]
+EOF
+#end_info
+END_FUNCTION_BLOCK
