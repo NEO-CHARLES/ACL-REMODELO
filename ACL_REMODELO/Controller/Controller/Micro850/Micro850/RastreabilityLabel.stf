@@ -1,0 +1,88 @@
+FUNCTION_BLOCK RastreabilityLabel
+/*
+	┌-------------------------------------------┐
+	| NAME OF THE UDFB : RastreabilityLabel		|
+	| CATEGORY : PERIFERICOS					|
+	| AUTHOR : CHARLES N E OLIVEIRA				|
+	| EMAIL: neo_charles@outlook.com     		|
+	| VERSION/REVISION : 1.0.0					|
+	| DATE : 20220314							|
+	└-------------------------------------------┘
+
+	CHANGES : 
+		20201208 - INCLUSÃO DO CABEÇALHO COM.
+		20201208 - INCLUSÃO DO CARACTERE DE TERMINAÇÃO '$N' SUBSTITUINDO 13 10.
+		20220228 - ESTRUTURAÇÃO DO CÓDIGO E ALTERAÇÃO DESCRITIVAS DAS VARIÁVEIS EM INGLÊS.
+		20220314 - v1.0.0 - CONVERSÃO DA FUNÇÃO DE FB_PRINT PARA RastreabilityLabel.
+		20220315 - v1.0.1 - Incluído função LeftZeros.
+*//*
+	IN
+		Channel
+		Trigger
+		CounterReset
+		ControlNumber
+		ProductionOrder
+	
+	PROCEEDING
+		RastreabilityNumber = [ControlNumber[1] | ProductionOreder[6] | SequencialNumber[5]]
+		RastreabilityNumber = [ 0 | 123456 | 78901 ]
+		
+	OUT 
+		Printed label with RastreabilityNumber in barCode format.
+		┌-----------------------┐
+		| ▒▒▒▒▒▒				|
+		| ▒▒▒▒▒▒				|
+		| ▒▒▒▒▒▒				|
+		| ▒▒▒▒▒▒				|
+		| ▒▒▒▒▒▒				|
+		| ▒▒▒▒▒▒				|
+		└-----------------------┘
+*/
+
+//Var Initialization
+	Length := 70;
+
+//SequencialNumber
+	CTU_1(Trigger, CounterReset, ANY_TO_DINT(99999));
+	SequencialNumber	:= LeftZeros(ANY_TO_INT(CTU_1.CV), 5);
+
+//AWT Config
+	AWT_INPUT.Channel	:= Channel;
+	AWT_INPUT.Length	:= ANY_TO_UINT(Length);
+	AWT_INPUT.Cancel	:= FALSE;
+
+//Proceeding
+	Barcode		:= LeftZeros(ControlNumber, 1) + RIGHT(ProductionOrder, 6) + RIGHT(SequencialNumber, 5);
+
+//EPL Declaration
+	E_Config	:= '';
+	E_Config	:= ANY_TO_STRING('I8,A,001$NQ264,024$Nq831$NrN$NS2$ND9$NZT$NJF$NO$NR195,0$Nf100$NN$N');
+
+	E_Barcode	:= '';
+	E_Barcode	:= ANY_TO_STRING('B40,245,3,1C,2,6,70,B,"X"$N');
+	E_Barcode	:= REPLACE(E_Barcode,Barcode,1,24);
+
+	E_Confirm	:= '';
+	E_Confirm	:= ANY_TO_STRING('P1$N');
+
+//Character conversion to ASCII
+	FOR Index := 1 TO Length BY 1 DO
+		A_Config[Index]		:= ANY_TO_BYTE(ASCII(E_Config, Index));
+		A_Barcode[Index]	:= ANY_TO_BYTE(ASCII(E_Barcode, Index));
+		A_Confirm[Index]	:= ANY_TO_BYTE(ASCII(E_Confirm, Index));
+
+	END_FOR;
+
+//Send to Printer
+	IF IN THEN
+		AWT_01(Trigger,AWT_INPUT,A_Config);
+		AWT_02(Trigger,AWT_INPUT,A_Barcode);
+		AWT_03(Trigger,AWT_INPUT,A_Confirm);
+		
+		Q := AWT_03.Q;
+		
+	ELSE
+		Q := FALSE;
+		
+	END_IF;
+END_FUNCTION_BLOCK

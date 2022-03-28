@@ -1,0 +1,113 @@
+FUNCTION LeftZeros
+/*
+	┌-------------------------------------------┐
+	| NAME OF THE UDF : LeftZeros				|
+	| CATEGORY : NumbreFormat					|
+	| AUTHOR : CHARLES N E OLIVEIRA				|
+	| EMAIL : neo_charles@outlook.com     		|
+	| VERSION/REVISION : 1.0.0					|
+	| DATE : 20220315							|
+	└-------------------------------------------┘
+
+	CHANGES : 
+		20220315 - v1.0.0 - Creation of function.
+		
+*//*
+	IN
+		Value	= 1;
+		Length	= 5;
+		
+	PROCEEDING
+	• Converte [Value] de INT para STR.
+	• Restringe [Value] na quantidade de caracteres [Length] definida.
+	• Caso tamanho de [Value] ultrapasse [Length] definido, retorna os [Length] caracteres a direita de [Value].
+
+		LeftZeros = '0000' + ANY_TO_STRING(Value);
+	
+	OUT
+		'00001'	
+*/
+
+//Input
+	IN_Value	:= ANY_TO_STRING(Value);
+	IN_NbC	:= ANY_TO_DINT(NbC);
+
+//Proceeding
+	OUT_Value	:= RIGHT(IN_Value, IN_NbC);	
+	
+	WHILE (MLEN(OUT_Value) < NbC) DO
+		OUT_Value := INSERT(OUT_Value,'0',1);
+		
+	END_WHILE;
+
+//Output
+	LeftZeros	:= OUT_Value;
+	
+/*
+CASE Lengt OF
+1:
+	IF IN_Number < 1 THEN
+		OUT_Number := '0';
+		
+	ELSE
+		OUT_Number := RIGHT(ANY_TO_STRING(IN_Number),Lengt);
+	END_IF;
+
+2:
+	IF IN_Number < 1 THEN
+		OUT_Number := '00';
+	ELSIF IN_Number < 10 THEN
+		OUT_Number := '0' + ANY_TO_STRING(IN_Number);
+	
+	ELSE
+		OUT_Number := RIGHT(ANY_TO_STRING(IN_Number),Lengt);
+	END_IF;
+	
+3:
+	IF IN_Number < 1 THEN
+		OUT_Number := '000';
+	ELSIF IN_Number < 10 THEN
+		OUT_Number := '00' + ANY_TO_STRING(IN_Number);
+	ELSIF IN_Number < 100 THEN
+		OUT_Number := '0' + ANY_TO_STRING(IN_Number);
+	
+	ELSE
+		OUT_Number := RIGHT(ANY_TO_STRING(IN_Number),Lengt);
+	END_IF;
+	
+4:
+	IF IN_Number < 1 THEN
+		OUT_Number := '0000';
+	ELSIF IN_Number < 10 THEN
+		OUT_Number := '000' + ANY_TO_STRING(IN_Number);
+	ELSIF IN_Number < 100 THEN
+		OUT_Number := '00' + ANY_TO_STRING(IN_Number);
+	ELSIF IN_Number < 1000 THEN
+		OUT_Number := '0' + ANY_TO_STRING(IN_Number);
+	
+	ELSE
+		OUT_Number := RIGHT(ANY_TO_STRING(IN_Number),Lengt);
+	END_IF;
+	
+5:
+	IF IN_Number < 1 THEN
+		OUT_Number := '00000';
+	ELSIF IN_Number < 10 THEN
+		OUT_Number := '0000' + ANY_TO_STRING(IN_Number);
+	ELSIF IN_Number < 100 THEN
+		OUT_Number := '000' + ANY_TO_STRING(IN_Number);
+	ELSIF IN_Number < 1000 THEN
+		OUT_Number := '00' + ANY_TO_STRING(IN_Number);
+	ELSIF IN_Number < 10000 THEN
+		OUT_Number := '0' + ANY_TO_STRING(IN_Number);
+		
+	ELSE
+		OUT_Number := RIGHT(ANY_TO_STRING(IN_Number),Lengt);
+	END_IF;
+	
+ELSE
+	OUT_Number := RIGHT(ANY_TO_STRING(IN_Number),ANY_TO_DINT(Lengt));
+	
+END_CASE;
+*/
+END_FUNCTION

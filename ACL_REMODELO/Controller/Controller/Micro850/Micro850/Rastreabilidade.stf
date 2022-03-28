@@ -1,0 +1,15 @@
+PROGRAM Rastreabilidade
+#info= QLD
+BOF
+
+
+(**)
+
+SOR  [0,1] (**) (**)  FB  [1,0] (*RastreabilityLabel*) (*RastreabilityLabel_1*) ( (*IN:*)(**) (**)  , (*Channel:*)(**) (**)  , (*Trigger:*)(**) (**)  , (*CounterReset:*)(**) (**)  , (*ControlNumber:*)(**) (**)  , (*ProductionOrder:*)(**) (**) ; (*Q:*)(**) (**)  , (*SequencialNumber:*)(**) (**)  , (*Barcode:*)(**) (**) )
+EOR [4,0]
+EOF
+#end_info
+#info= ID_MAX
+NextId=1
+#end_info
+END_PROGRAM

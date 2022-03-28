@@ -3,6 +3,9 @@
   <AcfElementGuid Guid="041059a3-f156-445d-989d-9538a9fbbccf">
     <File>FB_SV.AcfMlge</File>
   </AcfElementGuid>
+  <AcfElementGuid Guid="20208211-607c-4a34-b9a5-6a4fe5e006fb">
+    <File>RastreabilityLabel.AcfMlge</File>
+  </AcfElementGuid>
   <AcfElementGuid Guid="21d10900-f58e-4602-a47f-73604b3b7ead">
     <File>PrintCounter.AcfMlge</File>
   </AcfElementGuid>
@@ -20,6 +23,9 @@
   </AcfElementGuid>
   <AcfElementGuid Guid="53d03a7a-6729-491d-bf59-f6b191aea4cf">
     <File>IHM.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="5ab9db5c-8e41-4067-bca2-a53f260c5321">
+    <File>LeftZeros.AcfMlge</File>
   </AcfElementGuid>
   <AcfElementGuid Guid="5de23e12-09f0-411c-9cf6-2abf4659ecde">
     <File>OP50.AcfMlge</File>
@@ -71,6 +77,9 @@
   </AcfElementGuid>
   <AcfElementGuid Guid="ce2ca469-d128-411b-9603-268bdd1c5137">
     <File>OP40.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="cfc18e59-3dce-471c-82d2-d7f85ce8f194">
+    <File>Rastreabilidade.AcfMlge</File>
   </AcfElementGuid>
   <AcfElementGuid Guid="d174ee9d-668f-4554-b14c-bb4433d88d9a">
     <File>OP20.AcfMlge</File>

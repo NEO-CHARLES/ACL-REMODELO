@@ -1,9 +1,9 @@
 FUNCTION_BLOCK PrinterSender
 /*
   |---------------------------------------------|
-  | NAME OF THE UDFB : FB_PRINT					|
+  | NAME OF THE UDFB : PrinterSender			|
   | CATEGORY : PERIFERICOS						|
-  | AUTHOR : CAHRLES N E OLIVEIRA / FABIO M.	|
+  | AUTHOR : CAHRLES N E OLIVEIRA				|
   | EMAIL: neo_charles@outlook.com     			|
   | VERSION/REVISION : 1.0.0					|
   | DATE : 20201130								|
@@ -29,49 +29,46 @@ OUT
 //Var Initialization
 Length := 70;
 
-
 //AWT Config
-AWT_INPUT.Channel := Channel;
-AWT_INPUT.Length := ANY_TO_UINT(Length);
-AWT_INPUT.Cancel := FALSE;
-
+AWT_INPUT.Channel	:= Channel;
+AWT_INPUT.Length	:= ANY_TO_UINT(Length);
+AWT_INPUT.Cancel	:= FALSE;
 
 //Input conversion to EPL
-E_Config := '';
-E_Config := ANY_TO_STRING('I8,A,001$NQ272,024$Nq831$NrN$NS3$ND7$NZT$NJF$NO$NR199,0$Nf100$NN$N');
+E_Config	:= '';
+E_Config	:= ANY_TO_STRING('I8,A,001$NQ272,024$Nq831$NrN$NS3$ND7$NZT$NJF$NO$NR199,0$Nf100$NN$N');
 
-E_Barcode := '';
-E_Barcode := ANY_TO_STRING('B325,225,3,1C,2,6,64,B,"X"$N');
-E_Barcode := REPLACE(E_Barcode,Barcode,1,25);
+E_Barcode	:= '';
+E_Barcode	:= ANY_TO_STRING('B325,225,3,1C,2,6,64,B,"X"$N');
+E_Barcode	:= REPLACE(E_Barcode,Barcode,1,25);
 
-E_Date := '';
-E_Date := ANY_TO_STRING('A320,200,2,3,1,1,N,"DT: X"$N');
-E_Date := REPLACE(E_Date,DateTime,1,25);
+E_Date		:= '';
+E_Date		:= ANY_TO_STRING('A320,200,2,3,1,1,N,"DT: X"$N');
+E_Date		:= REPLACE(E_Date,DateTime,1,25);
 
-E_User := '';
-E_User := ANY_TO_STRING('A320,150,2,3,1,1,N,"ID: X"$N');
-E_User := REPLACE(E_User,User,1,25);
+E_User		:= '';
+E_User		:= ANY_TO_STRING('A320,150,2,3,1,1,N,"ID: X"$N');
+E_User		:= REPLACE(E_User,User,1,25);
 
-E_ProdOrder := '';
-E_ProdOrder := ANY_TO_STRING('A320,175,2,3,1,1,N,"OP: X"$N');
-E_ProdOrder := REPLACE(E_ProdOrder,ProdOrder,1,25);
+E_ProdOrder	:= '';
+E_ProdOrder	:= ANY_TO_STRING('A320,175,2,3,1,1,N,"OP: X"$N');
+E_ProdOrder	:= REPLACE(E_ProdOrder,ProdOrder,1,25);
 
-E_ProdCount := '';
-E_ProdCount := ANY_TO_STRING('A320,125,2,3,1,1,N,"PD: X"$N');
-E_ProdCount := REPLACE(E_ProdCount,ProdCount,1,25);
+E_ProdCount	:= '';
+E_ProdCount	:= ANY_TO_STRING('A320,125,2,3,1,1,N,"PD: X"$N');
+E_ProdCount	:= REPLACE(E_ProdCount,ProdCount,1,25);
 
-E_PartNumber := '';
-E_PartNumber := ANY_TO_STRING('A320,225,2,3,1,1,N,"PN: X"$N');
-E_PartNumber := REPLACE(E_PartNumber,PartNumber,1,25);
+E_PartNumber	:= '';
+E_PartNumber	:= ANY_TO_STRING('A320,225,2,3,1,1,N,"PN: X"$N');
+E_PartNumber	:= REPLACE(E_PartNumber,PartNumber,1,25);
 
-E_Model := '';
-E_Model := ANY_TO_STRING('A320,100,2,3,1,1,N,"MD: X"$N');
-E_Model := REPLACE(E_Model,Model,1,25);
+E_Model		:= '';
+E_Model		:= ANY_TO_STRING('A320,100,2,3,1,1,N,"MD: X"$N');
+E_Model		:= REPLACE(E_Model,Model,1,25);
 
-E_Version := '';
-E_Version := ANY_TO_STRING('A320,075,2,3,1,1,N,"VS: X"$N');
-E_Version := REPLACE(E_Version,Version,1,25);
-
+E_Version	:= '';
+E_Version	:= ANY_TO_STRING('A320,075,2,3,1,1,N,"VS: X"$N');
+E_Version	:= REPLACE(E_Version,Version,1,25);
 
 //Character conversion to ASCII
 FOR Index := 1 TO Length BY 1 DO
@@ -87,19 +84,18 @@ FOR Index := 1 TO Length BY 1 DO
 
 END_FOR;
 
-
 //Send to Printer
 IF IN THEN
-	AWT_01(Trigger,AWT_INPUT,A_Config);
-	AWT_02(Trigger,AWT_INPUT,A_Date);
-	AWT_03(Trigger,AWT_INPUT,A_User);
-	AWT_04(Trigger,AWT_INPUT,A_ProdOrder);
-	AWT_05(Trigger,AWT_INPUT,A_ProdCount);
-	AWT_06(Trigger,AWT_INPUT,A_PartNumber);
-	AWT_07(Trigger,AWT_INPUT,A_Model);
-	AWT_08(Trigger,AWT_INPUT,A_Version);
-	AWT_09(Trigger,AWT_INPUT,A_Barcode);
-	AWT_10(Trigger,AWT_INPUT,A_Confirm);
+	AWT_01(Trigger, AWT_INPUT, A_Config);
+	AWT_02(Trigger, AWT_INPUT, A_Date);
+	AWT_03(Trigger, AWT_INPUT, A_User);
+	AWT_04(Trigger, AWT_INPUT, A_ProdOrder);
+	AWT_05(Trigger, AWT_INPUT, A_ProdCount);
+	AWT_06(Trigger, AWT_INPUT, A_PartNumber);
+	AWT_07(Trigger, AWT_INPUT, A_Model);
+	AWT_08(Trigger, AWT_INPUT, A_Version);
+	AWT_09(Trigger, AWT_INPUT, A_Barcode);
+	AWT_10(Trigger, AWT_INPUT, A_Confirm);
 	
 	Q := AWT_10.Q;
 	

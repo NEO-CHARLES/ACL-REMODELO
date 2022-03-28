@@ -17,6 +17,16 @@ EOR [11,0]
 
 SOR  [0,13] (**) (**)  FB  [1,0] (*FB_INFO*) (*FB_INFO_1*) ( (*IN:*)(**) (**)  , (*Model:MODELO*)(*IHM_ModelNumber*) (**)  , (*OP1:*)(*IHM_ProductionOrder1*) (**)  , (*OP2:*)(*IHM_ProductionOrder2*) (**)  , (*User:*)(*IHM_UserID*) (**)  , (*Year:*)(*IHM_DateYear*) (**)  , (*Month:*)(*IHM_DateMonth*) (**)  , (*Day:*)(*IHM_DateDay*) (**)  , (*Hour:*)(*IHM_TimeHour*) (**)  , (*Minute:*)(*IHM_TimeMinute*) (**)  , (*Second:*)(*IHM_TimeSecond*) (**)  , (*ProdGoal:*)(*IHM_ProdGoal*) (**)  , (*ProdCount:*)(*IHM_ProdCount*) (**)  , (*VS_Q:*)(*IHM_VersionQ*) (**)  , (*VS_ZGS:*)(*IHM_VersionZGS*) (**) ; (*Q:*)(**) (**)  , (*ProdReset:*)(*IHM_ProductionReset*) (**)  , (*sBarcode:*)(*Barcode*) (**)  , (*sDate:*)(*DateTime*) (**)  , (*sUser:*)(*UserID*) (**)  , (*sProdOrder:*)(*ProductionOrder*) (**)  , (*sPartNumber:*)(*PartNumber*) (**)  , (*sProdCount:*)(*ProductionCount*) (**)  , (*sModel:*)(*ModelDescription*) (**)  , (*sVersion:*)(*Version*) (**) )  FB  [4,0] (*PrinterSender*) (*PrinterSender_1*) ( (*IN:*)(**) (**)  , (*Trigger:*)(*Printer1Print*) (**)  , (*Channel:*)(*2*) (**)  , (*Barcode:*)(*Barcode*) (**)  , (*DateTime:*)(*DateTime*) (**)  , (*User:*)(*UserID*) (**)  , (*ProdOrder:*)(*ProductionOrder*) (**)  , (*PartNumber:*)(*PartNumber*) (**)  , (*ProdCount:*)(*ProductionCount*) (**)  , (*Model:*)(*ModelDescription*) (**)  , (*Version:*)(*Version*) (**) ; (*Q:*)(**) (**) )  FB  [7,0] (*-*) (*15*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Printer1Amount*) (**)  , (*i2:*)(*1*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*Printer1Amount*) (**) )  OTE  [10,0] (*Printer1CommandSent*) (**)
 EOR [11,0]
+
+
+(**)
+
+SOR  [0,29] (**) (**)  
+ BST  XIO  [1,0] (*PrintRastreability*) (**)  XIP  [2,0] (*Printer1CommandSent*) (**)  OTS  [3,0] (*PrintRastreability*) (**)
+   NXB  FB  [1,1] (*RastreabilityLabel*) (*RastreabilityLabel_1*) ( (*IN:*)(**) (**)  , (*Channel:*)(*2*) (**)  , (*Trigger:*)(*PrintRastreability*) (**)  , (*CounterReset:*)(**) (**)  , (*ControlNumber:*)(*0*) (**)  , (*ProductionOrder:*)(*ProductionOrder*) (**) ; (*Q:*)(**) (**)  , (*SequencialNumber:*)(**) (**)  , (*Barcode:*)(**) (**) )  OTR  [4,1] (*PrintRastreability*) (**)
+ BND
+
+EOR [5,0]
 EOF
 #end_info
 #info= ID_MAX
